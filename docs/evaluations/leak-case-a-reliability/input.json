@@ -1,0 +1,548 @@
+{
+  "evidence": {
+    "business_type": "Café",
+    "period": "month",
+    "currency": "USD",
+    "revenue": {
+      "total": 100000,
+      "items": [
+        {
+          "name": "Tuesday evenings 6 PM–10 PM",
+          "amount": 1900,
+          "source_text": "Tuesday evenings from 6 PM to 10 PM generated $1,900 in sales for the month."
+        },
+        {
+          "name": "Friday evenings",
+          "amount": 6200,
+          "source_text": "Friday evenings used the same staffing level of 4 people, but generated $6,200 in monthly sales."
+        }
+      ]
+    },
+    "costs": {
+      "total": 95800,
+      "items": [
+        {
+          "name": "Labor",
+          "amount": 34000,
+          "reported_category": "Labor",
+          "source_text": "Labor: $34,000"
+        },
+        {
+          "name": "Ingredients",
+          "amount": 18000,
+          "reported_category": "Ingredients",
+          "source_text": "Ingredients: $18,000"
+        },
+        {
+          "name": "Rent and utilities",
+          "amount": 12500,
+          "reported_category": "Rent and utilities",
+          "source_text": "Rent and utilities: $12,500"
+        },
+        {
+          "name": "Delivery platform fees",
+          "amount": 9300,
+          "reported_category": "Delivery platform fees",
+          "source_text": "Delivery platform fees: $9,300"
+        },
+        {
+          "name": "Other operating costs",
+          "amount": 22000,
+          "reported_category": "Other operating costs",
+          "source_text": "Other operating costs: $22,000"
+        }
+      ]
+    },
+    "facts": [
+      "Tuesday evenings from 6 PM to 10 PM generated $1,900 in sales for the month.",
+      "During that Tuesday evening period, we normally scheduled 4 staff members.",
+      "The total staffing cost for those Tuesday evening shifts was $2,500 for the month, equal to $625 per staff member for that affected monthly period.",
+      "Friday evenings used the same staffing level of 4 people, but generated $6,200 in monthly sales.",
+      "The owner is willing to test reducing Tuesday evening staffing by 1 person while keeping the rest of the schedule unchanged.",
+      "Ingredient waste is currently measured at 9%.",
+      "The business's stated internal waste target is 5%.",
+      "Ingredient purchases for the waste-tracked category were $12,500 during the same month.",
+      "For delivery orders, average revenue per order was $18.40.",
+      "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+      "The business has not yet identified or approved a specific controllable change for delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+    ],
+    "assumptions": [],
+    "missing_information": [
+      "Breakdown of Other operating costs ($22,000)",
+      "Number of delivery orders",
+      "Total delivery revenue",
+      "Delivery platform fee structure details",
+      "Packaging costs per order",
+      "Discount amounts per order",
+      "Food cost per delivery order",
+      "Staffing costs for non-Tuesday evening periods",
+      "Ingredient waste dollar amount",
+      "Specific controllable changes for delivery operations"
+    ],
+    "confidence": "high",
+    "provenance": {
+      "source_input": "Business name: Cornhead Bagel\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\n\nTotal revenue was $100,000.\n\nTotal operating costs were $95,800, including:\n- Labor: $34,000\n- Ingredients: $18,000\n- Rent and utilities: $12,500\n- Delivery platform fees: $9,300\n- Other operating costs: $22,000\n\nTuesday evenings from 6 PM to 10 PM generated $1,900 in sales for the month.\n\nDuring that Tuesday evening period, we normally scheduled 4 staff members. The total staffing cost for those Tuesday evening shifts was $2,500 for the month, equal to $625 per staff member for that affected monthly period.\n\nFriday evenings used the same staffing level of 4 people, but generated $6,200 in monthly sales.\n\nThe owner is willing to test reducing Tuesday evening staffing by 1 person while keeping the rest of the schedule unchanged.\n\nIngredient waste is currently measured at 9%.\n\nThe business's stated internal waste target is 5%.\n\nIngredient purchases for the waste-tracked category were $12,500 during the same month.\n\nFor delivery orders, average revenue per order was $18.40.\n\nSome delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.\n\nThe business has not yet identified or approved a specific controllable change for delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+      "items": [
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_01",
+          "source": "evidence.business_type",
+          "text": "Café"
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_02",
+          "source": "evidence.period",
+          "text": "month"
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_03",
+          "source": "evidence.currency",
+          "text": "USD"
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_04",
+          "source": "evidence.revenue.total",
+          "text": "100000"
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_05",
+          "source": "evidence.revenue.items[0]",
+          "text": "{\"name\":\"Tuesday evenings 6 PM–10 PM\",\"amount\":1900,\"source_text\":\"Tuesday evenings from 6 PM to 10 PM generated $1,900 in sales for the month.\"}"
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_06",
+          "source": "evidence.revenue.items[1]",
+          "text": "{\"name\":\"Friday evenings\",\"amount\":6200,\"source_text\":\"Friday evenings used the same staffing level of 4 people, but generated $6,200 in monthly sales.\"}"
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_07",
+          "source": "evidence.costs.total",
+          "text": "95800"
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_08",
+          "source": "evidence.costs.items[0]",
+          "text": "{\"name\":\"Labor\",\"amount\":34000,\"reported_category\":\"Labor\",\"source_text\":\"Labor: $34,000\"}"
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_09",
+          "source": "evidence.costs.items[1]",
+          "text": "{\"name\":\"Ingredients\",\"amount\":18000,\"reported_category\":\"Ingredients\",\"source_text\":\"Ingredients: $18,000\"}"
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_10",
+          "source": "evidence.costs.items[2]",
+          "text": "{\"name\":\"Rent and utilities\",\"amount\":12500,\"reported_category\":\"Rent and utilities\",\"source_text\":\"Rent and utilities: $12,500\"}"
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_11",
+          "source": "evidence.costs.items[3]",
+          "text": "{\"name\":\"Delivery platform fees\",\"amount\":9300,\"reported_category\":\"Delivery platform fees\",\"source_text\":\"Delivery platform fees: $9,300\"}"
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_12",
+          "source": "evidence.costs.items[4]",
+          "text": "{\"name\":\"Other operating costs\",\"amount\":22000,\"reported_category\":\"Other operating costs\",\"source_text\":\"Other operating costs: $22,000\"}"
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_13",
+          "source": "evidence.facts[0]",
+          "text": "Tuesday evenings from 6 PM to 10 PM generated $1,900 in sales for the month."
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_14",
+          "source": "evidence.facts[1]",
+          "text": "During that Tuesday evening period, we normally scheduled 4 staff members."
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_15",
+          "source": "evidence.facts[2]",
+          "text": "The total staffing cost for those Tuesday evening shifts was $2,500 for the month, equal to $625 per staff member for that affected monthly period."
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_16",
+          "source": "evidence.facts[3]",
+          "text": "Friday evenings used the same staffing level of 4 people, but generated $6,200 in monthly sales."
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_17",
+          "source": "evidence.facts[4]",
+          "text": "The owner is willing to test reducing Tuesday evening staffing by 1 person while keeping the rest of the schedule unchanged."
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_18",
+          "source": "evidence.facts[5]",
+          "text": "Ingredient waste is currently measured at 9%."
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_19",
+          "source": "evidence.facts[6]",
+          "text": "The business's stated internal waste target is 5%."
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_20",
+          "source": "evidence.facts[7]",
+          "text": "Ingredient purchases for the waste-tracked category were $12,500 during the same month."
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_21",
+          "source": "evidence.facts[8]",
+          "text": "For delivery orders, average revenue per order was $18.40."
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_22",
+          "source": "evidence.facts[9]",
+          "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+        },
+        {
+          "id": "ev_a66a5d270b697af99c05b3d9b5db43d1_23",
+          "source": "evidence.facts[10]",
+          "text": "The business has not yet identified or approved a specific controllable change for delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_01",
+          "source": "source_input[0]",
+          "text": "Business name: Cornhead Bagel"
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_02",
+          "source": "source_input[1]",
+          "text": "Selected business type: Café"
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_03",
+          "source": "source_input[2]",
+          "text": "Business description / notes: Business performance for last month."
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_04",
+          "source": "source_input[3]",
+          "text": "Currency: USD."
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_05",
+          "source": "source_input[4]",
+          "text": "Total revenue was $100,000."
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_06",
+          "source": "source_input[5]",
+          "text": "Total operating costs were $95,800, including:"
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_07",
+          "source": "source_input[6]",
+          "text": "Labor: $34,000"
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_08",
+          "source": "source_input[7]",
+          "text": "Ingredients: $18,000"
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_09",
+          "source": "source_input[8]",
+          "text": "Rent and utilities: $12,500"
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_10",
+          "source": "source_input[9]",
+          "text": "Delivery platform fees: $9,300"
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_11",
+          "source": "source_input[10]",
+          "text": "Other operating costs: $22,000"
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_12",
+          "source": "source_input[11]",
+          "text": "Tuesday evenings from 6 PM to 10 PM generated $1,900 in sales for the month."
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_13",
+          "source": "source_input[12]",
+          "text": "During that Tuesday evening period, we normally scheduled 4 staff members."
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_14",
+          "source": "source_input[13]",
+          "text": "The total staffing cost for those Tuesday evening shifts was $2,500 for the month, equal to $625 per staff member for that affected monthly period."
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_15",
+          "source": "source_input[14]",
+          "text": "Friday evenings used the same staffing level of 4 people, but generated $6,200 in monthly sales."
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_16",
+          "source": "source_input[15]",
+          "text": "The owner is willing to test reducing Tuesday evening staffing by 1 person while keeping the rest of the schedule unchanged."
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_17",
+          "source": "source_input[16]",
+          "text": "Ingredient waste is currently measured at 9%."
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_18",
+          "source": "source_input[17]",
+          "text": "The business's stated internal waste target is 5%."
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_19",
+          "source": "source_input[18]",
+          "text": "Ingredient purchases for the waste-tracked category were $12,500 during the same month."
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_20",
+          "source": "source_input[19]",
+          "text": "For delivery orders, average revenue per order was $18.40."
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_21",
+          "source": "source_input[20]",
+          "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+        },
+        {
+          "id": "src_abbca75924f4c231a119ad1248d351f3_22",
+          "source": "source_input[21]",
+          "text": "The business has not yet identified or approved a specific controllable change for delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+        }
+      ],
+      "citable_facts": [
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_01",
+          "text": "Business name: Cornhead Bagel",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_01"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_02",
+          "text": "Selected business type: Café",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_02"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_03",
+          "text": "Business description / notes: Business performance for last month.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_03"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_04",
+          "text": "Currency: USD.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_04"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_05",
+          "text": "Total revenue was $100,000.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_05"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_06",
+          "text": "Total operating costs were $95,800, including:",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_06"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_07",
+          "text": "Labor: $34,000",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_07"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_08",
+          "text": "Ingredients: $18,000",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_08"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_09",
+          "text": "Rent and utilities: $12,500",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_09"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_10",
+          "text": "Delivery platform fees: $9,300",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_10"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_11",
+          "text": "Other operating costs: $22,000",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_11"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_12",
+          "text": "Tuesday evenings from 6 PM to 10 PM generated $1,900 in sales for the month.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_12"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_13",
+          "text": "During that Tuesday evening period, we normally scheduled 4 staff members.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_13"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_14",
+          "text": "The total staffing cost for those Tuesday evening shifts was $2,500 for the month, equal to $625 per staff member for that affected monthly period.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_14"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_15",
+          "text": "Friday evenings used the same staffing level of 4 people, but generated $6,200 in monthly sales.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_15"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_16",
+          "text": "The owner is willing to test reducing Tuesday evening staffing by 1 person while keeping the rest of the schedule unchanged.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_16"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_17",
+          "text": "Ingredient waste is currently measured at 9%.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_17"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_18",
+          "text": "The business's stated internal waste target is 5%.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_18"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_19",
+          "text": "Ingredient purchases for the waste-tracked category were $12,500 during the same month.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_19"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_20",
+          "text": "For delivery orders, average revenue per order was $18.40.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_20"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_21",
+          "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_21"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_22",
+          "text": "The business has not yet identified or approved a specific controllable change for delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_22"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_23",
+          "text": "Business description / notes: Business performance for last month. Currency: USD.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_03",
+            "src_abbca75924f4c231a119ad1248d351f3_04"
+          ]
+        },
+        {
+          "id": "fact_abbca75924f4c231a119ad1248d351f3_24",
+          "text": "During that Tuesday evening period, we normally scheduled 4 staff members. The total staffing cost for those Tuesday evening shifts was $2,500 for the month, equal to $625 per staff member for that affected monthly period.",
+          "source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_13",
+            "src_abbca75924f4c231a119ad1248d351f3_14"
+          ]
+        }
+      ],
+      "authorization_records": [
+        {
+          "intervention": "headcount_reduction",
+          "scope": "tuesday_evening_6pm_10pm",
+          "operation": "delta",
+          "from": null,
+          "value": -1,
+          "unit": "persons",
+          "permission": "explicit",
+          "permission_source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_16"
+          ],
+          "constraint": "rest_schedule_unchanged",
+          "constraint_source_refs": [
+            "src_abbca75924f4c231a119ad1248d351f3_16"
+          ],
+          "supporting_facts": [
+            {
+              "role": "sales",
+              "value": 1900,
+              "unit": "currency",
+              "period": "month",
+              "currency": "USD",
+              "source_refs": [
+                "src_abbca75924f4c231a119ad1248d351f3_12"
+              ]
+            },
+            {
+              "role": "staffing_cost",
+              "value": 2500,
+              "unit": "currency",
+              "period": "month",
+              "currency": "USD",
+              "source_refs": [
+                "src_abbca75924f4c231a119ad1248d351f3_14"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "operational_context": [
+    "Business performance for last month.",
+    "Currency: USD.",
+    "Total revenue was $100,000.",
+    "Total operating costs were $95,800, including:",
+    "Labor: $34,000",
+    "Ingredients: $18,000",
+    "Rent and utilities: $12,500",
+    "Delivery platform fees: $9,300",
+    "Other operating costs: $22,000",
+    "Tuesday evenings from 6 PM to 10 PM generated $1,900 in sales for the month.",
+    "During that Tuesday evening period, we normally scheduled 4 staff members.",
+    "The total staffing cost for those Tuesday evening shifts was $2,500 for the month, equal to $625 per staff member for that affected monthly period.",
+    "Friday evenings used the same staffing level of 4 people, but generated $6,200 in monthly sales.",
+    "The owner is willing to test reducing Tuesday evening staffing by 1 person while keeping the rest of the schedule unchanged.",
+    "Ingredient waste is currently measured at 9%.",
+    "The business's stated internal waste target is 5%.",
+    "Ingredient purchases for the waste-tracked category were $12,500 during the same month.",
+    "For delivery orders, average revenue per order was $18.40.",
+    "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+    "The business has not yet identified or approved a specific controllable change for delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+  ]
+}

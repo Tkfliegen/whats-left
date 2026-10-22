@@ -1,0 +1,16 @@
+{
+  "finished": "2026-10-22T09:19:06.600Z",
+  "production_source_hashes_unchanged": true,
+  "changed_source_files": [],
+  "models": {
+    "evidence": "nvidia/Nemotron-3-Ultra-550b-a55b",
+    "leaks": "nvidia/Nemotron-3-Ultra-550b-a55b",
+    "scenarios": "nvidia/Nemotron-3_5-Lightning",
+    "decision": "nvidia/nemotron-3-super-120b-a12b"
+  },
+  "submissions": 12,
+  "endpoint_calls": 59,
+  "retries": false,
+  "repairs": false,
+  "fallbacks": false
+}

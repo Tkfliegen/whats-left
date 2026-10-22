@@ -1,0 +1,344 @@
+{
+  "name": "complete-clear-winner",
+  "synthetic": true,
+  "entry_point": "existing structured Scenario Calculator contract; not prose-input enrichment",
+  "scenario_request": {
+    "evidence": {
+      "business_type": "bagel_shop",
+      "period": "last_month",
+      "currency": "USD",
+      "revenue": {
+        "total": 100000,
+        "items": []
+      },
+      "costs": {
+        "total": 95800,
+        "items": [
+          {
+            "name": "labor",
+            "amount": 10000,
+            "reported_category": "labor",
+            "source_text": "10000 USD labor cost"
+          },
+          {
+            "name": "ingredients",
+            "amount": 18000,
+            "reported_category": "ingredients",
+            "source_text": "$18,000 in ingredients"
+          },
+          {
+            "name": "rent_and_utilities",
+            "amount": 12500,
+            "reported_category": "rent and utilities",
+            "source_text": "$12,500 in rent and utilities"
+          },
+          {
+            "name": "delivery_platform_fees",
+            "amount": 9300,
+            "reported_category": "delivery platform fees",
+            "source_text": "$9,300 in delivery platform fees"
+          }
+        ]
+      },
+      "facts": [],
+      "assumptions": [],
+      "missing_information": [],
+      "confidence": "high",
+      "provenance": {
+        "source_input": "Tuesday evenings from 6 PM to 10 PM average only $1,900 in monthly sales, but staffing during those hours costs $10,000 per month. Staffing levels are similar to Friday evenings, even though Friday evening sales are much higher.\nIngredient waste last month was 9% of ingredient purchases. The business's stated internal target is 5%.\nTuesday evening 6 PM to 10 PM headcount may be tested by reducing headcount by 1 person.\nWaste rate may be tested from the current 9% toward the stated 5% target.",
+        "items": [
+          {
+            "id": "ev_2562d417da5beb0bb805a2476efaf37b_01",
+            "source": "evidence.business_type",
+            "text": "bagel_shop"
+          },
+          {
+            "id": "ev_2562d417da5beb0bb805a2476efaf37b_02",
+            "source": "evidence.period",
+            "text": "last_month"
+          },
+          {
+            "id": "ev_2562d417da5beb0bb805a2476efaf37b_03",
+            "source": "evidence.currency",
+            "text": "USD"
+          },
+          {
+            "id": "ev_2562d417da5beb0bb805a2476efaf37b_04",
+            "source": "evidence.revenue.total",
+            "text": "100000"
+          },
+          {
+            "id": "ev_2562d417da5beb0bb805a2476efaf37b_05",
+            "source": "evidence.costs.total",
+            "text": "95800"
+          },
+          {
+            "id": "ev_2562d417da5beb0bb805a2476efaf37b_06",
+            "source": "evidence.costs.items[0]",
+            "text": "{\"name\":\"labor\",\"amount\":10000,\"reported_category\":\"labor\",\"source_text\":\"10000 USD labor cost\"}"
+          },
+          {
+            "id": "ev_2562d417da5beb0bb805a2476efaf37b_07",
+            "source": "evidence.costs.items[1]",
+            "text": "{\"name\":\"ingredients\",\"amount\":18000,\"reported_category\":\"ingredients\",\"source_text\":\"$18,000 in ingredients\"}"
+          },
+          {
+            "id": "ev_2562d417da5beb0bb805a2476efaf37b_08",
+            "source": "evidence.costs.items[2]",
+            "text": "{\"name\":\"rent_and_utilities\",\"amount\":12500,\"reported_category\":\"rent and utilities\",\"source_text\":\"$12,500 in rent and utilities\"}"
+          },
+          {
+            "id": "ev_2562d417da5beb0bb805a2476efaf37b_09",
+            "source": "evidence.costs.items[3]",
+            "text": "{\"name\":\"delivery_platform_fees\",\"amount\":9300,\"reported_category\":\"delivery platform fees\",\"source_text\":\"$9,300 in delivery platform fees\"}"
+          },
+          {
+            "id": "src_979cea59c7a64bb27f8c1912b6e5fc31_01",
+            "source": "source_input[0]",
+            "text": "Tuesday evenings from 6 PM to 10 PM average only $1,900 in monthly sales, but staffing during those hours costs $10,000 per month."
+          },
+          {
+            "id": "src_979cea59c7a64bb27f8c1912b6e5fc31_02",
+            "source": "source_input[1]",
+            "text": "Staffing levels are similar to Friday evenings, even though Friday evening sales are much higher."
+          },
+          {
+            "id": "src_979cea59c7a64bb27f8c1912b6e5fc31_03",
+            "source": "source_input[2]",
+            "text": "Ingredient waste last month was 9% of ingredient purchases."
+          },
+          {
+            "id": "src_979cea59c7a64bb27f8c1912b6e5fc31_04",
+            "source": "source_input[3]",
+            "text": "The business's stated internal target is 5%."
+          },
+          {
+            "id": "src_979cea59c7a64bb27f8c1912b6e5fc31_05",
+            "source": "source_input[4]",
+            "text": "Tuesday evening 6 PM to 10 PM headcount may be tested by reducing headcount by 1 person."
+          },
+          {
+            "id": "src_979cea59c7a64bb27f8c1912b6e5fc31_06",
+            "source": "source_input[5]",
+            "text": "Waste rate may be tested from the current 9% toward the stated 5% target."
+          }
+        ],
+        "citable_facts": [
+          {
+            "id": "fact_979cea59c7a64bb27f8c1912b6e5fc31_01",
+            "text": "Tuesday evenings from 6 PM to 10 PM average only $1,900 in monthly sales, but staffing during those hours costs $10,000 per month.",
+            "source_refs": [
+              "src_979cea59c7a64bb27f8c1912b6e5fc31_01"
+            ]
+          },
+          {
+            "id": "fact_979cea59c7a64bb27f8c1912b6e5fc31_02",
+            "text": "Staffing levels are similar to Friday evenings, even though Friday evening sales are much higher.",
+            "source_refs": [
+              "src_979cea59c7a64bb27f8c1912b6e5fc31_02"
+            ]
+          },
+          {
+            "id": "fact_979cea59c7a64bb27f8c1912b6e5fc31_03",
+            "text": "Ingredient waste last month was 9% of ingredient purchases.",
+            "source_refs": [
+              "src_979cea59c7a64bb27f8c1912b6e5fc31_03"
+            ]
+          },
+          {
+            "id": "fact_979cea59c7a64bb27f8c1912b6e5fc31_04",
+            "text": "The business's stated internal target is 5%.",
+            "source_refs": [
+              "src_979cea59c7a64bb27f8c1912b6e5fc31_04"
+            ]
+          },
+          {
+            "id": "fact_979cea59c7a64bb27f8c1912b6e5fc31_05",
+            "text": "Tuesday evening 6 PM to 10 PM headcount may be tested by reducing headcount by 1 person.",
+            "source_refs": [
+              "src_979cea59c7a64bb27f8c1912b6e5fc31_05"
+            ]
+          },
+          {
+            "id": "fact_979cea59c7a64bb27f8c1912b6e5fc31_06",
+            "text": "Waste rate may be tested from the current 9% toward the stated 5% target.",
+            "source_refs": [
+              "src_979cea59c7a64bb27f8c1912b6e5fc31_06"
+            ]
+          },
+          {
+            "id": "fact_979cea59c7a64bb27f8c1912b6e5fc31_07",
+            "text": "Tuesday evenings from 6 PM to 10 PM average only $1,900 in monthly sales, but staffing during those hours costs $10,000 per month. Staffing levels are similar to Friday evenings, even though Friday evening sales are much higher.",
+            "source_refs": [
+              "src_979cea59c7a64bb27f8c1912b6e5fc31_01",
+              "src_979cea59c7a64bb27f8c1912b6e5fc31_02"
+            ]
+          },
+          {
+            "id": "fact_979cea59c7a64bb27f8c1912b6e5fc31_08",
+            "text": "Ingredient waste last month was 9% of ingredient purchases. The business's stated internal target is 5%.",
+            "source_refs": [
+              "src_979cea59c7a64bb27f8c1912b6e5fc31_03",
+              "src_979cea59c7a64bb27f8c1912b6e5fc31_04"
+            ]
+          }
+        ],
+        "authorization_records": [
+          {
+            "intervention": "headcount_reduction",
+            "scope": "tuesday_evening_6pm_10pm",
+            "operation": "delta",
+            "from": null,
+            "value": -1,
+            "unit": "persons",
+            "permission": "explicit",
+            "permission_source_refs": [
+              "src_979cea59c7a64bb27f8c1912b6e5fc31_05"
+            ],
+            "constraint": "affected_scope_only",
+            "constraint_source_refs": [
+              "src_979cea59c7a64bb27f8c1912b6e5fc31_05"
+            ],
+            "supporting_facts": [
+              {
+                "role": "sales",
+                "value": 1900,
+                "unit": "currency",
+                "period": "month",
+                "currency": "USD",
+                "source_refs": [
+                  "src_979cea59c7a64bb27f8c1912b6e5fc31_01"
+                ]
+              },
+              {
+                "role": "staffing_cost",
+                "value": 10000,
+                "unit": "currency",
+                "period": "month",
+                "currency": "USD",
+                "source_refs": [
+                  "src_979cea59c7a64bb27f8c1912b6e5fc31_01"
+                ]
+              }
+            ]
+          },
+          {
+            "intervention": "waste_rate_target",
+            "scope": "ingredient_waste",
+            "operation": "absolute_target",
+            "from": 9,
+            "value": 5,
+            "unit": "percent",
+            "permission": "explicit",
+            "permission_source_refs": [
+              "src_979cea59c7a64bb27f8c1912b6e5fc31_06"
+            ],
+            "constraint": "none",
+            "constraint_source_refs": [],
+            "supporting_facts": [
+              {
+                "role": "current_waste_rate",
+                "value": 9,
+                "unit": "percent",
+                "period": "month",
+                "currency": null,
+                "source_refs": [
+                  "src_979cea59c7a64bb27f8c1912b6e5fc31_03"
+                ]
+              },
+              {
+                "role": "target_waste_rate",
+                "value": 5,
+                "unit": "percent",
+                "period": "month",
+                "currency": null,
+                "source_refs": [
+                  "src_979cea59c7a64bb27f8c1912b6e5fc31_04"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "operational_context": [
+      "Tuesday evenings from 6 PM to 10 PM average only $1,900 in monthly sales, but staffing during those hours costs $10,000 per month. Staffing levels are similar to Friday evenings, even though Friday evening sales are much higher.",
+      "Ingredient waste last month was 9% of ingredient purchases. The business's stated internal target is 5%.",
+      "Tuesday evening 6 PM to 10 PM headcount may be tested by reducing headcount by 1 person.",
+      "Waste rate may be tested from the current 9% toward the stated 5% target."
+    ],
+    "leaks": {
+      "leaks": [
+        {
+          "title": "Tuesday evening labor inefficiency",
+          "category": "labor",
+          "evidence": [
+            "Tuesday evenings from 6 PM to 10 PM average only $1,900 in monthly sales, but staffing during those hours costs $10,000 per month. Staffing levels are similar to Friday evenings, even though Friday evening sales are much higher."
+          ],
+          "interpretation": "Tuesday evening labor inefficiency",
+          "confidence": "high",
+          "evidence_refs": [
+            "fact_979cea59c7a64bb27f8c1912b6e5fc31_01",
+            "fact_979cea59c7a64bb27f8c1912b6e5fc31_02",
+            "fact_979cea59c7a64bb27f8c1912b6e5fc31_05"
+          ]
+        },
+        {
+          "title": "Ingredient waste exceeds stated target",
+          "category": "waste",
+          "evidence": [
+            "Ingredient waste last month was 9% of ingredient purchases. The business's stated internal target is 5%."
+          ],
+          "interpretation": "Ingredient waste exceeds stated target",
+          "confidence": "high",
+          "evidence_refs": [
+            "fact_979cea59c7a64bb27f8c1912b6e5fc31_03",
+            "fact_979cea59c7a64bb27f8c1912b6e5fc31_04",
+            "fact_979cea59c7a64bb27f8c1912b6e5fc31_06"
+          ]
+        }
+      ],
+      "insufficient_evidence": []
+    }
+  },
+  "calculation_inputs": [
+    {
+      "concept": "baseline_headcount",
+      "scope": "tuesday_evening",
+      "value": 4,
+      "unit": "persons",
+      "period": "last_month",
+      "currency": null
+    },
+    {
+      "concept": "labor_cost_per_worker",
+      "scope": "tuesday_evening",
+      "value": 2500,
+      "unit": "currency_per_person",
+      "period": "last_month",
+      "currency": "USD"
+    },
+    {
+      "concept": "ingredient_purchases",
+      "scope": "ingredient_waste",
+      "value": 12500,
+      "unit": "currency",
+      "period": "last_month",
+      "currency": "USD"
+    }
+  ],
+  "expected": {
+    "labor": {
+      "baseline": 10000,
+      "projected": 7500,
+      "reduction": 2500
+    },
+    "waste": {
+      "baseline": 1125,
+      "projected": 625,
+      "reduction": 500
+    },
+    "gate": "action_allowed",
+    "decision": "business_action"
+  }
+}

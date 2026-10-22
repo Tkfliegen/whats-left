@@ -1,0 +1,325 @@
+{
+  "calls": [
+    {
+      "url": "/api/analyze/evidence",
+      "body": {
+        "input": "Business name: Orchard Counter\nSelected business type: Café\nBusiness description / notes: Currency: USD. The reporting period is the month just ended.\nIngredient purchases for the category covered by our waste measurement were USD 12,000 for the month.\nCurrent measured ingredient waste is 9%. The internal ingredient waste target is 5%.\nI am the owner and I authorize a controlled test to reduce ingredient waste from 9% to 5% for that same category.\nThere is no authorization to change staffing or delivery operations."
+      },
+      "started": 1792654265075,
+      "status": 502,
+      "response": {
+        "error": "Evidence currency conflicts with the explicit source currency or is unsupported."
+      },
+      "finished": 1792654266792
+    }
+  ],
+  "started": 1792654265074,
+  "page_text": "◔\n\nWhat’s Left?\n\nSee what your business really keeps.\n\nYour profitability workspace\nEARLY PREVIEW\n\nYOUR BUSINESS, UNDERSTOOD\n\nA clearer picture of what’s left.\n\nAI interprets business evidence. Code verifies scenarios and calculates impact. AI recommends within verified boundaries.\n\nAnalysis workspace\n\nFOUR SPECIALISTS. ONE CLEAR ANSWER.\n\nAgent Office\nReady to analyze\n✧\n\nEvidence Agent is reviewing the inputs.\n\nOrganizing files, notes, and operational evidence.\n\nBusiness Input\n01 / START HERE\nBusiness name\nBusiness type\nCafé\nBakery\nTea Shop\nRestaurant\nOther\nNotes (optional)\n↥\nDrop your business files here, or browse\nCSV, PDF, XLSX, images · Local selection only · Not analyzed\n\nEvidence analysis couldn't be completed. Please try again.\n\nRetry starts a fresh analysis. Your input stays in this form.\n\nRetry full analysis\n↗\n\nAI analysis with deterministic validation and calculations · Files are not processed.\n\nBusiness Outlook\nBusiness analysis\nPeriod / currency pending\n\nAnalysis stopped\n\nYour input is preserved. Please try again.\n\nRevenue\n\n—\n\nOperating Costs\n\n—\n\nWhat’s Left\n✧\n\n—\n\nMargin\n\n—\nWhat’s Left? · A little clarity goes a long way.\nAI analysis with deterministic validation, scenario calculations, and bounded decision support.",
+  "complete": false,
+  "error": "Evidence analysis couldn't be completed. Please try again.",
+  "total_latency_ms": 1740,
+  "timeline": [
+    {
+      "at": 1792654265139,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265191,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265243,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265295,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265347,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265399,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265452,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265505,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265557,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265610,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265663,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265715,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265767,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265819,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265871,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265923,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654265975,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266028,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266080,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266133,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266186,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266238,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266291,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266343,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266395,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266448,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266500,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266552,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266605,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266657,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266710,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266762,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792654266814,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 502
+        }
+      ],
+      "error": "Evidence analysis couldn't be completed. Please try again.",
+      "complete": false
+    }
+  ],
+  "server_diagnostics": [],
+  "console_diagnostics": [],
+  "exceptions": []
+}

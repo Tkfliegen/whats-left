@@ -1,0 +1,1784 @@
+{
+  "calls": [
+    {
+      "url": "/api/analyze/evidence",
+      "body": {
+        "input": "Business name: Riverside Counter\nSelected business type: Café\nBusiness description / notes: Currency USD, same reporting month throughout.\nThe ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750. The till export instead reports USD 3,100 for those same Tuesday services. These reports have not been reconciled, and neither has been confirmed authoritative.\nStaffing cost for those services is reported as USD 3,400 with 4 staff scheduled.\nA supervisor asked what would happen with 1 fewer person. The owner has withheld approval: no staffing change is authorized and the schedule limits have not been decided.\nDo not treat the supervisor's question as approval."
+      },
+      "started": 1792658709315,
+      "status": 200,
+      "response": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — ledger",
+                "amount": 1750,
+                "source_text": "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750."
+              },
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — till export",
+                "amount": 3100,
+                "source_text": "The till export instead reports USD 3,100 for those same Tuesday services."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Staffing cost for Tuesday evening services (6 PM–10 PM)",
+                "amount": 3400,
+                "reported_category": "staffing",
+                "source_text": "Staffing cost for those services is reported as USD 3,400 with 4 staff scheduled."
+              }
+            ]
+          },
+          "facts": [
+            "Currency USD, same reporting month throughout.",
+            "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750.",
+            "The till export instead reports USD 3,100 for those same Tuesday services.",
+            "These reports have not been reconciled, and neither has been confirmed authoritative.",
+            "Staffing cost for those services is reported as USD 3,400 with 4 staff scheduled.",
+            "A supervisor asked what would happen with 1 fewer person.",
+            "The owner has withheld approval: no staffing change is authorized and the schedule limits have not been decided."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Whole-business revenue total for the reporting month",
+            "Whole-business operating cost total for the reporting month",
+            "Reconciled Tuesday evening sales figure",
+            "Staffing cost breakdown (e.g., wages, benefits, overtime)",
+            "Staff hourly rates or shift lengths",
+            "Owner's decision on schedule limits"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Riverside Counter\nSelected business type: Café\nBusiness description / notes: Currency USD, same reporting month throughout.\nThe ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750. The till export instead reports USD 3,100 for those same Tuesday services. These reports have not been reconciled, and neither has been confirmed authoritative.\nStaffing cost for those services is reported as USD 3,400 with 4 staff scheduled.\nA supervisor asked what would happen with 1 fewer person. The owner has withheld approval: no staffing change is authorized and the schedule limits have not been decided.\nDo not treat the supervisor's question as approval.",
+            "items": [
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_02",
+                "source": "evidence.period",
+                "text": "month"
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — ledger\",\"amount\":1750,\"source_text\":\"The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750.\"}"
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_05",
+                "source": "evidence.revenue.items[1]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — till export\",\"amount\":3100,\"source_text\":\"The till export instead reports USD 3,100 for those same Tuesday services.\"}"
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Staffing cost for Tuesday evening services (6 PM–10 PM)\",\"amount\":3400,\"reported_category\":\"staffing\",\"source_text\":\"Staffing cost for those services is reported as USD 3,400 with 4 staff scheduled.\"}"
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_07",
+                "source": "evidence.facts[0]",
+                "text": "Currency USD, same reporting month throughout."
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_08",
+                "source": "evidence.facts[1]",
+                "text": "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750."
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_09",
+                "source": "evidence.facts[2]",
+                "text": "The till export instead reports USD 3,100 for those same Tuesday services."
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_10",
+                "source": "evidence.facts[3]",
+                "text": "These reports have not been reconciled, and neither has been confirmed authoritative."
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_11",
+                "source": "evidence.facts[4]",
+                "text": "Staffing cost for those services is reported as USD 3,400 with 4 staff scheduled."
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_12",
+                "source": "evidence.facts[5]",
+                "text": "A supervisor asked what would happen with 1 fewer person."
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_13",
+                "source": "evidence.facts[6]",
+                "text": "The owner has withheld approval: no staffing change is authorized and the schedule limits have not been decided."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_01",
+                "source": "source_input[0]",
+                "text": "Business name: Riverside Counter"
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Currency USD, same reporting month throughout."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_04",
+                "source": "source_input[3]",
+                "text": "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_05",
+                "source": "source_input[4]",
+                "text": "The till export instead reports USD 3,100 for those same Tuesday services."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_06",
+                "source": "source_input[5]",
+                "text": "These reports have not been reconciled, and neither has been confirmed authoritative."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_07",
+                "source": "source_input[6]",
+                "text": "Staffing cost for those services is reported as USD 3,400 with 4 staff scheduled."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_08",
+                "source": "source_input[7]",
+                "text": "A supervisor asked what would happen with 1 fewer person."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_09",
+                "source": "source_input[8]",
+                "text": "The owner has withheld approval: no staffing change is authorized and the schedule limits have not been decided."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_10",
+                "source": "source_input[9]",
+                "text": "Do not treat the supervisor's question as approval."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_01",
+                "text": "Business name: Riverside Counter",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_01"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_02"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_03",
+                "text": "Business description / notes: Currency USD, same reporting month throughout.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_03"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_04",
+                "text": "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_04"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_05",
+                "text": "The till export instead reports USD 3,100 for those same Tuesday services.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_05"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_06",
+                "text": "These reports have not been reconciled, and neither has been confirmed authoritative.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_06"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_07",
+                "text": "Staffing cost for those services is reported as USD 3,400 with 4 staff scheduled.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_07"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_08",
+                "text": "A supervisor asked what would happen with 1 fewer person.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_08"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_09",
+                "text": "The owner has withheld approval: no staffing change is authorized and the schedule limits have not been decided.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_09"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_10",
+                "text": "Do not treat the supervisor's question as approval.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_10"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_11",
+                "text": "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750. The till export instead reports USD 3,100 for those same Tuesday services. These reports have not been reconciled, and neither has been confirmed authoritative.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_04",
+                  "src_15e0a1ff9ab27441f3057c331e725d54_05",
+                  "src_15e0a1ff9ab27441f3057c331e725d54_06"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_12",
+                "text": "A supervisor asked what would happen with 1 fewer person. The owner has withheld approval: no staffing change is authorized and the schedule limits have not been decided.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_08",
+                  "src_15e0a1ff9ab27441f3057c331e725d54_09"
+                ]
+              }
+            ],
+            "authorization_records": []
+          }
+        }
+      },
+      "finished": 1792658711130
+    },
+    {
+      "url": "/api/analyze/leaks",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — ledger",
+                "amount": 1750,
+                "source_text": "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750."
+              },
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — till export",
+                "amount": 3100,
+                "source_text": "The till export instead reports USD 3,100 for those same Tuesday services."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Staffing cost for Tuesday evening services (6 PM–10 PM)",
+                "amount": 3400,
+                "reported_category": "staffing",
+                "source_text": "Staffing cost for those services is reported as USD 3,400 with 4 staff scheduled."
+              }
+            ]
+          },
+          "facts": [
+            "Currency USD, same reporting month throughout.",
+            "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750.",
+            "The till export instead reports USD 3,100 for those same Tuesday services.",
+            "These reports have not been reconciled, and neither has been confirmed authoritative.",
+            "Staffing cost for those services is reported as USD 3,400 with 4 staff scheduled.",
+            "A supervisor asked what would happen with 1 fewer person.",
+            "The owner has withheld approval: no staffing change is authorized and the schedule limits have not been decided."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Whole-business revenue total for the reporting month",
+            "Whole-business operating cost total for the reporting month",
+            "Reconciled Tuesday evening sales figure",
+            "Staffing cost breakdown (e.g., wages, benefits, overtime)",
+            "Staff hourly rates or shift lengths",
+            "Owner's decision on schedule limits"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Riverside Counter\nSelected business type: Café\nBusiness description / notes: Currency USD, same reporting month throughout.\nThe ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750. The till export instead reports USD 3,100 for those same Tuesday services. These reports have not been reconciled, and neither has been confirmed authoritative.\nStaffing cost for those services is reported as USD 3,400 with 4 staff scheduled.\nA supervisor asked what would happen with 1 fewer person. The owner has withheld approval: no staffing change is authorized and the schedule limits have not been decided.\nDo not treat the supervisor's question as approval.",
+            "items": [
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_02",
+                "source": "evidence.period",
+                "text": "month"
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — ledger\",\"amount\":1750,\"source_text\":\"The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750.\"}"
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_05",
+                "source": "evidence.revenue.items[1]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — till export\",\"amount\":3100,\"source_text\":\"The till export instead reports USD 3,100 for those same Tuesday services.\"}"
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Staffing cost for Tuesday evening services (6 PM–10 PM)\",\"amount\":3400,\"reported_category\":\"staffing\",\"source_text\":\"Staffing cost for those services is reported as USD 3,400 with 4 staff scheduled.\"}"
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_07",
+                "source": "evidence.facts[0]",
+                "text": "Currency USD, same reporting month throughout."
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_08",
+                "source": "evidence.facts[1]",
+                "text": "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750."
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_09",
+                "source": "evidence.facts[2]",
+                "text": "The till export instead reports USD 3,100 for those same Tuesday services."
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_10",
+                "source": "evidence.facts[3]",
+                "text": "These reports have not been reconciled, and neither has been confirmed authoritative."
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_11",
+                "source": "evidence.facts[4]",
+                "text": "Staffing cost for those services is reported as USD 3,400 with 4 staff scheduled."
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_12",
+                "source": "evidence.facts[5]",
+                "text": "A supervisor asked what would happen with 1 fewer person."
+              },
+              {
+                "id": "ev_16a30939743f37fbeb46e0ca31629e08_13",
+                "source": "evidence.facts[6]",
+                "text": "The owner has withheld approval: no staffing change is authorized and the schedule limits have not been decided."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_01",
+                "source": "source_input[0]",
+                "text": "Business name: Riverside Counter"
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Currency USD, same reporting month throughout."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_04",
+                "source": "source_input[3]",
+                "text": "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_05",
+                "source": "source_input[4]",
+                "text": "The till export instead reports USD 3,100 for those same Tuesday services."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_06",
+                "source": "source_input[5]",
+                "text": "These reports have not been reconciled, and neither has been confirmed authoritative."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_07",
+                "source": "source_input[6]",
+                "text": "Staffing cost for those services is reported as USD 3,400 with 4 staff scheduled."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_08",
+                "source": "source_input[7]",
+                "text": "A supervisor asked what would happen with 1 fewer person."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_09",
+                "source": "source_input[8]",
+                "text": "The owner has withheld approval: no staffing change is authorized and the schedule limits have not been decided."
+              },
+              {
+                "id": "src_15e0a1ff9ab27441f3057c331e725d54_10",
+                "source": "source_input[9]",
+                "text": "Do not treat the supervisor's question as approval."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_01",
+                "text": "Business name: Riverside Counter",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_01"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_02"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_03",
+                "text": "Business description / notes: Currency USD, same reporting month throughout.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_03"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_04",
+                "text": "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_04"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_05",
+                "text": "The till export instead reports USD 3,100 for those same Tuesday services.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_05"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_06",
+                "text": "These reports have not been reconciled, and neither has been confirmed authoritative.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_06"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_07",
+                "text": "Staffing cost for those services is reported as USD 3,400 with 4 staff scheduled.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_07"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_08",
+                "text": "A supervisor asked what would happen with 1 fewer person.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_08"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_09",
+                "text": "The owner has withheld approval: no staffing change is authorized and the schedule limits have not been decided.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_09"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_10",
+                "text": "Do not treat the supervisor's question as approval.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_10"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_11",
+                "text": "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750. The till export instead reports USD 3,100 for those same Tuesday services. These reports have not been reconciled, and neither has been confirmed authoritative.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_04",
+                  "src_15e0a1ff9ab27441f3057c331e725d54_05",
+                  "src_15e0a1ff9ab27441f3057c331e725d54_06"
+                ]
+              },
+              {
+                "id": "fact_15e0a1ff9ab27441f3057c331e725d54_12",
+                "text": "A supervisor asked what would happen with 1 fewer person. The owner has withheld approval: no staffing change is authorized and the schedule limits have not been decided.",
+                "source_refs": [
+                  "src_15e0a1ff9ab27441f3057c331e725d54_08",
+                  "src_15e0a1ff9ab27441f3057c331e725d54_09"
+                ]
+              }
+            ],
+            "authorization_records": []
+          }
+        },
+        "operational_context": [
+          "Currency USD, same reporting month throughout.",
+          "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750.",
+          "The till export instead reports USD 3,100 for those same Tuesday services.",
+          "These reports have not been reconciled, and neither has been confirmed authoritative.",
+          "Staffing cost for those services is reported as USD 3,400 with 4 staff scheduled.",
+          "A supervisor asked what would happen with 1 fewer person.",
+          "The owner has withheld approval: no staffing change is authorized and the schedule limits have not been decided.",
+          "Do not treat the supervisor's question as approval."
+        ]
+      },
+      "started": 1792658712282,
+      "status": 502,
+      "response": {
+        "error": "Leak analysis result rejected by output validation: unreported_number."
+      },
+      "finished": 1792658714862
+    }
+  ],
+  "started": 1792658709313,
+  "page_text": "◔\n\nWhat’s Left?\n\nSee what your business really keeps.\n\nYour profitability workspace\nEARLY PREVIEW\n\nYOUR BUSINESS, UNDERSTOOD\n\nA clearer picture of what’s left.\n\nAI interprets business evidence. Code verifies scenarios and calculates impact. AI recommends within verified boundaries.\n\nAnalysis workspace\n\nFOUR SPECIALISTS. ONE CLEAR ANSWER.\n\nAgent Office\nAnalysis stopped\n✧\n\nAnalysis stopped.\n\nLeak analysis couldn't be completed. Please try again.\n\nBusiness Input\n01 / START HERE\nBusiness name\nBusiness type\nCafé\nBakery\nTea Shop\nRestaurant\nOther\nNotes (optional)\n↥\nDrop your business files here, or browse\nCSV, PDF, XLSX, images · Local selection only · Not analyzed\n\nLeak analysis couldn't be completed. Please try again.\n\nRetry starts a fresh analysis. Your input stays in this form.\n\nRetry full analysis\n↗\n\nAI analysis with deterministic validation and calculations · Files are not processed.\n\nBusiness Outlook\nBusiness analysis\nmonth · USD\n\nAnalysis stopped\n\nYour completed results are preserved. Please try again.\n\nRevenue\n\n—\n\nTotal business income\n\nOperating Costs\n\n—\n\nThe cost of doing business\n\nWhat’s Left\n✧\n\n—\n\nNot calculated in this analysis\n\nMargin\n\n—\n\nNot calculated in this analysis\n\nWhat’s Left? · A little clarity goes a long way.\nAI analysis with deterministic validation, scenario calculations, and bounded decision support.",
+  "complete": false,
+  "error": "Leak analysis couldn't be completed. Please try again.",
+  "total_latency_ms": 5602,
+  "timeline": [
+    {
+      "at": 1792658709382,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658709432,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658709484,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658709536,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658709588,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658709640,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658709693,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658709745,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658709797,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658709851,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658709903,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658709956,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710009,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710061,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710113,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710165,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710217,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710270,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710322,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710374,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710427,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710480,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710532,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710585,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710637,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710691,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710744,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710796,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710850,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710903,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658710955,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711008,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711061,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711113,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711165,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711217,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711269,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711322,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711375,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711428,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711481,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711535,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711588,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711641,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711694,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711747,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711801,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711853,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711906,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658711959,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712011,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712063,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712118,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712171,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712224,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712277,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712329,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712381,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712435,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712488,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712541,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712593,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712645,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712698,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712751,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712803,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712857,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712909,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658712962,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713014,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713068,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713121,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713173,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713225,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713277,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713330,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713383,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713436,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713488,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713542,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713595,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713648,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713701,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713753,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713806,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713859,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713911,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658713965,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714018,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714071,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714123,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714176,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714229,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714282,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714335,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714388,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714439,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714492,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714545,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714598,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714651,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714704,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714758,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714811,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714863,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 502
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792658714915,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 502
+        }
+      ],
+      "error": "Leak analysis couldn't be completed. Please try again.",
+      "complete": false
+    }
+  ],
+  "server_diagnostics": [
+    {
+      "label": "Evidence business total grounding",
+      "diagnostic": {
+        "reason": "business_total_grounding",
+        "emitted_record_count": 0,
+        "fields": [
+          {
+            "field": "revenue.total",
+            "emitted_support_count": 0,
+            "validated_support_count": 0,
+            "original_total": null,
+            "trusted_total": null,
+            "reasons": [
+              "missing_support"
+            ]
+          },
+          {
+            "field": "costs.total",
+            "emitted_support_count": 0,
+            "validated_support_count": 0,
+            "original_total": null,
+            "trusted_total": null,
+            "reasons": [
+              "missing_support"
+            ]
+          }
+        ],
+        "records": []
+      }
+    },
+    {
+      "label": "Backend Leak rejection",
+      "diagnostic": {
+        "reason": "unreported_number",
+        "field_path": "leaks[1].interpretation",
+        "normalized_number": "3100"
+      }
+    }
+  ],
+  "console_diagnostics": [],
+  "exceptions": []
+}

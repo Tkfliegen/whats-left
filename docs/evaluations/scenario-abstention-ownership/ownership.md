@@ -1,0 +1,7 @@
+# Ownership boundary (recorded before implementation)
+
+Scenario provider output owns `not_simulation_ready[].reason` and `missing_decision_input_categories`; both reach ScenarioPanel and downstream Gate/Decision. Structural validation checks nonblank strings; authorization validation independently rejects abstention for an eligible authorized change. Calculator `not_calculable_yet` messages are already code-owned and are outside this change.
+
+Smallest boundary: after existing structural and authorization validation succeeds, project abstention entries into the existing response fields using code-owned, number-free templates. Keep provider schema/prompt and all rejection paths unchanged. Discard both model explanatory fields from the trusted response. Preserve target identity and all actionable scenarios exactly. No fact pool or source prose is available to the explanation generator. Accepted abstention plus authorization validation proves no eligible authorized change; it does not prove specifically absent permission, absent target, or absent constraint.
+
+Reason code: `no_eligible_authorized_change` (internal template key). Reason: “No eligible authorized change is available for this finding.” Required input label: “An eligible authorized change”. No category-specific claim, numeric value, advice or inferred cause is generated. Existing response schema/frontend consumption is unchanged.

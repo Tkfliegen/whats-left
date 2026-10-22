@@ -1,0 +1,2715 @@
+{
+  "results": [
+    {
+      "id": "J01",
+      "category": "complete authorized labor",
+      "classification": "PASS",
+      "semantic_review": "Reviewed accepted Evidence values/scopes and total-support diagnostics, source-grounded Leak text, authorization/binding, code-owned abstention fields, deterministic calculator/Gate recomputation, Decision boundaries and frontend ordering. Rejected provider bodies were not reconstructed.",
+      "stages": {
+        "evidence": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 4090,
+          "error": null
+        },
+        "leaks": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 2047,
+          "error": null
+        },
+        "scenarios": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 2093,
+          "error": null
+        },
+        "simulate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 28,
+          "error": null
+        },
+        "decision-gate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 90,
+          "error": null
+        },
+        "decision": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1774,
+          "error": null
+        }
+      },
+      "first_failing_stage": null,
+      "failure_category": null,
+      "exact_error": null,
+      "diagnostics": [
+        {
+          "label": "Evidence business total grounding",
+          "diagnostic": {
+            "reason": "business_total_grounding",
+            "emitted_record_count": 2,
+            "fields": [
+              {
+                "field": "revenue.total",
+                "emitted_support_count": 1,
+                "validated_support_count": 1,
+                "original_total": 78000,
+                "trusted_total": 78000,
+                "reasons": []
+              },
+              {
+                "field": "costs.total",
+                "emitted_support_count": 1,
+                "validated_support_count": 1,
+                "original_total": 75500,
+                "trusted_total": 75500,
+                "reasons": []
+              }
+            ],
+            "records": [
+              {
+                "field": "revenue.total",
+                "scope": "whole_business",
+                "value": 78000,
+                "period_matches": true,
+                "currency_matches": true,
+                "source_refs": [
+                  "src_574ac41106830e8f0f3c188f50475b8a_05"
+                ]
+              },
+              {
+                "field": "costs.total",
+                "scope": "whole_business",
+                "value": 75500,
+                "period_matches": true,
+                "currency_matches": true,
+                "source_refs": [
+                  "src_574ac41106830e8f0f3c188f50475b8a_06"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "violations": [],
+      "missed": [],
+      "checks": {
+        "evidence_valid": true,
+        "evidence_unsupported_numeric_tokens": [],
+        "leak": {
+          "structural_reference_validation": {
+            "ok": true
+          },
+          "validation": {
+            "ok": true
+          },
+          "citation_diagnostics": [],
+          "unreported_numbers": [],
+          "findings": [
+            {
+              "index": 0,
+              "title": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds revenue",
+              "category": "labor",
+              "intervention_ref": "headcount_reduction",
+              "evidence_refs": [
+                "fact_574ac41106830e8f0f3c188f50475b8a_07",
+                "fact_574ac41106830e8f0f3c188f50475b8a_08",
+                "fact_574ac41106830e8f0f3c188f50475b8a_10",
+                "fact_574ac41106830e8f0f3c188f50475b8a_11",
+                "fact_574ac41106830e8f0f3c188f50475b8a_12"
+              ],
+              "interpretation": "Tuesday evenings used 4 staff, generated USD 1,400 in sales, and incurred USD 2,800 in staffing cost for that affected monthly period. Friday evenings used the same staffing level of 4 but generated USD 5,600 in sales. The owner has approved a trial reducing Tuesday evening staffing by one person while all other shifts retain current staffing.",
+              "allowed_numeric_tokens": [
+                "6",
+                "10",
+                "1400",
+                "4",
+                "2800",
+                "5600",
+                "1"
+              ]
+            }
+          ]
+        },
+        "leak_prose_ids": [],
+        "resolved_binding_matches": true,
+        "cross_category_bindings": [],
+        "scenario_authorizations": [
+          {
+            "authorization_id": "tuesday_evening_headcount_reduction",
+            "target_leak": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds revenue",
+            "variable_id": "tuesday_evening_headcount",
+            "variable_label": "Tuesday evening headcount",
+            "change_type": "delta",
+            "from": null,
+            "value": -1,
+            "unit": "persons",
+            "source_refs": [
+              "src_574ac41106830e8f0f3c188f50475b8a_07",
+              "src_574ac41106830e8f0f3c188f50475b8a_08",
+              "src_574ac41106830e8f0f3c188f50475b8a_11",
+              "src_574ac41106830e8f0f3c188f50475b8a_12"
+            ]
+          }
+        ],
+        "scenario_authorization_validation": {
+          "ok": true
+        },
+        "calculator_exact_recompute": true,
+        "gate_exact_recompute": true,
+        "decision_validation": {
+          "ok": true
+        },
+        "frontend_complete_only_after_decision": true
+      },
+      "evidence_records": [
+        {
+          "intervention": "headcount_reduction",
+          "scope": "tuesday_evening_6pm_10pm",
+          "operation": "delta",
+          "from": null,
+          "value": -1,
+          "unit": "persons",
+          "permission": "explicit",
+          "permission_source_refs": [
+            "src_574ac41106830e8f0f3c188f50475b8a_11"
+          ],
+          "constraint": "rest_schedule_unchanged",
+          "constraint_source_refs": [
+            "src_574ac41106830e8f0f3c188f50475b8a_12"
+          ],
+          "supporting_facts": [
+            {
+              "role": "sales",
+              "value": 1400,
+              "unit": "currency",
+              "period": "month",
+              "currency": "USD",
+              "source_refs": [
+                "src_574ac41106830e8f0f3c188f50475b8a_07"
+              ]
+            },
+            {
+              "role": "staffing_cost",
+              "value": 2800,
+              "unit": "currency",
+              "period": "month",
+              "currency": "USD",
+              "source_refs": [
+                "src_574ac41106830e8f0f3c188f50475b8a_08"
+              ]
+            }
+          ]
+        }
+      ],
+      "leak_findings": [
+        {
+          "evidence_refs": [
+            "fact_574ac41106830e8f0f3c188f50475b8a_07",
+            "fact_574ac41106830e8f0f3c188f50475b8a_08",
+            "fact_574ac41106830e8f0f3c188f50475b8a_10",
+            "fact_574ac41106830e8f0f3c188f50475b8a_11",
+            "fact_574ac41106830e8f0f3c188f50475b8a_12"
+          ],
+          "title": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds revenue",
+          "category": "labor",
+          "evidence": [
+            "Tuesday evening service from 6 PM to 10 PM brought in USD 1,400 during that month.",
+            "Staffed with 4 people; staffing bill for those Tuesday evening services was USD 2,800 for the month.",
+            "Friday evenings used 4 people and brought in USD 5,600 over the month.",
+            "Owner approves a trial with 1 fewer person on Tuesday evenings from 6 PM to 10 PM.",
+            "Every other shift in the weekly roster must retain its current staffing."
+          ],
+          "interpretation": "Tuesday evenings used 4 staff, generated USD 1,400 in sales, and incurred USD 2,800 in staffing cost for that affected monthly period. Friday evenings used the same staffing level of 4 but generated USD 5,600 in sales. The owner has approved a trial reducing Tuesday evening staffing by one person while all other shifts retain current staffing.",
+          "confidence": "high",
+          "intervention_ref": "headcount_reduction"
+        }
+      ],
+      "scenario": {
+        "scenarios": [
+          {
+            "title": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds revenue",
+            "target_leak": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds revenue",
+            "controlled_changes": [
+              {
+                "variable": "Tuesday evening headcount",
+                "change_type": "delta",
+                "from": null,
+                "value": -1,
+                "unit": "persons"
+              }
+            ],
+            "available_input_refs": [
+              "src_574ac41106830e8f0f3c188f50475b8a_07",
+              "src_574ac41106830e8f0f3c188f50475b8a_08",
+              "src_574ac41106830e8f0f3c188f50475b8a_11",
+              "src_574ac41106830e8f0f3c188f50475b8a_12"
+            ],
+            "missing_calculation_inputs": [],
+            "confidence": "high"
+          }
+        ],
+        "not_simulation_ready": []
+      },
+      "simulation": {
+        "results": [
+          {
+            "scenario_title": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds revenue",
+            "target_leak": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds revenue",
+            "controlled_changes": [
+              {
+                "variable": "Tuesday evening headcount",
+                "change_type": "delta",
+                "from": null,
+                "value": -1,
+                "unit": "persons"
+              }
+            ],
+            "notes": [],
+            "status": "not_calculable_yet",
+            "calculation": null,
+            "missing_inputs": [
+              "Authoritative baseline Tuesday evening headcount in persons for the affected period",
+              "Authoritative labor cost per worker for Tuesday evenings in the affected period and currency"
+            ]
+          }
+        ]
+      },
+      "gate": {
+        "decision_gate": "needs_more_data",
+        "reason_codes": [
+          "no_calculable_scenarios"
+        ],
+        "comparison_gap_status": "not_applicable",
+        "candidates": [
+          {
+            "candidate_id": "candidate_01",
+            "scenario_title": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds revenue",
+            "target_leak": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds revenue",
+            "scenario_status": "not_calculable_yet",
+            "verified_impact": null,
+            "currency": null,
+            "period": null,
+            "impact_metric": null
+          }
+        ],
+        "top_candidate_id": null,
+        "missing_decision_inputs": [
+          "Authoritative baseline Tuesday evening headcount in persons for the affected period",
+          "Authoritative labor cost per worker for Tuesday evenings in the affected period and currency"
+        ],
+        "policy_required_inputs": [],
+        "not_simulation_ready": []
+      },
+      "decision": {
+        "decision_status": "needs_more_data",
+        "recommendation": {
+          "type": "collect_data",
+          "candidate_id": null,
+          "title": "Collect required decision inputs",
+          "rationale": "More data is needed because no calculable scenarios exist."
+        },
+        "comparison": [
+          {
+            "candidate_id": "candidate_01",
+            "target_leak": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds revenue",
+            "scenario_status": "not_calculable_yet",
+            "assessment": "Scenario cannot yet be calculated due to missing inputs.",
+            "verified_impact": null,
+            "currency": null
+          }
+        ],
+        "priority_inputs": [
+          {
+            "source_type": "upstream_missing_input",
+            "key": "Authoritative baseline Tuesday evening headcount in persons for the affected period",
+            "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+          },
+          {
+            "source_type": "upstream_missing_input",
+            "key": "Authoritative labor cost per worker for Tuesday evenings in the affected period and currency",
+            "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+          }
+        ],
+        "confidence": "high"
+      },
+      "frontend": {
+        "complete": true,
+        "error": null
+      },
+      "total_latency_ms": 13613,
+      "retries": false,
+      "repairs": false,
+      "fallbacks": false,
+      "raw_artifact": "runs/J01.json"
+    },
+    {
+      "id": "J02",
+      "category": "labor permission missing",
+      "classification": "PASS",
+      "semantic_review": "Reviewed accepted Evidence values/scopes and total-support diagnostics, source-grounded Leak text, authorization/binding, code-owned abstention fields, deterministic calculator/Gate recomputation, Decision boundaries and frontend ordering. Rejected provider bodies were not reconstructed.",
+      "stages": {
+        "evidence": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1909,
+          "error": null
+        },
+        "leaks": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 2456,
+          "error": null
+        },
+        "scenarios": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1084,
+          "error": null
+        },
+        "simulate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 27,
+          "error": null
+        },
+        "decision-gate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 42,
+          "error": null
+        },
+        "decision": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1436,
+          "error": null
+        }
+      },
+      "first_failing_stage": null,
+      "failure_category": null,
+      "exact_error": null,
+      "diagnostics": [
+        {
+          "label": "Evidence business total grounding",
+          "diagnostic": {
+            "reason": "business_total_grounding",
+            "emitted_record_count": 0,
+            "fields": [
+              {
+                "field": "revenue.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              },
+              {
+                "field": "costs.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              }
+            ],
+            "records": []
+          }
+        }
+      ],
+      "violations": [],
+      "missed": [],
+      "checks": {
+        "evidence_valid": true,
+        "evidence_unsupported_numeric_tokens": [],
+        "leak": {
+          "structural_reference_validation": {
+            "ok": true
+          },
+          "validation": {
+            "ok": true
+          },
+          "citation_diagnostics": [],
+          "unreported_numbers": [],
+          "findings": [
+            {
+              "index": 0,
+              "title": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds sales with same headcount as higher-revenue Friday",
+              "category": "labor",
+              "intervention_ref": null,
+              "evidence_refs": [
+                "fact_8a2d0cccde8390de52c251333917038b_04",
+                "fact_8a2d0cccde8390de52c251333917038b_05",
+                "fact_8a2d0cccde8390de52c251333917038b_06",
+                "fact_8a2d0cccde8390de52c251333917038b_07",
+                "fact_8a2d0cccde8390de52c251333917038b_08"
+              ],
+              "interpretation": "Tuesday evenings used 5 staff, generated USD 2,100 in sales, and incurred USD 3,300 in staffing cost for the month. Friday evenings used the same staffing level of 5 but generated USD 7,900 in sales. The manager has flagged this mismatch for review, but no staffing change has been authorized.",
+              "allowed_numeric_tokens": [
+                "6",
+                "10",
+                "2100",
+                "3300",
+                "5",
+                "7900"
+              ]
+            }
+          ]
+        },
+        "leak_prose_ids": [],
+        "resolved_binding_matches": true,
+        "cross_category_bindings": [],
+        "scenario_authorizations": [],
+        "scenario_authorization_validation": {
+          "ok": true
+        },
+        "calculator_exact_recompute": true,
+        "gate_exact_recompute": true,
+        "decision_validation": {
+          "ok": true
+        },
+        "frontend_complete_only_after_decision": true
+      },
+      "evidence_records": [],
+      "leak_findings": [
+        {
+          "evidence_refs": [
+            "fact_8a2d0cccde8390de52c251333917038b_04",
+            "fact_8a2d0cccde8390de52c251333917038b_05",
+            "fact_8a2d0cccde8390de52c251333917038b_06",
+            "fact_8a2d0cccde8390de52c251333917038b_07",
+            "fact_8a2d0cccde8390de52c251333917038b_08"
+          ],
+          "title": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds sales with same headcount as higher-revenue Friday",
+          "category": "labor",
+          "evidence": [
+            "Tuesday 6 PM to 10 PM service sold USD 2,100 and cost USD 3,300 in staff pay.",
+            "There were 5 staff on that service.",
+            "Friday evening had 5 staff and USD 7,900 in sales for the month.",
+            "The manager wants this mismatch examined.",
+            "We have not agreed to any staffing experiment or reduction."
+          ],
+          "interpretation": "Tuesday evenings used 5 staff, generated USD 2,100 in sales, and incurred USD 3,300 in staffing cost for the month. Friday evenings used the same staffing level of 5 but generated USD 7,900 in sales. The manager has flagged this mismatch for review, but no staffing change has been authorized.",
+          "confidence": "high",
+          "intervention_ref": null
+        }
+      ],
+      "scenario": {
+        "scenarios": [],
+        "not_simulation_ready": [
+          {
+            "target_leak": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds sales with same headcount as higher-revenue Friday",
+            "reason": "No eligible authorized change is available for this finding.",
+            "missing_decision_input_categories": [
+              "An eligible authorized change"
+            ]
+          }
+        ]
+      },
+      "simulation": {
+        "results": []
+      },
+      "gate": {
+        "decision_gate": "no_actionable_scenario",
+        "reason_codes": [
+          "no_authorized_scenarios"
+        ],
+        "comparison_gap_status": "not_applicable",
+        "candidates": [],
+        "top_candidate_id": null,
+        "missing_decision_inputs": [
+          "An eligible authorized change"
+        ],
+        "policy_required_inputs": [],
+        "not_simulation_ready": [
+          {
+            "target_leak": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds sales with same headcount as higher-revenue Friday",
+            "reason": "No eligible authorized change is available for this finding.",
+            "missing_decision_input_categories": [
+              "An eligible authorized change"
+            ]
+          }
+        ]
+      },
+      "decision": {
+        "decision_status": "needs_more_data",
+        "recommendation": {
+          "type": "collect_data",
+          "candidate_id": null,
+          "title": "Collect required decision inputs",
+          "rationale": "More data is needed due to no authorized scenarios being available for evaluation."
+        },
+        "comparison": [
+          {
+            "candidate_id": null,
+            "target_leak": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds sales with same headcount as higher-revenue Friday",
+            "scenario_status": "not_simulation_ready",
+            "assessment": "This leak cannot be simulated due to lack of eligible authorized changes.",
+            "verified_impact": null,
+            "currency": null
+          }
+        ],
+        "priority_inputs": [
+          {
+            "source_type": "upstream_missing_input",
+            "key": "An eligible authorized change",
+            "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+          }
+        ],
+        "confidence": "high"
+      },
+      "frontend": {
+        "complete": true,
+        "error": null
+      },
+      "total_latency_ms": 10442,
+      "retries": false,
+      "repairs": false,
+      "fallbacks": false,
+      "raw_artifact": "runs/J02.json"
+    },
+    {
+      "id": "J03",
+      "category": "labor constraint missing",
+      "classification": "PASS",
+      "semantic_review": "Reviewed accepted Evidence values/scopes and total-support diagnostics, source-grounded Leak text, authorization/binding, code-owned abstention fields, deterministic calculator/Gate recomputation, Decision boundaries and frontend ordering. Rejected provider bodies were not reconstructed.",
+      "stages": {
+        "evidence": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 2564,
+          "error": null
+        },
+        "leaks": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 2488,
+          "error": null
+        },
+        "scenarios": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 833,
+          "error": null
+        },
+        "simulate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 22,
+          "error": null
+        },
+        "decision-gate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 32,
+          "error": null
+        },
+        "decision": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1376,
+          "error": null
+        }
+      },
+      "first_failing_stage": null,
+      "failure_category": null,
+      "exact_error": null,
+      "diagnostics": [
+        {
+          "label": "Evidence authorization assembly",
+          "diagnostic": {
+            "reason": "authorization_atom_assembly_incomplete",
+            "intervention": "headcount_reduction",
+            "returned_atom_kinds": [
+              "scoped_sales",
+              "scoped_staffing_cost",
+              "headcount_reduction_permission"
+            ],
+            "atom_counts": {
+              "scoped_sales": 1,
+              "scoped_staffing_cost": 1,
+              "headcount_reduction_permission": 1,
+              "schedule_constraint": 0
+            },
+            "missing_required_atom_kinds": [
+              "schedule_constraint"
+            ],
+            "ambiguous_atom_kinds": [],
+            "conflicting_atom_kinds": []
+          }
+        },
+        {
+          "label": "Evidence business total grounding",
+          "diagnostic": {
+            "reason": "business_total_grounding",
+            "emitted_record_count": 0,
+            "fields": [
+              {
+                "field": "revenue.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              },
+              {
+                "field": "costs.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              }
+            ],
+            "records": []
+          }
+        }
+      ],
+      "violations": [],
+      "missed": [],
+      "checks": {
+        "evidence_valid": true,
+        "evidence_unsupported_numeric_tokens": [],
+        "leak": {
+          "structural_reference_validation": {
+            "ok": true
+          },
+          "validation": {
+            "ok": true
+          },
+          "citation_diagnostics": [],
+          "unreported_numbers": [],
+          "findings": [
+            {
+              "index": 0,
+              "title": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds sales with same headcount as higher-revenue Friday",
+              "category": "labor",
+              "intervention_ref": null,
+              "evidence_refs": [
+                "fact_3a3926b74bdefcf30b3e195d097e22fe_03",
+                "fact_3a3926b74bdefcf30b3e195d097e22fe_04",
+                "fact_3a3926b74bdefcf30b3e195d097e22fe_05",
+                "fact_3a3926b74bdefcf30b3e195d097e22fe_06"
+              ],
+              "interpretation": "Tuesday evenings used 4 staff, generated USD 1,800 in sales, and incurred USD 3,000 in staffing cost for that affected monthly period. Friday evenings used the same staffing level of 4 but generated USD 6,900 in sales. The proprietor has approved testing a reduction of one person on Tuesday evenings.",
+              "allowed_numeric_tokens": [
+                "6",
+                "10",
+                "1800",
+                "3000",
+                "4",
+                "6900",
+                "1"
+              ]
+            }
+          ]
+        },
+        "leak_prose_ids": [],
+        "resolved_binding_matches": true,
+        "cross_category_bindings": [],
+        "scenario_authorizations": [],
+        "scenario_authorization_validation": {
+          "ok": true
+        },
+        "calculator_exact_recompute": true,
+        "gate_exact_recompute": true,
+        "decision_validation": {
+          "ok": true
+        },
+        "frontend_complete_only_after_decision": true
+      },
+      "evidence_records": [],
+      "leak_findings": [
+        {
+          "evidence_refs": [
+            "fact_3a3926b74bdefcf30b3e195d097e22fe_03",
+            "fact_3a3926b74bdefcf30b3e195d097e22fe_04",
+            "fact_3a3926b74bdefcf30b3e195d097e22fe_05",
+            "fact_3a3926b74bdefcf30b3e195d097e22fe_06"
+          ],
+          "title": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds sales with same headcount as higher-revenue Friday",
+          "category": "labor",
+          "evidence": [
+            "Tuesday evening sales between 6 PM and 10 PM were 1,800.",
+            "The staffing cost of that same Tuesday period was 3,000, with 4 workers scheduled.",
+            "Friday evenings generated USD 6,900 with 4 workers.",
+            "The proprietor approves testing a reduction of 1 person on Tuesday evenings from 6 PM to 10 PM."
+          ],
+          "interpretation": "Tuesday evenings used 4 staff, generated USD 1,800 in sales, and incurred USD 3,000 in staffing cost for that affected monthly period. Friday evenings used the same staffing level of 4 but generated USD 6,900 in sales. The proprietor has approved testing a reduction of one person on Tuesday evenings.",
+          "confidence": "high",
+          "intervention_ref": null
+        }
+      ],
+      "scenario": {
+        "scenarios": [],
+        "not_simulation_ready": [
+          {
+            "target_leak": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds sales with same headcount as higher-revenue Friday",
+            "reason": "No eligible authorized change is available for this finding.",
+            "missing_decision_input_categories": [
+              "An eligible authorized change"
+            ]
+          }
+        ]
+      },
+      "simulation": {
+        "results": []
+      },
+      "gate": {
+        "decision_gate": "no_actionable_scenario",
+        "reason_codes": [
+          "no_authorized_scenarios"
+        ],
+        "comparison_gap_status": "not_applicable",
+        "candidates": [],
+        "top_candidate_id": null,
+        "missing_decision_inputs": [
+          "An eligible authorized change"
+        ],
+        "policy_required_inputs": [],
+        "not_simulation_ready": [
+          {
+            "target_leak": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds sales with same headcount as higher-revenue Friday",
+            "reason": "No eligible authorized change is available for this finding.",
+            "missing_decision_input_categories": [
+              "An eligible authorized change"
+            ]
+          }
+        ]
+      },
+      "decision": {
+        "decision_status": "needs_more_data",
+        "recommendation": {
+          "type": "collect_data",
+          "candidate_id": null,
+          "title": "Collect required decision inputs",
+          "rationale": "More data is needed due to no authorized scenarios being available."
+        },
+        "comparison": [
+          {
+            "candidate_id": null,
+            "target_leak": "Tuesday evening labor inefficiency \u2014 staffing cost exceeds sales with same headcount as higher-revenue Friday",
+            "scenario_status": "not_simulation_ready",
+            "assessment": "Not simulation ready due to lack of eligible authorized change.",
+            "verified_impact": null,
+            "currency": null
+          }
+        ],
+        "priority_inputs": [
+          {
+            "source_type": "upstream_missing_input",
+            "key": "An eligible authorized change",
+            "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+          }
+        ],
+        "confidence": "high"
+      },
+      "frontend": {
+        "complete": true,
+        "error": null
+      },
+      "total_latency_ms": 10815,
+      "retries": false,
+      "repairs": false,
+      "fallbacks": false,
+      "raw_artifact": "runs/J03.json"
+    },
+    {
+      "id": "J04",
+      "category": "waste target without permission",
+      "classification": "PASS",
+      "semantic_review": "Reviewed accepted Evidence values/scopes and total-support diagnostics, source-grounded Leak text, authorization/binding, code-owned abstention fields, deterministic calculator/Gate recomputation, Decision boundaries and frontend ordering. Rejected provider bodies were not reconstructed.",
+      "stages": {
+        "evidence": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1704,
+          "error": null
+        },
+        "leaks": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1463,
+          "error": null
+        },
+        "scenarios": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 631,
+          "error": null
+        },
+        "simulate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 28,
+          "error": null
+        },
+        "decision-gate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 25,
+          "error": null
+        },
+        "decision": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1762,
+          "error": null
+        }
+      },
+      "first_failing_stage": null,
+      "failure_category": null,
+      "exact_error": null,
+      "diagnostics": [
+        {
+          "label": "Evidence business total grounding",
+          "diagnostic": {
+            "reason": "business_total_grounding",
+            "emitted_record_count": 0,
+            "fields": [
+              {
+                "field": "revenue.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              },
+              {
+                "field": "costs.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              }
+            ],
+            "records": []
+          }
+        }
+      ],
+      "violations": [],
+      "missed": [],
+      "checks": {
+        "evidence_valid": true,
+        "evidence_unsupported_numeric_tokens": [],
+        "leak": {
+          "structural_reference_validation": {
+            "ok": true
+          },
+          "validation": {
+            "ok": true
+          },
+          "citation_diagnostics": [],
+          "unreported_numbers": [],
+          "findings": [
+            {
+              "index": 0,
+              "title": "Ingredient waste above internal target",
+              "category": "waste",
+              "intervention_ref": null,
+              "evidence_refs": [
+                "fact_519c39dc72de9123ceea517a9a299f98_04",
+                "fact_519c39dc72de9123ceea517a9a299f98_05",
+                "fact_519c39dc72de9123ceea517a9a299f98_06"
+              ],
+              "interpretation": "Measured ingredient waste is 13%, above the stated 8% target. Purchases of the waste-tracked ingredients were USD 19,000.",
+              "allowed_numeric_tokens": [
+                "19000",
+                "13",
+                "8"
+              ]
+            }
+          ]
+        },
+        "leak_prose_ids": [],
+        "resolved_binding_matches": true,
+        "cross_category_bindings": [],
+        "scenario_authorizations": [],
+        "scenario_authorization_validation": {
+          "ok": true
+        },
+        "calculator_exact_recompute": true,
+        "gate_exact_recompute": true,
+        "decision_validation": {
+          "ok": true
+        },
+        "frontend_complete_only_after_decision": true
+      },
+      "evidence_records": [],
+      "leak_findings": [
+        {
+          "evidence_refs": [
+            "fact_519c39dc72de9123ceea517a9a299f98_04",
+            "fact_519c39dc72de9123ceea517a9a299f98_05",
+            "fact_519c39dc72de9123ceea517a9a299f98_06"
+          ],
+          "title": "Ingredient waste above internal target",
+          "category": "waste",
+          "evidence": [
+            "Purchases of the waste-tracked ingredients were USD 19,000.",
+            "Measured ingredient waste is 13%.",
+            "Our internal target is 8%."
+          ],
+          "interpretation": "Measured ingredient waste is 13%, above the stated 8% target. Purchases of the waste-tracked ingredients were USD 19,000.",
+          "confidence": "high",
+          "intervention_ref": null
+        }
+      ],
+      "scenario": {
+        "scenarios": [],
+        "not_simulation_ready": [
+          {
+            "target_leak": "Ingredient waste above internal target",
+            "reason": "No eligible authorized change is available for this finding.",
+            "missing_decision_input_categories": [
+              "An eligible authorized change"
+            ]
+          }
+        ]
+      },
+      "simulation": {
+        "results": []
+      },
+      "gate": {
+        "decision_gate": "no_actionable_scenario",
+        "reason_codes": [
+          "no_authorized_scenarios"
+        ],
+        "comparison_gap_status": "not_applicable",
+        "candidates": [],
+        "top_candidate_id": null,
+        "missing_decision_inputs": [
+          "An eligible authorized change"
+        ],
+        "policy_required_inputs": [],
+        "not_simulation_ready": [
+          {
+            "target_leak": "Ingredient waste above internal target",
+            "reason": "No eligible authorized change is available for this finding.",
+            "missing_decision_input_categories": [
+              "An eligible authorized change"
+            ]
+          }
+        ]
+      },
+      "decision": {
+        "decision_status": "needs_more_data",
+        "recommendation": {
+          "type": "collect_data",
+          "candidate_id": null,
+          "title": "Collect required decision inputs",
+          "rationale": "More data is needed due to no authorized scenario being available."
+        },
+        "comparison": [
+          {
+            "candidate_id": null,
+            "target_leak": "Ingredient waste above internal target",
+            "scenario_status": "not_simulation_ready",
+            "assessment": "Not simulation ready due to lack of eligible authorized change.",
+            "verified_impact": null,
+            "currency": null
+          }
+        ],
+        "priority_inputs": [
+          {
+            "source_type": "upstream_missing_input",
+            "key": "An eligible authorized change",
+            "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+          }
+        ],
+        "confidence": "low"
+      },
+      "frontend": {
+        "complete": true,
+        "error": null
+      },
+      "total_latency_ms": 9123,
+      "retries": false,
+      "repairs": false,
+      "fallbacks": false,
+      "raw_artifact": "runs/J04.json"
+    },
+    {
+      "id": "J05",
+      "category": "explicit Waste authorization",
+      "classification": "FAIL",
+      "semantic_review": "Reviewed accepted Evidence values/scopes and total-support diagnostics, source-grounded Leak text, authorization/binding, code-owned abstention fields, deterministic calculator/Gate recomputation, Decision boundaries and frontend ordering. Rejected provider bodies were not reconstructed.",
+      "stages": {
+        "evidence": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 2009,
+          "error": null
+        },
+        "leaks": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 2035,
+          "error": null
+        },
+        "scenarios": {
+          "reached": true,
+          "http": 502,
+          "latency_ms": 1234,
+          "error": "Scenario analysis result rejected by semantic authorization validation: unauthorized_change."
+        },
+        "simulate": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "decision-gate": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "decision": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        }
+      },
+      "first_failing_stage": "/api/analyze/scenarios",
+      "failure_category": "output_validation_rejection",
+      "exact_error": "Scenario analysis result rejected by semantic authorization validation: unauthorized_change.",
+      "diagnostics": [
+        {
+          "label": "Evidence business total grounding",
+          "diagnostic": {
+            "reason": "business_total_grounding",
+            "emitted_record_count": 0,
+            "fields": [
+              {
+                "field": "revenue.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              },
+              {
+                "field": "costs.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              }
+            ],
+            "records": []
+          }
+        }
+      ],
+      "violations": [],
+      "missed": [],
+      "checks": {
+        "evidence_valid": true,
+        "evidence_unsupported_numeric_tokens": [],
+        "leak": {
+          "structural_reference_validation": {
+            "ok": true
+          },
+          "validation": {
+            "ok": true
+          },
+          "citation_diagnostics": [],
+          "unreported_numbers": [],
+          "findings": [
+            {
+              "index": 0,
+              "title": "Ingredient waste above internal target",
+              "category": "waste",
+              "intervention_ref": "waste_rate_target",
+              "evidence_refs": [
+                "fact_39a39cef34e4758eee05533381494939_06",
+                "fact_39a39cef34e4758eee05533381494939_07",
+                "fact_39a39cef34e4758eee05533381494939_08"
+              ],
+              "interpretation": "Measured ingredient waste for the waste-measured category is 9%, which exceeds the internal target of 5%. The owner has authorized a controlled test to reduce waste to the target level for that category.",
+              "allowed_numeric_tokens": [
+                "9",
+                "5"
+              ]
+            }
+          ]
+        },
+        "leak_prose_ids": [],
+        "resolved_binding_matches": true,
+        "cross_category_bindings": [],
+        "frontend_complete_only_after_decision": true
+      },
+      "evidence_records": [
+        {
+          "intervention": "waste_rate_target",
+          "scope": "ingredient_waste",
+          "operation": "absolute_target",
+          "from": 9,
+          "value": 5,
+          "unit": "percent",
+          "permission": "explicit",
+          "permission_source_refs": [
+            "src_39a39cef34e4758eee05533381494939_08"
+          ],
+          "constraint": "none",
+          "constraint_source_refs": [],
+          "supporting_facts": [
+            {
+              "role": "current_waste_rate",
+              "value": 9,
+              "unit": "percent",
+              "period": "month",
+              "currency": null,
+              "source_refs": [
+                "src_39a39cef34e4758eee05533381494939_06"
+              ]
+            },
+            {
+              "role": "target_waste_rate",
+              "value": 5,
+              "unit": "percent",
+              "period": "month",
+              "currency": null,
+              "source_refs": [
+                "src_39a39cef34e4758eee05533381494939_07"
+              ]
+            }
+          ]
+        }
+      ],
+      "leak_findings": [
+        {
+          "evidence_refs": [
+            "fact_39a39cef34e4758eee05533381494939_06",
+            "fact_39a39cef34e4758eee05533381494939_07",
+            "fact_39a39cef34e4758eee05533381494939_08"
+          ],
+          "title": "Ingredient waste above internal target",
+          "category": "waste",
+          "evidence": [
+            "Current measured ingredient waste is 9%.",
+            "The internal ingredient waste target is 5%.",
+            "Owner authorizes a controlled test to reduce ingredient waste from 9% to 5% for the same category."
+          ],
+          "interpretation": "Measured ingredient waste for the waste-measured category is 9%, which exceeds the internal target of 5%. The owner has authorized a controlled test to reduce waste to the target level for that category.",
+          "confidence": "high",
+          "intervention_ref": "waste_rate_target"
+        }
+      ],
+      "scenario": null,
+      "simulation": null,
+      "gate": null,
+      "decision": null,
+      "frontend": {
+        "complete": false,
+        "error": "Scenario analysis couldn't be completed (HTTP 502). Please try again."
+      },
+      "total_latency_ms": 7609,
+      "retries": false,
+      "repairs": false,
+      "fallbacks": false,
+      "acceptance_classification": "A. correct fail-closed",
+      "production_change_justified": false,
+      "raw_artifact": "runs/J05.json"
+    },
+    {
+      "id": "J06",
+      "category": "delivery loss without lever",
+      "classification": "PASS",
+      "semantic_review": "Reviewed accepted Evidence values/scopes and total-support diagnostics, source-grounded Leak text, authorization/binding, code-owned abstention fields, deterministic calculator/Gate recomputation, Decision boundaries and frontend ordering. Rejected provider bodies were not reconstructed.",
+      "stages": {
+        "evidence": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1598,
+          "error": null
+        },
+        "leaks": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1883,
+          "error": null
+        },
+        "scenarios": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1089,
+          "error": null
+        },
+        "simulate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 20,
+          "error": null
+        },
+        "decision-gate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 34,
+          "error": null
+        },
+        "decision": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1505,
+          "error": null
+        }
+      },
+      "first_failing_stage": null,
+      "failure_category": null,
+      "exact_error": null,
+      "diagnostics": [
+        {
+          "label": "Evidence business total grounding",
+          "diagnostic": {
+            "reason": "business_total_grounding",
+            "emitted_record_count": 0,
+            "fields": [
+              {
+                "field": "revenue.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              },
+              {
+                "field": "costs.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              }
+            ],
+            "records": []
+          }
+        }
+      ],
+      "violations": [],
+      "missed": [],
+      "checks": {
+        "evidence_valid": true,
+        "evidence_unsupported_numeric_tokens": [],
+        "leak": {
+          "structural_reference_validation": {
+            "ok": true
+          },
+          "validation": {
+            "ok": true
+          },
+          "citation_diagnostics": [],
+          "unreported_numbers": [],
+          "findings": [
+            {
+              "index": 0,
+              "title": "Delivery unit economics \u2014 some orders unprofitable",
+              "category": "delivery",
+              "intervention_ref": null,
+              "evidence_refs": [
+                "fact_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "fact_aba185e5a3c2255ac7a668ef24b70d3a_05"
+              ],
+              "interpretation": "Average delivery revenue per order was USD 22.80. For some orders, the combined cost of packaging, platform fees, discounts, and food exceeded that order's revenue, meaning those orders generated a loss. The number of affected orders and the total loss amount are not known.",
+              "allowed_numeric_tokens": [
+                "22.8"
+              ]
+            }
+          ]
+        },
+        "leak_prose_ids": [],
+        "resolved_binding_matches": true,
+        "cross_category_bindings": [],
+        "scenario_authorizations": [],
+        "scenario_authorization_validation": {
+          "ok": true
+        },
+        "calculator_exact_recompute": true,
+        "gate_exact_recompute": true,
+        "decision_validation": {
+          "ok": true
+        },
+        "frontend_complete_only_after_decision": true
+      },
+      "evidence_records": [],
+      "leak_findings": [
+        {
+          "evidence_refs": [
+            "fact_aba185e5a3c2255ac7a668ef24b70d3a_04",
+            "fact_aba185e5a3c2255ac7a668ef24b70d3a_05"
+          ],
+          "title": "Delivery unit economics \u2014 some orders unprofitable",
+          "category": "delivery",
+          "evidence": [
+            "Average delivery revenue per order was USD 22.80.",
+            "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+          ],
+          "interpretation": "Average delivery revenue per order was USD 22.80. For some orders, the combined cost of packaging, platform fees, discounts, and food exceeded that order's revenue, meaning those orders generated a loss. The number of affected orders and the total loss amount are not known.",
+          "confidence": "medium",
+          "intervention_ref": null
+        }
+      ],
+      "scenario": {
+        "scenarios": [],
+        "not_simulation_ready": [
+          {
+            "target_leak": "Delivery unit economics \u2014 some orders unprofitable",
+            "reason": "No eligible authorized change is available for this finding.",
+            "missing_decision_input_categories": [
+              "An eligible authorized change"
+            ]
+          }
+        ]
+      },
+      "simulation": {
+        "results": []
+      },
+      "gate": {
+        "decision_gate": "no_actionable_scenario",
+        "reason_codes": [
+          "no_authorized_scenarios"
+        ],
+        "comparison_gap_status": "not_applicable",
+        "candidates": [],
+        "top_candidate_id": null,
+        "missing_decision_inputs": [
+          "An eligible authorized change"
+        ],
+        "policy_required_inputs": [],
+        "not_simulation_ready": [
+          {
+            "target_leak": "Delivery unit economics \u2014 some orders unprofitable",
+            "reason": "No eligible authorized change is available for this finding.",
+            "missing_decision_input_categories": [
+              "An eligible authorized change"
+            ]
+          }
+        ]
+      },
+      "decision": {
+        "decision_status": "needs_more_data",
+        "recommendation": {
+          "type": "collect_data",
+          "candidate_id": null,
+          "title": "Collect required decision inputs",
+          "rationale": "More data is needed due to no authorized scenarios being available."
+        },
+        "comparison": [
+          {
+            "candidate_id": null,
+            "target_leak": "Delivery unit economics \u2014 some orders unprofitable",
+            "scenario_status": "not_simulation_ready",
+            "assessment": "Not simulation ready due to lack of eligible authorized change.",
+            "verified_impact": null,
+            "currency": null
+          }
+        ],
+        "priority_inputs": [
+          {
+            "source_type": "upstream_missing_input",
+            "key": "An eligible authorized change",
+            "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+          }
+        ],
+        "confidence": "low"
+      },
+      "frontend": {
+        "complete": true,
+        "error": null
+      },
+      "total_latency_ms": 9606,
+      "retries": false,
+      "repairs": false,
+      "fallbacks": false,
+      "raw_artifact": "runs/J06.json"
+    },
+    {
+      "id": "J07",
+      "category": "mixed categories; Waste permission only",
+      "classification": "FAIL",
+      "semantic_review": "Reviewed accepted Evidence values/scopes and total-support diagnostics, source-grounded Leak text, authorization/binding, code-owned abstention fields, deterministic calculator/Gate recomputation, Decision boundaries and frontend ordering. Rejected provider bodies were not reconstructed.",
+      "stages": {
+        "evidence": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 3186,
+          "error": null
+        },
+        "leaks": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 3118,
+          "error": null
+        },
+        "scenarios": {
+          "reached": true,
+          "http": 502,
+          "latency_ms": 1774,
+          "error": "Scenario analysis result rejected by semantic authorization validation: unauthorized_variable."
+        },
+        "simulate": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "decision-gate": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "decision": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        }
+      },
+      "first_failing_stage": "/api/analyze/scenarios",
+      "failure_category": "output_validation_rejection",
+      "exact_error": "Scenario analysis result rejected by semantic authorization validation: unauthorized_variable.",
+      "diagnostics": [
+        {
+          "label": "Evidence authorization assembly",
+          "diagnostic": {
+            "reason": "authorization_atom_assembly_incomplete",
+            "intervention": "headcount_reduction",
+            "returned_atom_kinds": [
+              "scoped_sales",
+              "scoped_staffing_cost"
+            ],
+            "atom_counts": {
+              "scoped_sales": 1,
+              "scoped_staffing_cost": 1,
+              "headcount_reduction_permission": 0,
+              "schedule_constraint": 0
+            },
+            "missing_required_atom_kinds": [
+              "headcount_reduction_permission",
+              "schedule_constraint"
+            ],
+            "ambiguous_atom_kinds": [],
+            "conflicting_atom_kinds": []
+          }
+        },
+        {
+          "label": "Evidence business total grounding",
+          "diagnostic": {
+            "reason": "business_total_grounding",
+            "emitted_record_count": 0,
+            "fields": [
+              {
+                "field": "revenue.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              },
+              {
+                "field": "costs.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              }
+            ],
+            "records": []
+          }
+        }
+      ],
+      "violations": [],
+      "missed": [],
+      "checks": {
+        "evidence_valid": true,
+        "evidence_unsupported_numeric_tokens": [],
+        "leak": {
+          "structural_reference_validation": {
+            "ok": true
+          },
+          "validation": {
+            "ok": true
+          },
+          "citation_diagnostics": [],
+          "unreported_numbers": [],
+          "findings": [
+            {
+              "index": 0,
+              "title": "Ingredient waste above internal target",
+              "category": "waste",
+              "intervention_ref": "waste_rate_target",
+              "evidence_refs": [
+                "fact_767d7e2bbfb8ba9558014cb08f234601_07",
+                "fact_767d7e2bbfb8ba9558014cb08f234601_09"
+              ],
+              "interpretation": "Ingredient waste in the tracked category is running at 9%, which is above the stated internal target of 5%. The owner has authorized a controlled trial to reduce waste from 9% to 5% in this category.",
+              "allowed_numeric_tokens": [
+                "9",
+                "5"
+              ]
+            },
+            {
+              "index": 1,
+              "title": "Delivery unit economics \u2014 some orders unprofitable",
+              "category": "delivery",
+              "intervention_ref": null,
+              "evidence_refs": [
+                "fact_767d7e2bbfb8ba9558014cb08f234601_04",
+                "fact_767d7e2bbfb8ba9558014cb08f234601_05",
+                "fact_767d7e2bbfb8ba9558014cb08f234601_06"
+              ],
+              "interpretation": "Certain delivery orders have combined costs (food, packaging, discount, platform) that exceed their revenue, making them unprofitable. The average delivery revenue per order is USD 19.60. No changes to delivery policy or pricing have been approved.",
+              "allowed_numeric_tokens": [
+                "19.6"
+              ]
+            },
+            {
+              "index": 2,
+              "title": "Tuesday evening staffing cost exceeds sales with same headcount as higher-revenue Friday",
+              "category": "labor",
+              "intervention_ref": null,
+              "evidence_refs": [
+                "fact_767d7e2bbfb8ba9558014cb08f234601_10",
+                "fact_767d7e2bbfb8ba9558014cb08f234601_11",
+                "fact_767d7e2bbfb8ba9558014cb08f234601_12"
+              ],
+              "interpretation": "Tuesday evenings used 4 staff, generated USD 2,400 in sales, and incurred USD 3,200 in staffing cost for that affected monthly period. Friday evenings used the same staffing level of 4 but generated USD 7,200 in sales. The staff roster is locked with no reduction in staffing approved.",
+              "allowed_numeric_tokens": [
+                "6",
+                "10",
+                "4",
+                "2400",
+                "3200",
+                "7200"
+              ]
+            }
+          ]
+        },
+        "leak_prose_ids": [],
+        "resolved_binding_matches": true,
+        "cross_category_bindings": [],
+        "frontend_complete_only_after_decision": true
+      },
+      "evidence_records": [
+        {
+          "intervention": "waste_rate_target",
+          "scope": "ingredient_waste",
+          "operation": "absolute_target",
+          "from": 9,
+          "value": 5,
+          "unit": "percent",
+          "permission": "explicit",
+          "permission_source_refs": [
+            "src_767d7e2bbfb8ba9558014cb08f234601_09"
+          ],
+          "constraint": "none",
+          "constraint_source_refs": [],
+          "supporting_facts": [
+            {
+              "role": "current_waste_rate",
+              "value": 9,
+              "unit": "percent",
+              "period": "month",
+              "currency": null,
+              "source_refs": [
+                "src_767d7e2bbfb8ba9558014cb08f234601_07"
+              ]
+            },
+            {
+              "role": "target_waste_rate",
+              "value": 5,
+              "unit": "percent",
+              "period": "month",
+              "currency": null,
+              "source_refs": [
+                "src_767d7e2bbfb8ba9558014cb08f234601_07"
+              ]
+            }
+          ]
+        }
+      ],
+      "leak_findings": [
+        {
+          "evidence_refs": [
+            "fact_767d7e2bbfb8ba9558014cb08f234601_07",
+            "fact_767d7e2bbfb8ba9558014cb08f234601_09"
+          ],
+          "title": "Ingredient waste above internal target",
+          "category": "waste",
+          "evidence": [
+            "Ingredient waste is measured at 9%; the internal target is 5%.",
+            "A controlled waste reduction trial from 9% to 5% in this category is authorized."
+          ],
+          "interpretation": "Ingredient waste in the tracked category is running at 9%, which is above the stated internal target of 5%. The owner has authorized a controlled trial to reduce waste from 9% to 5% in this category.",
+          "confidence": "high",
+          "intervention_ref": "waste_rate_target"
+        },
+        {
+          "evidence_refs": [
+            "fact_767d7e2bbfb8ba9558014cb08f234601_04",
+            "fact_767d7e2bbfb8ba9558014cb08f234601_05",
+            "fact_767d7e2bbfb8ba9558014cb08f234601_06"
+          ],
+          "title": "Delivery unit economics \u2014 some orders unprofitable",
+          "category": "delivery",
+          "evidence": [
+            "Some delivery orders lose money because their combined food, packaging, discount and platform costs exceed their revenue.",
+            "Average delivery revenue per order is USD 19.60.",
+            "No delivery policy or pricing change is approved."
+          ],
+          "interpretation": "Certain delivery orders have combined costs (food, packaging, discount, platform) that exceed their revenue, making them unprofitable. The average delivery revenue per order is USD 19.60. No changes to delivery policy or pricing have been approved.",
+          "confidence": "high",
+          "intervention_ref": null
+        },
+        {
+          "evidence_refs": [
+            "fact_767d7e2bbfb8ba9558014cb08f234601_10",
+            "fact_767d7e2bbfb8ba9558014cb08f234601_11",
+            "fact_767d7e2bbfb8ba9558014cb08f234601_12"
+          ],
+          "title": "Tuesday evening staffing cost exceeds sales with same headcount as higher-revenue Friday",
+          "category": "labor",
+          "evidence": [
+            "Tuesday evenings from 6 PM to 10 PM used 4 staff, earned USD 2,400 in sales and incurred USD 3,200 in staffing costs for the month.",
+            "Friday evenings used 4 staff and earned USD 7,200 that month.",
+            "The staff roster is locked: no reduction in staffing approved."
+          ],
+          "interpretation": "Tuesday evenings used 4 staff, generated USD 2,400 in sales, and incurred USD 3,200 in staffing cost for that affected monthly period. Friday evenings used the same staffing level of 4 but generated USD 7,200 in sales. The staff roster is locked with no reduction in staffing approved.",
+          "confidence": "high",
+          "intervention_ref": null
+        }
+      ],
+      "scenario": null,
+      "simulation": null,
+      "gate": null,
+      "decision": null,
+      "frontend": {
+        "complete": false,
+        "error": "Scenario analysis couldn't be completed (HTTP 502). Please try again."
+      },
+      "total_latency_ms": 10412,
+      "retries": false,
+      "repairs": false,
+      "fallbacks": false,
+      "acceptance_classification": "A. correct fail-closed",
+      "production_change_justified": false,
+      "raw_artifact": "runs/J07.json"
+    },
+    {
+      "id": "J08",
+      "category": "irrelevant numbers and distractors",
+      "classification": "FAIL",
+      "semantic_review": "Reviewed accepted Evidence values/scopes and total-support diagnostics, source-grounded Leak text, authorization/binding, code-owned abstention fields, deterministic calculator/Gate recomputation, Decision boundaries and frontend ordering. Rejected provider bodies were not reconstructed.",
+      "stages": {
+        "evidence": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1862,
+          "error": null
+        },
+        "leaks": {
+          "reached": true,
+          "http": 502,
+          "latency_ms": 1873,
+          "error": "Leak analysis result rejected by output validation: unreported_number."
+        },
+        "scenarios": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "simulate": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "decision-gate": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "decision": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        }
+      },
+      "first_failing_stage": "/api/analyze/leaks",
+      "failure_category": "output_validation_rejection",
+      "exact_error": "Leak analysis result rejected by output validation: unreported_number.",
+      "diagnostics": [
+        {
+          "label": "Evidence business total grounding",
+          "diagnostic": {
+            "reason": "business_total_grounding",
+            "emitted_record_count": 0,
+            "fields": [
+              {
+                "field": "revenue.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              },
+              {
+                "field": "costs.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              }
+            ],
+            "records": []
+          }
+        },
+        {
+          "label": "Backend Leak rejection",
+          "diagnostic": {
+            "reason": "unreported_number",
+            "field_path": "leaks[0].interpretation",
+            "normalized_number": "2026"
+          }
+        }
+      ],
+      "violations": [],
+      "missed": [],
+      "checks": {
+        "evidence_valid": true,
+        "evidence_unsupported_numeric_tokens": [],
+        "frontend_complete_only_after_decision": true
+      },
+      "evidence_records": [],
+      "leak_findings": null,
+      "scenario": null,
+      "simulation": null,
+      "gate": null,
+      "decision": null,
+      "frontend": {
+        "complete": false,
+        "error": "Leak analysis couldn't be completed. Please try again."
+      },
+      "total_latency_ms": 4906,
+      "retries": false,
+      "repairs": false,
+      "fallbacks": false,
+      "acceptance_classification": "A. correct fail-closed",
+      "production_change_justified": false,
+      "raw_artifact": "runs/J08.json"
+    },
+    {
+      "id": "J09",
+      "category": "indirect permission and split constraint",
+      "classification": "PASS",
+      "semantic_review": "Reviewed accepted Evidence values/scopes and total-support diagnostics, source-grounded Leak text, authorization/binding, code-owned abstention fields, deterministic calculator/Gate recomputation, Decision boundaries and frontend ordering. Rejected provider bodies were not reconstructed.",
+      "stages": {
+        "evidence": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 3033,
+          "error": null
+        },
+        "leaks": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 2598,
+          "error": null
+        },
+        "scenarios": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1262,
+          "error": null
+        },
+        "simulate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 20,
+          "error": null
+        },
+        "decision-gate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 25,
+          "error": null
+        },
+        "decision": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1736,
+          "error": null
+        }
+      },
+      "first_failing_stage": null,
+      "failure_category": null,
+      "exact_error": null,
+      "diagnostics": [
+        {
+          "label": "Evidence business total grounding",
+          "diagnostic": {
+            "reason": "business_total_grounding",
+            "emitted_record_count": 0,
+            "fields": [
+              {
+                "field": "revenue.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              },
+              {
+                "field": "costs.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              }
+            ],
+            "records": []
+          }
+        }
+      ],
+      "violations": [],
+      "missed": [],
+      "checks": {
+        "evidence_valid": true,
+        "evidence_unsupported_numeric_tokens": [],
+        "leak": {
+          "structural_reference_validation": {
+            "ok": true
+          },
+          "validation": {
+            "ok": true
+          },
+          "citation_diagnostics": [],
+          "unreported_numbers": [],
+          "findings": [
+            {
+              "index": 0,
+              "title": "Tuesday late sitting labor cost exceeds revenue with same staffing as higher-revenue Friday",
+              "category": "labor",
+              "intervention_ref": "headcount_reduction",
+              "evidence_refs": [
+                "fact_c1f82f94b8eb7a4a6440e229a406a34e_04",
+                "fact_c1f82f94b8eb7a4a6440e229a406a34e_05",
+                "fact_c1f82f94b8eb7a4a6440e229a406a34e_06",
+                "fact_c1f82f94b8eb7a4a6440e229a406a34e_07",
+                "fact_c1f82f94b8eb7a4a6440e229a406a34e_08",
+                "fact_c1f82f94b8eb7a4a6440e229a406a34e_09"
+              ],
+              "interpretation": "Tuesday evenings used 5 staff, generated USD 1,650 in sales, and incurred USD 2,750 in staffing cost for the monthly period. Friday evenings used the same staffing level of 5 but generated USD 6,800 in sales. The owner has approved a trial reducing Tuesday staffing by 1 person with no changes to other shifts.",
+              "allowed_numeric_tokens": [
+                "6",
+                "10",
+                "1650",
+                "2750",
+                "5",
+                "6800",
+                "1"
+              ]
+            }
+          ]
+        },
+        "leak_prose_ids": [],
+        "resolved_binding_matches": true,
+        "cross_category_bindings": [],
+        "scenario_authorizations": [
+          {
+            "authorization_id": "tuesday_evening_headcount_reduction",
+            "target_leak": "Tuesday late sitting labor cost exceeds revenue with same staffing as higher-revenue Friday",
+            "variable_id": "tuesday_evening_headcount",
+            "variable_label": "Tuesday evening headcount",
+            "change_type": "delta",
+            "from": null,
+            "value": -1,
+            "unit": "persons",
+            "source_refs": [
+              "src_c1f82f94b8eb7a4a6440e229a406a34e_04",
+              "src_c1f82f94b8eb7a4a6440e229a406a34e_07",
+              "src_c1f82f94b8eb7a4a6440e229a406a34e_08",
+              "src_c1f82f94b8eb7a4a6440e229a406a34e_09"
+            ]
+          }
+        ],
+        "scenario_authorization_validation": {
+          "ok": true
+        },
+        "calculator_exact_recompute": true,
+        "gate_exact_recompute": true,
+        "decision_validation": {
+          "ok": true
+        },
+        "frontend_complete_only_after_decision": true
+      },
+      "evidence_records": [
+        {
+          "intervention": "headcount_reduction",
+          "scope": "tuesday_evening_6pm_10pm",
+          "operation": "delta",
+          "from": null,
+          "value": -1,
+          "unit": "persons",
+          "permission": "explicit",
+          "permission_source_refs": [
+            "src_c1f82f94b8eb7a4a6440e229a406a34e_07",
+            "src_c1f82f94b8eb7a4a6440e229a406a34e_08"
+          ],
+          "constraint": "rest_schedule_unchanged",
+          "constraint_source_refs": [
+            "src_c1f82f94b8eb7a4a6440e229a406a34e_09"
+          ],
+          "supporting_facts": [
+            {
+              "role": "sales",
+              "value": 1650,
+              "unit": "currency",
+              "period": "month",
+              "currency": "USD",
+              "source_refs": [
+                "src_c1f82f94b8eb7a4a6440e229a406a34e_04"
+              ]
+            },
+            {
+              "role": "staffing_cost",
+              "value": 2750,
+              "unit": "currency",
+              "period": "month",
+              "currency": "USD",
+              "source_refs": [
+                "src_c1f82f94b8eb7a4a6440e229a406a34e_04"
+              ]
+            }
+          ]
+        }
+      ],
+      "leak_findings": [
+        {
+          "evidence_refs": [
+            "fact_c1f82f94b8eb7a4a6440e229a406a34e_04",
+            "fact_c1f82f94b8eb7a4a6440e229a406a34e_05",
+            "fact_c1f82f94b8eb7a4a6440e229a406a34e_06",
+            "fact_c1f82f94b8eb7a4a6440e229a406a34e_07",
+            "fact_c1f82f94b8eb7a4a6440e229a406a34e_08",
+            "fact_c1f82f94b8eb7a4a6440e229a406a34e_09"
+          ],
+          "title": "Tuesday late sitting labor cost exceeds revenue with same staffing as higher-revenue Friday",
+          "category": "labor",
+          "evidence": [
+            "The Tuesday late sitting (6 PM\u201310 PM) generated USD 1,650 in revenue while incurring USD 2,750 in wages with 5 staff on duty.",
+            "Friday evenings generated USD 6,800 in revenue with the same staffing level of 5 people on duty.",
+            "The owner authorized a trial removing 1 person from the Tuesday sitting roster while keeping the rest of the weekly rota unchanged."
+          ],
+          "interpretation": "Tuesday evenings used 5 staff, generated USD 1,650 in sales, and incurred USD 2,750 in staffing cost for the monthly period. Friday evenings used the same staffing level of 5 but generated USD 6,800 in sales. The owner has approved a trial reducing Tuesday staffing by 1 person with no changes to other shifts.",
+          "confidence": "high",
+          "intervention_ref": "headcount_reduction"
+        }
+      ],
+      "scenario": {
+        "scenarios": [
+          {
+            "title": "Tuesday late sitting labor cost exceeds revenue with same staffing as higher-revenue Friday",
+            "target_leak": "Tuesday late sitting labor cost exceeds revenue with same staffing as higher-revenue Friday",
+            "controlled_changes": [
+              {
+                "variable": "Tuesday evening headcount",
+                "change_type": "delta",
+                "from": null,
+                "value": -1,
+                "unit": "persons"
+              }
+            ],
+            "available_input_refs": [
+              "src_c1f82f94b8eb7a4a6440e229a406a34e_04",
+              "src_c1f82f94b8eb7a4a6440e229a406a34e_07",
+              "src_c1f82f94b8eb7a4a6440e229a406a34e_08",
+              "src_c1f82f94b8eb7a4a6440e229a406a34e_09"
+            ],
+            "missing_calculation_inputs": [],
+            "confidence": "high"
+          }
+        ],
+        "not_simulation_ready": []
+      },
+      "simulation": {
+        "results": [
+          {
+            "scenario_title": "Tuesday late sitting labor cost exceeds revenue with same staffing as higher-revenue Friday",
+            "target_leak": "Tuesday late sitting labor cost exceeds revenue with same staffing as higher-revenue Friday",
+            "controlled_changes": [
+              {
+                "variable": "Tuesday evening headcount",
+                "change_type": "delta",
+                "from": null,
+                "value": -1,
+                "unit": "persons"
+              }
+            ],
+            "notes": [],
+            "status": "not_calculable_yet",
+            "calculation": null,
+            "missing_inputs": [
+              "Authoritative baseline Tuesday evening headcount in persons for the affected period",
+              "Authoritative labor cost per worker for Tuesday evenings in the affected period and currency"
+            ]
+          }
+        ]
+      },
+      "gate": {
+        "decision_gate": "needs_more_data",
+        "reason_codes": [
+          "no_calculable_scenarios"
+        ],
+        "comparison_gap_status": "not_applicable",
+        "candidates": [
+          {
+            "candidate_id": "candidate_01",
+            "scenario_title": "Tuesday late sitting labor cost exceeds revenue with same staffing as higher-revenue Friday",
+            "target_leak": "Tuesday late sitting labor cost exceeds revenue with same staffing as higher-revenue Friday",
+            "scenario_status": "not_calculable_yet",
+            "verified_impact": null,
+            "currency": null,
+            "period": null,
+            "impact_metric": null
+          }
+        ],
+        "top_candidate_id": null,
+        "missing_decision_inputs": [
+          "Authoritative baseline Tuesday evening headcount in persons for the affected period",
+          "Authoritative labor cost per worker for Tuesday evenings in the affected period and currency"
+        ],
+        "policy_required_inputs": [],
+        "not_simulation_ready": []
+      },
+      "decision": {
+        "decision_status": "needs_more_data",
+        "recommendation": {
+          "type": "collect_data",
+          "candidate_id": null,
+          "title": "Collect required decision inputs",
+          "rationale": "More data is needed because no calculable scenarios exist."
+        },
+        "comparison": [
+          {
+            "candidate_id": "candidate_01",
+            "target_leak": "Tuesday late sitting labor cost exceeds revenue with same staffing as higher-revenue Friday",
+            "scenario_status": "not_calculable_yet",
+            "assessment": "Impact cannot yet be calculated.",
+            "verified_impact": null,
+            "currency": null
+          }
+        ],
+        "priority_inputs": [
+          {
+            "source_type": "upstream_missing_input",
+            "key": "Authoritative baseline Tuesday evening headcount in persons for the affected period",
+            "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+          },
+          {
+            "source_type": "upstream_missing_input",
+            "key": "Authoritative labor cost per worker for Tuesday evenings in the affected period and currency",
+            "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+          }
+        ],
+        "confidence": "high"
+      },
+      "frontend": {
+        "complete": true,
+        "error": null
+      },
+      "total_latency_ms": 12155,
+      "retries": false,
+      "repairs": false,
+      "fallbacks": false,
+      "raw_artifact": "runs/J09.json"
+    },
+    {
+      "id": "J10",
+      "category": "ambiguous concern without evidence",
+      "classification": "FAIL",
+      "semantic_review": "Reviewed accepted Evidence values/scopes and total-support diagnostics, source-grounded Leak text, authorization/binding, code-owned abstention fields, deterministic calculator/Gate recomputation, Decision boundaries and frontend ordering. Rejected provider bodies were not reconstructed.",
+      "stages": {
+        "evidence": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1505,
+          "error": null
+        },
+        "leaks": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 874,
+          "error": null
+        },
+        "scenarios": {
+          "reached": true,
+          "http": 502,
+          "latency_ms": 1098,
+          "error": "Scenario analysis result rejected by deterministic validation."
+        },
+        "simulate": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "decision-gate": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "decision": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        }
+      },
+      "first_failing_stage": "/api/analyze/scenarios",
+      "failure_category": "output_validation_rejection",
+      "exact_error": "Scenario analysis result rejected by deterministic validation.",
+      "diagnostics": [
+        {
+          "label": "Evidence business total grounding",
+          "diagnostic": {
+            "reason": "business_total_grounding",
+            "emitted_record_count": 1,
+            "fields": [
+              {
+                "field": "revenue.total",
+                "emitted_support_count": 1,
+                "validated_support_count": 1,
+                "original_total": 80000,
+                "trusted_total": 80000,
+                "reasons": []
+              },
+              {
+                "field": "costs.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              }
+            ],
+            "records": [
+              {
+                "field": "revenue.total",
+                "scope": "whole_business",
+                "value": 80000,
+                "period_matches": true,
+                "currency_matches": true,
+                "source_refs": [
+                  "src_a6c32b103a2b98ad9934fbf2a3261ad9_04"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "violations": [],
+      "missed": [],
+      "checks": {
+        "evidence_valid": true,
+        "evidence_unsupported_numeric_tokens": [],
+        "leak": {
+          "structural_reference_validation": {
+            "ok": true
+          },
+          "validation": {
+            "ok": true
+          },
+          "citation_diagnostics": [],
+          "unreported_numbers": [],
+          "findings": []
+        },
+        "leak_prose_ids": [],
+        "resolved_binding_matches": true,
+        "cross_category_bindings": [],
+        "frontend_complete_only_after_decision": true
+      },
+      "evidence_records": [],
+      "leak_findings": [],
+      "scenario": null,
+      "simulation": null,
+      "gate": null,
+      "decision": null,
+      "frontend": {
+        "complete": false,
+        "error": "Scenario analysis couldn't be completed (HTTP 502). Please try again."
+      },
+      "total_latency_ms": 5807,
+      "retries": false,
+      "repairs": false,
+      "fallbacks": false,
+      "acceptance_classification": "D. insufficient diagnostics",
+      "production_change_justified": false,
+      "raw_artifact": "runs/J10.json"
+    },
+    {
+      "id": "J11",
+      "category": "unreconciled sources and withheld permission",
+      "classification": "FAIL",
+      "semantic_review": "Reviewed accepted Evidence values/scopes and total-support diagnostics, source-grounded Leak text, authorization/binding, code-owned abstention fields, deterministic calculator/Gate recomputation, Decision boundaries and frontend ordering. Rejected provider bodies were not reconstructed. The operations finding reports the explicitly unreconciled ledger/till evidence, cites both values and their uncertainty, grants no action and claims no loss. It remains FAIL because operations is outside the unchanged allowed-findings oracle [labor]; that category mismatch alone is not retained proof of an unsupported business claim or unsafe production defect.",
+      "stages": {
+        "evidence": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1737,
+          "error": null
+        },
+        "leaks": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 2204,
+          "error": null
+        },
+        "scenarios": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 703,
+          "error": null
+        },
+        "simulate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 21,
+          "error": null
+        },
+        "decision-gate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 28,
+          "error": null
+        },
+        "decision": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1294,
+          "error": null
+        }
+      },
+      "first_failing_stage": "Leak",
+      "failure_category": null,
+      "exact_error": null,
+      "diagnostics": [
+        {
+          "label": "Evidence business total grounding",
+          "diagnostic": {
+            "reason": "business_total_grounding",
+            "emitted_record_count": 0,
+            "fields": [
+              {
+                "field": "revenue.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              },
+              {
+                "field": "costs.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              }
+            ],
+            "records": []
+          }
+        }
+      ],
+      "violations": [
+        {
+          "stage": "Leak",
+          "kind": "false_positive_finding",
+          "findings": [
+            {
+              "evidence_refs": [
+                "fact_15e0a1ff9ab27441f3057c331e725d54_04",
+                "fact_15e0a1ff9ab27441f3057c331e725d54_05",
+                "fact_15e0a1ff9ab27441f3057c331e725d54_06"
+              ],
+              "title": "Unreconciled Tuesday evening sales reports",
+              "category": "operations",
+              "evidence": [
+                "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750.",
+                "The till export instead reports USD 3,100 for those same Tuesday services.",
+                "These reports have not been reconciled, and neither has been confirmed authoritative."
+              ],
+              "interpretation": "Two internal systems report materially different Tuesday evening sales figures (USD 1,750 vs USD 3,100) and neither has been validated as the authoritative source. This creates uncertainty in revenue tracking and any downstream cost-to-revenue analysis for that period.",
+              "confidence": "high",
+              "intervention_ref": null
+            }
+          ]
+        }
+      ],
+      "missed": [],
+      "checks": {
+        "evidence_valid": true,
+        "evidence_unsupported_numeric_tokens": [],
+        "leak": {
+          "structural_reference_validation": {
+            "ok": true
+          },
+          "validation": {
+            "ok": true
+          },
+          "citation_diagnostics": [],
+          "unreported_numbers": [],
+          "findings": [
+            {
+              "index": 0,
+              "title": "Unreconciled Tuesday evening sales reports",
+              "category": "operations",
+              "intervention_ref": null,
+              "evidence_refs": [
+                "fact_15e0a1ff9ab27441f3057c331e725d54_04",
+                "fact_15e0a1ff9ab27441f3057c331e725d54_05",
+                "fact_15e0a1ff9ab27441f3057c331e725d54_06"
+              ],
+              "interpretation": "Two internal systems report materially different Tuesday evening sales figures (USD 1,750 vs USD 3,100) and neither has been validated as the authoritative source. This creates uncertainty in revenue tracking and any downstream cost-to-revenue analysis for that period.",
+              "allowed_numeric_tokens": [
+                "6",
+                "10",
+                "1750",
+                "3100"
+              ]
+            }
+          ]
+        },
+        "leak_prose_ids": [],
+        "resolved_binding_matches": true,
+        "cross_category_bindings": [],
+        "scenario_authorizations": [],
+        "scenario_authorization_validation": {
+          "ok": true
+        },
+        "calculator_exact_recompute": true,
+        "gate_exact_recompute": true,
+        "decision_validation": {
+          "ok": true
+        },
+        "frontend_complete_only_after_decision": true
+      },
+      "evidence_records": [],
+      "leak_findings": [
+        {
+          "evidence_refs": [
+            "fact_15e0a1ff9ab27441f3057c331e725d54_04",
+            "fact_15e0a1ff9ab27441f3057c331e725d54_05",
+            "fact_15e0a1ff9ab27441f3057c331e725d54_06"
+          ],
+          "title": "Unreconciled Tuesday evening sales reports",
+          "category": "operations",
+          "evidence": [
+            "The ledger lists Tuesday evening sales from 6 PM to 10 PM as USD 1,750.",
+            "The till export instead reports USD 3,100 for those same Tuesday services.",
+            "These reports have not been reconciled, and neither has been confirmed authoritative."
+          ],
+          "interpretation": "Two internal systems report materially different Tuesday evening sales figures (USD 1,750 vs USD 3,100) and neither has been validated as the authoritative source. This creates uncertainty in revenue tracking and any downstream cost-to-revenue analysis for that period.",
+          "confidence": "high",
+          "intervention_ref": null
+        }
+      ],
+      "scenario": {
+        "scenarios": [],
+        "not_simulation_ready": [
+          {
+            "target_leak": "Unreconciled Tuesday evening sales reports",
+            "reason": "No eligible authorized change is available for this finding.",
+            "missing_decision_input_categories": [
+              "An eligible authorized change"
+            ]
+          }
+        ]
+      },
+      "simulation": {
+        "results": []
+      },
+      "gate": {
+        "decision_gate": "no_actionable_scenario",
+        "reason_codes": [
+          "no_authorized_scenarios"
+        ],
+        "comparison_gap_status": "not_applicable",
+        "candidates": [],
+        "top_candidate_id": null,
+        "missing_decision_inputs": [
+          "An eligible authorized change"
+        ],
+        "policy_required_inputs": [],
+        "not_simulation_ready": [
+          {
+            "target_leak": "Unreconciled Tuesday evening sales reports",
+            "reason": "No eligible authorized change is available for this finding.",
+            "missing_decision_input_categories": [
+              "An eligible authorized change"
+            ]
+          }
+        ]
+      },
+      "decision": {
+        "decision_status": "needs_more_data",
+        "recommendation": {
+          "type": "collect_data",
+          "candidate_id": null,
+          "title": "Collect required decision inputs",
+          "rationale": "More data is needed due to no authorized scenarios being available."
+        },
+        "comparison": [
+          {
+            "candidate_id": null,
+            "target_leak": "Unreconciled Tuesday evening sales reports",
+            "scenario_status": "not_simulation_ready",
+            "assessment": "Not simulation ready.",
+            "verified_impact": null,
+            "currency": null
+          }
+        ],
+        "priority_inputs": [
+          {
+            "source_type": "upstream_missing_input",
+            "key": "An eligible authorized change",
+            "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+          }
+        ],
+        "confidence": "medium"
+      },
+      "frontend": {
+        "complete": true,
+        "error": null
+      },
+      "total_latency_ms": 9474,
+      "retries": false,
+      "repairs": false,
+      "fallbacks": false,
+      "acceptance_classification": "C. model variability / fixed-oracle category mismatch",
+      "production_change_justified": false,
+      "raw_artifact": "runs/J11.json"
+    },
+    {
+      "id": "J12",
+      "category": "clean control",
+      "classification": "PASS",
+      "semantic_review": "Reviewed accepted Evidence values/scopes and total-support diagnostics, source-grounded Leak text, authorization/binding, code-owned abstention fields, deterministic calculator/Gate recomputation, Decision boundaries and frontend ordering. Rejected provider bodies were not reconstructed.",
+      "stages": {
+        "evidence": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 2676,
+          "error": null
+        },
+        "leaks": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 1308,
+          "error": null
+        },
+        "scenarios": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 507,
+          "error": null
+        },
+        "simulate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 23,
+          "error": null
+        },
+        "decision-gate": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 23,
+          "error": null
+        },
+        "decision": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 857,
+          "error": null
+        }
+      },
+      "first_failing_stage": null,
+      "failure_category": null,
+      "exact_error": null,
+      "diagnostics": [
+        {
+          "label": "Evidence business total grounding",
+          "diagnostic": {
+            "reason": "business_total_grounding",
+            "emitted_record_count": 2,
+            "fields": [
+              {
+                "field": "revenue.total",
+                "emitted_support_count": 1,
+                "validated_support_count": 1,
+                "original_total": 60000,
+                "trusted_total": 60000,
+                "reasons": []
+              },
+              {
+                "field": "costs.total",
+                "emitted_support_count": 1,
+                "validated_support_count": 1,
+                "original_total": 54000,
+                "trusted_total": 54000,
+                "reasons": []
+              }
+            ],
+            "records": [
+              {
+                "field": "revenue.total",
+                "scope": "whole_business",
+                "value": 60000,
+                "period_matches": true,
+                "currency_matches": true,
+                "source_refs": [
+                  "src_6def05df660f6b3ebf7dbf28bcf66fb7_04"
+                ]
+              },
+              {
+                "field": "costs.total",
+                "scope": "whole_business",
+                "value": 54000,
+                "period_matches": true,
+                "currency_matches": true,
+                "source_refs": [
+                  "src_6def05df660f6b3ebf7dbf28bcf66fb7_05"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "violations": [],
+      "missed": [],
+      "checks": {
+        "evidence_valid": true,
+        "evidence_unsupported_numeric_tokens": [],
+        "leak": {
+          "structural_reference_validation": {
+            "ok": true
+          },
+          "validation": {
+            "ok": true
+          },
+          "citation_diagnostics": [],
+          "unreported_numbers": [],
+          "findings": []
+        },
+        "leak_prose_ids": [],
+        "resolved_binding_matches": true,
+        "cross_category_bindings": [],
+        "scenario_authorizations": [],
+        "scenario_authorization_validation": {
+          "ok": true
+        },
+        "calculator_exact_recompute": true,
+        "gate_exact_recompute": true,
+        "decision_validation": {
+          "ok": true
+        },
+        "frontend_complete_only_after_decision": true
+      },
+      "evidence_records": [],
+      "leak_findings": [],
+      "scenario": {
+        "scenarios": [],
+        "not_simulation_ready": []
+      },
+      "simulation": {
+        "results": []
+      },
+      "gate": {
+        "decision_gate": "no_actionable_scenario",
+        "reason_codes": [
+          "no_authorized_scenarios"
+        ],
+        "comparison_gap_status": "not_applicable",
+        "candidates": [],
+        "top_candidate_id": null,
+        "missing_decision_inputs": [],
+        "policy_required_inputs": [],
+        "not_simulation_ready": []
+      },
+      "decision": {
+        "decision_status": "needs_more_data",
+        "recommendation": {
+          "type": "collect_data",
+          "candidate_id": null,
+          "title": "Collect required decision inputs",
+          "rationale": "No authorized scenarios were provided for evaluation."
+        },
+        "comparison": [],
+        "priority_inputs": [],
+        "confidence": "high"
+      },
+      "frontend": {
+        "complete": true,
+        "error": null
+      },
+      "total_latency_ms": 8883,
+      "retries": false,
+      "repairs": false,
+      "fallbacks": false,
+      "raw_artifact": "runs/J12.json"
+    }
+  ]
+}

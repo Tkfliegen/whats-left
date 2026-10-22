@@ -39,3 +39,36 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local artwork drafts/duplicates; these three backgrounds are imported by CSS.
+/pic/*
+!/pic/whatleft-bk10.png
+!/pic/whatleft-bk11.png
+!/pic/whatleft-bk13.png
+
+# Generated verification captures and historical scratch files stay local.
+# Keep reports and the exact synthetic snapshots required by offline regressions.
+/docs/*.json
+/docs/evaluations/**
+!/docs/evaluations/**/
+!/docs/evaluations/**/*.md
+!/docs/evaluations/leak-case-a-reliability/input.json
+!/docs/evaluations/leak-lightning-ultra/cases.json
+!/docs/evaluations/leak-ultra-hardened/cases.json
+!/docs/evaluations/leak-ultra-switch/live-case-a.json
+!/docs/evaluations/judge-style-final-combined/runs/J09.json
+!/docs/evaluations/judge-style-final-combined/runs/J11.json
+!/docs/evaluations/judge-style-full-pipeline/runs/J02.json
+!/docs/evaluations/judge-style-full-pipeline/runs/J03.json
+!/docs/evaluations/judge-style-full-pipeline/runs/J06.json
+!/docs/evaluations/judge-style-full-pipeline/runs/J07.json
+!/docs/evaluations/scenario-abstention-ownership/full/runs/J01.json
+!/docs/evaluations/scenario-abstention-ownership/full/runs/J05.json
+
+# Retain the final acceptance summary and reproducibility metadata.
+!/docs/evaluations/judge-style-final-acceptance/cases.json
+!/docs/evaluations/judge-style-final-acceptance/manifest.json
+!/docs/evaluations/judge-style-final-acceptance/results.json
+!/docs/evaluations/judge-style-final-acceptance/summary.json
+!/docs/evaluations/judge-style-final-acceptance/source-check.json
+!/docs/evaluations/judge-style-final-acceptance/verification.json

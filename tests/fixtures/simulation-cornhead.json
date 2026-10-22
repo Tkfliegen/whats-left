@@ -1,0 +1,203 @@
+{
+  "evidence": {
+    "business_type": "bagel_shop",
+    "period": "last_month",
+    "currency": "USD",
+    "revenue": {
+      "total": 100000,
+      "items": []
+    },
+    "costs": {
+      "total": 95800,
+      "items": [
+        {
+          "name": "labor",
+          "amount": 34000,
+          "reported_category": "labor",
+          "source_text": "$34,000 in labor"
+        },
+        {
+          "name": "ingredients",
+          "amount": 18000,
+          "reported_category": "ingredients",
+          "source_text": "$18,000 in ingredients"
+        },
+        {
+          "name": "rent_and_utilities",
+          "amount": 12500,
+          "reported_category": "rent and utilities",
+          "source_text": "$12,500 in rent and utilities"
+        },
+        {
+          "name": "delivery_platform_fees",
+          "amount": 9300,
+          "reported_category": "delivery platform fees",
+          "source_text": "$9,300 in delivery platform fees"
+        }
+      ]
+    },
+    "facts": [],
+    "assumptions": [],
+    "missing_information": [],
+    "confidence": "high"
+  },
+  "scenarios": {
+    "scenarios": [
+      {
+        "title": "Tuesday evening labor inefficiency",
+        "target_leak": "Tuesday evening labor inefficiency",
+        "controlled_changes": [
+          {
+            "variable": "Tuesday evening headcount",
+            "change_type": "delta",
+            "from": null,
+            "value": -1,
+            "unit": "persons"
+          }
+        ],
+        "available_input_refs": [
+          "input_15"
+        ],
+        "missing_calculation_inputs": [
+          "baseline Tuesday evening headcount",
+          "labor cost per worker for Tuesday evenings"
+        ],
+        "confidence": "high"
+      },
+      {
+        "title": "Ingredient waste exceeds stated target",
+        "target_leak": "Ingredient waste exceeds stated target",
+        "controlled_changes": [
+          {
+            "variable": "Ingredient waste rate",
+            "change_type": "absolute_target",
+            "from": 9,
+            "value": 5,
+            "unit": "percent"
+          }
+        ],
+        "available_input_refs": [
+          "input_16",
+          "input_12"
+        ],
+        "missing_calculation_inputs": [
+          "ingredient purchases baseline"
+        ],
+        "confidence": "high"
+      }
+    ],
+    "not_simulation_ready": [
+      {
+        "target_leak": "Delivery unit economics are poor for some orders",
+        "reason": "No controllable decision variable or intervention lever has been supplied",
+        "missing_decision_input_categories": [
+          "controllable decision variable",
+          "constraints governing that variable",
+          "unit-level cost data"
+        ]
+      }
+    ]
+  },
+  "input_facts": [
+    {
+      "id": "input_01",
+      "source": "evidence.business_type",
+      "fact": "bagel_shop"
+    },
+    {
+      "id": "input_02",
+      "source": "evidence.period",
+      "fact": "last_month"
+    },
+    {
+      "id": "input_03",
+      "source": "evidence.currency",
+      "fact": "USD"
+    },
+    {
+      "id": "input_04",
+      "source": "evidence.revenue.total",
+      "fact": "100000"
+    },
+    {
+      "id": "input_05",
+      "source": "evidence.costs.total",
+      "fact": "95800"
+    },
+    {
+      "id": "input_06",
+      "source": "evidence.costs.items[0]",
+      "fact": "{\"name\":\"labor\",\"amount\":34000,\"reported_category\":\"labor\",\"source_text\":\"$34,000 in labor\"}"
+    },
+    {
+      "id": "input_07",
+      "source": "evidence.costs.items[1]",
+      "fact": "{\"name\":\"ingredients\",\"amount\":18000,\"reported_category\":\"ingredients\",\"source_text\":\"$18,000 in ingredients\"}"
+    },
+    {
+      "id": "input_08",
+      "source": "evidence.costs.items[2]",
+      "fact": "{\"name\":\"rent_and_utilities\",\"amount\":12500,\"reported_category\":\"rent and utilities\",\"source_text\":\"$12,500 in rent and utilities\"}"
+    },
+    {
+      "id": "input_09",
+      "source": "evidence.costs.items[3]",
+      "fact": "{\"name\":\"delivery_platform_fees\",\"amount\":9300,\"reported_category\":\"delivery platform fees\",\"source_text\":\"$9,300 in delivery platform fees\"}"
+    },
+    {
+      "id": "input_10",
+      "source": "operational_context[0]",
+      "fact": "Tuesday evenings from 6 PM to 10 PM average only $1,900 in monthly sales, but staffing during those hours costs $3,080 per month. Staffing levels are similar to Friday evenings, even though Friday evening sales are much higher."
+    },
+    {
+      "id": "input_11",
+      "source": "operational_context[1]",
+      "fact": "Delivery orders average $18.40 in revenue per order. For some delivery orders, platform fees, packaging, discounts, and food costs together exceed the revenue from the order. Exact loss per order is not yet available."
+    },
+    {
+      "id": "input_12",
+      "source": "operational_context[2]",
+      "fact": "Ingredient waste last month was 9% of ingredient purchases. The business's stated internal target is 5%."
+    },
+    {
+      "id": "input_13",
+      "source": "operational_context[3]",
+      "fact": "Rent and utilities total $12,500. No information is available showing whether this amount is above or below market rates."
+    },
+    {
+      "id": "input_14",
+      "source": "operational_context[4]",
+      "fact": "Labor is the largest known cost category at $34,000."
+    },
+    {
+      "id": "input_15",
+      "source": "operational_context[5]",
+      "fact": "Tuesday evening 6 PM to 10 PM headcount may be tested by reducing headcount by 1 person."
+    },
+    {
+      "id": "input_16",
+      "source": "operational_context[6]",
+      "fact": "Waste rate may be tested from the current 9% toward the stated 5% target."
+    },
+    {
+      "id": "input_17",
+      "source": "operational_context[7]",
+      "fact": "No controllable delivery decision variable or intervention lever has been supplied."
+    },
+    {
+      "id": "input_18",
+      "source": "leaks.leaks[0].evidence[0]",
+      "fact": "Tuesday evenings from 6 PM to 10 PM average only $1,900 in monthly sales, but staffing during those hours costs $3,080 per month. Staffing levels are similar to Friday evenings, even though Friday evening sales are much higher."
+    },
+    {
+      "id": "input_19",
+      "source": "leaks.leaks[1].evidence[0]",
+      "fact": "Delivery orders average $18.40 in revenue per order. For some delivery orders, platform fees, packaging, discounts, and food costs together exceed the revenue from the order. Exact loss per order is not yet available."
+    },
+    {
+      "id": "input_20",
+      "source": "leaks.leaks[2].evidence[0]",
+      "fact": "Ingredient waste last month was 9% of ingredient purchases. The business's stated internal target is 5%."
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "source_input": "Business name: Cornhead Bagel\nSelected business type: Caf\u00e9\nBusiness description / notes: Currency:\nUSD\nCornhead is a bagel shop. Last month revenue was $100,000 and total operating costs were $95,800. Known cost items: labor $34,000; ingredients $18,000; rent and utilities $12,500; delivery platform fees $9,300. Remaining operating costs were not itemized.\nTuesday evenings from 6 PM to 10 PM average only $1,900 in monthly sales, but staffing during those hours costs $3,080 per month. Staffing levels are similar to Friday evenings, even though Friday evening sales are much higher.\nDelivery orders average $18.40 in revenue per order. For some delivery orders, platform fees, packaging, discounts, and food costs together exceed the revenue from the order. Exact loss per order is not yet available.\nIngredient waste last month was 9% of ingredient purchases. The business's stated internal target is 5%.\nRent and utilities total $12,500. No information is available showing whether this amount is above or below market rates.\nLabor is the largest known cost category at $34,000.\nTuesday evening 6 PM to 10 PM headcount may be tested by reducing headcount by 1 person.\nWaste rate may be tested from the current 9% toward the stated 5% target.\nNo controllable delivery decision variable or intervention lever has been supplied.",
+  "evidence": {
+    "business_type": "Caf\u00e9",
+    "period": "Last month",
+    "currency": "USD",
+    "revenue": {
+      "total": 100000,
+      "items": [
+        {
+          "name": "Revenue",
+          "amount": 100000,
+          "source_text": "Last month revenue was $100,000"
+        }
+      ]
+    },
+    "costs": {
+      "total": 95800,
+      "items": [
+        {
+          "name": "Labor",
+          "amount": 34000,
+          "reported_category": "labor",
+          "source_text": "Known cost items: labor $34,000"
+        },
+        {
+          "name": "Ingredients",
+          "amount": 18000,
+          "reported_category": "ingredients",
+          "source_text": "Known cost items: ingredients $18,000"
+        },
+        {
+          "name": "Rent and utilities",
+          "amount": 12500,
+          "reported_category": "rent and utilities",
+          "source_text": "Known cost items: rent and utilities $12,500"
+        },
+        {
+          "name": "Delivery platform fees",
+          "amount": 9300,
+          "reported_category": "delivery platform fees",
+          "source_text": "Known cost items: delivery platform fees $9,300"
+        }
+      ]
+    },
+    "facts": [
+      "Cornhead is a bagel shop.",
+      "Currency: USD",
+      "Last month revenue was $100,000 and total operating costs were $95,800.",
+      "Known cost items: labor $34,000; ingredients $18,000; rent and utilities $12,500; delivery platform fees $9,300.",
+      "Tuesday evenings from 6 PM to 10 PM average only $1,900 in monthly sales, but staffing during those hours costs $3,080 per month.",
+      "Staffing levels are similar to Friday evenings, even though Friday evening sales are much higher.",
+      "Delivery orders average $18.40 in revenue per order.",
+      "For some delivery orders, platform fees, packaging, discounts, and food costs together exceed the revenue from the order.",
+      "Ingredient waste last month was 9% of ingredient purchases.",
+      "The business's stated internal target is 5% waste rate.",
+      "Rent and utilities total $12,500.",
+      "No information is available showing whether this amount is above or below market rates.",
+      "Labor is the largest known cost category at $34,000.",
+      "Tuesday evening 6 PM to 10 PM headcount may be tested by reducing headcount by 1 person.",
+      "Waste rate may be tested from the current 9% toward the stated 5% target.",
+      "No controllable delivery decision variable or intervention lever has been supplied."
+    ],
+    "assumptions": [],
+    "missing_information": [
+      "Remaining operating costs were not itemized.",
+      "Exact loss per delivery order is not yet available.",
+      "Whether rent and utilities $12,500 is above or below market rates.",
+      "Controllable delivery decision variable or intervention lever."
+    ],
+    "confidence": "high"
+  },
+  "recorded_leaks": {
+    "leaks": [
+      {
+        "title": "Ingredient waste exceeds target rate",
+        "category": "waste",
+        "evidence_refs": [
+          "ev_05d9c238c76839b02a1be7fda722177f_19",
+          "ev_05d9c238c76839b02a1be7fda722177f_20",
+          "ev_05d9c238c76839b02a1be7fda722177f_25"
+        ],
+        "evidence": [
+          "Ingredient waste last month was 9% of ingredient purchases.",
+          "The business's stated internal target is 5% waste rate.",
+          "Waste rate may be tested from the current 9% toward the stated 5% target."
+        ],
+        "interpretation": "Actual waste is 9%, above the stated 5% target.",
+        "confidence": "high"
+      },
+      {
+        "title": "Tuesday evening labor inefficiency",
+        "category": "labor",
+        "evidence_refs": [
+          "ev_05d9c238c76839b02a1be7fda722177f_15",
+          "ev_05d9c238c76839b02a1be7fda722177f_24"
+        ],
+        "evidence": [
+          "Tuesday evenings from 6 PM to 10 PM average only $1,900 in monthly sales, but staffing during those hours costs $3,080 per month.",
+          "Tuesday evening 6 PM to 10 PM headcount may be tested by reducing headcount by 1 person."
+        ],
+        "interpretation": "Tuesday evening 6 PM to 10 PM generates $1,900 in sales against $3,080 in staffing costs, indicating a labor cost mismatch during those hours.",
+        "confidence": "high"
+      },
+      {
+        "title": "Delivery orders with costs exceeding revenue",
+        "category": "delivery",
+        "evidence_refs": [
+          "ev_05d9c238c76839b02a1be7fda722177f_18",
+          "ev_05d9c238c76839b02a1be7fda722177f_38"
+        ],
+        "evidence": [
+          "For some delivery orders, platform fees, packaging, discounts, and food costs together exceed the revenue from the order.",
+          "Delivery orders average $18.40 in revenue per order."
+        ],
+        "interpretation": "For some delivery orders, total delivery costs (platform fees, packaging, discounts, and food costs) exceed order revenue, indicating poor delivery unit economics.",
+        "confidence": "high"
+      }
+    ],
+    "insufficient_evidence": [
+      {
+        "topic": "Rent and utilities market comparison",
+        "reason": "No information is available showing whether rent and utilities $12,500 is above or below market rates."
+      },
+      {
+        "topic": "Labor as largest cost category alone",
+        "reason": "Labor being the largest known cost category at $34,000 is a factual statement, not evidence of inefficiency without comparison or target."
+      },
+      {
+        "topic": "Controllable delivery decision variable",
+        "reason": "No controllable delivery decision variable or intervention lever has been supplied."
+      }
+    ]
+  },
+  "original_source_indices_by_leak": [
+    [
+      13,
+      14,
+      19
+    ],
+    [
+      8,
+      18
+    ],
+    [
+      10,
+      11
+    ]
+  ],
+  "description": "Recorded failed Cornhead run: Waste and Labor cited model-extracted items; replay keeps exact explanatory prose and explicitly cites code-generated facts for the original supporting source positions under the new contract."
+}

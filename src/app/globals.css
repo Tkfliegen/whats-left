@@ -1,26 +1,136 @@
 @import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-page: #07101F;
+  --bg-surface: #0E1622;
+  --bg-card: #121C29;
+  --border-default: #243447;
+  --border-active: #35536A;
+  --text-primary: #EEF4FA;
+  --text-secondary: #9FB0C3;
+  --text-muted: #718399;
+  --accent-primary: #72D8F7;
+  --accent-primary-bright: #9CE7FF;
+  --accent-primary-soft: #BEEFFF;
+  --accent-gold: #E8C98B;
+  --accent-gold-soft: #F4DDA8;
+  --accent-gold-dark: #B99655;
+  --agent-evidence: #8DDFF7;
+  --agent-leak: #53D8E8;
+  --agent-scenario: #B9A7F5;
+  --agent-decision: var(--accent-gold);
+  --accent-result-current: var(--accent-primary-bright);
+  --accent-result-best: var(--accent-gold);
+  --cta-start: #56CFE1;
+  --cta-end: #7ADFF6;
+  --cta-text: #07101A;
+  --background: var(--bg-page);
+  --foreground: var(--text-primary);
+  color-scheme: dark;
+}
+@theme inline { --color-background: var(--background); --color-foreground: var(--foreground); --font-sans: Arial, Helvetica, sans-serif; --font-mono: Consolas, monospace; }
+body { background: var(--background); color: var(--foreground); font-family: Arial, Helvetica, sans-serif; }
+button, select { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 4px; }
+.panel { border: 1px solid var(--border-default); border-radius: 14px; background: var(--bg-surface); }
+.eyebrow { font-size: 9px; font-weight: 500; letter-spacing: .17em; color: var(--text-muted); }
+.badge { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--border-default); border-radius: 5px; padding: 6px 9px; font-size: 9px; color: var(--text-secondary); white-space: nowrap; }
+.field-label { display: block; font-size: 11px; color: var(--text-secondary); }
+.field-label input, .field-label select, .field-label textarea { display: block; width: 100%; margin-top: 7px; border: 1px solid var(--border-default); border-radius: 7px; background: var(--bg-card); padding: 10px 11px; font-size: 12px; color: var(--text-primary); }
+.field-label textarea { resize: vertical; min-height: 65px; }
+.field-label textarea::placeholder { color: var(--text-muted); font-size: 11px; }
+.upload-zone { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 17px 10px; border: 1px dashed var(--border-active); border-radius: 8px; background: var(--bg-card); cursor: pointer; text-align: center; }
+.upload-zone:hover, .upload-zone:focus-within { border-color: var(--accent-primary); }
+.waterfall { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); padding-top: 22px; background: repeating-linear-gradient(to top, transparent, transparent 39px, color-mix(in srgb, var(--border-default) 20%, transparent) 40px); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+.field-label input:focus, .field-label select:focus, .field-label textarea:focus { border-color: var(--accent-primary); outline: none; }
+.analyze-button { background: linear-gradient(110deg, var(--cta-start), var(--cta-end)); color: var(--cta-text); }
+.analyze-button:hover { filter: brightness(1.06); box-shadow: 0 0 14px color-mix(in srgb, var(--accent-primary) 18%, transparent); }
+.analyze-button:active { filter: brightness(.97); }
+
+/* Three-stage decorative background; all artwork stays at its natural ratio. */
+body { position: relative; isolation: isolate; }
+.page-background {
+  --background-image-height: calc(100vw * 941 / 1672);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: var(--background-top-height, var(--background-image-height)) var(--background-transition-height, calc(var(--background-image-height) * .65)) minmax(0, 1fr);
+  overflow: clip;
+  pointer-events: none;
+  z-index: -1;
+}
+.page-background > div {
+  min-height: 0;
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+/* bk10: top / hero, full composition with no cover zoom. */
+.page-background > div:nth-child(1) {
+  background-image: url("../../pic/whatleft-bk10.png");
+}
+/* bk11: overlap the upper artwork; keep the lower grid boundary unchanged. */
+.page-background > div:nth-child(2) {
+  background-image: url("../../pic/whatleft-bk11.png");
+  margin-top: -120px;
+  background-position: center -96px;
+  /* A short alpha feather reveals bk10 beneath; no tint or dark overlay. */
+  mask-image: linear-gradient(to bottom, transparent, #000 40px);
+}
+/* bk13: overlap bk11; soften only the leading edge without a color wash. */
+.page-background > div:nth-child(3) {
+  background-image: url("../../pic/whatleft-bk13.png");
+  position: relative;
+  margin-top: -150px;
+  background-position: center -72px;
+  mask-image: linear-gradient(to bottom, transparent, #000 60px);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Fade only the artwork's final 120px; continue with the matching footer base. */
+.page-background > div:nth-child(3)::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: max(0px, min(calc(100% - 120px), calc(var(--background-image-height) - 72px - 120px)));
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, var(--bg-page) 120px);
+  pointer-events: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* BEGIN reversible indigo glass experiment. */
+:root {
+  --panel-base: rgba(9, 15, 34, .80);
+  --panel-border: rgba(190, 225, 255, .24);
+  --panel-highlight: rgba(247, 250, 255, .07);
+  --panel-lavender: rgba(185, 170, 255, .12);
+  --bg-surface: var(--panel-base);
+  --bg-card: rgba(11, 18, 40, .82);
+  --border-default: var(--panel-border);
+  --border-active: rgba(112, 184, 255, .44);
+  --text-primary: #F7FAFF;
+  --text-secondary: #C8D7EA;
+  --text-muted: #8FA4BF;
+  --accent-glacial: #70B8FF;
+  --accent-result-current: var(--accent-glacial);
 }
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.panel,
+[aria-labelledby="outlook-title"] .rounded-xl {
+  background-color: var(--panel-base);
+  background-image: linear-gradient(155deg, var(--panel-lavender), transparent 38%);
+  border-color: var(--panel-border);
+  box-shadow: inset 0 1px 0 var(--panel-highlight);
 }
+[aria-labelledby="outlook-title"] .rounded-xl:has(.text-4xl) {
+  border-color: var(--border-active);
+}
+[aria-labelledby="scenario-title"] {
+  --panel-lavender: rgba(185, 170, 255, .14);
+}
+h1, h2, h3, h4,
+[aria-labelledby="outlook-title"] .tabular-nums,
+[aria-labelledby="scenario-title"] .text-xl,
+[aria-labelledby="scenario-title"] .text-2xl {
+  font-weight: 600;
+}
+/* END reversible indigo glass experiment. */

@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# What's Left?
 
-## Getting Started
+A hackathon business-analysis workspace with an Agent Office UI and a verified analysis pipeline:
 
-First, run the development server:
+Evidence → Leak → Scenario Authorization → Scenario → Calculator → Decision Gate → Decision.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+AI extracts and interprets supplied evidence. Deterministic code validates source references, authorizations, supported business totals, intervention identity, numeric claims, calculations and Decision boundaries. Missing or unsupported inputs remain unavailable; the app does not manufacture savings to complete an analysis.
+
+## Local setup
+
+Use Node.js 22 or newer and npm. Install locked dependencies with `npm ci`.
+
+Create an ignored `.env.local` and set `NEBIUS_API_KEY` to your own provider key. Never commit this file or key. The server routes use Nebius; credentials are not exposed to the browser. The current Evidence and Leak model is Ultra; Scenario and Decision use their separately configured route models.
+
+Run `npm run dev`, then open the local URL printed by Next.js. File upload selection in the UI is local-only; uploaded files are not analyzed.
+
+## Offline verification
+
+```sh
+node --test tests/*.test.mjs
+npm run lint
+npx next build --webpack
+npx tsc --noEmit
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run the TypeScript check after the build has generated Next.js types. The Webpack build is the verified local build path; `npm run build` retains the standard Next.js build command. Build and offline tests do not require real provider calls. Tests include synthetic saved app-response fixtures to reproduce earlier trust-boundary failures.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Live evaluation scripts under `scripts/evaluation/` are opt-in and make provider calls. Browser scripts require a separately running local app and Chrome debugging session. Do not run them as ordinary unit tests or assume they are free of provider cost. Historical comparison scripts may require local captures that are intentionally excluded from Git.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Assets and evaluation evidence
 
-## Learn More
+Runtime artwork is in `public/agent-office/` and the three CSS-imported `pic/whatleft-bk10.png`, `whatleft-bk11.png`, `whatleft-bk13.png` backgrounds. Unused drafts and duplicate source artwork stay local.
 
-To learn more about Next.js, take a look at the following resources:
+Architecture reports are in `docs/`. The final twelve-case acceptance report is [here](docs/evaluations/judge-style-final-acceptance/report.md). It distinguishes correct fail-closed rejections from confirmed production defects; completion alone is not a safety score. Reports may reference local captures that are not published. Only selected synthetic regression snapshots and final acceptance metadata are committed; raw evaluation archives, build output, environment files and caches are excluded.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Vercel handoff
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Connect `Tkfliegen/whats-left`, confirm the intended Production Branch, and configure `NEBIUS_API_KEY` in the Vercel project environment settings. The production branch and deployment status are not recorded in this repository; verify them in the dashboard. Check that the latest Production deployment uses the pushed commit and reaches Ready. A Git push alone does not establish a successful deployment.

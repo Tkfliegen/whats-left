@@ -1,0 +1,41 @@
+{
+  "submissions": 12,
+  "classifications": {
+    "PASS": 7,
+    "PARTIAL": 0,
+    "FAIL": 5
+  },
+  "frontend_complete": 8,
+  "accepted_numeric_unit_scope_escape_cases": 0,
+  "application_validation_rejections": 4,
+  "provider_failures": 0,
+  "authorization_violations": 0,
+  "trusted_binding_violations": 0,
+  "fabricated_savings": 0,
+  "decision_gate_violations": 0,
+  "scenario_contamination_cases": 0,
+  "abstention_entries_checked": 5,
+  "category_oracle_mismatch_cases": [
+    "J11"
+  ],
+  "confirmed_production_defects": [],
+  "insufficient_diagnostic_cases": [
+    "J10"
+  ],
+  "average_e2e_latency_ms": 9403.75,
+  "maximum_e2e_latency_ms": 13613,
+  "endpoint_calls": 59,
+  "configured_provider_attempts": 43,
+  "stage_attempts": {
+    "evidence": 12,
+    "leaks": 12,
+    "scenarios": 11,
+    "simulate": 8,
+    "decision-gate": 8,
+    "decision": 8
+  },
+  "retries": false,
+  "repairs": false,
+  "fallbacks": false,
+  "submission_ready_trust_safety": true
+}

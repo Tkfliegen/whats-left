@@ -1,0 +1,6032 @@
+{
+  "calls": [
+    {
+      "url": "/api/analyze/evidence",
+      "body": {
+        "input": "Business name: Fern Delivery\nSelected business type: Tea Shop\nBusiness description / notes: Review of delivery orders last month; currency USD. Average delivery revenue per order was USD 22.80.\nFor some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\nWe do not know the number of affected orders or the total loss. No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved."
+      },
+      "started": 1792651645933,
+      "status": 200,
+      "response": {
+        "evidence": {
+          "business_type": "Tea Shop",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Average delivery revenue per order",
+                "amount": 22.8,
+                "source_text": "Average delivery revenue per order was USD 22.80."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Packaging, platform fees, discounts, and food costs (combined for some orders)",
+                "amount": null,
+                "reported_category": "variable",
+                "source_text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              }
+            ]
+          },
+          "facts": [],
+          "assumptions": [],
+          "missing_information": [
+            "Total delivery revenue for the period",
+            "Number of delivery orders",
+            "Number of affected orders where costs exceeded revenue",
+            "Total loss amount from affected orders",
+            "Breakdown of packaging costs, platform fees, discounts, and food costs per order or in total"
+          ],
+          "confidence": "low",
+          "provenance": {
+            "source_input": "Business name: Fern Delivery\nSelected business type: Tea Shop\nBusiness description / notes: Review of delivery orders last month; currency USD. Average delivery revenue per order was USD 22.80.\nFor some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\nWe do not know the number of affected orders or the total loss. No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+            "items": [
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_01",
+                "source": "evidence.business_type",
+                "text": "Tea Shop"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Average delivery revenue per order\",\"amount\":22.8,\"source_text\":\"Average delivery revenue per order was USD 22.80.\"}"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_05",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Packaging, platform fees, discounts, and food costs (combined for some orders)\",\"amount\":null,\"reported_category\":\"variable\",\"source_text\":\"For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\"}"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_01",
+                "source": "source_input[0]",
+                "text": "Business name: Fern Delivery"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Tea Shop"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "source": "source_input[3]",
+                "text": "Average delivery revenue per order was USD 22.80."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_05",
+                "source": "source_input[4]",
+                "text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                "source": "source_input[5]",
+                "text": "We do not know the number of affected orders or the total loss."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_07",
+                "source": "source_input[6]",
+                "text": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_01",
+                "text": "Business name: Fern Delivery",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_01"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_02",
+                "text": "Selected business type: Tea Shop",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_02"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_03"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "text": "Average delivery revenue per order was USD 22.80.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_04"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_05",
+                "text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_05"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                "text": "We do not know the number of affected orders or the total loss.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_06"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_07",
+                "text": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_07"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_08",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD. Average delivery revenue per order was USD 22.80.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_04"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_09",
+                "text": "We do not know the number of affected orders or the total loss. No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_07"
+                ]
+              }
+            ],
+            "authorization_records": []
+          }
+        }
+      },
+      "finished": 1792651647904
+    },
+    {
+      "url": "/api/analyze/leaks",
+      "body": {
+        "evidence": {
+          "business_type": "Tea Shop",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Average delivery revenue per order",
+                "amount": 22.8,
+                "source_text": "Average delivery revenue per order was USD 22.80."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Packaging, platform fees, discounts, and food costs (combined for some orders)",
+                "amount": null,
+                "reported_category": "variable",
+                "source_text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              }
+            ]
+          },
+          "facts": [],
+          "assumptions": [],
+          "missing_information": [
+            "Total delivery revenue for the period",
+            "Number of delivery orders",
+            "Number of affected orders where costs exceeded revenue",
+            "Total loss amount from affected orders",
+            "Breakdown of packaging costs, platform fees, discounts, and food costs per order or in total"
+          ],
+          "confidence": "low",
+          "provenance": {
+            "source_input": "Business name: Fern Delivery\nSelected business type: Tea Shop\nBusiness description / notes: Review of delivery orders last month; currency USD. Average delivery revenue per order was USD 22.80.\nFor some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\nWe do not know the number of affected orders or the total loss. No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+            "items": [
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_01",
+                "source": "evidence.business_type",
+                "text": "Tea Shop"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Average delivery revenue per order\",\"amount\":22.8,\"source_text\":\"Average delivery revenue per order was USD 22.80.\"}"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_05",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Packaging, platform fees, discounts, and food costs (combined for some orders)\",\"amount\":null,\"reported_category\":\"variable\",\"source_text\":\"For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\"}"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_01",
+                "source": "source_input[0]",
+                "text": "Business name: Fern Delivery"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Tea Shop"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "source": "source_input[3]",
+                "text": "Average delivery revenue per order was USD 22.80."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_05",
+                "source": "source_input[4]",
+                "text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                "source": "source_input[5]",
+                "text": "We do not know the number of affected orders or the total loss."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_07",
+                "source": "source_input[6]",
+                "text": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_01",
+                "text": "Business name: Fern Delivery",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_01"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_02",
+                "text": "Selected business type: Tea Shop",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_02"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_03"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "text": "Average delivery revenue per order was USD 22.80.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_04"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_05",
+                "text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_05"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                "text": "We do not know the number of affected orders or the total loss.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_06"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_07",
+                "text": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_07"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_08",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD. Average delivery revenue per order was USD 22.80.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_04"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_09",
+                "text": "We do not know the number of affected orders or the total loss. No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_07"
+                ]
+              }
+            ],
+            "authorization_records": []
+          }
+        },
+        "operational_context": [
+          "Review of delivery orders last month; currency USD.",
+          "Average delivery revenue per order was USD 22.80.",
+          "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.",
+          "We do not know the number of affected orders or the total loss.",
+          "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved."
+        ]
+      },
+      "started": 1792651649056,
+      "status": 200,
+      "response": {
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "fact_aba185e5a3c2255ac7a668ef24b70d3a_05"
+              ],
+              "title": "Delivery unit economics — some orders unprofitable",
+              "category": "delivery",
+              "evidence": [
+                "Average delivery revenue per order was USD 22.80.",
+                "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              ],
+              "interpretation": "The average delivery order generates USD 22.80 in revenue, yet for a subset of orders the combined variable costs (packaging, platform fees, discounts, and food costs) are higher than the order revenue, meaning those orders lose money on a per-order basis. The number of affected orders and the total loss amount are not known.",
+              "confidence": "medium",
+              "intervention_ref": null
+            }
+          ],
+          "insufficient_evidence": [
+            {
+              "topic": "Total delivery profit leak magnitude",
+              "reason": "The evidence confirms some orders are unprofitable but does not provide the number of affected orders or the total loss amount, so the overall financial impact cannot be quantified."
+            },
+            {
+              "topic": "Cost component breakdown",
+              "reason": "The combined cost categories (packaging, platform fees, discounts, food costs) are reported only as a group; individual component amounts are not supplied, so it is not possible to isolate which component drives the loss."
+            }
+          ]
+        }
+      },
+      "finished": 1792651650689
+    },
+    {
+      "url": "/api/analyze/scenarios",
+      "body": {
+        "evidence": {
+          "business_type": "Tea Shop",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Average delivery revenue per order",
+                "amount": 22.8,
+                "source_text": "Average delivery revenue per order was USD 22.80."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Packaging, platform fees, discounts, and food costs (combined for some orders)",
+                "amount": null,
+                "reported_category": "variable",
+                "source_text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              }
+            ]
+          },
+          "facts": [],
+          "assumptions": [],
+          "missing_information": [
+            "Total delivery revenue for the period",
+            "Number of delivery orders",
+            "Number of affected orders where costs exceeded revenue",
+            "Total loss amount from affected orders",
+            "Breakdown of packaging costs, platform fees, discounts, and food costs per order or in total"
+          ],
+          "confidence": "low",
+          "provenance": {
+            "source_input": "Business name: Fern Delivery\nSelected business type: Tea Shop\nBusiness description / notes: Review of delivery orders last month; currency USD. Average delivery revenue per order was USD 22.80.\nFor some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\nWe do not know the number of affected orders or the total loss. No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+            "items": [
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_01",
+                "source": "evidence.business_type",
+                "text": "Tea Shop"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Average delivery revenue per order\",\"amount\":22.8,\"source_text\":\"Average delivery revenue per order was USD 22.80.\"}"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_05",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Packaging, platform fees, discounts, and food costs (combined for some orders)\",\"amount\":null,\"reported_category\":\"variable\",\"source_text\":\"For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\"}"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_01",
+                "source": "source_input[0]",
+                "text": "Business name: Fern Delivery"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Tea Shop"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "source": "source_input[3]",
+                "text": "Average delivery revenue per order was USD 22.80."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_05",
+                "source": "source_input[4]",
+                "text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                "source": "source_input[5]",
+                "text": "We do not know the number of affected orders or the total loss."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_07",
+                "source": "source_input[6]",
+                "text": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_01",
+                "text": "Business name: Fern Delivery",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_01"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_02",
+                "text": "Selected business type: Tea Shop",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_02"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_03"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "text": "Average delivery revenue per order was USD 22.80.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_04"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_05",
+                "text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_05"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                "text": "We do not know the number of affected orders or the total loss.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_06"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_07",
+                "text": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_07"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_08",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD. Average delivery revenue per order was USD 22.80.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_04"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_09",
+                "text": "We do not know the number of affected orders or the total loss. No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_07"
+                ]
+              }
+            ],
+            "authorization_records": []
+          }
+        },
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "fact_aba185e5a3c2255ac7a668ef24b70d3a_05"
+              ],
+              "title": "Delivery unit economics — some orders unprofitable",
+              "category": "delivery",
+              "evidence": [
+                "Average delivery revenue per order was USD 22.80.",
+                "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              ],
+              "interpretation": "The average delivery order generates USD 22.80 in revenue, yet for a subset of orders the combined variable costs (packaging, platform fees, discounts, and food costs) are higher than the order revenue, meaning those orders lose money on a per-order basis. The number of affected orders and the total loss amount are not known.",
+              "confidence": "medium",
+              "intervention_ref": null
+            }
+          ],
+          "insufficient_evidence": [
+            {
+              "topic": "Total delivery profit leak magnitude",
+              "reason": "The evidence confirms some orders are unprofitable but does not provide the number of affected orders or the total loss amount, so the overall financial impact cannot be quantified."
+            },
+            {
+              "topic": "Cost component breakdown",
+              "reason": "The combined cost categories (packaging, platform fees, discounts, food costs) are reported only as a group; individual component amounts are not supplied, so it is not possible to isolate which component drives the loss."
+            }
+          ]
+        },
+        "operational_context": [
+          "Review of delivery orders last month; currency USD.",
+          "Average delivery revenue per order was USD 22.80.",
+          "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.",
+          "We do not know the number of affected orders or the total loss.",
+          "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved."
+        ]
+      },
+      "started": 1792651651841,
+      "status": 200,
+      "response": {
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Delivery unit economics — some orders unprofitable",
+              "reason": "Missing explicit permission to test reducing waste toward the stated 5% target.",
+              "missing_decision_input_categories": [
+                "a controllable decision variable",
+                "constraints governing that variable",
+                "unit-level cost data"
+              ]
+            }
+          ]
+        },
+        "input_facts": [
+          {
+            "id": "input_01",
+            "source": "evidence.business_type",
+            "fact": "Tea Shop"
+          },
+          {
+            "id": "input_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "input_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "input_04",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Average delivery revenue per order\",\"amount\":22.8,\"source_text\":\"Average delivery revenue per order was USD 22.80.\"}"
+          },
+          {
+            "id": "input_05",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Packaging, platform fees, discounts, and food costs (combined for some orders)\",\"amount\":null,\"reported_category\":\"variable\",\"source_text\":\"For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\"}"
+          },
+          {
+            "id": "input_06",
+            "source": "operational_context[0]",
+            "fact": "Review of delivery orders last month; currency USD."
+          },
+          {
+            "id": "input_07",
+            "source": "operational_context[1]",
+            "fact": "Average delivery revenue per order was USD 22.80."
+          },
+          {
+            "id": "input_08",
+            "source": "operational_context[2]",
+            "fact": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+          },
+          {
+            "id": "input_09",
+            "source": "operational_context[3]",
+            "fact": "We do not know the number of affected orders or the total loss."
+          },
+          {
+            "id": "input_10",
+            "source": "operational_context[4]",
+            "fact": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved."
+          },
+          {
+            "id": "input_11",
+            "source": "leaks.leaks[0].evidence[0]",
+            "fact": "Average delivery revenue per order was USD 22.80."
+          },
+          {
+            "id": "input_12",
+            "source": "leaks.leaks[0].evidence[1]",
+            "fact": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+          },
+          {
+            "id": "ev_538819ac21fe5e75997b7e4c2e379c66_01",
+            "source": "evidence.business_type",
+            "fact": "Tea Shop"
+          },
+          {
+            "id": "ev_538819ac21fe5e75997b7e4c2e379c66_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "ev_538819ac21fe5e75997b7e4c2e379c66_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "ev_538819ac21fe5e75997b7e4c2e379c66_04",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Average delivery revenue per order\",\"amount\":22.8,\"source_text\":\"Average delivery revenue per order was USD 22.80.\"}"
+          },
+          {
+            "id": "ev_538819ac21fe5e75997b7e4c2e379c66_05",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Packaging, platform fees, discounts, and food costs (combined for some orders)\",\"amount\":null,\"reported_category\":\"variable\",\"source_text\":\"For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\"}"
+          },
+          {
+            "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_01",
+            "source": "source_input[0]",
+            "fact": "Business name: Fern Delivery"
+          },
+          {
+            "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_02",
+            "source": "source_input[1]",
+            "fact": "Selected business type: Tea Shop"
+          },
+          {
+            "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_03",
+            "source": "source_input[2]",
+            "fact": "Business description / notes: Review of delivery orders last month; currency USD."
+          },
+          {
+            "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_04",
+            "source": "source_input[3]",
+            "fact": "Average delivery revenue per order was USD 22.80."
+          },
+          {
+            "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_05",
+            "source": "source_input[4]",
+            "fact": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+          },
+          {
+            "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_06",
+            "source": "source_input[5]",
+            "fact": "We do not know the number of affected orders or the total loss."
+          },
+          {
+            "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_07",
+            "source": "source_input[6]",
+            "fact": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved."
+          }
+        ]
+      },
+      "finished": 1792651653621
+    },
+    {
+      "url": "/api/analyze/simulate",
+      "body": {
+        "evidence": {
+          "business_type": "Tea Shop",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Average delivery revenue per order",
+                "amount": 22.8,
+                "source_text": "Average delivery revenue per order was USD 22.80."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Packaging, platform fees, discounts, and food costs (combined for some orders)",
+                "amount": null,
+                "reported_category": "variable",
+                "source_text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              }
+            ]
+          },
+          "facts": [],
+          "assumptions": [],
+          "missing_information": [
+            "Total delivery revenue for the period",
+            "Number of delivery orders",
+            "Number of affected orders where costs exceeded revenue",
+            "Total loss amount from affected orders",
+            "Breakdown of packaging costs, platform fees, discounts, and food costs per order or in total"
+          ],
+          "confidence": "low",
+          "provenance": {
+            "source_input": "Business name: Fern Delivery\nSelected business type: Tea Shop\nBusiness description / notes: Review of delivery orders last month; currency USD. Average delivery revenue per order was USD 22.80.\nFor some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\nWe do not know the number of affected orders or the total loss. No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+            "items": [
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_01",
+                "source": "evidence.business_type",
+                "text": "Tea Shop"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Average delivery revenue per order\",\"amount\":22.8,\"source_text\":\"Average delivery revenue per order was USD 22.80.\"}"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_05",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Packaging, platform fees, discounts, and food costs (combined for some orders)\",\"amount\":null,\"reported_category\":\"variable\",\"source_text\":\"For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\"}"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_01",
+                "source": "source_input[0]",
+                "text": "Business name: Fern Delivery"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Tea Shop"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "source": "source_input[3]",
+                "text": "Average delivery revenue per order was USD 22.80."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_05",
+                "source": "source_input[4]",
+                "text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                "source": "source_input[5]",
+                "text": "We do not know the number of affected orders or the total loss."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_07",
+                "source": "source_input[6]",
+                "text": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_01",
+                "text": "Business name: Fern Delivery",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_01"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_02",
+                "text": "Selected business type: Tea Shop",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_02"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_03"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "text": "Average delivery revenue per order was USD 22.80.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_04"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_05",
+                "text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_05"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                "text": "We do not know the number of affected orders or the total loss.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_06"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_07",
+                "text": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_07"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_08",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD. Average delivery revenue per order was USD 22.80.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_04"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_09",
+                "text": "We do not know the number of affected orders or the total loss. No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_07"
+                ]
+              }
+            ],
+            "authorization_records": []
+          }
+        },
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Delivery unit economics — some orders unprofitable",
+              "reason": "Missing explicit permission to test reducing waste toward the stated 5% target.",
+              "missing_decision_input_categories": [
+                "a controllable decision variable",
+                "constraints governing that variable",
+                "unit-level cost data"
+              ]
+            }
+          ]
+        },
+        "input_facts": [
+          {
+            "id": "input_01",
+            "source": "evidence.business_type",
+            "fact": "Tea Shop"
+          },
+          {
+            "id": "input_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "input_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "input_04",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Average delivery revenue per order\",\"amount\":22.8,\"source_text\":\"Average delivery revenue per order was USD 22.80.\"}"
+          },
+          {
+            "id": "input_05",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Packaging, platform fees, discounts, and food costs (combined for some orders)\",\"amount\":null,\"reported_category\":\"variable\",\"source_text\":\"For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\"}"
+          },
+          {
+            "id": "input_06",
+            "source": "operational_context[0]",
+            "fact": "Review of delivery orders last month; currency USD."
+          },
+          {
+            "id": "input_07",
+            "source": "operational_context[1]",
+            "fact": "Average delivery revenue per order was USD 22.80."
+          },
+          {
+            "id": "input_08",
+            "source": "operational_context[2]",
+            "fact": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+          },
+          {
+            "id": "input_09",
+            "source": "operational_context[3]",
+            "fact": "We do not know the number of affected orders or the total loss."
+          },
+          {
+            "id": "input_10",
+            "source": "operational_context[4]",
+            "fact": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved."
+          },
+          {
+            "id": "input_11",
+            "source": "leaks.leaks[0].evidence[0]",
+            "fact": "Average delivery revenue per order was USD 22.80."
+          },
+          {
+            "id": "input_12",
+            "source": "leaks.leaks[0].evidence[1]",
+            "fact": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+          },
+          {
+            "id": "ev_538819ac21fe5e75997b7e4c2e379c66_01",
+            "source": "evidence.business_type",
+            "fact": "Tea Shop"
+          },
+          {
+            "id": "ev_538819ac21fe5e75997b7e4c2e379c66_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "ev_538819ac21fe5e75997b7e4c2e379c66_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "ev_538819ac21fe5e75997b7e4c2e379c66_04",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Average delivery revenue per order\",\"amount\":22.8,\"source_text\":\"Average delivery revenue per order was USD 22.80.\"}"
+          },
+          {
+            "id": "ev_538819ac21fe5e75997b7e4c2e379c66_05",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Packaging, platform fees, discounts, and food costs (combined for some orders)\",\"amount\":null,\"reported_category\":\"variable\",\"source_text\":\"For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\"}"
+          },
+          {
+            "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_01",
+            "source": "source_input[0]",
+            "fact": "Business name: Fern Delivery"
+          },
+          {
+            "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_02",
+            "source": "source_input[1]",
+            "fact": "Selected business type: Tea Shop"
+          },
+          {
+            "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_03",
+            "source": "source_input[2]",
+            "fact": "Business description / notes: Review of delivery orders last month; currency USD."
+          },
+          {
+            "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_04",
+            "source": "source_input[3]",
+            "fact": "Average delivery revenue per order was USD 22.80."
+          },
+          {
+            "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_05",
+            "source": "source_input[4]",
+            "fact": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+          },
+          {
+            "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_06",
+            "source": "source_input[5]",
+            "fact": "We do not know the number of affected orders or the total loss."
+          },
+          {
+            "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_07",
+            "source": "source_input[6]",
+            "fact": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved."
+          }
+        ]
+      },
+      "started": 1792651653622,
+      "status": 200,
+      "response": {
+        "results": []
+      },
+      "finished": 1792651653649
+    },
+    {
+      "url": "/api/analyze/decision-gate",
+      "body": {
+        "evidence": {
+          "business_type": "Tea Shop",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Average delivery revenue per order",
+                "amount": 22.8,
+                "source_text": "Average delivery revenue per order was USD 22.80."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Packaging, platform fees, discounts, and food costs (combined for some orders)",
+                "amount": null,
+                "reported_category": "variable",
+                "source_text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              }
+            ]
+          },
+          "facts": [],
+          "assumptions": [],
+          "missing_information": [
+            "Total delivery revenue for the period",
+            "Number of delivery orders",
+            "Number of affected orders where costs exceeded revenue",
+            "Total loss amount from affected orders",
+            "Breakdown of packaging costs, platform fees, discounts, and food costs per order or in total"
+          ],
+          "confidence": "low",
+          "provenance": {
+            "source_input": "Business name: Fern Delivery\nSelected business type: Tea Shop\nBusiness description / notes: Review of delivery orders last month; currency USD. Average delivery revenue per order was USD 22.80.\nFor some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\nWe do not know the number of affected orders or the total loss. No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+            "items": [
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_01",
+                "source": "evidence.business_type",
+                "text": "Tea Shop"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Average delivery revenue per order\",\"amount\":22.8,\"source_text\":\"Average delivery revenue per order was USD 22.80.\"}"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_05",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Packaging, platform fees, discounts, and food costs (combined for some orders)\",\"amount\":null,\"reported_category\":\"variable\",\"source_text\":\"For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\"}"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_01",
+                "source": "source_input[0]",
+                "text": "Business name: Fern Delivery"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Tea Shop"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "source": "source_input[3]",
+                "text": "Average delivery revenue per order was USD 22.80."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_05",
+                "source": "source_input[4]",
+                "text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                "source": "source_input[5]",
+                "text": "We do not know the number of affected orders or the total loss."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_07",
+                "source": "source_input[6]",
+                "text": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_01",
+                "text": "Business name: Fern Delivery",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_01"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_02",
+                "text": "Selected business type: Tea Shop",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_02"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_03"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "text": "Average delivery revenue per order was USD 22.80.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_04"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_05",
+                "text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_05"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                "text": "We do not know the number of affected orders or the total loss.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_06"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_07",
+                "text": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_07"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_08",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD. Average delivery revenue per order was USD 22.80.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_04"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_09",
+                "text": "We do not know the number of affected orders or the total loss. No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_07"
+                ]
+              }
+            ],
+            "authorization_records": []
+          }
+        },
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Delivery unit economics — some orders unprofitable",
+              "reason": "Missing explicit permission to test reducing waste toward the stated 5% target.",
+              "missing_decision_input_categories": [
+                "a controllable decision variable",
+                "constraints governing that variable",
+                "unit-level cost data"
+              ]
+            }
+          ]
+        },
+        "simulation": {
+          "results": []
+        }
+      },
+      "started": 1792651654801,
+      "status": 200,
+      "response": {
+        "decision_gate": "no_actionable_scenario",
+        "reason_codes": [
+          "no_authorized_scenarios"
+        ],
+        "comparison_gap_status": "not_applicable",
+        "candidates": [],
+        "top_candidate_id": null,
+        "missing_decision_inputs": [
+          "a controllable decision variable",
+          "constraints governing that variable",
+          "unit-level cost data"
+        ],
+        "policy_required_inputs": [],
+        "not_simulation_ready": [
+          {
+            "target_leak": "Delivery unit economics — some orders unprofitable",
+            "reason": "Missing explicit permission to test reducing waste toward the stated 5% target.",
+            "missing_decision_input_categories": [
+              "a controllable decision variable",
+              "constraints governing that variable",
+              "unit-level cost data"
+            ]
+          }
+        ]
+      },
+      "finished": 1792651654844
+    },
+    {
+      "url": "/api/analyze/decision",
+      "body": {
+        "evidence": {
+          "business_type": "Tea Shop",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Average delivery revenue per order",
+                "amount": 22.8,
+                "source_text": "Average delivery revenue per order was USD 22.80."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Packaging, platform fees, discounts, and food costs (combined for some orders)",
+                "amount": null,
+                "reported_category": "variable",
+                "source_text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              }
+            ]
+          },
+          "facts": [],
+          "assumptions": [],
+          "missing_information": [
+            "Total delivery revenue for the period",
+            "Number of delivery orders",
+            "Number of affected orders where costs exceeded revenue",
+            "Total loss amount from affected orders",
+            "Breakdown of packaging costs, platform fees, discounts, and food costs per order or in total"
+          ],
+          "confidence": "low",
+          "provenance": {
+            "source_input": "Business name: Fern Delivery\nSelected business type: Tea Shop\nBusiness description / notes: Review of delivery orders last month; currency USD. Average delivery revenue per order was USD 22.80.\nFor some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\nWe do not know the number of affected orders or the total loss. No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+            "items": [
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_01",
+                "source": "evidence.business_type",
+                "text": "Tea Shop"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Average delivery revenue per order\",\"amount\":22.8,\"source_text\":\"Average delivery revenue per order was USD 22.80.\"}"
+              },
+              {
+                "id": "ev_538819ac21fe5e75997b7e4c2e379c66_05",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Packaging, platform fees, discounts, and food costs (combined for some orders)\",\"amount\":null,\"reported_category\":\"variable\",\"source_text\":\"For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.\"}"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_01",
+                "source": "source_input[0]",
+                "text": "Business name: Fern Delivery"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Tea Shop"
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "source": "source_input[3]",
+                "text": "Average delivery revenue per order was USD 22.80."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_05",
+                "source": "source_input[4]",
+                "text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                "source": "source_input[5]",
+                "text": "We do not know the number of affected orders or the total loss."
+              },
+              {
+                "id": "src_aba185e5a3c2255ac7a668ef24b70d3a_07",
+                "source": "source_input[6]",
+                "text": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_01",
+                "text": "Business name: Fern Delivery",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_01"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_02",
+                "text": "Selected business type: Tea Shop",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_02"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_03"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "text": "Average delivery revenue per order was USD 22.80.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_04"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_05",
+                "text": "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_05"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                "text": "We do not know the number of affected orders or the total loss.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_06"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_07",
+                "text": "No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_07"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_08",
+                "text": "Business description / notes: Review of delivery orders last month; currency USD. Average delivery revenue per order was USD 22.80.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_03",
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_04"
+                ]
+              },
+              {
+                "id": "fact_aba185e5a3c2255ac7a668ef24b70d3a_09",
+                "text": "We do not know the number of affected orders or the total loss. No change to prices, fees, order minimums, discounts, packaging or menu policy has been approved.",
+                "source_refs": [
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_06",
+                  "src_aba185e5a3c2255ac7a668ef24b70d3a_07"
+                ]
+              }
+            ],
+            "authorization_records": []
+          }
+        },
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_aba185e5a3c2255ac7a668ef24b70d3a_04",
+                "fact_aba185e5a3c2255ac7a668ef24b70d3a_05"
+              ],
+              "title": "Delivery unit economics — some orders unprofitable",
+              "category": "delivery",
+              "evidence": [
+                "Average delivery revenue per order was USD 22.80.",
+                "For some orders, packaging, platform fees, discounts, and food costs combined exceeded the revenue from the order."
+              ],
+              "interpretation": "The average delivery order generates USD 22.80 in revenue, yet for a subset of orders the combined variable costs (packaging, platform fees, discounts, and food costs) are higher than the order revenue, meaning those orders lose money on a per-order basis. The number of affected orders and the total loss amount are not known.",
+              "confidence": "medium",
+              "intervention_ref": null
+            }
+          ],
+          "insufficient_evidence": [
+            {
+              "topic": "Total delivery profit leak magnitude",
+              "reason": "The evidence confirms some orders are unprofitable but does not provide the number of affected orders or the total loss amount, so the overall financial impact cannot be quantified."
+            },
+            {
+              "topic": "Cost component breakdown",
+              "reason": "The combined cost categories (packaging, platform fees, discounts, food costs) are reported only as a group; individual component amounts are not supplied, so it is not possible to isolate which component drives the loss."
+            }
+          ]
+        },
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Delivery unit economics — some orders unprofitable",
+              "reason": "Missing explicit permission to test reducing waste toward the stated 5% target.",
+              "missing_decision_input_categories": [
+                "a controllable decision variable",
+                "constraints governing that variable",
+                "unit-level cost data"
+              ]
+            }
+          ]
+        },
+        "simulation": {
+          "results": []
+        },
+        "decision_gate": {
+          "decision_gate": "no_actionable_scenario",
+          "reason_codes": [
+            "no_authorized_scenarios"
+          ],
+          "comparison_gap_status": "not_applicable",
+          "candidates": [],
+          "top_candidate_id": null,
+          "missing_decision_inputs": [
+            "a controllable decision variable",
+            "constraints governing that variable",
+            "unit-level cost data"
+          ],
+          "policy_required_inputs": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Delivery unit economics — some orders unprofitable",
+              "reason": "Missing explicit permission to test reducing waste toward the stated 5% target.",
+              "missing_decision_input_categories": [
+                "a controllable decision variable",
+                "constraints governing that variable",
+                "unit-level cost data"
+              ]
+            }
+          ]
+        }
+      },
+      "started": 1792651654844,
+      "status": 200,
+      "response": {
+        "decision": {
+          "decision_status": "needs_more_data",
+          "recommendation": {
+            "type": "collect_data",
+            "candidate_id": null,
+            "title": "Collect required decision inputs",
+            "rationale": "No authorized scenarios exist for evaluation due to missing decision prerequisites."
+          },
+          "comparison": [
+            {
+              "candidate_id": null,
+              "target_leak": "Delivery unit economics — some orders unprofitable",
+              "scenario_status": "not_simulation_ready",
+              "assessment": "Not ready for simulation due to missing decision inputs.",
+              "verified_impact": null,
+              "currency": null
+            }
+          ],
+          "priority_inputs": [
+            {
+              "source_type": "upstream_missing_input",
+              "key": "a controllable decision variable",
+              "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+            },
+            {
+              "source_type": "upstream_missing_input",
+              "key": "constraints governing that variable",
+              "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+            },
+            {
+              "source_type": "upstream_missing_input",
+              "key": "unit-level cost data",
+              "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+            }
+          ],
+          "confidence": "low"
+        }
+      },
+      "finished": 1792651658793
+    }
+  ],
+  "started": 1792651645932,
+  "page_text": "◔\n\nWhat’s Left?\n\nSee what your business really keeps.\n\nYour profitability workspace\nEARLY PREVIEW\n\nYOUR BUSINESS, UNDERSTOOD\n\nA clearer picture of what’s left.\n\nAI interprets business evidence. Code verifies scenarios and calculates impact. AI recommends within verified boundaries.\n\nAnalysis workspace\n\nFOUR SPECIALISTS. ONE CLEAR ANSWER.\n\nAgent Office\nAnalysis complete\n✧\n\nDecision Agent is reviewing the results.\n\nPreparing a grounded recommendation from the verified decision gate.\n\nBusiness Input\n01 / START HERE\nBusiness name\nBusiness type\nCafé\nBakery\nTea Shop\nRestaurant\nOther\nNotes (optional)\n↥\nDrop your business files here, or browse\nCSV, PDF, XLSX, images · Local selection only · Not analyzed\nRun Analysis Again\n↗\n\nAI analysis with deterministic validation and calculations · Files are not processed.\n\nBusiness Outlook\nBusiness analysis\nlast month · USD\n\nAnalysis complete\n\nYour analysis and decision are ready.\n\nRevenue\n\n—\n\nTotal business income\n\nOperating Costs\n\n—\n\nThe cost of doing business\n\nWhat’s Left\n✧\n\n—\n\nNot calculated in this analysis\n\nMargin\n\n—\n\nNot calculated in this analysis\n\nWhere the money goes\n● Revenue\n▪ Some operating costs are not itemized\n—\n\nRevenue\n\n1 profit leak found\nNEEDS ATTENTION\n↗\nDelivery unit economics — some orders unprofitable\n\nmedium confidence\n\nThe average delivery order generates USD 22.80 in revenue, yet for a subset of orders the combined variable costs (packaging, platform fees, discounts, and food costs) are higher than the order revenue, meaning those orders lose money on a per-order basis. The number of affected orders and the total loss amount are not known.\n\nDELIVERY\n\nNeeds more data (2)\nScenarios to test\n✧\n\nNo supported testable changes were identified.\n\nNeeds a controllable decision input (1)\nDecision\nNeeds more data\nMore data needed before a confident decision\n\nCollect required decision inputs\n\nWhy\n\nNo authorized scenarios exist for evaluation due to missing decision prerequisites.\n\nPriority inputs\n\nMissing data\n\na controllable decision variable\n\nNeeded to produce a verified deterministic impact or establish the supplied decision prerequisite.\n\nMissing data\n\nconstraints governing that variable\n\nNeeded to produce a verified deterministic impact or establish the supplied decision prerequisite.\n\nMissing data\n\nunit-level cost data\n\nNeeded to produce a verified deterministic impact or establish the supplied decision prerequisite.\n\nScenario comparison\nDelivery unit economics — some orders unprofitable\n\nNeeds a controllable decision input\n\nNot ready for simulation due to missing decision inputs.\n\nlow confidence in this conclusion\n\nWhat’s Left? · A little clarity goes a long way.\nAI analysis with deterministic validation, scenario calculations, and bounded decision support.",
+  "complete": true,
+  "error": null,
+  "total_latency_ms": 12887,
+  "timeline": [
+    {
+      "at": 1792651646001,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646052,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646105,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646158,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646214,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646267,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646320,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646373,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646425,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646478,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646531,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646584,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646638,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646692,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646746,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646800,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646853,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646907,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651646961,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647016,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647070,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647122,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647174,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647227,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647280,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647333,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647386,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647440,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647493,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647547,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647601,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647654,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647705,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647759,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647810,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647864,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647923,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651647976,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648029,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648083,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648138,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648192,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648248,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648303,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648355,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648409,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648462,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648516,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648570,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648626,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648679,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648734,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648787,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648842,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648896,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651648949,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649005,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649079,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649133,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649187,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649241,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649293,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649347,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649404,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649457,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649510,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649563,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649616,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649671,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649725,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649779,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649832,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649886,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649938,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651649992,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650047,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650102,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650156,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650208,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650262,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650315,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650370,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650422,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650476,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650530,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650583,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650637,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650690,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650743,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650796,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650850,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650904,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651650959,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651012,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651064,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651117,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651170,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651224,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651276,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651329,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651382,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651435,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651488,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651542,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651597,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651653,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651707,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651760,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651813,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651866,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651919,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651651972,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652025,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652079,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652132,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652189,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652246,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652300,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652354,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652407,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652460,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652514,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652570,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652624,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652678,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652733,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652787,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652842,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652899,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651652953,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653006,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653059,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653112,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653166,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653219,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653272,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653326,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653382,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653437,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653490,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653543,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653597,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653648,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653698,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653751,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653803,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653857,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653910,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651653964,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654016,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654070,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654125,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654179,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654233,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654288,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654341,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654394,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654449,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654501,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654553,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654606,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654659,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654712,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654765,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654835,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654886,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654939,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651654992,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655046,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655100,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655154,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655207,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655261,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655315,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655370,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655423,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655477,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655531,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655586,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655639,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655692,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655746,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655800,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655853,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655906,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651655959,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656013,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656067,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656119,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656173,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656226,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656278,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656332,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656383,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656437,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656491,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656545,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656598,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656652,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656705,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656759,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656812,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656866,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656920,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651656974,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657027,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657080,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657134,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657187,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657240,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657293,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657345,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657399,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657454,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657508,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657561,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657616,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657672,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657726,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657780,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657838,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657892,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651657947,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658002,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658056,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658109,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658163,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658218,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658271,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658322,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658375,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658429,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658482,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658539,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658593,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658647,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658701,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658754,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ],
+      "complete": false
+    },
+    {
+      "at": 1792651658819,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision",
+          "status": 200
+        }
+      ],
+      "complete": true
+    }
+  ],
+  "server_diagnostics": [],
+  "console_diagnostics": [],
+  "exceptions": []
+}

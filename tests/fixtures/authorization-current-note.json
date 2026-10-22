@@ -1,0 +1,157 @@
+{
+  "input": "Business name: Cornhead Bagel\nSelected business type: Caf\u00e9\nBusiness description / notes: Business performance for last month. Currency: USD.\n\nTotal revenue was $100,000.\n\nTotal operating costs were $95,800, including:\n- Labor: $34,000\n- Ingredients: $18,000\n- Rent and utilities: $12,500\n- Delivery platform fees: $9,300\n- Other operating costs: $22,000\n\nTuesday evenings from 6 PM to 10 PM generated $1,900 in sales for the month.\n\nDuring that Tuesday evening period, we normally scheduled 4 staff members. The total staffing cost for those Tuesday evening shifts was $2,500 for the month, equal to $625 per staff member for that affected monthly period.\n\nFriday evenings used the same staffing level of 4 people, but generated $6,200 in monthly sales.\n\nThe owner is willing to test reducing Tuesday evening staffing by 1 person while keeping the rest of the schedule unchanged.\n\nIngredient waste is currently measured at 9%.\n\nThe business's stated internal waste target is 5%.\n\nIngredient purchases for the waste-tracked category were $12,500 during the same month.\n\nFor delivery orders, average revenue per order was $18.40.\n\nSome delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.\n\nThe business has not yet identified or approved a specific controllable change for delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+  "evidence": {
+    "business_type": "Caf\u00e9",
+    "period": "last month",
+    "currency": "USD",
+    "revenue": {
+      "total": 100000,
+      "items": [
+        {
+          "name": "Total revenue",
+          "amount": 100000,
+          "source_text": "Total revenue was $100,000."
+        },
+        {
+          "name": "Tuesday evening sales",
+          "amount": 1900,
+          "source_text": "Tuesday evenings from 6 PM to 10 PM generated $1,900 in sales for the month."
+        },
+        {
+          "name": "Friday evening sales",
+          "amount": 6200,
+          "source_text": "Friday evenings used the same staffing level of 4 people, but generated $6,200 in monthly sales."
+        }
+      ]
+    },
+    "costs": {
+      "total": 95800,
+      "items": [
+        {
+          "name": "Labor",
+          "amount": 34000,
+          "reported_category": "Labor",
+          "source_text": "Labor: $34,000"
+        },
+        {
+          "name": "Ingredients",
+          "amount": 18000,
+          "reported_category": "Ingredients",
+          "source_text": "Ingredients: $18,000"
+        },
+        {
+          "name": "Rent and utilities",
+          "amount": 12500,
+          "reported_category": "Rent and utilities",
+          "source_text": "Rent and utilities: $12,500"
+        },
+        {
+          "name": "Delivery platform fees",
+          "amount": 9300,
+          "reported_category": "Delivery platform fees",
+          "source_text": "Delivery platform fees: $9,300"
+        },
+        {
+          "name": "Other operating costs",
+          "amount": 22000,
+          "reported_category": "Other operating costs",
+          "source_text": "Other operating costs: $22,000"
+        }
+      ]
+    },
+    "facts": [
+      "Tuesday evenings from 6 PM to 10 PM generated $1,900 in sales for the month.",
+      "During that Tuesday evening period, 4 staff members were normally scheduled.",
+      "The total staffing cost for those Tuesday evening shifts was $2,500 for the month, equal to $625 per staff member for that affected monthly period.",
+      "Friday evenings used the same staffing level of 4 people, but generated $6,200 in monthly sales.",
+      "Ingredient waste is currently measured at 9%.",
+      "The business's stated internal waste target is 5%.",
+      "Ingredient purchases for the waste-tracked category were $12,500 during the same month.",
+      "For delivery orders, average revenue per order was $18.40.",
+      "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+      "The owner is willing to test reducing Tuesday evening staffing by 1 person while keeping the rest of the schedule unchanged."
+    ],
+    "assumptions": [],
+    "missing_information": [
+      "The specific controllable change for delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing has not been identified or approved by the business.",
+      "The exact number of delivery orders placed during the month is not provided.",
+      "The breakdown of the $22,000 \"Other operating costs\" into specific line items is not provided.",
+      "The specific staffing cost allocation between Tuesday and Friday evenings is not separately itemized beyond the $2,500 total for Tuesday evenings."
+    ],
+    "confidence": "high"
+  },
+  "leaks": {
+    "leaks": [
+      {
+        "title": "Ingredient waste exceeds internal target",
+        "category": "waste",
+        "evidence_refs": [
+          "fact_abbca75924f4c231a119ad1248d351f3_17",
+          "fact_abbca75924f4c231a119ad1248d351f3_18",
+          "fact_abbca75924f4c231a119ad1248d351f3_19"
+        ],
+        "evidence": [
+          "Ingredient waste is currently measured at 9%.",
+          "The business's stated internal waste target is 5%.",
+          "Ingredient purchases for the waste-tracked category were $12,500 during the same month."
+        ],
+        "interpretation": "Actual waste is 9%, above the stated 5% target.",
+        "confidence": "high"
+      },
+      {
+        "title": "Delivery unit economics: combined costs exceed revenue for some orders",
+        "category": "delivery",
+        "evidence_refs": [
+          "fact_abbca75924f4c231a119ad1248d351f3_21",
+          "fact_abbca75924f4c231a119ad1248d351f3_20",
+          "fact_abbca75924f4c231a119ad1248d351f3_22"
+        ],
+        "evidence": [
+          "For delivery orders, average revenue per order was $18.40.",
+          "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+          "The business has not yet identified or approved a specific controllable change for delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+        ],
+        "interpretation": "For some delivery orders, combined platform fees, packaging, discounts, and food costs exceed revenue from the order, indicating poor delivery unit economics.",
+        "confidence": "high"
+      },
+      {
+        "title": "Tuesday evening labor inefficiency: high staffing cost relative to low sales",
+        "category": "labor",
+        "evidence_refs": [
+          "fact_abbca75924f4c231a119ad1248d351f3_12",
+          "fact_abbca75924f4c231a119ad1248d351f3_13",
+          "fact_abbca75924f4c231a119ad1248d351f3_14",
+          "fact_abbca75924f4c231a119ad1248d351f3_15",
+          "fact_abbca75924f4c231a119ad1248d351f3_16"
+        ],
+        "evidence": [
+          "Tuesday evenings from 6 PM to 10 PM generated $1,900 in sales for the month.",
+          "During that Tuesday evening period, we normally scheduled 4 staff members.",
+          "The total staffing cost for those Tuesday evening shifts was $2,500 for the month, equal to $625 per staff member for that affected monthly period.",
+          "Friday evenings used the same staffing level of 4 people, but generated $6,200 in monthly sales.",
+          "The owner is willing to test reducing Tuesday evening staffing by 1 person while keeping the rest of the schedule unchanged."
+        ],
+        "interpretation": "Tuesday evening staffing of 4 people generates $1,900 in monthly sales versus $6,200 for Friday with identical staffing levels, indicating lower sales efficiency. Owner has permission to test reducing Tuesday staffing by 1 person.",
+        "confidence": "high"
+      }
+    ],
+    "insufficient_evidence": [
+      {
+        "topic": "Specific controllable change for delivery costs",
+        "reason": "The business has not yet identified or approved a specific controllable change for delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+      },
+      {
+        "topic": "Breakdown of Other operating costs",
+        "reason": "The exact breakdown of the $22,000 Other operating costs into specific line items is not provided."
+      },
+      {
+        "topic": "Exact number of delivery orders",
+        "reason": "The exact number of delivery orders placed during the month is not provided."
+      },
+      {
+        "topic": "Staffing cost allocation between Tuesday and Friday evenings",
+        "reason": "The specific staffing cost allocation between Tuesday and Friday evenings is not separately itemized beyond the $2,500 total for Tuesday evenings."
+      }
+    ]
+  }
+}

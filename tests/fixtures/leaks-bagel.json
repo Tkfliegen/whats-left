@@ -1,0 +1,25 @@
+{
+  "evidence": {
+    "business_type": "bagel_shop",
+    "period": "last_month",
+    "currency": "USD",
+    "revenue": { "total": 100000, "items": [] },
+    "costs": {
+      "total": 95800,
+      "items": [
+        { "name": "labor", "amount": 34000, "reported_category": "labor", "source_text": "$34,000 in labor" },
+        { "name": "ingredients", "amount": 18000, "reported_category": "ingredients", "source_text": "$18,000 in ingredients" },
+        { "name": "rent_and_utilities", "amount": 12500, "reported_category": "rent and utilities", "source_text": "$12,500 in rent and utilities" },
+        { "name": "delivery_platform_fees", "amount": 9300, "reported_category": "delivery platform fees", "source_text": "$9,300 in delivery platform fees" }
+      ]
+    },
+    "facts": [], "assumptions": [], "missing_information": [], "confidence": "high"
+  },
+  "operational_context": [
+    "Tuesday evenings from 6 PM to 10 PM average only $1,900 in monthly sales, but staffing during those hours costs $3,080 per month. Staffing levels are similar to Friday evenings, even though Friday evening sales are much higher.",
+    "Delivery orders average $18.40 in revenue per order. For some delivery orders, platform fees, packaging, discounts, and food costs together exceed the revenue from the order. Exact loss per order is not yet available.",
+    "Ingredient waste last month was 9% of ingredient purchases. The business's stated internal target is 5%.",
+    "Rent and utilities total $12,500. No information is available showing whether this amount is above or below market rates.",
+    "Labor is the largest known cost category at $34,000."
+  ]
+}
