@@ -1,14 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
-import vm from 'node:vm';
-import ts from 'typescript';
 
-const exports = {};
-vm.runInNewContext(ts.transpileModule(readFileSync(new URL('../src/lib/evidence-waterfall.ts', import.meta.url),'utf8'), {
-  compilerOptions: {module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022},
-}).outputText,{exports});
-const {evidenceWaterfall,costLabel}=exports;
+import { productionModules } from './helpers/provenance.mjs';
+const {evidenceWaterfall,costLabel}=productionModules()('src/lib/evidence-waterfall.ts');
 const fixture=()=>({business_type:'bagel shop',period:'last month',currency:'$',
  revenue:{total:100000,items:[]},costs:{total:95800,items:[
   {name:'labor',amount:34000},{name:'ingredients',amount:18000},
@@ -17,27 +11,25 @@ const fixture=()=>({business_type:'bagel shop',period:'last month',currency:'$',
  ]},facts:[],assumptions:[],missing_information:['Exact breakdown'],confidence:'high'});
 const plain=value=>JSON.parse(JSON.stringify(value));
 
-test('real bagel data replaces all sample costs and does not balance unitemized expenses',()=>{
+test('real Evidence bridge uses whole-business totals, never component sums or invented costs',()=>{
  const chart=evidenceWaterfall(fixture());
  assert.deepEqual(plain(chart.bars.map(b=>[b.label,b.value])),[
-  ['Revenue',100000],['Labor',34000],['Ingredients',18000],['Rent & utilities',12500],['Delivery fees',9300],
+  ['Revenue',100000],['Operating Costs',95800],['What’s Left',4200],
  ]);
- assert.equal(chart.unitemized,true);
- assert.equal(chart.bars.some(b=>b.value===22000||b.value===4200),false);
- assert.equal(chart.bars.some(b=>['Other','Waste','Maintenance','Utilities','Left'].includes(b.label)),false);
- assert.equal(chart.bars[4].bottom,26200); // Known deductions stop here, with no invented balancing bar.
+ assert.equal(chart.bars[1].bottom,4200);
+ assert.equal(chart.bars.some(b=>b.value===22000),false);
+ const e=fixture();e.costs.items=[{name:'overlapping scope',amount:999999}];
+ assert.deepEqual(plain(evidenceWaterfall(e)),plain(chart));
 });
-test('incomplete itemization is noted even without explicit null-cost items',()=>{
- const e=fixture();e.costs.items=e.costs.items.filter(i=>i.amount!==null);
- assert.equal(evidenceWaterfall(e).unitemized,true);
- e.costs.total=73800;assert.equal(evidenceWaterfall(e).unitemized,false);
-});
-test('missing revenue and empty Evidence do not fall back to sample values',()=>{
+test('missing totals omit calculated result and do not fall back to sample values',()=>{
  const e=fixture();e.revenue.total=null;
- const chart=evidenceWaterfall(e);assert.equal(chart.bars[0].value,null);
- assert.ok(chart.bars.every(b=>b.bottom===0));
+ const chart=evidenceWaterfall(e);
+ assert.deepEqual(plain(chart.bars.map(b=>[b.label,b.value])),[['Revenue',null],['Operating Costs',95800]]);
+ assert.equal(chart.bars.every(b=>b.bottom===0),true);
  e.costs.total=null;e.costs.items=[];
- assert.deepEqual(plain(evidenceWaterfall(e).bars),[{label:'Revenue',value:null,bottom:0,total:true}]);
+ assert.deepEqual(plain(evidenceWaterfall(e).bars.map(b=>b.value)),[null,null]);
+ e.revenue.total=100000;
+ assert.equal(evidenceWaterfall(e).bars.some(b=>b.label==='What’s Left'),false);
 });
 test('initial no-Evidence fallback preserves the original sample chart',()=>{
  const chart=evidenceWaterfall(null);

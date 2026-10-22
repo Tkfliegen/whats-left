@@ -9,6 +9,7 @@ import type { LeakResult } from "@/types/leaks";
 import { leakSummary } from "@/lib/leak-display";
 import type { Evidence } from "@/types/evidence";
 import { evidenceAmount } from "@/lib/evidence-display";
+import { baselineBusinessSummary } from "@/lib/baseline-business-summary";
 import { evidenceWaterfall } from "@/lib/evidence-waterfall";
 import { useBackgroundRegions } from "./use-background-regions";
 
@@ -48,18 +49,23 @@ function BusinessInputPanel({ onAnalyze, complete, isRunning, analysisError }: {
     </form></section>;
 }
 
-function SummaryMetrics({ stage, evidence }: { stage: AnalysisStage; evidence: Evidence | null }) {
+function SummaryMetrics({ evidence }: { evidence: Evidence | null }) {
   const snapshot = evidence !== null;
-  const economics = ["leaks", "scenario", "decision", "complete"].includes(stage);
-  const metrics = [{ label: "Revenue", value: evidence ? evidenceAmount(evidence.revenue.total, evidence.currency) : "—", detail: "Total business income" }, { label: "Operating Costs", value: evidence ? evidenceAmount(evidence.costs.total, evidence.currency) : "—", detail: "The cost of doing business" }, { label: "What’s Left", value: "—", detail: "Not calculated in this analysis", featured: true }, { label: "Margin", value: "—", detail: "Not calculated in this analysis" }];
-  return <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{metrics.map(metric => <div key={metric.label} className={`rounded-xl border p-5 ${metric.featured ? "border-[var(--border-active)] bg-[var(--bg-card)]" : "border-[var(--border-default)] bg-[var(--bg-card)]"}`}><p className={`text-xs ${metric.featured ? "text-[var(--accent-primary)]" : "text-[var(--text-secondary)]"}`}>{metric.label}{metric.featured && <span className="float-right" aria-hidden="true">✧</span>}</p><ResultReveal visible={metric.label === "Revenue" || metric.label === "Operating Costs" ? snapshot : economics} waiting="—"><p className={`mt-3 font-medium tracking-tight tabular-nums ${metric.featured ? "text-4xl text-[var(--accent-result-current)]" : "text-3xl text-[var(--text-primary)]"}`}>{metric.value}</p><p className="mt-2 text-[10px] text-[var(--text-muted)]">{metric.detail}</p></ResultReveal></div>)}</div>;
+  const baseline = baselineBusinessSummary(evidence);
+  const metrics = [
+    { label: "Revenue", value: evidenceAmount(baseline.revenue, evidence?.currency ?? null), detail: "Reported whole-business total" },
+    { label: "Operating Costs", value: evidenceAmount(baseline.operatingCosts, evidence?.currency ?? null), detail: "Reported whole-business total" },
+    { label: "What’s Left", value: evidenceAmount(baseline.whatsLeft, evidence?.currency ?? null), detail: baseline.missing ?? "Deterministic baseline · Revenue − operating costs", featured: true },
+    { label: "Margin", value: baseline.margin === null ? "—" : `${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(baseline.margin)}%`, detail: baseline.marginUnavailable ?? "Deterministic baseline · What’s Left ÷ revenue" },
+  ];
+  return <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{metrics.map(metric => <div key={metric.label} className={`rounded-xl border p-5 ${metric.featured ? "border-[var(--border-active)] bg-[var(--bg-card)]" : "border-[var(--border-default)] bg-[var(--bg-card)]"}`}><p className={`text-xs ${metric.featured ? "text-[var(--accent-primary)]" : "text-[var(--text-secondary)]"}`}>{metric.label}{metric.featured && <span className="float-right" aria-hidden="true">✧</span>}</p><ResultReveal visible={snapshot} waiting="—"><p className={`mt-3 font-medium tracking-tight tabular-nums ${metric.featured ? "text-4xl text-[var(--accent-result-current)]" : "text-3xl text-[var(--text-primary)]"}`}>{metric.value}</p><p className="mt-2 text-[10px] text-[var(--text-muted)]">{metric.detail}</p></ResultReveal></div>)}</div>;
 }
 
 function ProfitWaterfall({ evidence }: { evidence: Evidence | null }) {
   const chart = evidenceWaterfall(evidence);
   const { bars } = chart;
   const percent = (value: number) => (value - chart.min) / chart.range * 100;
-  return <section className="panel mt-5 p-5 sm:p-6" aria-labelledby="waterfall-title"><div className="flex flex-wrap items-center justify-between gap-3"><h3 id="waterfall-title" className="text-sm font-medium">Where the money goes</h3><div className="flex gap-4 text-[10px] text-[var(--text-secondary)]"><span>● {evidence ? "Revenue" : "Revenue & profit"}</span><span>▪ {evidence ? chart.unitemized ? "Some operating costs are not itemized" : "Known cost breakdown shown" : "Operating costs"}</span></div></div><div className="mt-7 overflow-x-auto pb-2" tabIndex={0} role="region" aria-label={evidence ? "Revenue and known cost breakdown: scroll horizontally on small screens" : "Profit waterfall: scroll horizontally on small screens"}><div className="waterfall min-w-[720px]" style={{ gridTemplateColumns: `repeat(${bars.length}, minmax(0, 1fr))` }}>{bars.map((bar, index) => <div key={`${index}-${bar.label}`}><div className="relative h-40 border-b border-[var(--border-default)]"><div className={`absolute inset-x-[17%] rounded-t-sm ${bar.label === "Left" ? "bg-[var(--accent-result-current)]/80" : "bg-[var(--text-muted)]/60"}`} style={{ height: `${Math.abs(bar.value ?? 0) / chart.range * 100}%`, bottom: `${percent(bar.bottom)}%` }} /><span className={`absolute inset-x-0 text-center font-mono text-[9px] ${bar.label === "Left" ? "text-[var(--accent-result-current)]" : bar.total ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)]"}`} style={{ bottom: `calc(${percent(bar.bottom + Math.abs(bar.value ?? 0))}% + 7px)` }}>{bar.total ? "" : (bar.value ?? 0) < 0 ? "+" : "−"}{evidence ? evidenceAmount(bar.value === null || bar.total ? bar.value : Math.abs(bar.value), evidence.currency) : money(bar.value ?? 0)}</span></div><p className="mt-3 text-center text-[9px] text-[var(--text-secondary)]">{bar.label}</p></div>)}</div></div></section>;
+  return <section className="panel mt-5 p-5 sm:p-6" aria-labelledby="waterfall-title"><div className="flex flex-wrap items-center justify-between gap-3"><h3 id="waterfall-title" className="text-sm font-medium">Where the money goes</h3><div className="flex gap-4 text-[10px] text-[var(--text-secondary)]"><span>● {evidence ? "Reported totals" : "Revenue & profit"}</span><span>▪ {evidence ? "What’s Left: deterministic baseline, not Scenario impact" : "Operating costs"}</span></div></div><div className="mt-7 overflow-x-auto pb-2" tabIndex={0} role="region" aria-label={evidence ? "Reported totals and deterministic baseline: scroll horizontally on small screens" : "Profit waterfall: scroll horizontally on small screens"}><div className="waterfall min-w-[720px]" style={{ gridTemplateColumns: `repeat(${bars.length}, minmax(0, 1fr))` }}>{bars.map((bar, index) => <div key={`${index}-${bar.label}`}><div className="relative h-40 border-b border-[var(--border-default)]"><div className={`absolute inset-x-[17%] rounded-t-sm ${(bar.label === "Left" || bar.label === "What’s Left") ? "bg-[var(--accent-result-current)]/80" : "bg-[var(--text-muted)]/60"}`} style={{ height: `${Math.abs(bar.value ?? 0) / chart.range * 100}%`, bottom: `${percent(bar.bottom)}%` }} /><span className={`absolute inset-x-0 text-center font-mono text-[9px] ${(bar.label === "Left" || bar.label === "What’s Left") ? "text-[var(--accent-result-current)]" : bar.total ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)]"}`} style={{ bottom: `calc(${percent(bar.bottom + Math.abs(bar.value ?? 0))}% + 7px)` }}>{bar.total ? "" : (bar.value ?? 0) < 0 ? "+" : "−"}{evidence ? evidenceAmount(bar.value === null || bar.total ? bar.value : Math.abs(bar.value), evidence.currency) : money(bar.value ?? 0)}</span></div><p className="mt-3 text-center text-[9px] text-[var(--text-secondary)]">{bar.label}</p></div>)}</div></div></section>;
 }
 
 function ProfitLeaks({ visible, result }: { visible: boolean; result: LeakResult }) {
@@ -99,7 +105,7 @@ function BusinessOutlook({ stage, runId, evidence, leakResult, scenarioResult, s
       <p>{analysisError ? evidence ? "Your completed results are preserved. Please try again." : "Your input is preserved. Please try again." : stage === "idle" ? "Add your business details and files, then run the analysis." : stage === "complete" ? "Your analysis and decision are ready." : "AI analysis with deterministic validation and scenario calculations."}</p>
     </div>
     <div key={runId}>
-      <SummaryMetrics stage={stage} evidence={evidence} />
+      <SummaryMetrics evidence={evidence} />
       {stage === "complete" && <ProfitWaterfall evidence={evidence} />}
       {leakResult && <div className="mt-7 grid gap-5 lg:grid-cols-[1.4fr_1fr]">
         <ProfitLeaks visible={true} result={leakResult} />

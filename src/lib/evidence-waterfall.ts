@@ -1,3 +1,4 @@
+import { baselineBusinessSummary } from "@/lib/baseline-business-summary";
 import type { Evidence } from "@/types/evidence";
 
 export type WaterfallBar = {
@@ -26,29 +27,17 @@ export function evidenceWaterfall(evidence: Evidence | null) {
     const bars: WaterfallBar[] = [{ label: "Revenue", value: 100000, bottom: 0, total: true }, ...costs.map(([label, value], index) => ({ label, value, bottom: 100000 - costs.slice(0, index + 1).reduce((sum, cost) => sum + cost[1], 0), total: false })), { label: "Left", value: 4200, bottom: 0, total: true }];
     return { bars, min: 0, range: 100000, unitemized: false };
   }
-  const knownCosts = evidence.costs.items.filter(
-    (item): item is typeof item & { amount: number } => item.amount !== null && Number.isFinite(item.amount),
-  );
+  const baseline = baselineBusinessSummary(evidence);
   const bars: WaterfallBar[] = [
-    { label: "Revenue", value: evidence.revenue.total, bottom: Math.min(0, evidence.revenue.total ?? 0), total: true },
+    { label: "Revenue", value: baseline.revenue, bottom: Math.min(0, baseline.revenue ?? 0), total: true },
+    { label: "Operating Costs", value: baseline.operatingCosts,
+      bottom: baseline.whatsLeft === null ? Math.min(0, baseline.operatingCosts ?? 0) : Math.min(baseline.revenue!, baseline.whatsLeft),
+      total: baseline.whatsLeft === null },
   ];
-  let running = evidence.revenue.total ?? 0;
-  for (const item of knownCosts) {
-    const next = running - item.amount;
-    bars.push({
-      label: costLabel(item.name), value: item.amount, total: false,
-      // Without reported revenue, show known amounts from zero rather than imply a balance.
-      bottom: evidence.revenue.total === null ? 0 : Math.min(running, next),
-    });
-    running = next;
+  if (baseline.whatsLeft !== null) {
+    bars.push({ label: "What’s Left", value: baseline.whatsLeft, bottom: Math.min(0, baseline.whatsLeft), total: true });
   }
   const min = Math.min(0, ...bars.map(bar => bar.bottom));
   const max = Math.max(0, ...bars.map(bar => bar.bottom + Math.abs(bar.value ?? 0)));
-  return {
-    bars,
-    min,
-    range: Math.max(max - min, 1),
-    unitemized: evidence.costs.items.some(item => item.amount === null)
-      || (evidence.costs.total !== null && knownCosts.reduce((sum, item) => sum + item.amount, 0) < evidence.costs.total),
-  };
+  return { bars, min, range: Math.max(max - min, 1), unitemized: false };
 }
