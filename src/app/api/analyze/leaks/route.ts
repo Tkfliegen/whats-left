@@ -1,3 +1,4 @@
+import { observeRoute } from "../../../../lib/observability/langsmith";
 import type { LeakRequest, LeakResponse } from "@/types/leaks";
 import { isLeakRequest, isLeakResult, isModelLeakResult, createLeakSchema, buildLeakInput, leakSystemPrompt } from "./leaks";
 import { validateLeakOutput } from "./output";
@@ -14,7 +15,7 @@ const json = (body: unknown, status = 200) => Response.json(body, {
 });
 const error = (message: string, status: number) => json({ error: message }, status);
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   let body: unknown;
   try {
     body = await request.json();
@@ -92,3 +93,5 @@ export async function POST(request: Request) {
     return error("Leak analysis provider is unavailable or returned an invalid response.", 502);
   }
 }
+
+export const POST = observeRoute("leak-detective", NEBIUS_MODEL, handlePOST);

@@ -14,7 +14,7 @@ function load(filename){
   if(cache.has(filename))return cache.get(filename);
   const exports={};cache.set(filename,exports);
   const code=ts.transpileModule(readFileSync(filename,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
-  vm.runInNewContext(code,{exports,structuredClone,Response,require:specifier=>specifier.startsWith('node:')?nativeRequire(specifier):load(specifier.startsWith('@/')?path.resolve('src',specifier.slice(2)+'.ts'):path.resolve(path.dirname(filename),specifier+'.ts')),fetch(){externalCalls++;throw Error('No external calls allowed');}});
+  vm.runInNewContext(code,{exports,structuredClone,Response,process:{env:{}},require:specifier=>specifier.startsWith('node:')?nativeRequire(specifier):load(specifier.startsWith('@/')?path.resolve('src',specifier.slice(2)+'.ts'):path.resolve(path.dirname(filename),specifier+'.ts')),fetch(){externalCalls++;throw Error('No external calls allowed');}});
   return exports;
 }
 const root=fileURLToPath(new URL('../src/',import.meta.url));

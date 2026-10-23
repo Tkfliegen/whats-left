@@ -1,6 +1,6 @@
 import {createRequire} from 'node:module';
 const nativeRequire=createRequire(import.meta.url);
-import {provenance} from './helpers/provenance.mjs';
+import {provenance,productionModules} from './helpers/provenance.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -17,7 +17,7 @@ function loadRoute(fetcher, key = 'test-key') {
     }).outputText;
     const exports = {};
     cache.set(name, exports);
-    vm.runInNewContext(code, { exports, require: specifier => specifier.startsWith('node:') ? nativeRequire(specifier) : load(specifier.slice(2)), Response, AbortSignal,
+    vm.runInNewContext(code, { exports, require: specifier => specifier.startsWith('node:') ? nativeRequire(specifier) : specifier === '../../../../lib/observability/langsmith' ? productionModules()('src/lib/observability/langsmith.ts') : load(specifier.slice(2)), Response, AbortSignal,
       process: { env: { NEBIUS_API_KEY: key } }, fetch: fetcher });
     return exports;
   }

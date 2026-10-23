@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createAnalysisTrace } from "@/lib/observability/client";
 
 import type { Evidence } from "@/types/evidence";
 import type { LeakResponse, LeakResult } from "@/types/leaks";
@@ -60,6 +61,8 @@ export function useDemoAnalysis() {
     setDecisionResult(null);
     setAnalysisError("");
     setWorkflow(current => ({ index: 0, phase: "working", runId: current.runId + 1, started: true, complete: false }));
+    const tracing = createAnalysisTrace();
+    let completed = false;
     let failedStage: "Evidence" | "Leak" | "Scenario" | "Scenario calculation" | "Decision Gate" | "Decision" = "Evidence";
     let failureStatus: number | null = null;
     const handoff = () => new Promise<void>((resolve, reject) => {
@@ -73,10 +76,11 @@ export function useDemoAnalysis() {
     try {
       const response = await fetch("/api/analyze/evidence", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: tracing.headers(),
         body: JSON.stringify({ input }),
         signal: AbortSignal.any([controller.signal, AbortSignal.timeout(75_000)]),
       });
+      tracing.observe(response);
       if (!response.ok) throw new Error("Evidence request failed");
       const result: { evidence?: Evidence } = await response.json();
       const evidence = result?.evidence;
@@ -95,7 +99,7 @@ export function useDemoAnalysis() {
       setWorkflow(current => ({ ...current, index: 1, phase: "working" }));
       const leakResponse = await fetch("/api/analyze/leaks", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: tracing.headers(),
         body: JSON.stringify({ evidence, operational_context: operationalContext(notes) }),
         signal: AbortSignal.any([controller.signal, AbortSignal.timeout(75_000)]),
       });
@@ -121,7 +125,7 @@ export function useDemoAnalysis() {
       failedStage = "Scenario";
       setWorkflow(current => ({ ...current, index: 2, phase: "working" }));
       const scenarioResponse = await fetch("/api/analyze/scenarios", {
-        method: "POST", headers: { "Content-Type": "application/json" },
+        method: "POST", headers: tracing.headers(),
         body: JSON.stringify({ evidence, leaks: findings, operational_context: operationalContext(notes) }),
         signal: AbortSignal.any([controller.signal, AbortSignal.timeout(75_000)]),
       });
@@ -132,7 +136,7 @@ export function useDemoAnalysis() {
       setScenarioResult(scenarioBody);
       failedStage = "Scenario calculation";
       const simulationResponse = await fetch("/api/analyze/simulate", {
-        method: "POST", headers: { "Content-Type": "application/json" },
+        method: "POST", headers: tracing.headers(),
         body: JSON.stringify({ evidence, scenarios: scenarioBody.scenarios, input_facts: scenarioBody.input_facts }),
         signal: AbortSignal.any([controller.signal, AbortSignal.timeout(75_000)]),
       });
@@ -147,7 +151,7 @@ export function useDemoAnalysis() {
       failedStage = "Decision Gate";
       setWorkflow(current => ({ ...current, index: 3, phase: "working" }));
       const gateResponse = await fetch("/api/analyze/decision-gate", {
-        method: "POST", headers: { "Content-Type": "application/json" },
+        method: "POST", headers: tracing.headers(),
         body: JSON.stringify({ evidence, scenarios: scenarioBody.scenarios, simulation: simulationBody }),
         signal: AbortSignal.any([controller.signal, AbortSignal.timeout(75_000)]),
       });
@@ -158,7 +162,7 @@ export function useDemoAnalysis() {
       setDecisionGateResult(gateBody);
       failedStage = "Decision";
       const decisionResponse = await fetch("/api/analyze/decision", {
-        method: "POST", headers: { "Content-Type": "application/json" },
+        method: "POST", headers: tracing.headers(),
         // Pass through the exact stored Gate object; never rebuild its provenance.
         body: JSON.stringify({ evidence, leaks: findings, scenarios: scenarioBody.scenarios,
           simulation: simulationBody, decision_gate: gateBody }),
@@ -170,11 +174,14 @@ export function useDemoAnalysis() {
       if (controller.signal.aborted || request.current !== controller) return;
       setDecisionResult(decisionBody.decision);
       setWorkflow(current => ({ ...current, phase: "pause", complete: true }));
+      completed = true;
     } catch {
       if (controller.signal.aborted || request.current !== controller) return;
       running.current = false;
       setAnalysisError(`${failedStage} analysis couldn't be completed${failureStatus ? ` (HTTP ${failureStatus})` : ""}. Please try again.`);
       setWorkflow(current => ({ ...current, index: failedStage === "Evidence" ? 0 : failedStage === "Leak" ? 1 : failedStage.startsWith("Decision") ? 3 : 2, phase: "idle", started: failedStage !== "Evidence", complete: false }));
+    } finally {
+      tracing.finish(controller.signal.aborted ? "cancelled" : completed ? "complete" : "failed");
     }
   };
   const isRunning = workflow.started && !workflow.complete && workflow.phase !== "idle";

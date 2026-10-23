@@ -11,7 +11,7 @@ const fixtures=JSON.parse(readFileSync(new URL('./fixtures/decision-gate.json',i
 let externalCalls=0;const cache=new Map();
 function load(filename){if(cache.has(filename))return cache.get(filename);const exports={};cache.set(filename,exports);
   const code=ts.transpileModule(readFileSync(filename,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
-  vm.runInNewContext(code,{exports,structuredClone,Response,fetch(){externalCalls++;throw Error('No external call permitted');},require:s=>s.startsWith('node:')?nativeRequire(s):load(s.startsWith('@/')?path.resolve('src',s.slice(2)+'.ts'):path.resolve(path.dirname(filename),s+'.ts'))});return exports;}
+  vm.runInNewContext(code,{exports,structuredClone,Response,process:{env:{}},fetch(){externalCalls++;throw Error('No external call permitted');},require:s=>s.startsWith('node:')?nativeRequire(s):load(s.startsWith('@/')?path.resolve('src',s.slice(2)+'.ts'):path.resolve(path.dirname(filename),s+'.ts'))});return exports;}
 const {evaluateDecisionGate,isDecisionGateRequest,compareImpactGap,validatePolicyRequiredInputs}=load(path.resolve('src/lib/decision-gate.ts'));
 const {POST}=load(path.resolve('src/app/api/analyze/decision-gate/route.ts'));
 const fixture=name=>structuredClone(fixtures[name]);const plain=v=>JSON.parse(JSON.stringify(v));

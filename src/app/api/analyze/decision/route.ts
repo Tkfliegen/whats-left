@@ -1,3 +1,4 @@
+import { observeRoute } from "../../../../lib/observability/langsmith";
 import type { DecisionResponse } from "@/types/decision";
 import { buildDecisionInput, decisionSchema, decisionSystemPrompt, isDecisionRequest, validateDecisionResult } from "./decision";
 
@@ -5,7 +6,7 @@ export const runtime = "nodejs";
 const json = (body: unknown, status = 200) => Response.json(body, { status, headers: { "Cache-Control": "no-store" } });
 const error = (message: string, status: number) => json({ error: message }, status);
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   let body: unknown;
   try { body = await request.json(); }
   catch { return error("Invalid JSON request body.", 400); }
@@ -42,3 +43,5 @@ export async function POST(request: Request) {
     return error("Decision analysis provider is unavailable or returned an invalid response.", 502);
   }
 }
+
+export const POST = observeRoute("decision-agent", "nvidia/nemotron-3-super-120b-a12b", handlePOST);

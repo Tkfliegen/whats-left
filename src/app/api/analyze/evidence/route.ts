@@ -1,3 +1,4 @@
+import { observeRoute } from "../../../../lib/observability/langsmith";
 import { groundBusinessTotals } from "./business-totals";
 import { assembleAuthorizationRecords } from "./authorization-atoms";
 import { validateAuthorizationRecords } from "./authorization-records";
@@ -26,7 +27,7 @@ const providerDiagnostic = (reason: ProviderFailure, detail: { status?: number; 
   }
 };
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   let body: unknown;
   try {
     body = await request.json();
@@ -139,3 +140,5 @@ export async function POST(request: Request) {
     return error("Evidence provider is unavailable or returned an invalid response.", 502);
   }
 }
+
+export const POST = observeRoute("evidence-agent", NEBIUS_MODEL, handlePOST);

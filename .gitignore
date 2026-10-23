@@ -72,3 +72,6 @@ next-env.d.ts
 !/docs/evaluations/judge-style-final-acceptance/summary.json
 !/docs/evaluations/judge-style-final-acceptance/source-check.json
 !/docs/evaluations/judge-style-final-acceptance/verification.json
+
+# Safe configuration template; contains no credentials.
+!.env.example

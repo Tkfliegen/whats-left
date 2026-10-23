@@ -1,3 +1,4 @@
+import { observeRoute, traceStage } from "../../../../lib/observability/langsmith";
 import type { ScenarioResponse } from "@/types/scenarios";
 import { buildScenarioInput, isScenarioRequest, validateScenarioResult, createScenarioSchema, scenarioSystemPrompt } from "./scenarios";
 
@@ -14,7 +15,7 @@ const json = (body: unknown, status = 200) => Response.json(body, {
 });
 const error = (message: string, status: number) => json({ error: message }, status);
 
-export async function POST(request: Request) {
+async function handlePOST(request: Request) {
   let body: unknown;
   try {
     body = await request.json();
@@ -27,7 +28,7 @@ export async function POST(request: Request) {
   const key = process.env.NEBIUS_API_KEY;
   if (!key?.trim()) return error("Scenario analysis service is not configured.", 500);
 
-  const input = buildScenarioInput(body);
+  const input = traceStage("scenario-authorization", () => buildScenarioInput(body));
   const schema = createScenarioSchema(input.input_facts, input.confirmed_leaks);
   try {
     const upstream = await fetch(`${NEBIUS_BASE_URL}chat/completions`, {
@@ -66,7 +67,7 @@ export async function POST(request: Request) {
     if (!validateScenarioResult(result, input.input_facts, input.confirmed_leaks)) {
       return error("Scenario analysis result rejected by deterministic validation.", 502);
     }
-    const support = validateScenarioSupport(result, input.authorized_changes);
+    const support = traceStage("scenario-authorization-validation", () => validateScenarioSupport(result, input.authorized_changes));
     if (!support.ok) {
       return error(`Scenario analysis result rejected by semantic authorization validation: ${support.reason}.`, 502);
     }
@@ -77,3 +78,5 @@ export async function POST(request: Request) {
     return error("Scenario analysis provider is unavailable or returned an invalid response.", 502);
   }
 }
+
+export const POST = observeRoute("scenario-agent", NEBIUS_MODEL, handlePOST);
