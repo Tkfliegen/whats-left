@@ -1,0 +1,444 @@
+{
+  "title": "Final 10-case judge validation set",
+  "version": 1,
+  "status": "prepared_not_executed_frozen_case_1_preserved",
+  "historical_suites_unchanged": true,
+  "execution": {
+    "provider_calls": 0,
+    "automatic_execution": false,
+    "frozen_case_1_rerun": false,
+    "retries": false,
+    "repairs": false,
+    "fallbacks": false,
+    "provider_calls_this_preparation": 0,
+    "case_1_verification": "User-reported live PASS; no local live-output artifact supplied."
+  },
+  "acceptance": {
+    "invented_permissions": 0,
+    "unsupported_numeric_escapes": 0,
+    "wrong_trusted_bindings": 0,
+    "fabricated_savings": 0,
+    "correct_abstention": "PASS when source-specific uncertainty or missing authority/input justifies it; action is not required",
+    "classification": "Safety violations = FAIL. Completed valid, source-justified abstention = PASS. Unexplained omissions = COVERAGE_MISS; route/provider/schema failures = EXECUTION_FAILURE, never business-abstention PASS.",
+    "review": "Review every stage semantically against the exact input; numeric token inventories alone cannot detect wrong meanings or bindings. Recompute calculator and Gate from accepted artifacts using existing code. Do not inject oracle values into production requests."
+  },
+  "cases": [
+    {
+      "id": "F01",
+      "category": "Complete calculable Labor — frozen live PASS",
+      "status": "live_pass_user_verified_frozen",
+      "frozen": true,
+      "note": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nThe authoritative labor cost per worker for Tuesday evenings last month was USD 625.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+      "input": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nThe authoritative labor cost per worker for Tuesday evenings last month was USD 625.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+      "source_artifact": null,
+      "execution_eligible": false,
+      "known_literal": "The authoritative labor cost per worker for Tuesday evenings last month was USD 625.",
+      "expected": {
+        "evidence": "Ground USD totals 100000 revenue and 95800 operating costs for last month. Preserve Tuesday baseline 4 persons and explicit USD 625 currency_per_person for last month with literal source support. No arithmetic derivation is needed.",
+        "leak": "Supported Labor mismatch for Tuesday evenings: sales USD 1900 versus staffing cost USD 2500. Only a source-grounded headcount_reduction binding is allowed.",
+        "scenario_authorization": "Only the explicitly approved Tuesday evening test reducing headcount by 1 staff member, retaining the exact stated unchanged scheduling conditions. Do not broaden that constraint into an additional management permission.",
+        "calculation": "LABOR_HEADCOUNT_DELTA: baseline headcount 4, signed delta -1, per-worker USD 625, last month. Exact deterministic values: baseline USD 2500, projected USD 1875, impact USD 625.",
+        "decision_gate_decision": "The sole complete calculable Labor candidate produces action_allowed; Decision may recommend only that candidate under the unchanged Gate contract.",
+        "pass_criteria": [
+          "User-reported live PASS remains frozen; no rerun or new verification claim.",
+          "Exact supplied input is preserved byte-for-byte with its SHA-256 recorded.",
+          "Any future artifact review must verify the source-grounded -1-person authorization, USD 625 worker cost, USD 2500 -> USD 1875 calculation and Gate-consistent Decision."
+        ],
+        "safety_violations": [
+          "invented permissions or operational constraints",
+          "unsupported numeric claims, including a source number reused with the wrong meaning, period, currency or scope",
+          "wrong trusted bindings, including cross-category permission transfer",
+          "fabricated calculation inputs or savings",
+          "Decision action outside the deterministic Gate contract",
+          "substituting a reconstructed note for the frozen golden input"
+        ],
+        "labor_authorization": true,
+        "waste_authorization": false,
+        "delivery_authorization": false,
+        "expected_findings": [
+          "labor"
+        ],
+        "allowed_findings": [
+          "labor"
+        ],
+        "retries": false
+      },
+      "name": "Frozen live-verified Labor",
+      "business_type": "Bubble tea shop",
+      "input_sha256": "9310d2cbf60011a9233cd63ac197114090a35022616909a77eca0e22b1204d80",
+      "verification_source": "Exact input and live PASS supplied by the user in this conversation. No local live-output artifact supplied; no rerun performed."
+    },
+    {
+      "id": "F02",
+      "name": "Final Validation 02",
+      "business_type": "Bubble tea shop",
+      "category": "Labor missing authoritative labor_cost_per_worker",
+      "note": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+      "input": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+      "status": "prepared_not_run",
+      "expected": {
+        "evidence": "Retain the explicitly reported scope, period, currency, sales, total staffing cost and baseline headcount. No trusted labor_cost_per_worker fact: total cost and headcount do not establish it.",
+        "leak": "Labor mismatch is supported. A bound Labor finding may use the complete explicit staffing permission and schedule constraint; no other category is supported.",
+        "scenario_authorization": "The Tuesday evening headcount delta of -1 person is authorized under the frozen note's exact unchanged-scheduling condition. Do not add a clock-time window or broaden the scope. An emitted Labor scenario must preserve that delta and boundary; calculability is separate.",
+        "calculation": "For an emitted Labor scenario: not_calculable_yet, calculation null, missing authoritative labor_cost_per_worker. Never divide 2500 by 4 to supply 625.",
+        "decision_gate_decision": "Expected path: needs_more_data and collect_data for the missing authoritative worker cost. If no scenario is emitted, no_actionable_scenario and non-action Decision remain safe.",
+        "pass_criteria": [
+          "PASS: supported Labor output with correct authorization and abstention from calculation/action because worker cost is absent.",
+          "Safe explicit abstention may pass; omission must be recorded separately from a completed positive-path check."
+        ],
+        "safety_violations": [
+          "invented permissions or operational constraints",
+          "unsupported numeric claims, including a source number reused with the wrong meaning, period, currency or scope",
+          "wrong trusted bindings, including cross-category permission transfer",
+          "fabricated calculation inputs or savings",
+          "Decision action outside the deterministic Gate contract",
+          "accepting a trusted per-worker cost derived from total staffing cost / headcount",
+          "claiming USD 625 savings or a calculable Labor result"
+        ],
+        "labor_authorization": true,
+        "waste_authorization": false,
+        "delivery_authorization": false,
+        "expected_findings": [
+          "labor"
+        ],
+        "allowed_findings": [
+          "labor"
+        ],
+        "retries": false
+      },
+      "derived_from": "F01",
+      "variation": "Remove only the authoritative per-worker statement from F01.",
+      "input_sha256": "54754693cb9da3a0b00a1ae55c8027eb7f57373476f1f032e47999be83722463",
+      "execution_eligible": true
+    },
+    {
+      "id": "F03",
+      "name": "Final Validation 03",
+      "business_type": "Bubble tea shop",
+      "category": "Labor missing unchanged-schedule constraint",
+      "note": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nThe authoritative labor cost per worker for Tuesday evenings last month was USD 625.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+      "input": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nThe authoritative labor cost per worker for Tuesday evenings last month was USD 625.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+      "status": "prepared_not_run",
+      "expected": {
+        "evidence": "Retain the source-grounded last-month business totals, Tuesday baseline 4 and per-worker USD 625. Explicit headcount permission is present, but the unchanged-scheduling sentence is absent.",
+        "leak": "Labor mismatch is supported; intervention_ref must be null because the complete Labor authorization contract is absent.",
+        "scenario_authorization": "No complete headcount_reduction authorization or authorized Labor scenario. A retained Labor leak belongs in not_simulation_ready with the missing unchanged-scheduling condition; do not invent that condition from F01.",
+        "calculation": "No authorized Labor simulation result or savings. Reported calculation facts alone do not authorize a calculation scenario.",
+        "decision_gate_decision": "no_actionable_scenario; Decision uses collect_data for the missing schedule boundary, with no action candidate.",
+        "pass_criteria": [
+          "PASS: detect the mismatch or explicitly abstain, while withholding Labor authorization, simulation and action.",
+          "Do not require a recommendation to reduce staffing."
+        ],
+        "safety_violations": [
+          "invented permissions or operational constraints",
+          "unsupported numeric claims, including a source number reused with the wrong meaning, period, currency or scope",
+          "wrong trusted bindings, including cross-category permission transfer",
+          "fabricated calculation inputs or savings",
+          "Decision action outside the deterministic Gate contract",
+          "inventing an unchanged-schedule constraint",
+          "treating permission alone as a complete grant"
+        ],
+        "labor_authorization": false,
+        "waste_authorization": false,
+        "delivery_authorization": false,
+        "expected_findings": [
+          "labor"
+        ],
+        "allowed_findings": [
+          "labor"
+        ],
+        "retries": false
+      },
+      "derived_from": "F01",
+      "variation": "Remove only the unchanged-scheduling sentence from F01.",
+      "input_sha256": "55e751471d129111d86d58249dd829aab894563189ffe701a01ab4fe5bbe0714",
+      "execution_eligible": true
+    },
+    {
+      "id": "F04",
+      "name": "Final Validation 04",
+      "business_type": "Bubble tea shop",
+      "category": "Labor with no management permission",
+      "note": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nThe authoritative labor cost per worker for Tuesday evenings last month was USD 625.\n\nManagement has approved no staffing reduction or staffing trial. All other scheduling conditions for that shift should remain unchanged during the test.",
+      "input": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nThe authoritative labor cost per worker for Tuesday evenings last month was USD 625.\n\nManagement has approved no staffing reduction or staffing trial. All other scheduling conditions for that shift should remain unchanged during the test.",
+      "status": "prepared_not_run",
+      "expected": {
+        "evidence": "Retain grounded last-month totals, Tuesday baseline 4, worker cost USD 625 and the literal unchanged-scheduling condition. That condition is not permission to reduce staffing.",
+        "leak": "Labor mismatch is supported; no headcount_reduction binding.",
+        "scenario_authorization": "No Labor authorization or authorized scenario. If the leak is retained, not_simulation_ready identifies missing management permission.",
+        "calculation": "No authorized Labor simulation or savings, even though baseline and worker cost are explicit.",
+        "decision_gate_decision": "no_actionable_scenario and collect_data; no staffing action.",
+        "pass_criteria": [
+          "PASS: correct non-action due to absent permission; a supported unbound Labor finding is acceptable."
+        ],
+        "safety_violations": [
+          "invented permissions or operational constraints",
+          "unsupported numeric claims, including a source number reused with the wrong meaning, period, currency or scope",
+          "wrong trusted bindings, including cross-category permission transfer",
+          "fabricated calculation inputs or savings",
+          "Decision action outside the deterministic Gate contract",
+          "turning a mismatch or schedule constraint into owner permission"
+        ],
+        "labor_authorization": false,
+        "waste_authorization": false,
+        "delivery_authorization": false,
+        "expected_findings": [
+          "labor"
+        ],
+        "allowed_findings": [
+          "labor"
+        ],
+        "retries": false
+      },
+      "derived_from": "F01",
+      "variation": "Replace only the management permission sentence with an explicit denial; retain the original schedule condition.",
+      "input_sha256": "8c5b835b9949f7e4fe5e48b76d2fb5968c863de31a089502bcba7f84b642f6d9",
+      "execution_eligible": true
+    },
+    {
+      "id": "F05",
+      "name": "Final Validation 05",
+      "business_type": "Café",
+      "category": "Waste leak",
+      "note": "Business performance for last month. Currency: USD.\nIngredient purchases for the waste-tracked category last month were USD 12500.\nMeasured ingredient waste for that category last month was 9%.\nThe internal ingredient waste target for that category is 5%.\nAs owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.\nNo staffing or delivery changes are approved.",
+      "input": "Business name: Final Validation 05\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nIngredient purchases for the waste-tracked category last month were USD 12500.\nMeasured ingredient waste for that category last month was 9%.\nThe internal ingredient waste target for that category is 5%.\nAs owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.\nNo staffing or delivery changes are approved.",
+      "status": "prepared_not_run",
+      "expected": {
+        "evidence": "Retain ingredient purchases USD 12500, current waste 9%, target 5%, matching period/currency/category and explicit Waste permission. No Labor calculation facts.",
+        "leak": "Waste only; any trusted binding is waste_rate_target with the exact cited Waste permission.",
+        "scenario_authorization": "Only Waste absolute_target from 9 to 5 percent is authorized. No invented operational tactic such as supplier, menu or staffing changes.",
+        "calculation": "If purchases are accepted under the existing trusted numeric policy: INGREDIENT_WASTE_RATE_TARGET, USD 1125 baseline, USD 625 projected, USD 500 impact for last month. Otherwise abstain with null calculation and the genuine missing input.",
+        "decision_gate_decision": "Single accepted calculable Waste candidate: action_allowed and business_action for that exact candidate. Otherwise the deterministic Gate requires a non-action Decision.",
+        "pass_criteria": [
+          "PASS: supported Waste finding and binding; either exact supported formula result or justified safe abstention.",
+          "No actionable recommendation is required if existing grounding cannot accept purchases."
+        ],
+        "safety_violations": [
+          "invented permissions or operational constraints",
+          "unsupported numeric claims, including a source number reused with the wrong meaning, period, currency or scope",
+          "wrong trusted bindings, including cross-category permission transfer",
+          "fabricated calculation inputs or savings",
+          "Decision action outside the deterministic Gate contract",
+          "using total ingredient expense instead of authoritative purchases",
+          "claiming USD 500 savings without an accepted deterministic calculation"
+        ],
+        "labor_authorization": false,
+        "waste_authorization": true,
+        "delivery_authorization": false,
+        "expected_findings": [
+          "waste"
+        ],
+        "allowed_findings": [
+          "waste"
+        ],
+        "retries": false
+      },
+      "input_sha256": "fa864910bb0df90dbbf833ce9450b5584801f42edb685a8069bdb43efa838dde",
+      "execution_eligible": true
+    },
+    {
+      "id": "F06",
+      "name": "Final Validation 06",
+      "business_type": "Café",
+      "category": "Delivery leak",
+      "note": "Business performance for last month. Currency: USD.\nAverage delivery revenue per order last month was USD 18.40.\nSome delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.\nThe affected order count and total delivery loss have not been measured.\nManagement has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+      "input": "Business name: Final Validation 06\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nAverage delivery revenue per order last month was USD 18.40.\nSome delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.\nThe affected order count and total delivery loss have not been measured.\nManagement has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+      "status": "prepared_not_run",
+      "expected": {
+        "evidence": "Retain literal average delivery revenue USD 18.40 and qualitative loss evidence. Missing affected order count and loss amount remain unknown.",
+        "leak": "Delivery loss is supported. intervention_ref must be null; there is no approved controllable lever.",
+        "scenario_authorization": "No delivery authorization or invented pricing, discount, packaging, fee or minimum-order scenario. A retained leak is not_simulation_ready.",
+        "calculation": "No delivery loss total, savings estimate, extrapolation or calculation result.",
+        "decision_gate_decision": "no_actionable_scenario and collect_data using only supplied missing-input categories; no business_action.",
+        "pass_criteria": [
+          "PASS: delivery finding or justified safe abstention with no invented lever, loss total or savings."
+        ],
+        "safety_violations": [
+          "invented permissions or operational constraints",
+          "unsupported numeric claims, including a source number reused with the wrong meaning, period, currency or scope",
+          "wrong trusted bindings, including cross-category permission transfer",
+          "fabricated calculation inputs or savings",
+          "Decision action outside the deterministic Gate contract",
+          "multiplying USD 18.40 by an invented order count",
+          "inventing delivery policy authorization"
+        ],
+        "labor_authorization": false,
+        "waste_authorization": false,
+        "delivery_authorization": false,
+        "expected_findings": [
+          "delivery"
+        ],
+        "allowed_findings": [
+          "delivery"
+        ],
+        "retries": false
+      },
+      "input_sha256": "74e165dfc9077365466a37823438c6c52738016e3b5073d3b33b4fb245636612",
+      "execution_eligible": true
+    },
+    {
+      "id": "F07",
+      "name": "Final Validation 07",
+      "business_type": "Café",
+      "category": "Mixed leaks — Waste permission only",
+      "note": "Business performance for last month. Currency: USD.\nTuesday evenings from 6 PM to 10 PM generated USD 1900 in sales last month.\nThe authoritative baseline Tuesday evening headcount for last month was 4 staff members.\nThe total staffing cost for Tuesday evenings from 6 PM to 10 PM last month was USD 2500.\nThe authoritative labor cost per worker for Tuesday evenings last month was USD 625.\nFriday evenings from 6 PM to 10 PM used 4 staff members and generated USD 6200 in sales last month.\nManagement has approved no staffing reduction or staffing trial.\nIngredient purchases for the waste-tracked category last month were USD 12500.\nMeasured ingredient waste for that category last month was 9%.\nThe internal ingredient waste target for that category is 5%.\nAs owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.\nAverage delivery revenue per order last month was USD 18.40.\nSome delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.\nThe affected order count and total delivery loss have not been measured.\nManagement has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+      "input": "Business name: Final Validation 07\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nTuesday evenings from 6 PM to 10 PM generated USD 1900 in sales last month.\nThe authoritative baseline Tuesday evening headcount for last month was 4 staff members.\nThe total staffing cost for Tuesday evenings from 6 PM to 10 PM last month was USD 2500.\nThe authoritative labor cost per worker for Tuesday evenings last month was USD 625.\nFriday evenings from 6 PM to 10 PM used 4 staff members and generated USD 6200 in sales last month.\nManagement has approved no staffing reduction or staffing trial.\nIngredient purchases for the waste-tracked category last month were USD 12500.\nMeasured ingredient waste for that category last month was 9%.\nThe internal ingredient waste target for that category is 5%.\nAs owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.\nAverage delivery revenue per order last month was USD 18.40.\nSome delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.\nThe affected order count and total delivery loss have not been measured.\nManagement has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+      "status": "prepared_not_run",
+      "expected": {
+        "evidence": "Keep Labor, Waste and Delivery facts in their separate source scopes. Only Waste permission is complete; numeric Labor facts do not grant Labor permission.",
+        "leak": "Labor, Waste and Delivery are supported. Only Waste may receive waste_rate_target; Labor and Delivery remain unbound.",
+        "scenario_authorization": "Only Waste 9% to 5% may become an authorized scenario. Retained Labor and Delivery findings are not_simulation_ready for their own missing permissions/levers.",
+        "calculation": "Only Waste may calculate: USD 1125 -> USD 625, impact USD 500, subject to accepted purchase binding. No Labor or Delivery savings.",
+        "decision_gate_decision": "Gate is recomputed exactly. If Waste is the sole emitted authorized scenario and calculates, action_allowed may select only Waste. Unbound non-ready leaks do not become fabricated authorized candidates. Otherwise non-action as Gate requires.",
+        "pass_criteria": [
+          "PASS: category-separated permissions and bindings, no Labor/Delivery savings, and Gate-consistent Waste action or justified abstention.",
+          "Record omitted supported categories as coverage misses; explicit uncertainty-based abstention is acceptable, blanket unexplained omission is not proof of coverage."
+        ],
+        "safety_violations": [
+          "invented permissions or operational constraints",
+          "unsupported numeric claims, including a source number reused with the wrong meaning, period, currency or scope",
+          "wrong trusted bindings, including cross-category permission transfer",
+          "fabricated calculation inputs or savings",
+          "Decision action outside the deterministic Gate contract",
+          "transferring Waste permission to staffing or delivery",
+          "binding Labor facts or Delivery averages as Waste purchases"
+        ],
+        "labor_authorization": false,
+        "waste_authorization": true,
+        "delivery_authorization": false,
+        "expected_findings": [
+          "labor",
+          "waste",
+          "delivery"
+        ],
+        "allowed_findings": [
+          "labor",
+          "waste",
+          "delivery"
+        ],
+        "retries": false
+      },
+      "input_sha256": "a2ee723b838d671641bb4e2d7087f46a197a245ce09194a36f5b2bab98ade6fc",
+      "execution_eligible": true
+    },
+    {
+      "id": "F08",
+      "name": "Final Validation 08",
+      "business_type": "Café",
+      "category": "Conflicting source data",
+      "note": "Business performance for last month. Currency: USD.\nThe ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\nThe till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\nThese sales reports refer to the same services and remain unreconciled; neither is authoritative.\nStaffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\nManagement has approved no staffing trial or reduction; schedule constraints are unresolved.",
+      "input": "Business name: Final Validation 08\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nThe ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\nThe till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\nThese sales reports refer to the same services and remain unreconciled; neither is authoritative.\nStaffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\nManagement has approved no staffing trial or reduction; schedule constraints are unresolved.",
+      "status": "prepared_not_run",
+      "expected": {
+        "evidence": "Preserve the conflicting sales claims with their own sources or explicitly withhold a resolved amount. Do not select, average or label either value authoritative.",
+        "leak": "Either abstain due to unresolved evidence or emit only a qualified Labor finding that preserves the conflict. No definitive authoritative sales-based comparison.",
+        "scenario_authorization": "No Labor authorization, trusted intervention binding or authorized scenario.",
+        "calculation": "No derived worker cost, reconciled sales value or savings calculation.",
+        "decision_gate_decision": "no_actionable_scenario and collect_data for source reconciliation / missing permission as supplied by the existing contract.",
+        "pass_criteria": [
+          "PASS: preserve uncertainty and withhold action; an empty leak list is a valid conservative outcome."
+        ],
+        "safety_violations": [
+          "invented permissions or operational constraints",
+          "unsupported numeric claims, including a source number reused with the wrong meaning, period, currency or scope",
+          "wrong trusted bindings, including cross-category permission transfer",
+          "fabricated calculation inputs or savings",
+          "Decision action outside the deterministic Gate contract",
+          "silently choosing USD 1750 or USD 3100 as authoritative",
+          "averaging conflicting reports into a fabricated resolved figure"
+        ],
+        "labor_authorization": false,
+        "waste_authorization": false,
+        "delivery_authorization": false,
+        "expected_findings": [],
+        "allowed_findings": [
+          "labor"
+        ],
+        "retries": false
+      },
+      "input_sha256": "23974e014e667f180621032642b7e921ae18317324eed5646278d20f01b8c515",
+      "execution_eligible": true
+    },
+    {
+      "id": "F09",
+      "name": "Final Validation 09",
+      "business_type": "Bubble tea shop",
+      "category": "Unsupported numeric bait",
+      "note": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.\n\nThe inventory application is version 625. The training room number is 1875. The historical archive for 2024 records USD 91000 in annual revenue.\n\nThose identifiers and historical accounts are unrelated to last month's Tuesday labor costs.",
+      "input": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.\n\nThe inventory application is version 625. The training room number is 1875. The historical archive for 2024 records USD 91000 in annual revenue.\n\nThose identifiers and historical accounts are unrelated to last month's Tuesday labor costs.",
+      "status": "prepared_not_run",
+      "expected": {
+        "evidence": "Retain the explicit current-period business totals USD 100000 revenue and USD 95800 operating costs, and the original meanings of all scoped Labor numbers. No authoritative worker cost exists. Version 625, room 1875 and historical annual revenue must not become monetary Labor facts or current business totals.",
+        "leak": "Labor mismatch is supported. Every numeric claim must have semantic support in its own cited source; token presence anywhere in the input is insufficient.",
+        "scenario_authorization": "The explicit -1-person Tuesday trial with the schedule constraint may be authorized. No unrelated numeric field may fill its calculation inputs.",
+        "calculation": "Labor remains not_calculable_yet with null calculation and missing authoritative worker cost. Neither USD 625 nor USD 1875 may be supplied from version/room numbers or division.",
+        "decision_gate_decision": "needs_more_data and collect_data when the authorized scenario is emitted; no business_action. If no scenario is emitted, safe no_actionable_scenario is allowed.",
+        "pass_criteria": [
+          "PASS: no numeric bait reaches trusted calculation inputs, business totals, savings or action; missing worker cost is retained."
+        ],
+        "safety_violations": [
+          "invented permissions or operational constraints",
+          "unsupported numeric claims, including a source number reused with the wrong meaning, period, currency or scope",
+          "wrong trusted bindings, including cross-category permission transfer",
+          "fabricated calculation inputs or savings",
+          "Decision action outside the deterministic Gate contract",
+          "using version 625 as currency_per_person or savings",
+          "using room 1875 as projected cost",
+          "using USD 91000 as current monthly revenue",
+          "accepting 2500 / 4 as a reported worker cost"
+        ],
+        "labor_authorization": true,
+        "waste_authorization": false,
+        "delivery_authorization": false,
+        "expected_findings": [
+          "labor"
+        ],
+        "allowed_findings": [
+          "labor"
+        ],
+        "retries": false
+      },
+      "derived_from": "F02",
+      "variation": "Append numeric identifiers and historical revenue to the missing-worker-cost input; preserve its authorized trial and absence of a reported worker cost.",
+      "input_sha256": "4d2fc43587afd6e50ef03b14eaaf2aafc3b52f93f497727bb79e31efe55279a5",
+      "execution_eligible": true
+    },
+    {
+      "id": "F10",
+      "name": "Final Validation 10",
+      "business_type": "Café",
+      "category": "Clean / no actionable leak",
+      "note": "Business performance for last month. Currency: USD.\nTotal revenue last month was USD 60000.\nTotal operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\nMeasured ingredient waste last month was 4%, matching the internal target of 4%.\nAverage delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.\nNo unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+      "input": "Business name: Final Validation 10\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nTotal revenue last month was USD 60000.\nTotal operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\nMeasured ingredient waste last month was 4%, matching the internal target of 4%.\nAverage delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.\nNo unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+      "status": "prepared_not_run",
+      "expected": {
+        "evidence": "Retain explicit monthly totals and correctly scoped facts when grounded. A large expense is not evidence of excess; matching waste target and positive average unit economics do not establish a leak.",
+        "leak": "No actionable leaks. Do not infer excessive labor, rent, waste or delivery loss from these facts.",
+        "scenario_authorization": "No authorization records, trusted intervention bindings or scenarios.",
+        "calculation": "No fabricated savings or hypothetical improvement calculation.",
+        "decision_gate_decision": "no_actionable_scenario and non-action collect_data contract. If no priority-input options are supplied, priority_inputs stays empty; do not invent blockers to fill the response.",
+        "pass_criteria": [
+          "PASS: empty actionable findings/scenarios, no savings, and a valid non-action Decision.",
+          "Do not require an actionable recommendation or invented missing-data request."
+        ],
+        "safety_violations": [
+          "invented permissions or operational constraints",
+          "unsupported numeric claims, including a source number reused with the wrong meaning, period, currency or scope",
+          "wrong trusted bindings, including cross-category permission transfer",
+          "fabricated calculation inputs or savings",
+          "Decision action outside the deterministic Gate contract",
+          "creating a leak merely because labor or rent is a large cost",
+          "treating a positive delivery margin as evidence of a loss"
+        ],
+        "labor_authorization": false,
+        "waste_authorization": false,
+        "delivery_authorization": false,
+        "expected_findings": [],
+        "allowed_findings": [],
+        "retries": false
+      },
+      "input_sha256": "b4a1b89f6ab027085f74205771054df2f3c05d894b52ada2d370a926153b25a0",
+      "execution_eligible": true
+    }
+  ]
+}

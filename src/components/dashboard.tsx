@@ -13,6 +13,8 @@ import { baselineBusinessSummary } from "@/lib/baseline-business-summary";
 import { evidenceWaterfall } from "@/lib/evidence-waterfall";
 import { useBackgroundRegions } from "./use-background-regions";
 
+import { BusinessInputPanel } from "./business-input-panel";
+
 import { DecisionPanel } from "./decision-panel";
 import type { DecisionResult } from "@/types/decision";
 import { ScenarioPanel } from "./scenario-panel";
@@ -23,30 +25,6 @@ const money = (value: number) => new Intl.NumberFormat("en-US", { style: "curren
 
 function Header() {
   return <header className="border-b border-[var(--border-default)]"><div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-5 sm:px-9 lg:px-12"><Link href="/" className="flex items-center gap-3"><span className="flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-active)] bg-[var(--bg-card)] text-2xl text-[var(--accent-primary)]" aria-hidden="true">◔</span><div><p className="text-lg font-semibold tracking-tight">What’s Left<span>?</span></p><p className="mt-0.5 text-[10px] text-[var(--text-secondary)]">See what your business really keeps.</p></div></Link><div className="flex items-center gap-4"><span className="hidden text-xs text-[var(--text-secondary)] sm:block">Your profitability workspace</span><span className="badge">EARLY PREVIEW</span></div></div></header>;
-}
-
-function BusinessInputPanel({ onAnalyze, complete, isRunning, analysisError }: { onAnalyze: (input: string, notes: string) => void; complete: boolean; isRunning: boolean; analysisError: string }) {
-  const [files, setFiles] = useState<string[]>([]);
-  const [error, setError] = useState("");
-  function addFiles(selected: FileList | null) {
-    if (!selected) return;
-    const names = Array.from(selected).filter(file => /\.(csv|pdf|xlsx|png|jpe?g|webp|gif)$/i.test(file.name)).map(file => file.name);
-    setError(names.length !== selected.length ? "Please choose CSV, PDF, XLSX, or image files." : "");
-    setFiles(current => [...new Set([...current, ...names])]);
-  }
-  return <section className="panel p-6" aria-labelledby="input-title"><div className="mb-5 flex items-center justify-between gap-2"><h2 id="input-title" className="text-lg font-medium">Business Input</h2><span className="font-mono text-[9px] text-[var(--text-muted)]">01 / START HERE</span></div>
-    <form className="space-y-4" onSubmit={event => { event.preventDefault();
-      if (isRunning) return;
-      const data = new FormData(event.currentTarget);
-      onAnalyze([`Business name: ${data.get("businessName")}`, `Selected business type: ${data.get("businessType")}`, `Business description / notes: ${data.get("notes")}`].join("\n"), String(data.get("notes") ?? "")); }}>
-      <div className="grid gap-4 sm:grid-cols-[1.25fr_1fr]"><label className="field-label">Business name<input name="businessName" required defaultValue="The Daily Grind" placeholder="Your business name" /></label><label className="field-label">Business type<select name="businessType" defaultValue="Café">{["Café", "Bakery", "Tea Shop", "Restaurant", "Other"].map(type => <option key={type}>{type}</option>)}</select></label></div>
-      <label className="field-label">Notes <span className="text-[var(--text-muted)]">(optional)</span><textarea name="notes" rows={2} placeholder="Anything we should know? Quiet Tuesdays, rising supplier costs…" /></label>
-      <label className="upload-zone" onDragOver={event => event.preventDefault()} onDrop={event => { event.preventDefault(); addFiles(event.dataTransfer.files); }}><span className="text-xl text-[var(--accent-primary)]" aria-hidden="true">↥</span><span className="text-xs text-[var(--text-secondary)]">Drop your business files here, or <span className="text-[var(--accent-primary)]">browse</span></span><span className="text-[10px] text-[var(--text-muted)]">CSV, PDF, XLSX, images · Local selection only · Not analyzed</span><input className="sr-only" aria-label="Choose business files" type="file" multiple accept=".csv,.pdf,.xlsx,.png,.jpg,.jpeg,.webp,.gif" onChange={event => { addFiles(event.target.files); event.target.value = ""; }} /></label>
-      {(error || analysisError) && <p role="alert" className="text-xs text-[var(--text-secondary)]">{analysisError || error}</p>}
-      {analysisError && <p className="text-xs text-[var(--text-muted)]">Retry starts a fresh analysis. Your input stays in this form.</p>}
-      <ul className="space-y-2" aria-label="Selected files">{files.map(name => <li key={name} className="flex items-center gap-2 text-xs"><span className="rounded border border-[var(--border-default)] px-1.5 py-1 font-mono text-[8px] text-[var(--text-secondary)]">{name.split(".").pop()?.toUpperCase()}</span><span className="min-w-0 flex-1 truncate text-[var(--text-secondary)]">{name}</span><button type="button" aria-label={`Remove ${name}`} onClick={() => setFiles(current => current.filter(file => file !== name))} className="px-2 text-[var(--text-muted)] hover:text-[var(--text-primary)]">×</button></li>)}</ul>
-      <button type="submit" disabled={isRunning} aria-busy={isRunning} className="flex w-full items-center justify-center gap-3 rounded-lg analyze-button px-4 py-3 text-sm font-semibold transition">{isRunning ? "Analysis in progress…" : analysisError ? "Retry full analysis" : complete ? "Run Analysis Again" : "Analyze My Business"}<span aria-hidden="true">↗</span></button><p className="text-center text-[10px] text-[var(--text-muted)]">AI analysis with deterministic validation and calculations · Files are not processed.</p>
-    </form></section>;
 }
 
 function SummaryMetrics({ evidence }: { evidence: Evidence | null }) {
@@ -91,7 +69,7 @@ function ResultReveal({ visible, waiting, children }: { visible: boolean; waitin
   </div>;
 }
 
-function BusinessOutlook({ stage, runId, evidence, leakResult, scenarioResult, simulationResult, decisionResult, analysisError }: { stage: AnalysisStage; runId: number; evidence: Evidence | null; leakResult: LeakResult | null; scenarioResult: ScenarioResponse | null; simulationResult: SimulationResponse | null; decisionResult: DecisionResult | null; analysisError: string }) {
+function BusinessOutlook({ stage, runId, evidence, leakResult, scenarioResult, simulationResult, decisionResult, analysisError, source }: { source: string; stage: AnalysisStage; runId: number; evidence: Evidence | null; leakResult: LeakResult | null; scenarioResult: ScenarioResponse | null; simulationResult: SimulationResponse | null; decisionResult: DecisionResult | null; analysisError: string }) {
   const scenario = ["scenario", "decision", "complete"].includes(stage);
   const labels: Record<AnalysisStage, string> = {
     idle: "Ready to analyze", evidence: "Analyzing your business… · Reconstructing the operating picture…",
@@ -104,6 +82,7 @@ function BusinessOutlook({ stage, runId, evidence, leakResult, scenarioResult, s
       <p className="text-[var(--text-primary)]">{analysisError ? "Analysis stopped" : labels[stage]}</p>
       <p>{analysisError ? evidence ? "Your completed results are preserved. Please try again." : "Your input is preserved. Please try again." : stage === "idle" ? "Add your business details and files, then run the analysis." : stage === "complete" ? "Your analysis and decision are ready." : "AI analysis with deterministic validation and scenario calculations."}</p>
     </div>
+    {source && <p className="mb-4 text-xs text-[var(--text-secondary)]">Source: {source}</p>}
     <div key={runId}>
       <SummaryMetrics evidence={evidence} />
       {stage === "complete" && <ProfitWaterfall evidence={evidence} />}
@@ -117,7 +96,8 @@ function BusinessOutlook({ stage, runId, evidence, leakResult, scenarioResult, s
 }
 
 export function Dashboard() {
+  const [source, setSource] = useState("");
   const { workflow, stage, startAnalysis, evidenceResult, leakResult, scenarioResult, simulationResult, decisionGateResult, decisionResult, analysisError, isRunning } = useDemoAnalysis();
   useBackgroundRegions(stage, workflow.runId);
-  return <><Header /><main className="mx-auto w-full max-w-[1440px] px-5 py-9 sm:px-9 lg:px-12"><div className="mb-7 flex flex-wrap items-end justify-between gap-4"><div><p className="eyebrow mb-2">YOUR BUSINESS, UNDERSTOOD</p><h1 className="text-3xl font-medium tracking-tight sm:text-4xl">A clearer picture of what’s left.</h1><p className="mt-3 text-sm text-[var(--text-secondary)]">AI interprets business evidence. Code verifies scenarios and calculates impact. AI recommends within verified boundaries.</p></div><span className="badge"><span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-primary)]" />Analysis workspace</span></div><div className="grid gap-5 lg:grid-cols-[1.4fr_1fr]"><AgentOffice key={workflow.runId} workflow={workflow} stage={stage} evidence={evidenceResult} leakResult={leakResult} scenarioResult={scenarioResult} simulationResult={simulationResult} decisionGateResult={decisionGateResult} decisionResult={decisionResult} analysisError={analysisError} /><BusinessInputPanel complete={stage === "complete"} onAnalyze={startAnalysis} isRunning={isRunning} analysisError={analysisError} /></div><BusinessOutlook stage={stage} runId={workflow.runId} evidence={evidenceResult} leakResult={leakResult} scenarioResult={scenarioResult} simulationResult={simulationResult} decisionResult={decisionResult} analysisError={analysisError} /><footer className="flex flex-wrap justify-between gap-3 border-t border-[var(--border-default)] py-6 text-xs text-[var(--text-muted)]"><span>What’s Left? · A little clarity goes a long way.</span><span>AI analysis with deterministic validation, scenario calculations, and bounded decision support.</span></footer></main></>;
+  return <><Header /><main className="mx-auto w-full max-w-[1440px] px-5 py-9 sm:px-9 lg:px-12"><div className="mb-7 flex flex-wrap items-end justify-between gap-4"><div><p className="eyebrow mb-2">YOUR BUSINESS, UNDERSTOOD</p><h1 className="text-3xl font-medium tracking-tight sm:text-4xl">A clearer picture of what’s left.</h1><p className="mt-3 text-sm text-[var(--text-secondary)]">AI interprets business evidence. Code verifies scenarios and calculates impact. AI recommends within verified boundaries.</p></div><span className="badge"><span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-primary)]" />Analysis workspace</span></div><div className="grid gap-5 lg:grid-cols-[1.4fr_1fr]"><AgentOffice key={workflow.runId} workflow={workflow} stage={stage} evidence={evidenceResult} leakResult={leakResult} scenarioResult={scenarioResult} simulationResult={simulationResult} decisionGateResult={decisionGateResult} decisionResult={decisionResult} analysisError={analysisError} /><BusinessInputPanel onSource={setSource} complete={stage === "complete"} onAnalyze={startAnalysis} isRunning={isRunning} analysisError={analysisError} /></div><BusinessOutlook source={source} stage={stage} runId={workflow.runId} evidence={evidenceResult} leakResult={leakResult} scenarioResult={scenarioResult} simulationResult={simulationResult} decisionResult={decisionResult} analysisError={analysisError} /><footer className="flex flex-wrap justify-between gap-3 border-t border-[var(--border-default)] py-6 text-xs text-[var(--text-muted)]"><span>What’s Left? · A little clarity goes a long way.</span><span>AI analysis with deterministic validation, scenario calculations, and bounded decision support.</span></footer></main></>;
 }

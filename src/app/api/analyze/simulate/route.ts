@@ -1,3 +1,4 @@
+import { logCalculationHandoff } from "../evidence/calculation-facts";
 import { observeRoute } from "../../../../lib/observability/langsmith";
 import { calculateScenarios, isSimulationRequest } from "@/lib/scenario-calculator";
 
@@ -11,6 +12,7 @@ async function handlePOST(request: Request) {
   try { body = await request.json(); }
   catch { return json({ error: "Invalid JSON request body." }, 400); }
   if (!isSimulationRequest(body)) return json({ error: "Valid evidence, scenarios and source facts are required." }, 400);
+  logCalculationHandoff("simulate_input", body.input_facts);
   return json(calculateScenarios(body));
 }
 

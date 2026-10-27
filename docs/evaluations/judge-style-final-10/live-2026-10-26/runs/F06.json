@@ -1,0 +1,2087 @@
+{
+  "calls": [
+    {
+      "url": "/api/analyze/evidence",
+      "body": {
+        "input": "Business name: Final Validation 06\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nAverage delivery revenue per order last month was USD 18.40.\nSome delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.\nThe affected order count and total delivery loss have not been measured.\nManagement has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+      },
+      "started": 1792973901894,
+      "status": 200,
+      "response": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Average delivery revenue per order",
+                "amount": 18.4,
+                "source_text": "Average delivery revenue per order last month was USD 18.40."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": []
+          },
+          "facts": [
+            "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+            "The affected order count and total delivery loss have not been measured.",
+            "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Total revenue for the business",
+            "Total operating costs for the business",
+            "Affected order count for delivery losses",
+            "Total delivery loss amount"
+          ],
+          "confidence": "low",
+          "provenance": {
+            "source_input": "Business name: Final Validation 06\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nAverage delivery revenue per order last month was USD 18.40.\nSome delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.\nThe affected order count and total delivery loss have not been measured.\nManagement has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+            "items": [
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Average delivery revenue per order\",\"amount\":18.4,\"source_text\":\"Average delivery revenue per order last month was USD 18.40.\"}"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_05",
+                "source": "evidence.facts[0]",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_06",
+                "source": "evidence.facts[1]",
+                "text": "The affected order count and total delivery loss have not been measured."
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_07",
+                "source": "evidence.facts[2]",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 06"
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_05",
+                "source": "source_input[4]",
+                "text": "Average delivery revenue per order last month was USD 18.40."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_06",
+                "source": "source_input[5]",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_07",
+                "source": "source_input[6]",
+                "text": "The affected order count and total delivery loss have not been measured."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_08",
+                "source": "source_input[7]",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_01",
+                "text": "Business name: Final Validation 06",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_01"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_02"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_03"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_04"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_05",
+                "text": "Average delivery revenue per order last month was USD 18.40.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_05"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_06",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_06"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_07",
+                "text": "The affected order count and total delivery loss have not been measured.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_07"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_08",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_08"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_09",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_03",
+                  "src_095cd620780f215239a7ec48735b452a_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        }
+      },
+      "finished": 1792973904202
+    },
+    {
+      "url": "/api/analyze/leaks",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Average delivery revenue per order",
+                "amount": 18.4,
+                "source_text": "Average delivery revenue per order last month was USD 18.40."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": []
+          },
+          "facts": [
+            "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+            "The affected order count and total delivery loss have not been measured.",
+            "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Total revenue for the business",
+            "Total operating costs for the business",
+            "Affected order count for delivery losses",
+            "Total delivery loss amount"
+          ],
+          "confidence": "low",
+          "provenance": {
+            "source_input": "Business name: Final Validation 06\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nAverage delivery revenue per order last month was USD 18.40.\nSome delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.\nThe affected order count and total delivery loss have not been measured.\nManagement has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+            "items": [
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Average delivery revenue per order\",\"amount\":18.4,\"source_text\":\"Average delivery revenue per order last month was USD 18.40.\"}"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_05",
+                "source": "evidence.facts[0]",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_06",
+                "source": "evidence.facts[1]",
+                "text": "The affected order count and total delivery loss have not been measured."
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_07",
+                "source": "evidence.facts[2]",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 06"
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_05",
+                "source": "source_input[4]",
+                "text": "Average delivery revenue per order last month was USD 18.40."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_06",
+                "source": "source_input[5]",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_07",
+                "source": "source_input[6]",
+                "text": "The affected order count and total delivery loss have not been measured."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_08",
+                "source": "source_input[7]",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_01",
+                "text": "Business name: Final Validation 06",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_01"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_02"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_03"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_04"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_05",
+                "text": "Average delivery revenue per order last month was USD 18.40.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_05"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_06",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_06"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_07",
+                "text": "The affected order count and total delivery loss have not been measured.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_07"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_08",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_08"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_09",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_03",
+                  "src_095cd620780f215239a7ec48735b452a_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "operational_context": [
+          "Business performance for last month.",
+          "Currency: USD.",
+          "Average delivery revenue per order last month was USD 18.40.",
+          "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+          "The affected order count and total delivery loss have not been measured.",
+          "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+        ]
+      },
+      "started": 1792973905355,
+      "status": 200,
+      "response": {
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_095cd620780f215239a7ec48735b452a_05",
+                "fact_095cd620780f215239a7ec48735b452a_06"
+              ],
+              "title": "Delivery unit economics — some orders unprofitable",
+              "category": "delivery",
+              "evidence": [
+                "Average delivery revenue per order last month was USD 18.40.",
+                "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              ],
+              "interpretation": "Average delivery revenue per order was USD 18.40. For some orders, the combined cost of platform fees, packaging, discounts, and food exceeded the order revenue, meaning those orders generated a loss. The number of affected orders and the total loss amount have not been measured, so the financial impact is unquantified.",
+              "confidence": "high",
+              "intervention_ref": null
+            }
+          ],
+          "insufficient_evidence": []
+        }
+      },
+      "finished": 1792973906760
+    },
+    {
+      "url": "/api/analyze/scenarios",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Average delivery revenue per order",
+                "amount": 18.4,
+                "source_text": "Average delivery revenue per order last month was USD 18.40."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": []
+          },
+          "facts": [
+            "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+            "The affected order count and total delivery loss have not been measured.",
+            "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Total revenue for the business",
+            "Total operating costs for the business",
+            "Affected order count for delivery losses",
+            "Total delivery loss amount"
+          ],
+          "confidence": "low",
+          "provenance": {
+            "source_input": "Business name: Final Validation 06\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nAverage delivery revenue per order last month was USD 18.40.\nSome delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.\nThe affected order count and total delivery loss have not been measured.\nManagement has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+            "items": [
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Average delivery revenue per order\",\"amount\":18.4,\"source_text\":\"Average delivery revenue per order last month was USD 18.40.\"}"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_05",
+                "source": "evidence.facts[0]",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_06",
+                "source": "evidence.facts[1]",
+                "text": "The affected order count and total delivery loss have not been measured."
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_07",
+                "source": "evidence.facts[2]",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 06"
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_05",
+                "source": "source_input[4]",
+                "text": "Average delivery revenue per order last month was USD 18.40."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_06",
+                "source": "source_input[5]",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_07",
+                "source": "source_input[6]",
+                "text": "The affected order count and total delivery loss have not been measured."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_08",
+                "source": "source_input[7]",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_01",
+                "text": "Business name: Final Validation 06",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_01"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_02"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_03"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_04"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_05",
+                "text": "Average delivery revenue per order last month was USD 18.40.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_05"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_06",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_06"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_07",
+                "text": "The affected order count and total delivery loss have not been measured.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_07"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_08",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_08"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_09",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_03",
+                  "src_095cd620780f215239a7ec48735b452a_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_095cd620780f215239a7ec48735b452a_05",
+                "fact_095cd620780f215239a7ec48735b452a_06"
+              ],
+              "title": "Delivery unit economics — some orders unprofitable",
+              "category": "delivery",
+              "evidence": [
+                "Average delivery revenue per order last month was USD 18.40.",
+                "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              ],
+              "interpretation": "Average delivery revenue per order was USD 18.40. For some orders, the combined cost of platform fees, packaging, discounts, and food exceeded the order revenue, meaning those orders generated a loss. The number of affected orders and the total loss amount have not been measured, so the financial impact is unquantified.",
+              "confidence": "high",
+              "intervention_ref": null
+            }
+          ],
+          "insufficient_evidence": []
+        },
+        "operational_context": [
+          "Business performance for last month.",
+          "Currency: USD.",
+          "Average delivery revenue per order last month was USD 18.40.",
+          "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+          "The affected order count and total delivery loss have not been measured.",
+          "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+        ]
+      },
+      "started": 1792973907913,
+      "status": 200,
+      "response": {
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Delivery unit economics — some orders unprofitable",
+              "reason": "No eligible authorized change is available for this finding.",
+              "missing_decision_input_categories": [
+                "An eligible authorized change"
+              ]
+            }
+          ]
+        },
+        "input_facts": [
+          {
+            "id": "input_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "input_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "input_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "input_04",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Average delivery revenue per order\",\"amount\":18.4,\"source_text\":\"Average delivery revenue per order last month was USD 18.40.\"}"
+          },
+          {
+            "id": "input_05",
+            "source": "evidence.facts[0]",
+            "fact": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+          },
+          {
+            "id": "input_06",
+            "source": "evidence.facts[1]",
+            "fact": "The affected order count and total delivery loss have not been measured."
+          },
+          {
+            "id": "input_07",
+            "source": "evidence.facts[2]",
+            "fact": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+          },
+          {
+            "id": "input_08",
+            "source": "operational_context[0]",
+            "fact": "Business performance for last month."
+          },
+          {
+            "id": "input_09",
+            "source": "operational_context[1]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "input_10",
+            "source": "operational_context[2]",
+            "fact": "Average delivery revenue per order last month was USD 18.40."
+          },
+          {
+            "id": "input_11",
+            "source": "operational_context[3]",
+            "fact": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+          },
+          {
+            "id": "input_12",
+            "source": "operational_context[4]",
+            "fact": "The affected order count and total delivery loss have not been measured."
+          },
+          {
+            "id": "input_13",
+            "source": "operational_context[5]",
+            "fact": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+          },
+          {
+            "id": "input_14",
+            "source": "leaks.leaks[0].evidence[0]",
+            "fact": "Average delivery revenue per order last month was USD 18.40."
+          },
+          {
+            "id": "input_15",
+            "source": "leaks.leaks[0].evidence[1]",
+            "fact": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+          },
+          {
+            "id": "ev_c798c464f5bc4bfb04ae27f603404b25_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "ev_c798c464f5bc4bfb04ae27f603404b25_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "ev_c798c464f5bc4bfb04ae27f603404b25_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "ev_c798c464f5bc4bfb04ae27f603404b25_04",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Average delivery revenue per order\",\"amount\":18.4,\"source_text\":\"Average delivery revenue per order last month was USD 18.40.\"}"
+          },
+          {
+            "id": "ev_c798c464f5bc4bfb04ae27f603404b25_05",
+            "source": "evidence.facts[0]",
+            "fact": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+          },
+          {
+            "id": "ev_c798c464f5bc4bfb04ae27f603404b25_06",
+            "source": "evidence.facts[1]",
+            "fact": "The affected order count and total delivery loss have not been measured."
+          },
+          {
+            "id": "ev_c798c464f5bc4bfb04ae27f603404b25_07",
+            "source": "evidence.facts[2]",
+            "fact": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_01",
+            "source": "source_input[0]",
+            "fact": "Business name: Final Validation 06"
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_02",
+            "source": "source_input[1]",
+            "fact": "Selected business type: Café"
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_03",
+            "source": "source_input[2]",
+            "fact": "Business description / notes: Business performance for last month."
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_04",
+            "source": "source_input[3]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_05",
+            "source": "source_input[4]",
+            "fact": "Average delivery revenue per order last month was USD 18.40."
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_06",
+            "source": "source_input[5]",
+            "fact": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_07",
+            "source": "source_input[6]",
+            "fact": "The affected order count and total delivery loss have not been measured."
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_08",
+            "source": "source_input[7]",
+            "fact": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+          }
+        ]
+      },
+      "finished": 1792973908599
+    },
+    {
+      "url": "/api/analyze/simulate",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Average delivery revenue per order",
+                "amount": 18.4,
+                "source_text": "Average delivery revenue per order last month was USD 18.40."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": []
+          },
+          "facts": [
+            "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+            "The affected order count and total delivery loss have not been measured.",
+            "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Total revenue for the business",
+            "Total operating costs for the business",
+            "Affected order count for delivery losses",
+            "Total delivery loss amount"
+          ],
+          "confidence": "low",
+          "provenance": {
+            "source_input": "Business name: Final Validation 06\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nAverage delivery revenue per order last month was USD 18.40.\nSome delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.\nThe affected order count and total delivery loss have not been measured.\nManagement has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+            "items": [
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Average delivery revenue per order\",\"amount\":18.4,\"source_text\":\"Average delivery revenue per order last month was USD 18.40.\"}"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_05",
+                "source": "evidence.facts[0]",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_06",
+                "source": "evidence.facts[1]",
+                "text": "The affected order count and total delivery loss have not been measured."
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_07",
+                "source": "evidence.facts[2]",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 06"
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_05",
+                "source": "source_input[4]",
+                "text": "Average delivery revenue per order last month was USD 18.40."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_06",
+                "source": "source_input[5]",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_07",
+                "source": "source_input[6]",
+                "text": "The affected order count and total delivery loss have not been measured."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_08",
+                "source": "source_input[7]",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_01",
+                "text": "Business name: Final Validation 06",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_01"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_02"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_03"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_04"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_05",
+                "text": "Average delivery revenue per order last month was USD 18.40.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_05"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_06",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_06"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_07",
+                "text": "The affected order count and total delivery loss have not been measured.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_07"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_08",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_08"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_09",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_03",
+                  "src_095cd620780f215239a7ec48735b452a_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Delivery unit economics — some orders unprofitable",
+              "reason": "No eligible authorized change is available for this finding.",
+              "missing_decision_input_categories": [
+                "An eligible authorized change"
+              ]
+            }
+          ]
+        },
+        "input_facts": [
+          {
+            "id": "input_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "input_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "input_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "input_04",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Average delivery revenue per order\",\"amount\":18.4,\"source_text\":\"Average delivery revenue per order last month was USD 18.40.\"}"
+          },
+          {
+            "id": "input_05",
+            "source": "evidence.facts[0]",
+            "fact": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+          },
+          {
+            "id": "input_06",
+            "source": "evidence.facts[1]",
+            "fact": "The affected order count and total delivery loss have not been measured."
+          },
+          {
+            "id": "input_07",
+            "source": "evidence.facts[2]",
+            "fact": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+          },
+          {
+            "id": "input_08",
+            "source": "operational_context[0]",
+            "fact": "Business performance for last month."
+          },
+          {
+            "id": "input_09",
+            "source": "operational_context[1]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "input_10",
+            "source": "operational_context[2]",
+            "fact": "Average delivery revenue per order last month was USD 18.40."
+          },
+          {
+            "id": "input_11",
+            "source": "operational_context[3]",
+            "fact": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+          },
+          {
+            "id": "input_12",
+            "source": "operational_context[4]",
+            "fact": "The affected order count and total delivery loss have not been measured."
+          },
+          {
+            "id": "input_13",
+            "source": "operational_context[5]",
+            "fact": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+          },
+          {
+            "id": "input_14",
+            "source": "leaks.leaks[0].evidence[0]",
+            "fact": "Average delivery revenue per order last month was USD 18.40."
+          },
+          {
+            "id": "input_15",
+            "source": "leaks.leaks[0].evidence[1]",
+            "fact": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+          },
+          {
+            "id": "ev_c798c464f5bc4bfb04ae27f603404b25_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "ev_c798c464f5bc4bfb04ae27f603404b25_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "ev_c798c464f5bc4bfb04ae27f603404b25_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "ev_c798c464f5bc4bfb04ae27f603404b25_04",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Average delivery revenue per order\",\"amount\":18.4,\"source_text\":\"Average delivery revenue per order last month was USD 18.40.\"}"
+          },
+          {
+            "id": "ev_c798c464f5bc4bfb04ae27f603404b25_05",
+            "source": "evidence.facts[0]",
+            "fact": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+          },
+          {
+            "id": "ev_c798c464f5bc4bfb04ae27f603404b25_06",
+            "source": "evidence.facts[1]",
+            "fact": "The affected order count and total delivery loss have not been measured."
+          },
+          {
+            "id": "ev_c798c464f5bc4bfb04ae27f603404b25_07",
+            "source": "evidence.facts[2]",
+            "fact": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_01",
+            "source": "source_input[0]",
+            "fact": "Business name: Final Validation 06"
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_02",
+            "source": "source_input[1]",
+            "fact": "Selected business type: Café"
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_03",
+            "source": "source_input[2]",
+            "fact": "Business description / notes: Business performance for last month."
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_04",
+            "source": "source_input[3]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_05",
+            "source": "source_input[4]",
+            "fact": "Average delivery revenue per order last month was USD 18.40."
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_06",
+            "source": "source_input[5]",
+            "fact": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_07",
+            "source": "source_input[6]",
+            "fact": "The affected order count and total delivery loss have not been measured."
+          },
+          {
+            "id": "src_095cd620780f215239a7ec48735b452a_08",
+            "source": "source_input[7]",
+            "fact": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+          }
+        ]
+      },
+      "started": 1792973908599,
+      "status": 200,
+      "response": {
+        "results": []
+      },
+      "finished": 1792973908624
+    },
+    {
+      "url": "/api/analyze/decision-gate",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Average delivery revenue per order",
+                "amount": 18.4,
+                "source_text": "Average delivery revenue per order last month was USD 18.40."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": []
+          },
+          "facts": [
+            "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+            "The affected order count and total delivery loss have not been measured.",
+            "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Total revenue for the business",
+            "Total operating costs for the business",
+            "Affected order count for delivery losses",
+            "Total delivery loss amount"
+          ],
+          "confidence": "low",
+          "provenance": {
+            "source_input": "Business name: Final Validation 06\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nAverage delivery revenue per order last month was USD 18.40.\nSome delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.\nThe affected order count and total delivery loss have not been measured.\nManagement has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+            "items": [
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Average delivery revenue per order\",\"amount\":18.4,\"source_text\":\"Average delivery revenue per order last month was USD 18.40.\"}"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_05",
+                "source": "evidence.facts[0]",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_06",
+                "source": "evidence.facts[1]",
+                "text": "The affected order count and total delivery loss have not been measured."
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_07",
+                "source": "evidence.facts[2]",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 06"
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_05",
+                "source": "source_input[4]",
+                "text": "Average delivery revenue per order last month was USD 18.40."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_06",
+                "source": "source_input[5]",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_07",
+                "source": "source_input[6]",
+                "text": "The affected order count and total delivery loss have not been measured."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_08",
+                "source": "source_input[7]",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_01",
+                "text": "Business name: Final Validation 06",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_01"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_02"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_03"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_04"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_05",
+                "text": "Average delivery revenue per order last month was USD 18.40.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_05"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_06",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_06"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_07",
+                "text": "The affected order count and total delivery loss have not been measured.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_07"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_08",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_08"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_09",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_03",
+                  "src_095cd620780f215239a7ec48735b452a_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Delivery unit economics — some orders unprofitable",
+              "reason": "No eligible authorized change is available for this finding.",
+              "missing_decision_input_categories": [
+                "An eligible authorized change"
+              ]
+            }
+          ]
+        },
+        "simulation": {
+          "results": []
+        }
+      },
+      "started": 1792973909777,
+      "status": 200,
+      "response": {
+        "decision_gate": "no_actionable_scenario",
+        "reason_codes": [
+          "no_authorized_scenarios"
+        ],
+        "comparison_gap_status": "not_applicable",
+        "candidates": [],
+        "top_candidate_id": null,
+        "missing_decision_inputs": [
+          "An eligible authorized change"
+        ],
+        "policy_required_inputs": [],
+        "not_simulation_ready": [
+          {
+            "target_leak": "Delivery unit economics — some orders unprofitable",
+            "reason": "No eligible authorized change is available for this finding.",
+            "missing_decision_input_categories": [
+              "An eligible authorized change"
+            ]
+          }
+        ]
+      },
+      "finished": 1792973909788
+    },
+    {
+      "url": "/api/analyze/decision",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Average delivery revenue per order",
+                "amount": 18.4,
+                "source_text": "Average delivery revenue per order last month was USD 18.40."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": []
+          },
+          "facts": [
+            "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+            "The affected order count and total delivery loss have not been measured.",
+            "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Total revenue for the business",
+            "Total operating costs for the business",
+            "Affected order count for delivery losses",
+            "Total delivery loss amount"
+          ],
+          "confidence": "low",
+          "provenance": {
+            "source_input": "Business name: Final Validation 06\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nAverage delivery revenue per order last month was USD 18.40.\nSome delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.\nThe affected order count and total delivery loss have not been measured.\nManagement has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+            "items": [
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Average delivery revenue per order\",\"amount\":18.4,\"source_text\":\"Average delivery revenue per order last month was USD 18.40.\"}"
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_05",
+                "source": "evidence.facts[0]",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_06",
+                "source": "evidence.facts[1]",
+                "text": "The affected order count and total delivery loss have not been measured."
+              },
+              {
+                "id": "ev_c798c464f5bc4bfb04ae27f603404b25_07",
+                "source": "evidence.facts[2]",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 06"
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_05",
+                "source": "source_input[4]",
+                "text": "Average delivery revenue per order last month was USD 18.40."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_06",
+                "source": "source_input[5]",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_07",
+                "source": "source_input[6]",
+                "text": "The affected order count and total delivery loss have not been measured."
+              },
+              {
+                "id": "src_095cd620780f215239a7ec48735b452a_08",
+                "source": "source_input[7]",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_01",
+                "text": "Business name: Final Validation 06",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_01"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_02"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_03"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_04"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_05",
+                "text": "Average delivery revenue per order last month was USD 18.40.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_05"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_06",
+                "text": "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_06"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_07",
+                "text": "The affected order count and total delivery loss have not been measured.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_07"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_08",
+                "text": "Management has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_08"
+                ]
+              },
+              {
+                "id": "fact_095cd620780f215239a7ec48735b452a_09",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_095cd620780f215239a7ec48735b452a_03",
+                  "src_095cd620780f215239a7ec48735b452a_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_095cd620780f215239a7ec48735b452a_05",
+                "fact_095cd620780f215239a7ec48735b452a_06"
+              ],
+              "title": "Delivery unit economics — some orders unprofitable",
+              "category": "delivery",
+              "evidence": [
+                "Average delivery revenue per order last month was USD 18.40.",
+                "Some delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order."
+              ],
+              "interpretation": "Average delivery revenue per order was USD 18.40. For some orders, the combined cost of platform fees, packaging, discounts, and food exceeded the order revenue, meaning those orders generated a loss. The number of affected orders and the total loss amount have not been measured, so the financial impact is unquantified.",
+              "confidence": "high",
+              "intervention_ref": null
+            }
+          ],
+          "insufficient_evidence": []
+        },
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Delivery unit economics — some orders unprofitable",
+              "reason": "No eligible authorized change is available for this finding.",
+              "missing_decision_input_categories": [
+                "An eligible authorized change"
+              ]
+            }
+          ]
+        },
+        "simulation": {
+          "results": []
+        },
+        "decision_gate": {
+          "decision_gate": "no_actionable_scenario",
+          "reason_codes": [
+            "no_authorized_scenarios"
+          ],
+          "comparison_gap_status": "not_applicable",
+          "candidates": [],
+          "top_candidate_id": null,
+          "missing_decision_inputs": [
+            "An eligible authorized change"
+          ],
+          "policy_required_inputs": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Delivery unit economics — some orders unprofitable",
+              "reason": "No eligible authorized change is available for this finding.",
+              "missing_decision_input_categories": [
+                "An eligible authorized change"
+              ]
+            }
+          ]
+        }
+      },
+      "started": 1792973909789,
+      "status": 200,
+      "response": {
+        "decision": {
+          "decision_status": "needs_more_data",
+          "recommendation": {
+            "type": "collect_data",
+            "candidate_id": null,
+            "title": "Collect required decision inputs",
+            "rationale": "More data is needed due to no authorized scenarios being available."
+          },
+          "comparison": [
+            {
+              "candidate_id": null,
+              "target_leak": "Delivery unit economics — some orders unprofitable",
+              "scenario_status": "not_simulation_ready",
+              "assessment": "Not simulation ready.",
+              "verified_impact": null,
+              "currency": null
+            }
+          ],
+          "priority_inputs": [
+            {
+              "source_type": "upstream_missing_input",
+              "key": "An eligible authorized change",
+              "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+            }
+          ],
+          "confidence": "low"
+        }
+      },
+      "finished": 1792973911099
+    }
+  ],
+  "started": 1792973901893,
+  "page_text": "Your profitability workspace\nEARLY PREVIEW\nA clearer picture of what’s left.\n\nTurn business evidence into verified, grounded decisions.\n\nAnalysis workspace\n\nFOUR SPECIALISTS. ONE CLEAR ANSWER.\n\nAgent Office\nAnalysis complete\n✧\n\nAnalysis complete.\n\nYour evidence, scenarios and decision are ready.\n\nMore data needed before a confident decision\n\nBusiness Input\n01 / START HERE\nBusiness name\nBusiness type\nCafé\nBakery\nTea Shop\nRestaurant\nOther\nNotes (optional)\n↥\nDrop your business files here, or browse\nCSV, PDF, XLSX, images · Local selection only · Not analyzed\nRun Analysis Again\n↗\n\nAI analysis with deterministic validation and calculations · Files are not processed.\n\nBusiness Outlook\nBusiness analysis\nlast month · USD\n\nAnalysis complete\n\nYour analysis and decision are ready.\n\nRevenue\n\n—\n\nReported whole-business total\n\nOperating Costs\n\n—\n\nReported whole-business total\n\nWhat’s Left\n✧\n\n—\n\nNeeds reported revenue and operating costs\n\nMargin\n\n—\n\nNeeds reported revenue and operating costs\n\nWhere the money goes\n● Reported totals\n▪ What’s Left: deterministic baseline, not Scenario impact\n—\n\nRevenue\n\n—\n\nOperating Costs\n\n1 profit leak found\nNEEDS ATTENTION\nDelivery unit economics — some orders unprofitable\n\nhigh confidence\n\nAverage delivery revenue per order was USD 18.40. For some orders, the combined cost of platform fees, packaging, discounts, and food exceeded the order revenue, meaning those orders generated a loss. The number of affected orders and the total loss amount have not been measured, so the financial impact is unquantified.\n\nDELIVERY\n\nScenarios to test\n\nNo supported testable changes were identified.\n\nNeeds a controllable decision input (1)\nDecision\nNeeds more data\nMore data needed before a confident decision\n\nCollect required decision inputs\n\nWhy\n\nMore data is needed due to no authorized scenarios being available.\n\nPriority inputs\n\nMissing data\n\nAn eligible authorized change\n\nNeeded to produce a verified deterministic impact or establish the supplied decision prerequisite.\n\nScenario comparison\nDelivery unit economics — some orders unprofitable\n\nNeeds a controllable decision input\n\nNot simulation ready.\n\nlow confidence in this conclusion\n\nWhat’s Left? · A little clarity goes a long way.\nAI analysis with deterministic validation, scenario calculations, and bounded decision support.",
+  "complete": false,
+  "error": null,
+  "id": "F06",
+  "total_latency_ms": 9782,
+  "timeline": [
+    {
+      "at": 1792973902399,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973902903,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973903407,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973903911,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973904421,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973904931,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973905436,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973905945,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973906451,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973906958,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973907463,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973907967,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ]
+    },
+    {
+      "at": 1792973908471,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ]
+    },
+    {
+      "at": 1792973908981,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973909489,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973909997,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ]
+    },
+    {
+      "at": 1792973910506,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ]
+    },
+    {
+      "at": 1792973911016,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ]
+    },
+    {
+      "at": 1792973911524,
+      "done": true,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision",
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "server_diagnostics": [
+    {
+      "label": "Evidence business total grounding",
+      "diagnostic": {
+        "reason": "business_total_grounding",
+        "emitted_record_count": 0,
+        "fields": [
+          {
+            "field": "revenue.total",
+            "emitted_support_count": 0,
+            "validated_support_count": 0,
+            "original_total": null,
+            "trusted_total": null,
+            "reasons": [
+              "missing_support"
+            ]
+          },
+          {
+            "field": "costs.total",
+            "emitted_support_count": 0,
+            "validated_support_count": 0,
+            "original_total": null,
+            "trusted_total": null,
+            "reasons": [
+              "missing_support"
+            ]
+          }
+        ],
+        "records": []
+      }
+    },
+    {
+      "label": "Calculation fact grounding",
+      "diagnostic": {
+        "stage": "evidence_grounding",
+        "concept": "baseline_headcount",
+        "candidate_count": 0,
+        "accepted": false,
+        "rejection_reason": "missing_candidate",
+        "candidates": []
+      }
+    },
+    {
+      "label": "Calculation fact grounding",
+      "diagnostic": {
+        "stage": "evidence_grounding",
+        "concept": "labor_cost_per_worker",
+        "candidate_count": 0,
+        "accepted": false,
+        "rejection_reason": "missing_candidate",
+        "candidates": []
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "scenario_input",
+        "concept": "baseline_headcount",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "scenario_input",
+        "concept": "labor_cost_per_worker",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "simulate_input",
+        "concept": "baseline_headcount",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "simulate_input",
+        "concept": "labor_cost_per_worker",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    }
+  ],
+  "console_diagnostics": [],
+  "exceptions": [],
+  "input_sha256": "74e165dfc9077365466a37823438c6c52738016e3b5073d3b33b4fb245636612"
+}

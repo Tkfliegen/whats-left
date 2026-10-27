@@ -1,7 +1,8 @@
 import { validateAuthorizationRecords } from "./authorization-records";
 import { createHash } from "node:crypto";
 import { matchesSchema, evidenceSchema } from "./evidence";
-import type { Evidence, EvidenceProvenance } from "@/types/evidence";
+import type { Evidence, EvidenceProvenance, TrustedLaborCalculationFact } from "@/types/evidence";
+import { calculationInput, validateCalculationFacts } from "./calculation-facts";
 
 // Original source statements are distinct from model-extracted facts. Only the
 // former can grant permission. Segmentation preserves numbers and source wording.
@@ -18,7 +19,7 @@ export function sourceStatements(input: string): string[] {
   return sourceLines(input).flatMap(splitStatements);
 }
 
-export function createEvidenceProvenance(evidence: Evidence, input: string): EvidenceProvenance {
+export function createEvidenceProvenance(evidence: Evidence, input: string, calculationFacts?: TrustedLaborCalculationFact[]): EvidenceProvenance {
   const entries: Array<{ source: string; text: string }> = [];
   const add = (source: string, value: unknown) => {
     if (value !== null && value !== "") entries.push({ source, text: typeof value === "string" ? value : JSON.stringify(value) });
@@ -57,7 +58,12 @@ export function createEvidenceProvenance(evidence: Evidence, input: string): Evi
     });
     offset += count;
   }
-  return { source_input: input, items, citable_facts };
+  // Append trusted calculation views without changing existing source/fact IDs.
+  // buildScenarioInput already copies these exact provenance entries unchanged.
+  for (const fact of calculationFacts ?? []) items.push({ id: `calc_${sourceDigest}_${fact.concept}`,
+    source: `calculation_inputs.${fact.concept}`, text: JSON.stringify(calculationInput(fact)) });
+  return { source_input: input, items, citable_facts,
+    ...(calculationFacts !== undefined ? { calculation_facts: calculationFacts } : {}) };
 }
 
 // Legacy Evidence remains readable downstream, but cannot authorize anything.
@@ -70,9 +76,11 @@ export function isEvidence(value: unknown, requireProvenance = false): value is 
   if (provenance === undefined) return !requireProvenance;
   if (!provenance || typeof provenance !== "object" || Array.isArray(provenance)) return false;
   const record = provenance as Record<string, unknown>;
-  if (Object.keys(record).some(key => !["source_input", "items", "citable_facts", "authorization_records"].includes(key)) || typeof record.source_input !== "string" || !record.source_input.trim()
+  if (Object.keys(record).some(key => !["source_input", "items", "citable_facts", "authorization_records", "calculation_facts"].includes(key)) || typeof record.source_input !== "string" || !record.source_input.trim()
     || !Array.isArray(record.items) || !Array.isArray(record.citable_facts)) return false;
-  const expected = createEvidenceProvenance(base as Evidence, record.source_input);
+  if (record.calculation_facts !== undefined && !validateCalculationFacts(record.calculation_facts,
+    createEvidenceProvenance(base as Evidence, record.source_input).items, base as Evidence)) return false;
+  const expected = createEvidenceProvenance(base as Evidence, record.source_input, record.calculation_facts as TrustedLaborCalculationFact[] | undefined);
   return (record.authorization_records === undefined || validateAuthorizationRecords(record.authorization_records, expected.items, (base as Evidence).currency))
     && record.items.length === expected.items.length && record.items.every((item, i) => {
     if (!item || typeof item !== "object" || Array.isArray(item)) return false;

@@ -1,0 +1,3003 @@
+{
+  "calls": [
+    {
+      "url": "/api/analyze/evidence",
+      "body": {
+        "input": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test."
+      },
+      "started": 1792973853862,
+      "status": 200,
+      "response": {
+        "evidence": {
+          "business_type": "Bubble tea shop",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": 100000,
+            "items": [
+              {
+                "name": "Tuesday evening shifts",
+                "amount": 1900,
+                "source_text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              }
+            ]
+          },
+          "costs": {
+            "total": 95800,
+            "items": [
+              {
+                "name": "Tuesday evening staffing cost",
+                "amount": 2500,
+                "reported_category": "staffing",
+                "source_text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              }
+            ]
+          },
+          "facts": [
+            "Business type: Bubble tea shop",
+            "Last month revenue was USD 100,000 and total operating costs were USD 95,800.",
+            "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+            "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+            "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+            "All other scheduling conditions for that shift should remain unchanged during the test."
+          ],
+          "assumptions": [],
+          "missing_information": [],
+          "confidence": "high",
+          "provenance": {
+            "source_input": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+            "items": [
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_01",
+                "source": "evidence.business_type",
+                "text": "Bubble tea shop"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_04",
+                "source": "evidence.revenue.total",
+                "text": "100000"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_05",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening shifts\",\"amount\":1900,\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_06",
+                "source": "evidence.costs.total",
+                "text": "95800"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_07",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Tuesday evening staffing cost\",\"amount\":2500,\"reported_category\":\"staffing\",\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_08",
+                "source": "evidence.facts[0]",
+                "text": "Business type: Bubble tea shop"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_09",
+                "source": "evidence.facts[1]",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_10",
+                "source": "evidence.facts[2]",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_11",
+                "source": "evidence.facts[3]",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_12",
+                "source": "evidence.facts[4]",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_13",
+                "source": "evidence.facts[5]",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_01",
+                "source": "source_input[0]",
+                "text": "Business type: Bubble tea shop"
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_02",
+                "source": "source_input[1]",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                "source": "source_input[2]",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_04",
+                "source": "source_input[3]",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                "source": "source_input[4]",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_06",
+                "source": "source_input[5]",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test."
+              },
+              {
+                "id": "calc_d657604c3a2d1468ef538b3795ca83cb_baseline_headcount",
+                "source": "calculation_inputs.baseline_headcount",
+                "text": "{\"concept\":\"baseline_headcount\",\"scope\":\"tuesday_evening\",\"value\":4,\"unit\":\"persons\",\"period\":\"last month\",\"currency\":null}"
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_01",
+                "text": "Business type: Bubble tea shop",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_01"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_02",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_02"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_03",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_03"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_04",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_05",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_06",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_07",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ]
+              }
+            ],
+            "calculation_facts": [
+              {
+                "concept": "baseline_headcount",
+                "scope": "tuesday_evening",
+                "period": "last month",
+                "support": {
+                  "value": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "4"
+                  },
+                  "unit": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "4 staff members"
+                  },
+                  "scope": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "authoritative Tuesday evening baseline headcount was 4 staff members"
+                  },
+                  "period": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "Last month"
+                  },
+                  "currency": null
+                },
+                "value": 4,
+                "unit": "persons",
+                "currency": null
+              }
+            ],
+            "authorization_records": [
+              {
+                "intervention": "headcount_reduction",
+                "scope": "tuesday_evening_6pm_10pm",
+                "operation": "delta",
+                "from": null,
+                "value": -1,
+                "unit": "persons",
+                "permission": "explicit",
+                "permission_source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05"
+                ],
+                "constraint": "rest_schedule_unchanged",
+                "constraint_source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ],
+                "supporting_facts": [
+                  {
+                    "role": "sales",
+                    "value": 1900,
+                    "unit": "currency",
+                    "period": "month",
+                    "currency": "USD",
+                    "source_refs": [
+                      "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                    ]
+                  },
+                  {
+                    "role": "staffing_cost",
+                    "value": 2500,
+                    "unit": "currency",
+                    "period": "month",
+                    "currency": "USD",
+                    "source_refs": [
+                      "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "finished": 1792973859486
+    },
+    {
+      "url": "/api/analyze/leaks",
+      "body": {
+        "evidence": {
+          "business_type": "Bubble tea shop",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": 100000,
+            "items": [
+              {
+                "name": "Tuesday evening shifts",
+                "amount": 1900,
+                "source_text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              }
+            ]
+          },
+          "costs": {
+            "total": 95800,
+            "items": [
+              {
+                "name": "Tuesday evening staffing cost",
+                "amount": 2500,
+                "reported_category": "staffing",
+                "source_text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              }
+            ]
+          },
+          "facts": [
+            "Business type: Bubble tea shop",
+            "Last month revenue was USD 100,000 and total operating costs were USD 95,800.",
+            "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+            "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+            "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+            "All other scheduling conditions for that shift should remain unchanged during the test."
+          ],
+          "assumptions": [],
+          "missing_information": [],
+          "confidence": "high",
+          "provenance": {
+            "source_input": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+            "items": [
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_01",
+                "source": "evidence.business_type",
+                "text": "Bubble tea shop"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_04",
+                "source": "evidence.revenue.total",
+                "text": "100000"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_05",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening shifts\",\"amount\":1900,\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_06",
+                "source": "evidence.costs.total",
+                "text": "95800"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_07",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Tuesday evening staffing cost\",\"amount\":2500,\"reported_category\":\"staffing\",\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_08",
+                "source": "evidence.facts[0]",
+                "text": "Business type: Bubble tea shop"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_09",
+                "source": "evidence.facts[1]",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_10",
+                "source": "evidence.facts[2]",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_11",
+                "source": "evidence.facts[3]",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_12",
+                "source": "evidence.facts[4]",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_13",
+                "source": "evidence.facts[5]",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_01",
+                "source": "source_input[0]",
+                "text": "Business type: Bubble tea shop"
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_02",
+                "source": "source_input[1]",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                "source": "source_input[2]",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_04",
+                "source": "source_input[3]",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                "source": "source_input[4]",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_06",
+                "source": "source_input[5]",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test."
+              },
+              {
+                "id": "calc_d657604c3a2d1468ef538b3795ca83cb_baseline_headcount",
+                "source": "calculation_inputs.baseline_headcount",
+                "text": "{\"concept\":\"baseline_headcount\",\"scope\":\"tuesday_evening\",\"value\":4,\"unit\":\"persons\",\"period\":\"last month\",\"currency\":null}"
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_01",
+                "text": "Business type: Bubble tea shop",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_01"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_02",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_02"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_03",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_03"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_04",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_05",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_06",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_07",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ]
+              }
+            ],
+            "calculation_facts": [
+              {
+                "concept": "baseline_headcount",
+                "scope": "tuesday_evening",
+                "period": "last month",
+                "support": {
+                  "value": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "4"
+                  },
+                  "unit": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "4 staff members"
+                  },
+                  "scope": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "authoritative Tuesday evening baseline headcount was 4 staff members"
+                  },
+                  "period": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "Last month"
+                  },
+                  "currency": null
+                },
+                "value": 4,
+                "unit": "persons",
+                "currency": null
+              }
+            ],
+            "authorization_records": [
+              {
+                "intervention": "headcount_reduction",
+                "scope": "tuesday_evening_6pm_10pm",
+                "operation": "delta",
+                "from": null,
+                "value": -1,
+                "unit": "persons",
+                "permission": "explicit",
+                "permission_source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05"
+                ],
+                "constraint": "rest_schedule_unchanged",
+                "constraint_source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ],
+                "supporting_facts": [
+                  {
+                    "role": "sales",
+                    "value": 1900,
+                    "unit": "currency",
+                    "period": "month",
+                    "currency": "USD",
+                    "source_refs": [
+                      "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                    ]
+                  },
+                  {
+                    "role": "staffing_cost",
+                    "value": 2500,
+                    "unit": "currency",
+                    "period": "month",
+                    "currency": "USD",
+                    "source_refs": [
+                      "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "operational_context": [
+          "Business type: Bubble tea shop",
+          "Last month revenue was USD 100,000 and total operating costs were USD 95,800.",
+          "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+          "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+          "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+          "All other scheduling conditions for that shift should remain unchanged during the test."
+        ]
+      },
+      "started": 1792973860637,
+      "status": 200,
+      "response": {
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_d657604c3a2d1468ef538b3795ca83cb_03",
+                "fact_d657604c3a2d1468ef538b3795ca83cb_04",
+                "fact_d657604c3a2d1468ef538b3795ca83cb_05",
+                "fact_d657604c3a2d1468ef538b3795ca83cb_06"
+              ],
+              "title": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "category": "labor",
+              "evidence": [
+                "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+                "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+                "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+                "All other scheduling conditions for that shift should remain unchanged during the test."
+              ],
+              "interpretation": "Tuesday evenings used 4 staff, generated USD 1,900 in sales, and incurred USD 2,500 in staffing cost for that affected monthly period. Management has approved testing a reduction of 1 staff member for that Tuesday evening shift with all other scheduling conditions unchanged.",
+              "confidence": "high",
+              "intervention_ref": "headcount_reduction"
+            }
+          ],
+          "insufficient_evidence": []
+        }
+      },
+      "finished": 1792973862665
+    },
+    {
+      "url": "/api/analyze/scenarios",
+      "body": {
+        "evidence": {
+          "business_type": "Bubble tea shop",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": 100000,
+            "items": [
+              {
+                "name": "Tuesday evening shifts",
+                "amount": 1900,
+                "source_text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              }
+            ]
+          },
+          "costs": {
+            "total": 95800,
+            "items": [
+              {
+                "name": "Tuesday evening staffing cost",
+                "amount": 2500,
+                "reported_category": "staffing",
+                "source_text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              }
+            ]
+          },
+          "facts": [
+            "Business type: Bubble tea shop",
+            "Last month revenue was USD 100,000 and total operating costs were USD 95,800.",
+            "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+            "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+            "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+            "All other scheduling conditions for that shift should remain unchanged during the test."
+          ],
+          "assumptions": [],
+          "missing_information": [],
+          "confidence": "high",
+          "provenance": {
+            "source_input": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+            "items": [
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_01",
+                "source": "evidence.business_type",
+                "text": "Bubble tea shop"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_04",
+                "source": "evidence.revenue.total",
+                "text": "100000"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_05",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening shifts\",\"amount\":1900,\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_06",
+                "source": "evidence.costs.total",
+                "text": "95800"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_07",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Tuesday evening staffing cost\",\"amount\":2500,\"reported_category\":\"staffing\",\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_08",
+                "source": "evidence.facts[0]",
+                "text": "Business type: Bubble tea shop"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_09",
+                "source": "evidence.facts[1]",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_10",
+                "source": "evidence.facts[2]",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_11",
+                "source": "evidence.facts[3]",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_12",
+                "source": "evidence.facts[4]",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_13",
+                "source": "evidence.facts[5]",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_01",
+                "source": "source_input[0]",
+                "text": "Business type: Bubble tea shop"
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_02",
+                "source": "source_input[1]",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                "source": "source_input[2]",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_04",
+                "source": "source_input[3]",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                "source": "source_input[4]",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_06",
+                "source": "source_input[5]",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test."
+              },
+              {
+                "id": "calc_d657604c3a2d1468ef538b3795ca83cb_baseline_headcount",
+                "source": "calculation_inputs.baseline_headcount",
+                "text": "{\"concept\":\"baseline_headcount\",\"scope\":\"tuesday_evening\",\"value\":4,\"unit\":\"persons\",\"period\":\"last month\",\"currency\":null}"
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_01",
+                "text": "Business type: Bubble tea shop",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_01"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_02",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_02"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_03",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_03"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_04",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_05",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_06",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_07",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ]
+              }
+            ],
+            "calculation_facts": [
+              {
+                "concept": "baseline_headcount",
+                "scope": "tuesday_evening",
+                "period": "last month",
+                "support": {
+                  "value": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "4"
+                  },
+                  "unit": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "4 staff members"
+                  },
+                  "scope": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "authoritative Tuesday evening baseline headcount was 4 staff members"
+                  },
+                  "period": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "Last month"
+                  },
+                  "currency": null
+                },
+                "value": 4,
+                "unit": "persons",
+                "currency": null
+              }
+            ],
+            "authorization_records": [
+              {
+                "intervention": "headcount_reduction",
+                "scope": "tuesday_evening_6pm_10pm",
+                "operation": "delta",
+                "from": null,
+                "value": -1,
+                "unit": "persons",
+                "permission": "explicit",
+                "permission_source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05"
+                ],
+                "constraint": "rest_schedule_unchanged",
+                "constraint_source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ],
+                "supporting_facts": [
+                  {
+                    "role": "sales",
+                    "value": 1900,
+                    "unit": "currency",
+                    "period": "month",
+                    "currency": "USD",
+                    "source_refs": [
+                      "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                    ]
+                  },
+                  {
+                    "role": "staffing_cost",
+                    "value": 2500,
+                    "unit": "currency",
+                    "period": "month",
+                    "currency": "USD",
+                    "source_refs": [
+                      "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_d657604c3a2d1468ef538b3795ca83cb_03",
+                "fact_d657604c3a2d1468ef538b3795ca83cb_04",
+                "fact_d657604c3a2d1468ef538b3795ca83cb_05",
+                "fact_d657604c3a2d1468ef538b3795ca83cb_06"
+              ],
+              "title": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "category": "labor",
+              "evidence": [
+                "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+                "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+                "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+                "All other scheduling conditions for that shift should remain unchanged during the test."
+              ],
+              "interpretation": "Tuesday evenings used 4 staff, generated USD 1,900 in sales, and incurred USD 2,500 in staffing cost for that affected monthly period. Management has approved testing a reduction of 1 staff member for that Tuesday evening shift with all other scheduling conditions unchanged.",
+              "confidence": "high",
+              "intervention_ref": "headcount_reduction"
+            }
+          ],
+          "insufficient_evidence": []
+        },
+        "operational_context": [
+          "Business type: Bubble tea shop",
+          "Last month revenue was USD 100,000 and total operating costs were USD 95,800.",
+          "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+          "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+          "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+          "All other scheduling conditions for that shift should remain unchanged during the test."
+        ]
+      },
+      "started": 1792973863819,
+      "status": 200,
+      "response": {
+        "scenarios": {
+          "scenarios": [
+            {
+              "title": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "target_leak": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "controlled_changes": [
+                {
+                  "variable": "Tuesday evening headcount",
+                  "change_type": "delta",
+                  "from": null,
+                  "value": -1,
+                  "unit": "persons"
+                }
+              ],
+              "available_input_refs": [
+                "src_d657604c3a2d1468ef538b3795ca83cb_04",
+                "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                "src_d657604c3a2d1468ef538b3795ca83cb_06"
+              ],
+              "missing_calculation_inputs": [],
+              "confidence": "high"
+            }
+          ],
+          "not_simulation_ready": []
+        },
+        "input_facts": [
+          {
+            "id": "input_01",
+            "source": "evidence.business_type",
+            "fact": "Bubble tea shop"
+          },
+          {
+            "id": "input_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "input_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "input_04",
+            "source": "evidence.revenue.total",
+            "fact": "100000"
+          },
+          {
+            "id": "input_05",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Tuesday evening shifts\",\"amount\":1900,\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+          },
+          {
+            "id": "input_06",
+            "source": "evidence.costs.total",
+            "fact": "95800"
+          },
+          {
+            "id": "input_07",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Tuesday evening staffing cost\",\"amount\":2500,\"reported_category\":\"staffing\",\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+          },
+          {
+            "id": "input_08",
+            "source": "evidence.facts[0]",
+            "fact": "Business type: Bubble tea shop"
+          },
+          {
+            "id": "input_09",
+            "source": "evidence.facts[1]",
+            "fact": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+          },
+          {
+            "id": "input_10",
+            "source": "evidence.facts[2]",
+            "fact": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+          },
+          {
+            "id": "input_11",
+            "source": "evidence.facts[3]",
+            "fact": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+          },
+          {
+            "id": "input_12",
+            "source": "evidence.facts[4]",
+            "fact": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+          },
+          {
+            "id": "input_13",
+            "source": "evidence.facts[5]",
+            "fact": "All other scheduling conditions for that shift should remain unchanged during the test."
+          },
+          {
+            "id": "input_14",
+            "source": "operational_context[0]",
+            "fact": "Business type: Bubble tea shop"
+          },
+          {
+            "id": "input_15",
+            "source": "operational_context[1]",
+            "fact": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+          },
+          {
+            "id": "input_16",
+            "source": "operational_context[2]",
+            "fact": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+          },
+          {
+            "id": "input_17",
+            "source": "operational_context[3]",
+            "fact": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+          },
+          {
+            "id": "input_18",
+            "source": "operational_context[4]",
+            "fact": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+          },
+          {
+            "id": "input_19",
+            "source": "operational_context[5]",
+            "fact": "All other scheduling conditions for that shift should remain unchanged during the test."
+          },
+          {
+            "id": "input_20",
+            "source": "leaks.leaks[0].evidence[0]",
+            "fact": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+          },
+          {
+            "id": "input_21",
+            "source": "leaks.leaks[0].evidence[1]",
+            "fact": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+          },
+          {
+            "id": "input_22",
+            "source": "leaks.leaks[0].evidence[2]",
+            "fact": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+          },
+          {
+            "id": "input_23",
+            "source": "leaks.leaks[0].evidence[3]",
+            "fact": "All other scheduling conditions for that shift should remain unchanged during the test."
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_01",
+            "source": "evidence.business_type",
+            "fact": "Bubble tea shop"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_04",
+            "source": "evidence.revenue.total",
+            "fact": "100000"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_05",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Tuesday evening shifts\",\"amount\":1900,\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_06",
+            "source": "evidence.costs.total",
+            "fact": "95800"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_07",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Tuesday evening staffing cost\",\"amount\":2500,\"reported_category\":\"staffing\",\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_08",
+            "source": "evidence.facts[0]",
+            "fact": "Business type: Bubble tea shop"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_09",
+            "source": "evidence.facts[1]",
+            "fact": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_10",
+            "source": "evidence.facts[2]",
+            "fact": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_11",
+            "source": "evidence.facts[3]",
+            "fact": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_12",
+            "source": "evidence.facts[4]",
+            "fact": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_13",
+            "source": "evidence.facts[5]",
+            "fact": "All other scheduling conditions for that shift should remain unchanged during the test."
+          },
+          {
+            "id": "src_d657604c3a2d1468ef538b3795ca83cb_01",
+            "source": "source_input[0]",
+            "fact": "Business type: Bubble tea shop"
+          },
+          {
+            "id": "src_d657604c3a2d1468ef538b3795ca83cb_02",
+            "source": "source_input[1]",
+            "fact": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+          },
+          {
+            "id": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+            "source": "source_input[2]",
+            "fact": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+          },
+          {
+            "id": "src_d657604c3a2d1468ef538b3795ca83cb_04",
+            "source": "source_input[3]",
+            "fact": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+          },
+          {
+            "id": "src_d657604c3a2d1468ef538b3795ca83cb_05",
+            "source": "source_input[4]",
+            "fact": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+          },
+          {
+            "id": "src_d657604c3a2d1468ef538b3795ca83cb_06",
+            "source": "source_input[5]",
+            "fact": "All other scheduling conditions for that shift should remain unchanged during the test."
+          },
+          {
+            "id": "calc_d657604c3a2d1468ef538b3795ca83cb_baseline_headcount",
+            "source": "calculation_inputs.baseline_headcount",
+            "fact": "{\"concept\":\"baseline_headcount\",\"scope\":\"tuesday_evening\",\"value\":4,\"unit\":\"persons\",\"period\":\"last month\",\"currency\":null}"
+          }
+        ]
+      },
+      "finished": 1792973865228
+    },
+    {
+      "url": "/api/analyze/simulate",
+      "body": {
+        "evidence": {
+          "business_type": "Bubble tea shop",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": 100000,
+            "items": [
+              {
+                "name": "Tuesday evening shifts",
+                "amount": 1900,
+                "source_text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              }
+            ]
+          },
+          "costs": {
+            "total": 95800,
+            "items": [
+              {
+                "name": "Tuesday evening staffing cost",
+                "amount": 2500,
+                "reported_category": "staffing",
+                "source_text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              }
+            ]
+          },
+          "facts": [
+            "Business type: Bubble tea shop",
+            "Last month revenue was USD 100,000 and total operating costs were USD 95,800.",
+            "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+            "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+            "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+            "All other scheduling conditions for that shift should remain unchanged during the test."
+          ],
+          "assumptions": [],
+          "missing_information": [],
+          "confidence": "high",
+          "provenance": {
+            "source_input": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+            "items": [
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_01",
+                "source": "evidence.business_type",
+                "text": "Bubble tea shop"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_04",
+                "source": "evidence.revenue.total",
+                "text": "100000"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_05",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening shifts\",\"amount\":1900,\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_06",
+                "source": "evidence.costs.total",
+                "text": "95800"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_07",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Tuesday evening staffing cost\",\"amount\":2500,\"reported_category\":\"staffing\",\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_08",
+                "source": "evidence.facts[0]",
+                "text": "Business type: Bubble tea shop"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_09",
+                "source": "evidence.facts[1]",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_10",
+                "source": "evidence.facts[2]",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_11",
+                "source": "evidence.facts[3]",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_12",
+                "source": "evidence.facts[4]",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_13",
+                "source": "evidence.facts[5]",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_01",
+                "source": "source_input[0]",
+                "text": "Business type: Bubble tea shop"
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_02",
+                "source": "source_input[1]",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                "source": "source_input[2]",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_04",
+                "source": "source_input[3]",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                "source": "source_input[4]",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_06",
+                "source": "source_input[5]",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test."
+              },
+              {
+                "id": "calc_d657604c3a2d1468ef538b3795ca83cb_baseline_headcount",
+                "source": "calculation_inputs.baseline_headcount",
+                "text": "{\"concept\":\"baseline_headcount\",\"scope\":\"tuesday_evening\",\"value\":4,\"unit\":\"persons\",\"period\":\"last month\",\"currency\":null}"
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_01",
+                "text": "Business type: Bubble tea shop",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_01"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_02",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_02"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_03",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_03"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_04",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_05",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_06",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_07",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ]
+              }
+            ],
+            "calculation_facts": [
+              {
+                "concept": "baseline_headcount",
+                "scope": "tuesday_evening",
+                "period": "last month",
+                "support": {
+                  "value": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "4"
+                  },
+                  "unit": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "4 staff members"
+                  },
+                  "scope": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "authoritative Tuesday evening baseline headcount was 4 staff members"
+                  },
+                  "period": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "Last month"
+                  },
+                  "currency": null
+                },
+                "value": 4,
+                "unit": "persons",
+                "currency": null
+              }
+            ],
+            "authorization_records": [
+              {
+                "intervention": "headcount_reduction",
+                "scope": "tuesday_evening_6pm_10pm",
+                "operation": "delta",
+                "from": null,
+                "value": -1,
+                "unit": "persons",
+                "permission": "explicit",
+                "permission_source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05"
+                ],
+                "constraint": "rest_schedule_unchanged",
+                "constraint_source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ],
+                "supporting_facts": [
+                  {
+                    "role": "sales",
+                    "value": 1900,
+                    "unit": "currency",
+                    "period": "month",
+                    "currency": "USD",
+                    "source_refs": [
+                      "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                    ]
+                  },
+                  {
+                    "role": "staffing_cost",
+                    "value": 2500,
+                    "unit": "currency",
+                    "period": "month",
+                    "currency": "USD",
+                    "source_refs": [
+                      "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "scenarios": {
+          "scenarios": [
+            {
+              "title": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "target_leak": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "controlled_changes": [
+                {
+                  "variable": "Tuesday evening headcount",
+                  "change_type": "delta",
+                  "from": null,
+                  "value": -1,
+                  "unit": "persons"
+                }
+              ],
+              "available_input_refs": [
+                "src_d657604c3a2d1468ef538b3795ca83cb_04",
+                "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                "src_d657604c3a2d1468ef538b3795ca83cb_06"
+              ],
+              "missing_calculation_inputs": [],
+              "confidence": "high"
+            }
+          ],
+          "not_simulation_ready": []
+        },
+        "input_facts": [
+          {
+            "id": "input_01",
+            "source": "evidence.business_type",
+            "fact": "Bubble tea shop"
+          },
+          {
+            "id": "input_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "input_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "input_04",
+            "source": "evidence.revenue.total",
+            "fact": "100000"
+          },
+          {
+            "id": "input_05",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Tuesday evening shifts\",\"amount\":1900,\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+          },
+          {
+            "id": "input_06",
+            "source": "evidence.costs.total",
+            "fact": "95800"
+          },
+          {
+            "id": "input_07",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Tuesday evening staffing cost\",\"amount\":2500,\"reported_category\":\"staffing\",\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+          },
+          {
+            "id": "input_08",
+            "source": "evidence.facts[0]",
+            "fact": "Business type: Bubble tea shop"
+          },
+          {
+            "id": "input_09",
+            "source": "evidence.facts[1]",
+            "fact": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+          },
+          {
+            "id": "input_10",
+            "source": "evidence.facts[2]",
+            "fact": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+          },
+          {
+            "id": "input_11",
+            "source": "evidence.facts[3]",
+            "fact": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+          },
+          {
+            "id": "input_12",
+            "source": "evidence.facts[4]",
+            "fact": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+          },
+          {
+            "id": "input_13",
+            "source": "evidence.facts[5]",
+            "fact": "All other scheduling conditions for that shift should remain unchanged during the test."
+          },
+          {
+            "id": "input_14",
+            "source": "operational_context[0]",
+            "fact": "Business type: Bubble tea shop"
+          },
+          {
+            "id": "input_15",
+            "source": "operational_context[1]",
+            "fact": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+          },
+          {
+            "id": "input_16",
+            "source": "operational_context[2]",
+            "fact": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+          },
+          {
+            "id": "input_17",
+            "source": "operational_context[3]",
+            "fact": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+          },
+          {
+            "id": "input_18",
+            "source": "operational_context[4]",
+            "fact": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+          },
+          {
+            "id": "input_19",
+            "source": "operational_context[5]",
+            "fact": "All other scheduling conditions for that shift should remain unchanged during the test."
+          },
+          {
+            "id": "input_20",
+            "source": "leaks.leaks[0].evidence[0]",
+            "fact": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+          },
+          {
+            "id": "input_21",
+            "source": "leaks.leaks[0].evidence[1]",
+            "fact": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+          },
+          {
+            "id": "input_22",
+            "source": "leaks.leaks[0].evidence[2]",
+            "fact": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+          },
+          {
+            "id": "input_23",
+            "source": "leaks.leaks[0].evidence[3]",
+            "fact": "All other scheduling conditions for that shift should remain unchanged during the test."
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_01",
+            "source": "evidence.business_type",
+            "fact": "Bubble tea shop"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_04",
+            "source": "evidence.revenue.total",
+            "fact": "100000"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_05",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Tuesday evening shifts\",\"amount\":1900,\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_06",
+            "source": "evidence.costs.total",
+            "fact": "95800"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_07",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Tuesday evening staffing cost\",\"amount\":2500,\"reported_category\":\"staffing\",\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_08",
+            "source": "evidence.facts[0]",
+            "fact": "Business type: Bubble tea shop"
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_09",
+            "source": "evidence.facts[1]",
+            "fact": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_10",
+            "source": "evidence.facts[2]",
+            "fact": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_11",
+            "source": "evidence.facts[3]",
+            "fact": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_12",
+            "source": "evidence.facts[4]",
+            "fact": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+          },
+          {
+            "id": "ev_7ee654374c94b4602ab3c1dae720ea22_13",
+            "source": "evidence.facts[5]",
+            "fact": "All other scheduling conditions for that shift should remain unchanged during the test."
+          },
+          {
+            "id": "src_d657604c3a2d1468ef538b3795ca83cb_01",
+            "source": "source_input[0]",
+            "fact": "Business type: Bubble tea shop"
+          },
+          {
+            "id": "src_d657604c3a2d1468ef538b3795ca83cb_02",
+            "source": "source_input[1]",
+            "fact": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+          },
+          {
+            "id": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+            "source": "source_input[2]",
+            "fact": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+          },
+          {
+            "id": "src_d657604c3a2d1468ef538b3795ca83cb_04",
+            "source": "source_input[3]",
+            "fact": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+          },
+          {
+            "id": "src_d657604c3a2d1468ef538b3795ca83cb_05",
+            "source": "source_input[4]",
+            "fact": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+          },
+          {
+            "id": "src_d657604c3a2d1468ef538b3795ca83cb_06",
+            "source": "source_input[5]",
+            "fact": "All other scheduling conditions for that shift should remain unchanged during the test."
+          },
+          {
+            "id": "calc_d657604c3a2d1468ef538b3795ca83cb_baseline_headcount",
+            "source": "calculation_inputs.baseline_headcount",
+            "fact": "{\"concept\":\"baseline_headcount\",\"scope\":\"tuesday_evening\",\"value\":4,\"unit\":\"persons\",\"period\":\"last month\",\"currency\":null}"
+          }
+        ]
+      },
+      "started": 1792973865229,
+      "status": 200,
+      "response": {
+        "results": [
+          {
+            "scenario_title": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+            "target_leak": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+            "controlled_changes": [
+              {
+                "variable": "Tuesday evening headcount",
+                "change_type": "delta",
+                "from": null,
+                "value": -1,
+                "unit": "persons"
+              }
+            ],
+            "notes": [],
+            "status": "not_calculable_yet",
+            "calculation": null,
+            "missing_inputs": [
+              "Authoritative labor cost per worker for Tuesday evenings in the affected period and currency"
+            ]
+          }
+        ]
+      },
+      "finished": 1792973865288
+    },
+    {
+      "url": "/api/analyze/decision-gate",
+      "body": {
+        "evidence": {
+          "business_type": "Bubble tea shop",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": 100000,
+            "items": [
+              {
+                "name": "Tuesday evening shifts",
+                "amount": 1900,
+                "source_text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              }
+            ]
+          },
+          "costs": {
+            "total": 95800,
+            "items": [
+              {
+                "name": "Tuesday evening staffing cost",
+                "amount": 2500,
+                "reported_category": "staffing",
+                "source_text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              }
+            ]
+          },
+          "facts": [
+            "Business type: Bubble tea shop",
+            "Last month revenue was USD 100,000 and total operating costs were USD 95,800.",
+            "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+            "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+            "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+            "All other scheduling conditions for that shift should remain unchanged during the test."
+          ],
+          "assumptions": [],
+          "missing_information": [],
+          "confidence": "high",
+          "provenance": {
+            "source_input": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+            "items": [
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_01",
+                "source": "evidence.business_type",
+                "text": "Bubble tea shop"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_04",
+                "source": "evidence.revenue.total",
+                "text": "100000"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_05",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening shifts\",\"amount\":1900,\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_06",
+                "source": "evidence.costs.total",
+                "text": "95800"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_07",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Tuesday evening staffing cost\",\"amount\":2500,\"reported_category\":\"staffing\",\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_08",
+                "source": "evidence.facts[0]",
+                "text": "Business type: Bubble tea shop"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_09",
+                "source": "evidence.facts[1]",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_10",
+                "source": "evidence.facts[2]",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_11",
+                "source": "evidence.facts[3]",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_12",
+                "source": "evidence.facts[4]",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_13",
+                "source": "evidence.facts[5]",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_01",
+                "source": "source_input[0]",
+                "text": "Business type: Bubble tea shop"
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_02",
+                "source": "source_input[1]",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                "source": "source_input[2]",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_04",
+                "source": "source_input[3]",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                "source": "source_input[4]",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_06",
+                "source": "source_input[5]",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test."
+              },
+              {
+                "id": "calc_d657604c3a2d1468ef538b3795ca83cb_baseline_headcount",
+                "source": "calculation_inputs.baseline_headcount",
+                "text": "{\"concept\":\"baseline_headcount\",\"scope\":\"tuesday_evening\",\"value\":4,\"unit\":\"persons\",\"period\":\"last month\",\"currency\":null}"
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_01",
+                "text": "Business type: Bubble tea shop",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_01"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_02",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_02"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_03",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_03"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_04",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_05",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_06",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_07",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ]
+              }
+            ],
+            "calculation_facts": [
+              {
+                "concept": "baseline_headcount",
+                "scope": "tuesday_evening",
+                "period": "last month",
+                "support": {
+                  "value": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "4"
+                  },
+                  "unit": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "4 staff members"
+                  },
+                  "scope": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "authoritative Tuesday evening baseline headcount was 4 staff members"
+                  },
+                  "period": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "Last month"
+                  },
+                  "currency": null
+                },
+                "value": 4,
+                "unit": "persons",
+                "currency": null
+              }
+            ],
+            "authorization_records": [
+              {
+                "intervention": "headcount_reduction",
+                "scope": "tuesday_evening_6pm_10pm",
+                "operation": "delta",
+                "from": null,
+                "value": -1,
+                "unit": "persons",
+                "permission": "explicit",
+                "permission_source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05"
+                ],
+                "constraint": "rest_schedule_unchanged",
+                "constraint_source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ],
+                "supporting_facts": [
+                  {
+                    "role": "sales",
+                    "value": 1900,
+                    "unit": "currency",
+                    "period": "month",
+                    "currency": "USD",
+                    "source_refs": [
+                      "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                    ]
+                  },
+                  {
+                    "role": "staffing_cost",
+                    "value": 2500,
+                    "unit": "currency",
+                    "period": "month",
+                    "currency": "USD",
+                    "source_refs": [
+                      "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "scenarios": {
+          "scenarios": [
+            {
+              "title": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "target_leak": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "controlled_changes": [
+                {
+                  "variable": "Tuesday evening headcount",
+                  "change_type": "delta",
+                  "from": null,
+                  "value": -1,
+                  "unit": "persons"
+                }
+              ],
+              "available_input_refs": [
+                "src_d657604c3a2d1468ef538b3795ca83cb_04",
+                "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                "src_d657604c3a2d1468ef538b3795ca83cb_06"
+              ],
+              "missing_calculation_inputs": [],
+              "confidence": "high"
+            }
+          ],
+          "not_simulation_ready": []
+        },
+        "simulation": {
+          "results": [
+            {
+              "scenario_title": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "target_leak": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "controlled_changes": [
+                {
+                  "variable": "Tuesday evening headcount",
+                  "change_type": "delta",
+                  "from": null,
+                  "value": -1,
+                  "unit": "persons"
+                }
+              ],
+              "notes": [],
+              "status": "not_calculable_yet",
+              "calculation": null,
+              "missing_inputs": [
+                "Authoritative labor cost per worker for Tuesday evenings in the affected period and currency"
+              ]
+            }
+          ]
+        }
+      },
+      "started": 1792973866442,
+      "status": 200,
+      "response": {
+        "decision_gate": "needs_more_data",
+        "reason_codes": [
+          "no_calculable_scenarios"
+        ],
+        "comparison_gap_status": "not_applicable",
+        "candidates": [
+          {
+            "candidate_id": "candidate_01",
+            "scenario_title": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+            "target_leak": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+            "scenario_status": "not_calculable_yet",
+            "verified_impact": null,
+            "currency": null,
+            "period": null,
+            "impact_metric": null
+          }
+        ],
+        "top_candidate_id": null,
+        "missing_decision_inputs": [
+          "Authoritative labor cost per worker for Tuesday evenings in the affected period and currency"
+        ],
+        "policy_required_inputs": [],
+        "not_simulation_ready": []
+      },
+      "finished": 1792973866500
+    },
+    {
+      "url": "/api/analyze/decision",
+      "body": {
+        "evidence": {
+          "business_type": "Bubble tea shop",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": 100000,
+            "items": [
+              {
+                "name": "Tuesday evening shifts",
+                "amount": 1900,
+                "source_text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              }
+            ]
+          },
+          "costs": {
+            "total": 95800,
+            "items": [
+              {
+                "name": "Tuesday evening staffing cost",
+                "amount": 2500,
+                "reported_category": "staffing",
+                "source_text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              }
+            ]
+          },
+          "facts": [
+            "Business type: Bubble tea shop",
+            "Last month revenue was USD 100,000 and total operating costs were USD 95,800.",
+            "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+            "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+            "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+            "All other scheduling conditions for that shift should remain unchanged during the test."
+          ],
+          "assumptions": [],
+          "missing_information": [],
+          "confidence": "high",
+          "provenance": {
+            "source_input": "Business type: Bubble tea shop\n\nLast month revenue was USD 100,000 and total operating costs were USD 95,800.\n\nLast month, the authoritative Tuesday evening baseline headcount was 4 staff members.\n\nTuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\n\nManagement has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+            "items": [
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_01",
+                "source": "evidence.business_type",
+                "text": "Bubble tea shop"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_04",
+                "source": "evidence.revenue.total",
+                "text": "100000"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_05",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening shifts\",\"amount\":1900,\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_06",
+                "source": "evidence.costs.total",
+                "text": "95800"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_07",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Tuesday evening staffing cost\",\"amount\":2500,\"reported_category\":\"staffing\",\"source_text\":\"Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.\"}"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_08",
+                "source": "evidence.facts[0]",
+                "text": "Business type: Bubble tea shop"
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_09",
+                "source": "evidence.facts[1]",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_10",
+                "source": "evidence.facts[2]",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_11",
+                "source": "evidence.facts[3]",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_12",
+                "source": "evidence.facts[4]",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+              },
+              {
+                "id": "ev_7ee654374c94b4602ab3c1dae720ea22_13",
+                "source": "evidence.facts[5]",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_01",
+                "source": "source_input[0]",
+                "text": "Business type: Bubble tea shop"
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_02",
+                "source": "source_input[1]",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                "source": "source_input[2]",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_04",
+                "source": "source_input[3]",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                "source": "source_input[4]",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift."
+              },
+              {
+                "id": "src_d657604c3a2d1468ef538b3795ca83cb_06",
+                "source": "source_input[5]",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test."
+              },
+              {
+                "id": "calc_d657604c3a2d1468ef538b3795ca83cb_baseline_headcount",
+                "source": "calculation_inputs.baseline_headcount",
+                "text": "{\"concept\":\"baseline_headcount\",\"scope\":\"tuesday_evening\",\"value\":4,\"unit\":\"persons\",\"period\":\"last month\",\"currency\":null}"
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_01",
+                "text": "Business type: Bubble tea shop",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_01"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_02",
+                "text": "Last month revenue was USD 100,000 and total operating costs were USD 95,800.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_02"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_03",
+                "text": "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_03"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_04",
+                "text": "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_05",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_06",
+                "text": "All other scheduling conditions for that shift should remain unchanged during the test.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ]
+              },
+              {
+                "id": "fact_d657604c3a2d1468ef538b3795ca83cb_07",
+                "text": "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift. All other scheduling conditions for that shift should remain unchanged during the test.",
+                "source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ]
+              }
+            ],
+            "calculation_facts": [
+              {
+                "concept": "baseline_headcount",
+                "scope": "tuesday_evening",
+                "period": "last month",
+                "support": {
+                  "value": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "4"
+                  },
+                  "unit": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "4 staff members"
+                  },
+                  "scope": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "authoritative Tuesday evening baseline headcount was 4 staff members"
+                  },
+                  "period": {
+                    "source_ref": "src_d657604c3a2d1468ef538b3795ca83cb_03",
+                    "quote": "Last month"
+                  },
+                  "currency": null
+                },
+                "value": 4,
+                "unit": "persons",
+                "currency": null
+              }
+            ],
+            "authorization_records": [
+              {
+                "intervention": "headcount_reduction",
+                "scope": "tuesday_evening_6pm_10pm",
+                "operation": "delta",
+                "from": null,
+                "value": -1,
+                "unit": "persons",
+                "permission": "explicit",
+                "permission_source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_05"
+                ],
+                "constraint": "rest_schedule_unchanged",
+                "constraint_source_refs": [
+                  "src_d657604c3a2d1468ef538b3795ca83cb_06"
+                ],
+                "supporting_facts": [
+                  {
+                    "role": "sales",
+                    "value": 1900,
+                    "unit": "currency",
+                    "period": "month",
+                    "currency": "USD",
+                    "source_refs": [
+                      "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                    ]
+                  },
+                  {
+                    "role": "staffing_cost",
+                    "value": 2500,
+                    "unit": "currency",
+                    "period": "month",
+                    "currency": "USD",
+                    "source_refs": [
+                      "src_d657604c3a2d1468ef538b3795ca83cb_04"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_d657604c3a2d1468ef538b3795ca83cb_03",
+                "fact_d657604c3a2d1468ef538b3795ca83cb_04",
+                "fact_d657604c3a2d1468ef538b3795ca83cb_05",
+                "fact_d657604c3a2d1468ef538b3795ca83cb_06"
+              ],
+              "title": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "category": "labor",
+              "evidence": [
+                "Last month, the authoritative Tuesday evening baseline headcount was 4 staff members.",
+                "Tuesday evening shifts generated USD 1,900 in sales and incurred USD 2,500 in staffing cost last month.",
+                "Management has approved testing a reduction of 1 staff member for that Tuesday evening shift.",
+                "All other scheduling conditions for that shift should remain unchanged during the test."
+              ],
+              "interpretation": "Tuesday evenings used 4 staff, generated USD 1,900 in sales, and incurred USD 2,500 in staffing cost for that affected monthly period. Management has approved testing a reduction of 1 staff member for that Tuesday evening shift with all other scheduling conditions unchanged.",
+              "confidence": "high",
+              "intervention_ref": "headcount_reduction"
+            }
+          ],
+          "insufficient_evidence": []
+        },
+        "scenarios": {
+          "scenarios": [
+            {
+              "title": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "target_leak": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "controlled_changes": [
+                {
+                  "variable": "Tuesday evening headcount",
+                  "change_type": "delta",
+                  "from": null,
+                  "value": -1,
+                  "unit": "persons"
+                }
+              ],
+              "available_input_refs": [
+                "src_d657604c3a2d1468ef538b3795ca83cb_04",
+                "src_d657604c3a2d1468ef538b3795ca83cb_05",
+                "src_d657604c3a2d1468ef538b3795ca83cb_06"
+              ],
+              "missing_calculation_inputs": [],
+              "confidence": "high"
+            }
+          ],
+          "not_simulation_ready": []
+        },
+        "simulation": {
+          "results": [
+            {
+              "scenario_title": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "target_leak": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "controlled_changes": [
+                {
+                  "variable": "Tuesday evening headcount",
+                  "change_type": "delta",
+                  "from": null,
+                  "value": -1,
+                  "unit": "persons"
+                }
+              ],
+              "notes": [],
+              "status": "not_calculable_yet",
+              "calculation": null,
+              "missing_inputs": [
+                "Authoritative labor cost per worker for Tuesday evenings in the affected period and currency"
+              ]
+            }
+          ]
+        },
+        "decision_gate": {
+          "decision_gate": "needs_more_data",
+          "reason_codes": [
+            "no_calculable_scenarios"
+          ],
+          "comparison_gap_status": "not_applicable",
+          "candidates": [
+            {
+              "candidate_id": "candidate_01",
+              "scenario_title": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "target_leak": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "scenario_status": "not_calculable_yet",
+              "verified_impact": null,
+              "currency": null,
+              "period": null,
+              "impact_metric": null
+            }
+          ],
+          "top_candidate_id": null,
+          "missing_decision_inputs": [
+            "Authoritative labor cost per worker for Tuesday evenings in the affected period and currency"
+          ],
+          "policy_required_inputs": [],
+          "not_simulation_ready": []
+        }
+      },
+      "started": 1792973866500,
+      "status": 200,
+      "response": {
+        "decision": {
+          "decision_status": "needs_more_data",
+          "recommendation": {
+            "type": "collect_data",
+            "candidate_id": null,
+            "title": "Collect required decision inputs",
+            "rationale": "More data is needed because no calculable scenarios exist."
+          },
+          "comparison": [
+            {
+              "candidate_id": "candidate_01",
+              "target_leak": "Tuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff",
+              "scenario_status": "not_calculable_yet",
+              "assessment": "Impact cannot be calculated yet due to missing inputs.",
+              "verified_impact": null,
+              "currency": null
+            }
+          ],
+          "priority_inputs": [
+            {
+              "source_type": "upstream_missing_input",
+              "key": "Authoritative labor cost per worker for Tuesday evenings in the affected period and currency",
+              "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+            }
+          ],
+          "confidence": "high"
+        }
+      },
+      "finished": 1792973868193
+    }
+  ],
+  "started": 1792973853862,
+  "page_text": "Your profitability workspace\nEARLY PREVIEW\nA clearer picture of what’s left.\n\nTurn business evidence into verified, grounded decisions.\n\nAnalysis workspace\n\nFOUR SPECIALISTS. ONE CLEAR ANSWER.\n\nAgent Office\nAnalysis complete\n✧\n\nAnalysis complete.\n\nYour evidence, scenarios and decision are ready.\n\nMore data needed before a confident decision\n\nBusiness Input\n01 / START HERE\nBusiness name\nBusiness type\nCafé\nBakery\nTea Shop\nRestaurant\nOther\nNotes (optional)\n↥\nDrop your business files here, or browse\nCSV, PDF, XLSX, images · Local selection only · Not analyzed\nRun Analysis Again\n↗\n\nAI analysis with deterministic validation and calculations · Files are not processed.\n\nBusiness Outlook\nBusiness analysis\nlast month · USD\n\nAnalysis complete\n\nYour analysis and decision are ready.\n\nRevenue\n\nUSD 100,000\n\nReported whole-business total\n\nOperating Costs\n\nUSD 95,800\n\nReported whole-business total\n\nWhat’s Left\n✧\n\nUSD 4,200\n\nDeterministic baseline · Revenue − operating costs\n\nMargin\n\n4.2%\n\nDeterministic baseline · What’s Left ÷ revenue\n\nWhere the money goes\n● Reported totals\n▪ What’s Left: deterministic baseline, not Scenario impact\nUSD 100,000\n\nRevenue\n\n−USD 95,800\n\nOperating Costs\n\nUSD 4,200\n\nWhat’s Left\n\n1 profit leak found\nNEEDS ATTENTION\nTuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff\n\nhigh confidence\n\nTuesday evenings used 4 staff, generated USD 1,900 in sales, and incurred USD 2,500 in staffing cost for that affected monthly period. Management has approved testing a reduction of 1 staff member for that Tuesday evening shift with all other scheduling conditions unchanged.\n\nLABOR\n\nScenarios to test\nTuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff\n\nTuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff\n\nTuesday evening headcount−1 person\n\nhigh confidence\n\nScenario defined · Impact needs more data\n\nAuthoritative labor cost per worker for Tuesday evenings in the affected period and currency\nDecision\nNeeds more data\nMore data needed before a confident decision\n\nCollect required decision inputs\n\nWhy\n\nMore data is needed because no calculable scenarios exist.\n\nPriority inputs\n\nMissing data\n\nAuthoritative labor cost per worker for Tuesday evenings in the affected period and currency\n\nNeeded to produce a verified deterministic impact or establish the supplied decision prerequisite.\n\nScenario comparison\nTuesday evening labor inefficiency — staffing cost exceeds sales with 4 staff\n\nScenario defined · Impact needs more data\n\nImpact cannot be calculated yet due to missing inputs.\n\nhigh confidence in this conclusion\n\nWhat’s Left? · A little clarity goes a long way.\nAI analysis with deterministic validation, scenario calculations, and bounded decision support.",
+  "complete": false,
+  "error": null,
+  "id": "F02",
+  "total_latency_ms": 14884,
+  "timeline": [
+    {
+      "at": 1792973854366,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973854871,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973855381,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973855884,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973856400,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973856912,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973857416,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973857919,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973858423,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973858927,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973859431,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973859937,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973860443,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973860949,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973861456,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973861963,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973862472,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973862976,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973863484,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973863988,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ]
+    },
+    {
+      "at": 1792973864492,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ]
+    },
+    {
+      "at": 1792973865001,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ]
+    },
+    {
+      "at": 1792973865511,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973866023,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973866534,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ]
+    },
+    {
+      "at": 1792973867050,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ]
+    },
+    {
+      "at": 1792973867571,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ]
+    },
+    {
+      "at": 1792973868085,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ]
+    },
+    {
+      "at": 1792973868593,
+      "done": true,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision",
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "server_diagnostics": [
+    {
+      "label": "Evidence business total grounding",
+      "diagnostic": {
+        "reason": "business_total_grounding",
+        "emitted_record_count": 2,
+        "fields": [
+          {
+            "field": "revenue.total",
+            "emitted_support_count": 1,
+            "validated_support_count": 1,
+            "original_total": 100000,
+            "trusted_total": 100000,
+            "reasons": []
+          },
+          {
+            "field": "costs.total",
+            "emitted_support_count": 1,
+            "validated_support_count": 1,
+            "original_total": 95800,
+            "trusted_total": 95800,
+            "reasons": []
+          }
+        ],
+        "records": [
+          {
+            "field": "revenue.total",
+            "scope": "whole_business",
+            "value": 100000,
+            "period_matches": true,
+            "currency_matches": true,
+            "source_refs": [
+              "src_d657604c3a2d1468ef538b3795ca83cb_02"
+            ]
+          },
+          {
+            "field": "costs.total",
+            "scope": "whole_business",
+            "value": 95800,
+            "period_matches": true,
+            "currency_matches": true,
+            "source_refs": [
+              "src_d657604c3a2d1468ef538b3795ca83cb_02"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Calculation fact grounding",
+      "diagnostic": {
+        "stage": "evidence_grounding",
+        "concept": "baseline_headcount",
+        "candidate_count": 1,
+        "accepted": true,
+        "rejection_reason": null,
+        "candidates": [
+          {
+            "scope_present": true,
+            "scope_recognized": true,
+            "period_present": true,
+            "unit_anchor_present": true,
+            "currency_anchor_present": false,
+            "anchor_count": 4
+          }
+        ]
+      }
+    },
+    {
+      "label": "Calculation fact grounding",
+      "diagnostic": {
+        "stage": "evidence_grounding",
+        "concept": "labor_cost_per_worker",
+        "candidate_count": 0,
+        "accepted": false,
+        "rejection_reason": "missing_candidate",
+        "candidates": []
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "scenario_input",
+        "concept": "baseline_headcount",
+        "calculation_input_emitted": true,
+        "record_count": 1
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "scenario_input",
+        "concept": "labor_cost_per_worker",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "simulate_input",
+        "concept": "baseline_headcount",
+        "calculation_input_emitted": true,
+        "record_count": 1
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "simulate_input",
+        "concept": "labor_cost_per_worker",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    }
+  ],
+  "console_diagnostics": [],
+  "exceptions": [],
+  "input_sha256": "54754693cb9da3a0b00a1ae55c8027eb7f57373476f1f032e47999be83722463"
+}

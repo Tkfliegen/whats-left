@@ -1,6 +1,7 @@
 import type { Evidence } from "@/types/evidence";
 import type { LeakResult } from "@/types/leaks";
 import { resolveEvidenceRefs } from "../evidence/provenance";
+import { normalizeEvidenceCurrency } from "../evidence/currency";
 import { requiredAuthorizationSources } from "../evidence/authorization-records";
 
 // Use source identities from already validated Evidence, never recover citations
@@ -23,6 +24,31 @@ const numbers = (text: string) => (text.match(numberPattern) ?? []).map(normaliz
 // claim with the same digits. Unit-bearing claims need that reported unit too.
 const rates = (text: string) => [...text.matchAll(/(\d+(?:,\d{3})*(?:\.\d+)?)\s*(%|percent(?:age)?(?:\s+points?)?)/gi)]
   .map(match => `${normalize(match[1])}:${/points?/i.test(match[2]) ? "percentage_points" : "percent"}`);
+
+// Monetary support is an amount/currency pair, never a scalar pooled with
+// unrelated units. Currency aliases use the existing Evidence policy only.
+function monetaryExpressions(text: string, originalSource: string) {
+  const codes = ["USD", "TWD", "AED", "EUR", "GBP"].map(code => [...code]
+    .map(letter => `[${letter}${letter.toLowerCase()}]`).join("")).join("|");
+  const currency = `(?:${codes}|US\\$|NT\\$|[A-Z]{3}|[$€£¥₹]|د\\.إ)`;
+  const amount = "\\d+(?:,\\d{3})*(?:\\.\\d+)?";
+  const prefix = new RegExp(`(?<![\\p{L}\\p{N}_])([+−-]?)[ \\t]*(${currency})[ \\t]*([+−-]?)[ \\t]*(\\(?)(${amount})(\\)?)(?![\\p{L}\\p{N}_,]|\\.\\d)`, "gu");
+  const suffix = new RegExp(`(?<![\\p{L}\\p{N}_.,])([+−-]?)[ \\t]*(\\(?)(${amount})(\\)?)[ \\t]*(${currency})(?![\\p{L}\\p{N}_])`, "gu");
+  const claim = (notation: string, value: string, sign: string, open: string, close: string, mixedUnit: boolean) => {
+    const normalized = normalizeEvidenceCurrency(notation, originalSource);
+    const unit = normalized.ok && normalized.currency ? normalized.currency : notation;
+    const signed = `${/[-−]/.test(sign) || open ? "-" : ""}${normalize(value)}`;
+    // Unpaired parentheses or conflicting sign forms cannot supply support.
+    return { amount: signed, key: mixedUnit || (open && !close) || sign.length > 1
+      ? null : `${unit}:${signed}` };
+  };
+  return [
+    ...[...text.matchAll(prefix)].map(m => claim(m[2], m[5], m[1] + m[3], m[4], m[6],
+      text[m.index! + m[0].length] === "%")),
+    ...[...text.matchAll(suffix)].map(m => claim(m[5], m[3], m[1],
+      m[2] && !m[4] && text[m.index! + m[0].length] === ")" ? "" : m[2], m[4], text[m.index! + m[0].length] === "%")),
+  ];
+}
 
 // Validation-only vocabulary for clear multipliers, not general English numbers.
 const ratioWords: Record<string, string> = { one: "1", two: "2", three: "3", four: "4", five: "5",
@@ -67,6 +93,20 @@ export type LeakCitationDiagnostic = {
   missing_fact_ids: string[];
 };
 
+export type LeakNumericDiagnostic = {
+  reason: "unreported_number";
+  rejection_branch: "scalar_not_in_selected_support" | "unsupported_derived_numeric_claim";
+  normalized_number: string;
+  field_path: string;
+  number_in_global_support: boolean;
+  number_in_selected_support: boolean | null;
+  selected_citation_count: number;
+  matching_support_count: number;
+  global_matching_support_count: number;
+  numeric_expression_type: "scalar" | "derived_ratio";
+  support_scope: "finding_citations" | "global_catalog";
+};
+
 // Pass A: IDs and complete bound support are validated for ALL findings before
 // any generated prose is inspected. An absent legacy binding means unbound.
 export function validateLeakReferences(result: LeakResult, evidence: Evidence,
@@ -107,23 +147,53 @@ export function validateLeakReferences(result: LeakResult, evidence: Evidence,
 // Called after schema validation. Existing digit/unit rules run unchanged;
 // word-form multipliers additionally require an explicit cited ratio claim.
 export function validateLeakOutput(result: LeakResult, evidence: Evidence,
-  onCitationReject?: (diagnostic: LeakCitationDiagnostic) => void): LeakOutputValidation {
+  onCitationReject?: (diagnostic: LeakCitationDiagnostic) => void,
+  onNumericReject?: (diagnostic: LeakNumericDiagnostic) => void): LeakOutputValidation {
   const references = validateLeakReferences(result, evidence, onCitationReject);
   if (!references.ok) return references;
   const catalog = new Map(evidence.provenance!.citable_facts.map(fact => [fact.id, fact]));
   // Pass B: existing prose checks, after every finding passes reference checks.
-  const check = (text: string, field: string, source: string): LeakOutputValidation => {
+  const check = (text: string, field: string, source: string,
+    selected?: Array<{ text: string }>): LeakOutputValidation => {
+    const diagnose = (value: string, branch: LeakNumericDiagnostic["rejection_branch"]) => {
+      if (!onNumericReject) return;
+      try {
+        const matching = (facts: Array<{ text: string }>) => facts.filter(fact => numbers(fact.text).includes(value)).length;
+        const globalCount = matching([...catalog.values()]);
+        const selectedCount = selected ? matching(selected) : 0;
+        onNumericReject({ reason: "unreported_number", rejection_branch: branch, normalized_number: value, field_path: field,
+          number_in_global_support: globalCount > 0, number_in_selected_support: selected ? selectedCount > 0 : null,
+          selected_citation_count: selected?.length ?? 0, matching_support_count: selectedCount,
+          global_matching_support_count: globalCount,
+          numeric_expression_type: branch === "unsupported_derived_numeric_claim" || quantitativeRatios(text).some(claim => claim.value === value) ? "derived_ratio" : "scalar",
+          support_scope: selected ? "finding_citations" : "global_catalog" });
+      } catch { /* Optional diagnostics cannot change acceptance or rejection. */ }
+    };
     const reported = new Set(numbers(source));
     const missing = [...new Set(numbers(JSON.stringify(text)).filter(value => !reported.has(value)))];
-    if (missing.length) return { ok: false, reason: "unreported_number", field, numbers: missing };
+    if (missing.length) {
+      diagnose(missing[0], "scalar_not_in_selected_support");
+      return { ok: false, reason: "unreported_number", field, numbers: missing };
+    }
     const reportedRates = new Set(rates(source));
     const missingRates = rates(text).filter(value => !reportedRates.has(value));
     if (missingRates.length) return { ok: false, reason: "unreported_numeric_unit", field,
       numbers: [...new Set(missingRates.map(value => value.split(":")[0]))] };
+    const originalSource = evidence.provenance!.source_input;
+    const eligible = selected ?? [...catalog.values()];
+    const reportedMoney = new Set(eligible.flatMap(fact => monetaryExpressions(fact.text, originalSource))
+      .filter(claim => claim.key !== null).map(claim => claim.key));
+    const missingMoney = monetaryExpressions(text, originalSource)
+      .filter(claim => claim.key === null || !reportedMoney.has(claim.key));
+    if (missingMoney.length) return { ok: false, reason: "unreported_numeric_unit", field,
+      numbers: [...new Set(missingMoney.map(claim => claim.amount))] };
     const reportedRatios = new Set(quantitativeRatios(source).map(claim => claim.key));
     const unsupported = quantitativeRatios(text).filter(claim => claim.wordForm && !reportedRatios.has(claim.key));
-    if (unsupported.length) return { ok: false, reason: "unreported_number", field,
-      numbers: [...new Set(unsupported.map(claim => claim.value))] };
+    if (unsupported.length) {
+      diagnose(unsupported[0].value, "unsupported_derived_numeric_claim");
+      return { ok: false, reason: "unreported_number", field,
+        numbers: [...new Set(unsupported.map(claim => claim.value))] };
+    }
     return { ok: true };
   };
   for (const [index, leak] of result.leaks.entries()) {
@@ -134,7 +204,7 @@ export function validateLeakOutput(result: LeakResult, evidence: Evidence,
       ...leak.evidence.map((text, citation) => [`leaks[${index}].evidence[${citation}]`, text]),
       [`leaks[${index}].interpretation`, leak.interpretation],
     ]) {
-      const validation = check(text, field, source);
+      const validation = check(text, field, source, cited);
       if (!validation.ok) return validation;
     }
   }

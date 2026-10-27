@@ -1,0 +1,179 @@
+{
+  "calls": [
+    {
+      "url": "/api/analyze/evidence",
+      "body": {
+        "input": "Business name: Final Validation 07\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nTuesday evenings from 6 PM to 10 PM generated USD 1900 in sales last month.\nThe authoritative baseline Tuesday evening headcount for last month was 4 staff members.\nThe total staffing cost for Tuesday evenings from 6 PM to 10 PM last month was USD 2500.\nThe authoritative labor cost per worker for Tuesday evenings last month was USD 625.\nFriday evenings from 6 PM to 10 PM used 4 staff members and generated USD 6200 in sales last month.\nManagement has approved no staffing reduction or staffing trial.\nIngredient purchases for the waste-tracked category last month were USD 12500.\nMeasured ingredient waste for that category last month was 9%.\nThe internal ingredient waste target for that category is 5%.\nAs owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.\nAverage delivery revenue per order last month was USD 18.40.\nSome delivery orders had combined platform fees, packaging, discounts, and food costs that exceeded the revenue from the order.\nThe affected order count and total delivery loss have not been measured.\nManagement has approved no changes to delivery pricing, fees, packaging, discounts, minimum order size, or menu pricing."
+      },
+      "started": 1793088107255,
+      "status": 502,
+      "response": {
+        "error": "Evidence authorization atoms have invalid source support."
+      },
+      "finished": 1793088114194
+    }
+  ],
+  "started": 1793088107255,
+  "page_text": "Your profitability workspace\nEARLY PREVIEW\nA clearer picture of what’s left.\n\nTurn business evidence into verified, grounded decisions.\n\nAnalysis workspace\n\nFOUR SPECIALISTS. ONE CLEAR ANSWER.\n\nAgent Office\nReady to analyze\n✧\n\nEvidence Agent is reviewing the inputs.\n\nOrganizing files, notes, and operational evidence.\n\nBusiness Input\n01 / START HERE\nBusiness name\nBusiness type\nCafé\nBakery\nTea Shop\nRestaurant\nOther\nNotes (optional)\n↥\nDrop your business files here, or browse\nCSV, PDF, XLSX, images · Local selection only · Not analyzed\n\nEvidence analysis couldn't be completed. Please try again.\n\nRetry uses the retained inputs from the failed run.\n\nRetry full analysis\n↗\n\nAI analysis with deterministic validation and calculations · Files are not processed.\n\nBusiness Outlook\nBusiness analysis\nPeriod / currency pending\n\nAnalysis stopped\n\nYour input is preserved. Please try again.\n\nRevenue\n\n—\n\nOperating Costs\n\n—\n\nWhat’s Left\n✧\n\n—\n\nMargin\n\n—\nWhat’s Left? · A little clarity goes a long way.\nAI analysis with deterministic validation, scenario calculations, and bounded decision support.",
+  "complete": false,
+  "error": "Evidence analysis couldn't be completed. Please try again.",
+  "id": "F07",
+  "total_latency_ms": 7211,
+  "timeline": [
+    {
+      "at": 1793088107761,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088108267,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088108772,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088109277,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088109782,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088110287,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088110792,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088111296,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088111799,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088112304,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088112807,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088113310,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088113812,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088114315,
+      "done": true,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 502
+        }
+      ],
+      "error": "Evidence analysis couldn't be completed. Please try again."
+    }
+  ],
+  "server_diagnostics": [
+    {
+      "label": "Evidence authorization atom rejection",
+      "diagnostic": {
+        "reason": "invalid_source_refs",
+        "atom_index": 2,
+        "failing_field": "source_refs"
+      }
+    }
+  ],
+  "console_diagnostics": [],
+  "exceptions": [],
+  "input_sha256": "a2ee723b838d671641bb4e2d7087f46a197a245ce09194a36f5b2bab98ade6fc"
+}

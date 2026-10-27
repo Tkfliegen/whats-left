@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import {cases,unknownEvidence} from '../scripts/evaluation/evidence-ab/cases.mjs';
 import {captureRequest,judgeCompletion,judgeAtoms,runProviderCall,models,timeoutMs,productionModel,summarize} from '../scripts/evaluation/evidence-ab/evaluate.mjs';
 const atoms=note=>note.expected_atoms.map(({allowed_source_refs,...atom})=>{void allowed_source_refs;return structuredClone(atom);});
-const completion=value=>({choices:[{finish_reason:'stop',message:{content:JSON.stringify({...unknownEvidence,currency:'USD',business_total_support:[],authorization_atoms:value})}}]});
+const completion=value=>({choices:[{finish_reason:'stop',message:{content:JSON.stringify({...unknownEvidence,currency:'USD',business_total_support:[],calculation_support:[],authorization_atoms:value})}}]});
 test('eight annotated notes cover exact Case A, varied positives and fail-closed controls',()=>{
  assert.equal(cases.length,8);assert.equal(cases[0].input,JSON.parse(fs.readFileSync('tests/fixtures/authorization-current-note.json')).input);assert.equal(cases.find(c=>c.id==='target_without_permission').expected_authorizations.length,0);assert.equal(cases.find(c=>c.id==='ambiguous_no_grant').expected_authorizations.length,0);assert.equal(cases.find(c=>c.id==='permissions_missing_calculation').expected_authorizations.length,2);
 });

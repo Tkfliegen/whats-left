@@ -1,0 +1,959 @@
+{
+  "results": [
+    {
+      "id": "F08",
+      "category": "Conflicting source data",
+      "classification": "FAIL",
+      "semantic_review": "Automated source-specific checks complete; detailed source/prose review recorded separately in report.",
+      "stages": {
+        "evidence": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 2907,
+          "error": null
+        },
+        "leaks": {
+          "reached": true,
+          "http": 502,
+          "latency_ms": 3961,
+          "error": "Leak analysis result rejected by output validation: unreported_numeric_unit."
+        },
+        "scenarios": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "simulate": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "decision-gate": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "decision": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        }
+      },
+      "first_failing_stage": "/api/analyze/leaks",
+      "failure_category": "output_validation_rejection",
+      "exact_error": "Leak analysis result rejected by output validation: unreported_numeric_unit.",
+      "diagnostics": [
+        {
+          "label": "Evidence business total grounding",
+          "diagnostic": {
+            "reason": "business_total_grounding",
+            "emitted_record_count": 0,
+            "fields": [
+              {
+                "field": "revenue.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              },
+              {
+                "field": "costs.total",
+                "emitted_support_count": 0,
+                "validated_support_count": 0,
+                "original_total": null,
+                "trusted_total": null,
+                "reasons": [
+                  "missing_support"
+                ]
+              }
+            ],
+            "records": []
+          }
+        },
+        {
+          "label": "Calculation fact grounding",
+          "diagnostic": {
+            "stage": "evidence_grounding",
+            "concept": "baseline_headcount",
+            "candidate_count": 0,
+            "accepted": false,
+            "rejection_reason": "missing_candidate",
+            "candidates": []
+          }
+        },
+        {
+          "label": "Calculation fact grounding",
+          "diagnostic": {
+            "stage": "evidence_grounding",
+            "concept": "labor_cost_per_worker",
+            "candidate_count": 0,
+            "accepted": false,
+            "rejection_reason": "missing_candidate",
+            "candidates": []
+          }
+        }
+      ],
+      "violations": [],
+      "missed": [],
+      "checks": {
+        "evidence_valid": true,
+        "evidence_unsupported_numeric_tokens": [],
+        "frontend_complete_only_after_decision": true
+      },
+      "evidence_records": [],
+      "leak_findings": null,
+      "scenario": null,
+      "simulation": null,
+      "gate": null,
+      "decision": null,
+      "frontend": {
+        "complete": false,
+        "error": "Leak analysis couldn't be completed. Please try again."
+      },
+      "total_latency_ms": 8231,
+      "retries": false,
+      "repairs": false,
+      "fallbacks": false,
+      "safety_counters": {
+        "invented_permissions": 0,
+        "unsupported_numeric_escapes": 0,
+        "wrong_trusted_bindings": 0,
+        "fabricated_savings": 0,
+        "cross_category_binding_errors": 0
+      },
+      "safe_completed": false,
+      "safe_abstention": false,
+      "execution_failure": {
+        "stage": "/api/analyze/leaks",
+        "category": "output_validation_rejection",
+        "reason": "Leak analysis result rejected by output validation: unreported_numeric_unit.",
+        "diagnostics": [
+          {
+            "label": "Evidence business total grounding",
+            "diagnostic": {
+              "reason": "business_total_grounding",
+              "emitted_record_count": 0,
+              "fields": [
+                {
+                  "field": "revenue.total",
+                  "emitted_support_count": 0,
+                  "validated_support_count": 0,
+                  "original_total": null,
+                  "trusted_total": null,
+                  "reasons": [
+                    "missing_support"
+                  ]
+                },
+                {
+                  "field": "costs.total",
+                  "emitted_support_count": 0,
+                  "validated_support_count": 0,
+                  "original_total": null,
+                  "trusted_total": null,
+                  "reasons": [
+                    "missing_support"
+                  ]
+                }
+              ],
+              "records": []
+            }
+          },
+          {
+            "label": "Calculation fact grounding",
+            "diagnostic": {
+              "stage": "evidence_grounding",
+              "concept": "baseline_headcount",
+              "candidate_count": 0,
+              "accepted": false,
+              "rejection_reason": "missing_candidate",
+              "candidates": []
+            }
+          },
+          {
+            "label": "Calculation fact grounding",
+            "diagnostic": {
+              "stage": "evidence_grounding",
+              "concept": "labor_cost_per_worker",
+              "candidate_count": 0,
+              "accepted": false,
+              "rejection_reason": "missing_candidate",
+              "candidates": []
+            }
+          }
+        ]
+      },
+      "provider_failure": false,
+      "behavioral_failure": false,
+      "stage_outcomes": {
+        "Evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — ledger",
+                "amount": 1750,
+                "source_text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — till export",
+                "amount": 3100,
+                "source_text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Staffing cost for Tuesday evening services (6 PM–10 PM)",
+                "amount": 3400,
+                "reported_category": "Staffing",
+                "source_text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              }
+            ]
+          },
+          "facts": [
+            "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+            "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+            "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+            "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+            "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Whole-business revenue total for last month",
+            "Whole-business operating cost total for last month",
+            "Revenue and cost breakdown for other days/shifts",
+            "Ingredient costs, rent, utilities, delivery fees, other operating expenses",
+            "Ingredient waste rate and any waste-reduction target or permission",
+            "Explicit per-worker labor cost for Tuesday evenings",
+            "Explicit baseline headcount for Tuesday evenings (beyond the 4 staff members scheduled)"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Final Validation 08\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nThe ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\nThe till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\nThese sales reports refer to the same services and remain unreconciled; neither is authoritative.\nStaffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\nManagement has approved no staffing trial or reduction; schedule constraints are unresolved.",
+            "items": [
+              {
+                "id": "ev_087a53a5589cba44959131d72232d082_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_087a53a5589cba44959131d72232d082_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_087a53a5589cba44959131d72232d082_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_087a53a5589cba44959131d72232d082_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — ledger\",\"amount\":1750,\"source_text\":\"The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\"}"
+              },
+              {
+                "id": "ev_087a53a5589cba44959131d72232d082_05",
+                "source": "evidence.revenue.items[1]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — till export\",\"amount\":3100,\"source_text\":\"The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\"}"
+              },
+              {
+                "id": "ev_087a53a5589cba44959131d72232d082_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Staffing cost for Tuesday evening services (6 PM–10 PM)\",\"amount\":3400,\"reported_category\":\"Staffing\",\"source_text\":\"Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\"}"
+              },
+              {
+                "id": "ev_087a53a5589cba44959131d72232d082_07",
+                "source": "evidence.facts[0]",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "id": "ev_087a53a5589cba44959131d72232d082_08",
+                "source": "evidence.facts[1]",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              },
+              {
+                "id": "ev_087a53a5589cba44959131d72232d082_09",
+                "source": "evidence.facts[2]",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+              },
+              {
+                "id": "ev_087a53a5589cba44959131d72232d082_10",
+                "source": "evidence.facts[3]",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              },
+              {
+                "id": "ev_087a53a5589cba44959131d72232d082_11",
+                "source": "evidence.facts[4]",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 08"
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "source": "source_input[4]",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "source": "source_input[5]",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "source": "source_input[6]",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "source": "source_input[7]",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_09",
+                "source": "source_input[8]",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_01",
+                "text": "Business name: Final Validation 08",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_01"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_02"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_03"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_04"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_05"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_06"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_07"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_08"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_09",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_09"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_10",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "Leak": null,
+        "Scenario": null,
+        "Authorization": [],
+        "Calculation": null,
+        "Decision_Gate": null,
+        "Decision": null
+      },
+      "raw_artifact": "runs/F08.json"
+    },
+    {
+      "id": "F10",
+      "category": "Clean / no actionable leak",
+      "classification": "FAIL",
+      "semantic_review": "Automated source-specific checks complete; detailed source/prose review recorded separately in report.",
+      "stages": {
+        "evidence": {
+          "reached": true,
+          "http": 200,
+          "latency_ms": 3613,
+          "error": null
+        },
+        "leaks": {
+          "reached": true,
+          "http": 502,
+          "latency_ms": 2619,
+          "error": "Leak analysis result rejected by output validation: unreported_numeric_unit."
+        },
+        "scenarios": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "simulate": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "decision-gate": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        },
+        "decision": {
+          "reached": false,
+          "http": null,
+          "latency_ms": null,
+          "error": null
+        }
+      },
+      "first_failing_stage": "/api/analyze/leaks",
+      "failure_category": "output_validation_rejection",
+      "exact_error": "Leak analysis result rejected by output validation: unreported_numeric_unit.",
+      "diagnostics": [
+        {
+          "label": "Evidence business total grounding",
+          "diagnostic": {
+            "reason": "business_total_grounding",
+            "emitted_record_count": 2,
+            "fields": [
+              {
+                "field": "revenue.total",
+                "emitted_support_count": 1,
+                "validated_support_count": 1,
+                "original_total": 60000,
+                "trusted_total": 60000,
+                "reasons": []
+              },
+              {
+                "field": "costs.total",
+                "emitted_support_count": 1,
+                "validated_support_count": 1,
+                "original_total": 54000,
+                "trusted_total": 54000,
+                "reasons": []
+              }
+            ],
+            "records": [
+              {
+                "field": "revenue.total",
+                "scope": "whole_business",
+                "value": 60000,
+                "period_matches": true,
+                "currency_matches": true,
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_05"
+                ]
+              },
+              {
+                "field": "costs.total",
+                "scope": "whole_business",
+                "value": 54000,
+                "period_matches": true,
+                "currency_matches": true,
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_06"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "label": "Calculation fact grounding",
+          "diagnostic": {
+            "stage": "evidence_grounding",
+            "concept": "baseline_headcount",
+            "candidate_count": 0,
+            "accepted": false,
+            "rejection_reason": "missing_candidate",
+            "candidates": []
+          }
+        },
+        {
+          "label": "Calculation fact grounding",
+          "diagnostic": {
+            "stage": "evidence_grounding",
+            "concept": "labor_cost_per_worker",
+            "candidate_count": 0,
+            "accepted": false,
+            "rejection_reason": "missing_candidate",
+            "candidates": []
+          }
+        }
+      ],
+      "violations": [],
+      "missed": [],
+      "checks": {
+        "evidence_valid": true,
+        "evidence_unsupported_numeric_tokens": [],
+        "frontend_complete_only_after_decision": true
+      },
+      "evidence_records": [],
+      "leak_findings": null,
+      "scenario": null,
+      "simulation": null,
+      "gate": null,
+      "decision": null,
+      "frontend": {
+        "complete": false,
+        "error": "Leak analysis couldn't be completed. Please try again."
+      },
+      "total_latency_ms": 7732,
+      "retries": false,
+      "repairs": false,
+      "fallbacks": false,
+      "safety_counters": {
+        "invented_permissions": 0,
+        "unsupported_numeric_escapes": 0,
+        "wrong_trusted_bindings": 0,
+        "fabricated_savings": 0,
+        "cross_category_binding_errors": 0
+      },
+      "safe_completed": false,
+      "safe_abstention": false,
+      "execution_failure": {
+        "stage": "/api/analyze/leaks",
+        "category": "output_validation_rejection",
+        "reason": "Leak analysis result rejected by output validation: unreported_numeric_unit.",
+        "diagnostics": [
+          {
+            "label": "Evidence business total grounding",
+            "diagnostic": {
+              "reason": "business_total_grounding",
+              "emitted_record_count": 2,
+              "fields": [
+                {
+                  "field": "revenue.total",
+                  "emitted_support_count": 1,
+                  "validated_support_count": 1,
+                  "original_total": 60000,
+                  "trusted_total": 60000,
+                  "reasons": []
+                },
+                {
+                  "field": "costs.total",
+                  "emitted_support_count": 1,
+                  "validated_support_count": 1,
+                  "original_total": 54000,
+                  "trusted_total": 54000,
+                  "reasons": []
+                }
+              ],
+              "records": [
+                {
+                  "field": "revenue.total",
+                  "scope": "whole_business",
+                  "value": 60000,
+                  "period_matches": true,
+                  "currency_matches": true,
+                  "source_refs": [
+                    "src_a424815897ace71614762ab63b937b97_05"
+                  ]
+                },
+                {
+                  "field": "costs.total",
+                  "scope": "whole_business",
+                  "value": 54000,
+                  "period_matches": true,
+                  "currency_matches": true,
+                  "source_refs": [
+                    "src_a424815897ace71614762ab63b937b97_06"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "label": "Calculation fact grounding",
+            "diagnostic": {
+              "stage": "evidence_grounding",
+              "concept": "baseline_headcount",
+              "candidate_count": 0,
+              "accepted": false,
+              "rejection_reason": "missing_candidate",
+              "candidates": []
+            }
+          },
+          {
+            "label": "Calculation fact grounding",
+            "diagnostic": {
+              "stage": "evidence_grounding",
+              "concept": "labor_cost_per_worker",
+              "candidate_count": 0,
+              "accepted": false,
+              "rejection_reason": "missing_candidate",
+              "candidates": []
+            }
+          }
+        ]
+      },
+      "provider_failure": false,
+      "behavioral_failure": false,
+      "stage_outcomes": {
+        "Evidence": {
+          "business_type": "cafe",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": 60000,
+            "items": [
+              {
+                "name": "delivery revenue per order",
+                "amount": 26,
+                "source_text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              }
+            ]
+          },
+          "costs": {
+            "total": 54000,
+            "items": [
+              {
+                "name": "labor",
+                "amount": 17000,
+                "reported_category": "labor",
+                "source_text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+              },
+              {
+                "name": "ingredients",
+                "amount": 12000,
+                "reported_category": "ingredients",
+                "source_text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+              },
+              {
+                "name": "rent and utilities",
+                "amount": 10000,
+                "reported_category": "rent and utilities",
+                "source_text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+              },
+              {
+                "name": "delivery fees",
+                "amount": 3000,
+                "reported_category": "delivery fees",
+                "source_text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+              },
+              {
+                "name": "other costs",
+                "amount": 12000,
+                "reported_category": "other costs",
+                "source_text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+              },
+              {
+                "name": "combined average delivery costs per order",
+                "amount": 22,
+                "reported_category": "delivery costs",
+                "source_text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              }
+            ]
+          },
+          "facts": [
+            "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+            "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+            "No unprofitable orders or staffing mismatch have been reported.",
+            "No intervention is approved."
+          ],
+          "assumptions": [],
+          "missing_information": [],
+          "confidence": "high",
+          "provenance": {
+            "source_input": "Business name: Final Validation 10\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nTotal revenue last month was USD 60000.\nTotal operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\nMeasured ingredient waste last month was 4%, matching the internal target of 4%.\nAverage delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.\nNo unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+            "items": [
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_01",
+                "source": "evidence.business_type",
+                "text": "cafe"
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_04",
+                "source": "evidence.revenue.total",
+                "text": "60000"
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_05",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"delivery revenue per order\",\"amount\":26,\"source_text\":\"Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.\"}"
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_06",
+                "source": "evidence.costs.total",
+                "text": "54000"
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_07",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"labor\",\"amount\":17000,\"reported_category\":\"labor\",\"source_text\":\"Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\"}"
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_08",
+                "source": "evidence.costs.items[1]",
+                "text": "{\"name\":\"ingredients\",\"amount\":12000,\"reported_category\":\"ingredients\",\"source_text\":\"Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\"}"
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_09",
+                "source": "evidence.costs.items[2]",
+                "text": "{\"name\":\"rent and utilities\",\"amount\":10000,\"reported_category\":\"rent and utilities\",\"source_text\":\"Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\"}"
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_10",
+                "source": "evidence.costs.items[3]",
+                "text": "{\"name\":\"delivery fees\",\"amount\":3000,\"reported_category\":\"delivery fees\",\"source_text\":\"Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\"}"
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_11",
+                "source": "evidence.costs.items[4]",
+                "text": "{\"name\":\"other costs\",\"amount\":12000,\"reported_category\":\"other costs\",\"source_text\":\"Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\"}"
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_12",
+                "source": "evidence.costs.items[5]",
+                "text": "{\"name\":\"combined average delivery costs per order\",\"amount\":22,\"reported_category\":\"delivery costs\",\"source_text\":\"Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.\"}"
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_13",
+                "source": "evidence.facts[0]",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_14",
+                "source": "evidence.facts[1]",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_15",
+                "source": "evidence.facts[2]",
+                "text": "No unprofitable orders or staffing mismatch have been reported."
+              },
+              {
+                "id": "ev_68498f7d81c08f4e1f09ec250b04014d_16",
+                "source": "evidence.facts[3]",
+                "text": "No intervention is approved."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 10"
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_05",
+                "source": "source_input[4]",
+                "text": "Total revenue last month was USD 60000."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_06",
+                "source": "source_input[5]",
+                "text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_07",
+                "source": "source_input[6]",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_08",
+                "source": "source_input[7]",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_09",
+                "source": "source_input[8]",
+                "text": "No unprofitable orders or staffing mismatch have been reported."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_10",
+                "source": "source_input[9]",
+                "text": "No intervention is approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_01",
+                "text": "Business name: Final Validation 10",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_01"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_02"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_03"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_04"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_05",
+                "text": "Total revenue last month was USD 60000.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_05"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_06",
+                "text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_06"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_07",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_07"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_08",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_08"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_09",
+                "text": "No unprofitable orders or staffing mismatch have been reported.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_09"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_10",
+                "text": "No intervention is approved.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_10"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_11",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_03",
+                  "src_a424815897ace71614762ab63b937b97_04"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_12",
+                "text": "No unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_09",
+                  "src_a424815897ace71614762ab63b937b97_10"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "Leak": null,
+        "Scenario": null,
+        "Authorization": [],
+        "Calculation": null,
+        "Decision_Gate": null,
+        "Decision": null
+      },
+      "raw_artifact": "runs/F10.json"
+    }
+  ]
+}

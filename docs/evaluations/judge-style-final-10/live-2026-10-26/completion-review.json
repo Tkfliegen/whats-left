@@ -1,0 +1,115 @@
+{
+  "method": "Offline measurement correction: current UI uses button[type=button], while the initial recorder searched button[type=submit]. Count completion only when the preserved callback returned true, saved page text displays Run Analysis Again, Decision was HTTP 200 and no frontend error was present. Original raw artifacts and initial reports retained. No requests repeated or responses changed.",
+  "reviews": [
+    {
+      "id": "F01",
+      "original_complete": false,
+      "observed_complete": false,
+      "callback_done": true,
+      "callback_returned_success": false,
+      "completion_text_in_saved_page": false,
+      "decision_http": null,
+      "source_raw_sha256": "21712c7eae020191e67d4a40a5e44420ae53326ec0edea31735cc7963ce620cf",
+      "raw_artifact_unchanged": true
+    },
+    {
+      "id": "F02",
+      "original_complete": false,
+      "observed_complete": true,
+      "callback_done": true,
+      "callback_returned_success": true,
+      "completion_text_in_saved_page": true,
+      "decision_http": 200,
+      "source_raw_sha256": "329117125ae69ddee6f750b92c498769c09121932589a03ac55bdbd9440e1344",
+      "raw_artifact_unchanged": true
+    },
+    {
+      "id": "F03",
+      "original_complete": false,
+      "observed_complete": false,
+      "callback_done": true,
+      "callback_returned_success": false,
+      "completion_text_in_saved_page": false,
+      "decision_http": null,
+      "source_raw_sha256": "95123a8d8a9ff016d4ee90bf853d889d452bbf337c4613280f11a4666ee45b15",
+      "raw_artifact_unchanged": true
+    },
+    {
+      "id": "F04",
+      "original_complete": false,
+      "observed_complete": false,
+      "callback_done": true,
+      "callback_returned_success": false,
+      "completion_text_in_saved_page": false,
+      "decision_http": null,
+      "source_raw_sha256": "e3cecdf158075d73a4164bcccf3a1f085c9a4acc4268edb8c08f730cb5fe0892",
+      "raw_artifact_unchanged": true
+    },
+    {
+      "id": "F05",
+      "original_complete": false,
+      "observed_complete": true,
+      "callback_done": true,
+      "callback_returned_success": true,
+      "completion_text_in_saved_page": true,
+      "decision_http": 200,
+      "source_raw_sha256": "35a4f7ea74844cca97dd141f1458b5b0e49ad2489cbc67de8ea81a3e23aaef3e",
+      "raw_artifact_unchanged": true
+    },
+    {
+      "id": "F06",
+      "original_complete": false,
+      "observed_complete": true,
+      "callback_done": true,
+      "callback_returned_success": true,
+      "completion_text_in_saved_page": true,
+      "decision_http": 200,
+      "source_raw_sha256": "361aa0c1a909a82da6790847d54dbf2bb3da987fd36bdc26a0fe318d4ecc9acc",
+      "raw_artifact_unchanged": true
+    },
+    {
+      "id": "F07",
+      "original_complete": false,
+      "observed_complete": true,
+      "callback_done": true,
+      "callback_returned_success": true,
+      "completion_text_in_saved_page": true,
+      "decision_http": 200,
+      "source_raw_sha256": "90f4a7ef4deaaaf92a93d97cd6c0d64782bf1a394f8dbec3374150bcb3c15634",
+      "raw_artifact_unchanged": true
+    },
+    {
+      "id": "F08",
+      "original_complete": false,
+      "observed_complete": true,
+      "callback_done": true,
+      "callback_returned_success": true,
+      "completion_text_in_saved_page": true,
+      "decision_http": 200,
+      "source_raw_sha256": "de8614a35a6500cc8b81a371bd7bdb2891806059b75e77ad4cfcce80f5a9c45d",
+      "raw_artifact_unchanged": true
+    },
+    {
+      "id": "F09",
+      "original_complete": false,
+      "observed_complete": true,
+      "callback_done": true,
+      "callback_returned_success": true,
+      "completion_text_in_saved_page": true,
+      "decision_http": 200,
+      "source_raw_sha256": "f644bfad66b1cc3fee962b175984f3658624de89af5673101ab9c6f6f561f295",
+      "raw_artifact_unchanged": true
+    },
+    {
+      "id": "F10",
+      "original_complete": false,
+      "observed_complete": true,
+      "callback_done": true,
+      "callback_returned_success": true,
+      "completion_text_in_saved_page": true,
+      "decision_http": 200,
+      "source_raw_sha256": "85300115309ff3b073cf49bc102722986ba7e706fd9e011463c281eb22b8b945",
+      "raw_artifact_unchanged": true
+    }
+  ]
+}

@@ -12,6 +12,7 @@ const {normalizeEvidenceCurrency}=load('src/app/api/analyze/evidence/currency.ts
 const {validateAuthorizationAtoms,assembleAuthorizationRecords}=load('src/app/api/analyze/evidence/authorization-atoms.ts');
 const {validateAuthorizationRecords,requiredAuthorizationSources}=load('src/app/api/analyze/evidence/authorization-records.ts');
 const {createEvidenceProvenance}=load('src/app/api/analyze/evidence/provenance.ts');
+const {groundCalculationFacts}=load('src/app/api/analyze/evidence/calculation-facts.ts');
 const {buildScenarioInput}=load('src/app/api/analyze/scenarios/scenarios.ts');
 const routeSource=fs.readFileSync('src/app/api/analyze/evidence/route.ts','utf8');
 export const timeoutMs=Number(routeSource.match(/UPSTREAM_TIMEOUT_MS = ([\d_]+)/)[1].replaceAll('_',''));
@@ -63,7 +64,9 @@ export async function judgeCompletion(note,completion,captured){
  result.assembly_diagnostics=assemblyDiagnostics;result.record_validation=validateAuthorizationRecords(records,note.sources,normalized.currency);
  if(!result.record_validation)return {...result,classification:'FAIL',failure:'authorization_record_validation_failed'};
  result.assembled_authorization_records=plain(records);
- const {authorization_atoms:ignored,business_total_support,...base}=parsed;void ignored;const evidence=load('src/app/api/analyze/evidence/business-totals.ts').groundBusinessTotals({...base,currency:normalized.currency},business_total_support,note.sources).evidence;evidence.provenance={...createEvidenceProvenance(evidence,note.input),authorization_records:records};
+ const {authorization_atoms:ignored,business_total_support,calculation_support,...base}=parsed;void ignored;const evidence=load('src/app/api/analyze/evidence/business-totals.ts').groundBusinessTotals({...base,currency:normalized.currency},business_total_support,note.sources).evidence;
+ const calculationFacts=calculation_support===undefined?undefined:groundCalculationFacts(calculation_support,note.sources,evidence);
+ evidence.provenance={...createEvidenceProvenance(evidence,note.input,calculationFacts),authorization_records:records};
  // Deterministic authorization probe only, never a live Leak/Scenario call. Each
  // controlled finding cites exactly the candidate's code-resolved source set.
  const leaks={leaks:records.flatMap(record=>{const refs=requiredAuthorizationSources(record);if(!refs)return [];return [{title:'Evaluation '+record.intervention,category:record.intervention==='headcount_reduction'?'labor':'waste',intervention_ref:record.intervention,evidence_refs:refs.map(ref=>evidence.provenance.citable_facts.find(f=>f.source_refs.length===1&&f.source_refs[0]===ref).id),evidence:['Source-bound evaluation candidate.'],interpretation:'Evaluation candidate.',confidence:'high'}];}),insufficient_evidence:[]};

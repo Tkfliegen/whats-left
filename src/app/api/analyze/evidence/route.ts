@@ -1,5 +1,7 @@
 import { observeRoute } from "../../../../lib/observability/langsmith";
+import { filterMissingInformation } from "./missing-information";
 import { groundBusinessTotals } from "./business-totals";
+import { groundCalculationFacts, logCalculationDiagnostic } from "./calculation-facts";
 import { assembleAuthorizationRecords } from "./authorization-atoms";
 import { validateAuthorizationRecords } from "./authorization-records";
 import { createEvidenceOutputSchema, evidenceSystemPrompt, matchesSchema } from "./evidence";
@@ -47,7 +49,7 @@ async function handlePOST(request: Request) {
   const unknownEvidence: Evidence = { business_type: null, period: null, currency: null,
     revenue: { total: null, items: [] }, costs: { total: null, items: [] }, facts: [], assumptions: [], missing_information: [], confidence: "low" };
   const sources = createEvidenceProvenance(unknownEvidence, body.input.trim()).items;
-  const outputSchema = createEvidenceOutputSchema(sources.map(source => source.id));
+  const outputSchema = createEvidenceOutputSchema(sources.map(source => source.id), true, true);
   let providerPhase: "request" | "response_json" | "output" = "request";
   let providerSignal: AbortSignal | undefined;
   const providerStarted = Date.now();
@@ -97,8 +99,8 @@ async function handlePOST(request: Request) {
     }
     // Total support is extraction-only and optional locally: absent or malformed
     // support nulls totals, never rejects otherwise valid granular Evidence.
-    const { business_total_support, ...baseOutput } = evidence && typeof evidence === "object" && !Array.isArray(evidence)
-      ? evidence as Record<string, unknown> : { business_total_support: undefined };
+    const { business_total_support, calculation_support, ...baseOutput } = evidence && typeof evidence === "object" && !Array.isArray(evidence)
+      ? evidence as Record<string, unknown> : { business_total_support: undefined, calculation_support: undefined };
     if (!matchesSchema(baseOutput, createEvidenceOutputSchema(sources.map(source => source.id), false))) {
       providerDiagnostic("provider_schema_invalid");
       return error("Evidence provider returned invalid evidence.", 502);
@@ -123,7 +125,11 @@ async function handlePOST(request: Request) {
       console.warn("[What's Left?] Evidence business total grounding", JSON.stringify(grounded.diagnostic));
     }
     const canonical = grounded.evidence;
-    return json({ evidence: { ...canonical, provenance: { ...createEvidenceProvenance(canonical, body.input.trim()), authorization_records } } });
+    const groundedCalculationFacts = groundCalculationFacts(calculation_support, sources, canonical,
+      process.env.NODE_ENV === "development" ? logCalculationDiagnostic : undefined);
+    const calculation_facts = calculation_support === undefined ? undefined : groundedCalculationFacts;
+    const filtered = { ...canonical, missing_information: filterMissingInformation(canonical.missing_information, sources) };
+    return json({ evidence: { ...filtered, provenance: { ...createEvidenceProvenance(filtered, body.input.trim(), calculation_facts), authorization_records } } });
   } catch (failure) {
     if (providerPhase !== "output") {
       const name = failure && typeof failure === "object" && "name" in failure ? failure.name : undefined;

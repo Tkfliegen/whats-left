@@ -124,5 +124,5 @@ test('actionable hierarchy shows recommendation then verified context then confi
   const dashboard=readFileSync('src/components/dashboard.tsx','utf8');
   assert.doesNotMatch(dashboard,/value: "\$4,200"|value: "4\.2%"|september-pos\.csv|staff-rota\.xlsx|Demo workspace/);
   assert.match(dashboard,/AI interprets business evidence\. Code verifies scenarios and calculates impact\. AI recommends within verified boundaries\./);
-  assert.match(dashboard,/Retry full analysis/);assert.match(dashboard,/bounded decision support/);
+  assert.match(readFileSync('src/components/business-input-panel.tsx','utf8'),/Retry full analysis/);assert.match(dashboard,/bounded decision support/);
 });

@@ -1,3 +1,4 @@
+import { logCalculationHandoff } from "../evidence/calculation-facts";
 import { observeRoute, traceStage } from "../../../../lib/observability/langsmith";
 import type { ScenarioResponse } from "@/types/scenarios";
 import { buildScenarioInput, isScenarioRequest, validateScenarioResult, createScenarioSchema, scenarioSystemPrompt } from "./scenarios";
@@ -29,6 +30,7 @@ async function handlePOST(request: Request) {
   if (!key?.trim()) return error("Scenario analysis service is not configured.", 500);
 
   const input = traceStage("scenario-authorization", () => buildScenarioInput(body));
+  logCalculationHandoff("scenario_input", input.input_facts);
   const schema = createScenarioSchema(input.input_facts, input.confirmed_leaks);
   try {
     const upstream = await fetch(`${NEBIUS_BASE_URL}chat/completions`, {

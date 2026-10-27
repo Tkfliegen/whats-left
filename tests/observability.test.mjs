@@ -12,9 +12,9 @@ function helper(){
  vm.runInNewContext(ts.transpileModule(fs.readFileSync('src/lib/observability/langsmith.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{exports,Buffer,process:{env:{}},console:{warn:(...v)=>logs.push(v)},require:native});
  return {...exports,logs};
 }
-function tracing(env={LANGSMITH_TRACING:'true',LANGSMITH_API_KEY:'PRIVATE_API_KEY',LANGSMITH_PROJECT:'whats-left'}){
+function tracing(env={LANGSMITH_TRACING:'true',LANGSMITH_API_KEY:'PRIVATE_API_KEY',LANGSMITH_PROJECT:'whats-left'},rejectDuplicateUpdates=false){
  const h=helper(),tasks=[],creates=[],updates=[],configs=[];let fail=false,loads=0;
- class Client {constructor(config){configs.push(config);}async createRun(run){if(fail)throw Error('PRIVATE_TRANSPORT_RESPONSE');creates.push(plain(run));}async updateRun(id,run){if(fail)throw Error('PRIVATE_TRANSPORT_RESPONSE');updates.push({id,...plain(run)});}}
+ class Client {constructor(config){configs.push(config);}async createRun(run){if(fail)throw Error('PRIVATE_TRANSPORT_RESPONSE');creates.push(plain(run));}async updateRun(id,run){if(fail)throw Error('PRIVATE_TRANSPORT_RESPONSE');if(rejectDuplicateUpdates&&updates.some(r=>r.id===id))throw Object.assign(Error('payload_already_received'),{name:'LangSmithConflictError',status:409});updates.push({id,...plain(run)});}}
  const api=h.createObservability(env,{sdk:async()=>{loads++;return {Client,RunTree};},schedule:task=>tasks.push(task)});
  return {...api,tasks,creates,updates,configs,logs:h.logs,get loads(){return loads;},fail(){fail=true;},async flush(){while(tasks.length)await tasks.shift()();}};
 }
@@ -74,7 +74,8 @@ test('one signed distributed root contains every actual stage, model and authori
   })(new Request('http://local',{headers:token?{'x-whats-left-trace':token}:{}}));
   token??=response.headers.get('x-whats-left-trace');assert.equal(response.headers.get('x-whats-left-trace'),token);await t.flush();
  }
- await t.completeTrace(token,'complete');await t.flush();
+ assert.equal(t.updates.length,0); // Even Decision leaves the correlated root to the completion endpoint.
+ await t.completeTrace(token,'complete');await t.flush();assert.equal(t.updates.length,1);
  assert.equal(t.creates.filter(r=>r.name==='whats-left-analysis').length,1);
  const root=t.creates[0],routeRuns=t.creates.filter(r=>stages.includes(r.name));assert.equal(routeRuns.length,6);
  for(const r of t.creates){assert.equal(r.trace_id,root.id);assert.ok(r.dotted_order.startsWith(root.dotted_order));assert.deepEqual(r.inputs,{});assert.deepEqual(r.outputs,{});}
@@ -104,4 +105,92 @@ test('deterministic calculator and Gate routes return identical bodies with trac
 test('development diagnostic reports only enablement, never a key or endpoint',()=>{
  const t=tracing({NODE_ENV:'development',LANGSMITH_TRACING:'true',LANGSMITH_API_KEY:'PRIVATE_API_KEY',LANGSMITH_ENDPOINT:'https://PRIVATE_ENDPOINT'});
  assert.equal(t.tracingEnabled(),true);assert.equal(t.tracingEnabled(),true);assert.equal(t.logs.length,1);assert.match(JSON.stringify(t.logs),/enabled/);assert.doesNotMatch(JSON.stringify(t.logs),/PRIVATE/);
+});
+async function rejectedUpload(error,{operation='root_create',nodeEnv='development',stage='decision-agent'}={}){
+ const h=helper(),tasks=[],creates=[],updates=[];let calls=0,createCount=0;
+ class Client {
+  async createRun(run){createCount++;if(operation==='root_create'&&createCount===1||operation==='child_create'&&createCount===2)throw error;creates.push(plain(run));}
+  async updateRun(id,run){if(operation==='end_update')throw error;updates.push({id,...plain(run)});}
+ }
+ const api=h.createObservability({NODE_ENV:nodeEnv,LANGSMITH_TRACING:'true',LANGSMITH_API_KEY:'PRIVATE_KEY'},
+  {sdk:async()=>{if(operation==='sdk_load')throw error;return {Client,RunTree};},schedule:task=>tasks.push(task)});
+ const expected=Response.json({private:'PRIVATE_BUSINESS_NOTES',accepted:true});
+ const response=await api.observeRoute(stage,undefined,async()=>{calls++;return expected;})(new Request('http://local'));
+ assert.equal(response,expected);assert.equal(calls,1);assert.equal(h.logs.some(v=>JSON.stringify(v).includes('upload_failed')),false);
+ for(const task of tasks)await task();assert.equal(calls,1);assert.equal((await response.json()).accepted,true);
+ const diagnostic=h.logs.map(v=>JSON.parse(v[1])).find(v=>v.reason==='upload_failed');
+ return {diagnostic,logs:h.logs,creates,updates};
+}
+for(const operation of ['root_create','child_create','end_update','sdk_load'])test(`development identifies ${operation} and HTTP status without exposing the exception`,async()=>{
+ const error=Object.assign(Error('PRIVATE_KEY PRIVATE_BUSINESS_NOTES Authorization X-Tenant-ID response body'),{status:403,code:'PRIVATE_KEY',headers:{Authorization:'PRIVATE_KEY'},body:'PRIVATE_BUSINESS_NOTES'});
+ const result=await rejectedUpload(error,{operation});
+ assert.deepEqual(result.diagnostic,{reason:'upload_failed',error_name:'Error',category:'http_error',http_status:403,before_http_response:false,operation,stage:'decision-agent'});
+ assert.doesNotMatch(JSON.stringify(result.logs),/PRIVATE|Authorization|Tenant|response body/);
+});
+test('development classifies safe timeout/network codes and does not invent response timing',async()=>{
+ for(const [error,category,code,before] of [
+  [Object.assign(Error('PRIVATE'),{name:'TimeoutError'}),'timeout',undefined,'unknown'],
+  [Object.assign(Error('PRIVATE'),{name:'AbortError'}),'aborted',undefined,'unknown'],
+  [new TypeError('PRIVATE',{cause:{code:'ENOTFOUND',hostname:'PRIVATE'}}),'network_error','ENOTFOUND',true],
+  [new TypeError('PRIVATE',{cause:{code:'UND_ERR_BODY_TIMEOUT'}}),'timeout','UND_ERR_BODY_TIMEOUT','unknown'],
+  [new TypeError('PRIVATE',{cause:{code:'ECONNRESET'}}),'network_error','ECONNRESET','unknown'],
+ ]){
+  const {diagnostic,logs}=await rejectedUpload(error);
+  assert.equal(diagnostic.category,category);assert.equal(diagnostic.error_code,code);assert.equal(diagnostic.before_http_response,before);
+  assert.equal(diagnostic.http_status,undefined);assert.doesNotMatch(JSON.stringify(logs),/PRIVATE/);
+ }
+});
+test('unknown names, codes, invalid statuses and throwing getters never disclose data or escape',async()=>{
+ for(const error of [
+  {name:'PRIVATE_KEY',code:'PRIVATE_BUSINESS_NOTES',status:95800,message:'PRIVATE'},
+  Object.defineProperties({},Object.fromEntries(['name','code','status','statusCode','response','cause'].map(key=>[key,{get(){throw Error('PRIVATE');}}]))),
+ ]){
+  const {diagnostic,logs}=await rejectedUpload(error);
+  assert.equal(diagnostic.error_name,'unknown');assert.equal(diagnostic.category,'unknown');assert.equal(diagnostic.http_status,undefined);assert.equal(diagnostic.error_code,undefined);
+  assert.doesNotMatch(JSON.stringify(logs),/PRIVATE|95800/);
+ }
+});
+for(const nodeEnv of ['production','test'])test(`${nodeEnv} retains existing silence with no diagnostic details`,async()=>{
+ const {logs}=await rejectedUpload(Object.assign(Error('PRIVATE'),{status:429}),{nodeEnv});assert.equal(logs.length,0);
+});
+test('successful development uploads keep the same spans and emit no failure diagnostic',async()=>{
+ const {diagnostic,creates,updates}=await rejectedUpload(Error('unused'),{operation:'none'});
+ assert.equal(diagnostic,undefined);assert.equal(creates.length,2);assert.equal(updates.length,1);
+ assert.deepEqual(creates.map(r=>r.name),['whats-left-analysis','decision-agent']);
+ assert.ok(creates.every(r=>Object.keys(r.inputs).length===0&&Object.keys(r.outputs).length===0));
+});
+for(const order of ['decision-first','completion-first'])test(`single root owner eliminates duplicate-payload 409 with ${order} scheduling`,async()=>{
+ const t=tracing({NODE_ENV:'development',LANGSMITH_TRACING:'true',LANGSMITH_API_KEY:'PRIVATE_KEY'},true);
+ const evidence=await t.observeRoute('evidence-agent',undefined,async()=>Response.json({}))(new Request('http://local'));
+ const token=evidence.headers.get('x-whats-left-trace');await t.flush();
+ const response=await t.observeRoute('decision-agent',undefined,async()=>Response.json({accepted:true}))(new Request('http://local',{headers:{'x-whats-left-trace':token}}));
+ assert.equal(response.status,200);assert.deepEqual(await response.json(),{accepted:true});assert.equal(t.updates.length,0);
+ const decisionTask=t.tasks.shift();await t.completeTrace(token,'complete');const completionTask=t.tasks.shift();
+ for(const task of order==='decision-first'?[decisionTask,completionTask]:[completionTask,decisionTask])await task();
+ const root=t.creates.find(r=>r.name==='whats-left-analysis'),child=t.creates.filter(r=>r.name==='decision-agent');
+ assert.equal(child.length,1);assert.equal(child[0].parent_run_id,root.id);assert.equal(typeof child[0].end_time,'number');
+ assert.equal(t.updates.length,1);assert.equal(t.updates[0].id,root.id);assert.equal(t.updates[0].extra.metadata.outcome,'complete');
+ assert.doesNotMatch(JSON.stringify(t.logs),/upload_failed|payload_already_received|409/);
+});
+for(const stage of ['evidence-agent','leak-detective','scenario-agent','decision-agent'])test(`correlated ${stage} rejection delegates root finalization to completeTrace`,async()=>{
+ const t=tracing();let token;
+ if(stage!=='evidence-agent'){
+  const evidence=await t.observeRoute('evidence-agent',undefined,async()=>Response.json({}))(new Request('http://local'));
+  token=evidence.headers.get('x-whats-left-trace');await t.flush();
+ }
+ const response=await t.observeRoute(stage,undefined,async()=>Response.json({error:'unchanged failure'},{status:502}))(new Request('http://local',{headers:token?{'x-whats-left-trace':token}:{}}));
+ token=response.headers.get('x-whats-left-trace');await t.flush();assert.equal(response.status,502);assert.equal(t.updates.length,0);
+ const child=t.creates.find(r=>r.name===stage);assert.equal(typeof child.end_time,'number');assert.equal(child.extra.metadata.outcome,'rejected');
+ await t.completeTrace(token,'failed');await t.flush();assert.equal(t.updates.length,1);assert.equal(t.updates[0].extra.metadata.outcome,'failed');
+});
+for(const stage of ['leak-detective','scenario-agent','scenario-calculator','decision-gate','decision-agent'])for(const status of [200,502])test(`standalone ${stage} HTTP ${status} retains one root completion`,async()=>{
+ const t=tracing(),expected=Response.json({unchanged:true},{status});
+ const response=await t.observeRoute(stage,undefined,async()=>expected)(new Request('http://local'));
+ assert.equal(response,expected);await t.flush();assert.equal(t.creates.length,2);assert.equal(t.updates.length,1);
+ assert.equal(t.updates[0].id,t.creates[0].id);assert.equal(t.updates[0].extra.metadata.outcome,status===200?'complete':'failed');
+});
+test('correlated cancellation has one endpoint-owned root completion',async()=>{
+ const t=tracing(),response=await t.observeRoute('evidence-agent',undefined,async()=>Response.json({}))(new Request('http://local'));
+ await t.flush();assert.equal(t.updates.length,0);await t.completeTrace(response.headers.get('x-whats-left-trace'),'cancelled');await t.flush();
+ assert.equal(t.updates.length,1);assert.equal(t.updates[0].extra.metadata.outcome,'cancelled');
 });

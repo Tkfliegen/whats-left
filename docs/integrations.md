@@ -64,14 +64,20 @@ When a context exists, it also sends a fire-and-forget, metadata-only completion
 notification to `/api/observability/analysis` for success, failure or cancellation.
 This catches frontend-only validation failures that occur after a backend 200.
 Disabled/missing-key tracing supplies no context and makes no extra request.
-Normal final-stage and HTTP-error spans also close the root, so non-browser API
-callers do not need this notification. A direct isolated non-Evidence request
-without a valid context receives its own completed standalone root.
+For the correlated frontend pipeline, `/api/observability/analysis` via
+`completeTrace()` is the exclusive root-completion owner. Route wrappers upload
+completed child spans, including Decision and HTTP-error spans, but never patch
+the correlated root. Evidence starts the correlated root; non-browser callers
+continuing that analysis must also send one completion notification. A direct
+isolated non-Evidence request without a valid context still receives its own
+standalone root, completed by its route wrapper.
 
 Tracing is best effort: a closed tab, host shutdown, timeout or lost notification
 can leave an incomplete/partial trace. This must never trigger a business retry,
-fallback, repair or rejection. Root completion may be updated again by the
-frontend; it remains the same trace/root ID.
+fallback, repair or rejection. The frontend sends one terminal notification per
+analysis. Detached Decision upload and frontend completion can run in either
+order without issuing two root updates. There is no process-local completion
+deduplication or new retry behavior.
 
 ## Toloka
 

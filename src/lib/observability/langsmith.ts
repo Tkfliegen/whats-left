@@ -21,6 +21,41 @@ const defaultDependencies: Dependencies = {
 const knownReasons = new Set(["unreported_number", "incomplete_citation_support", "unsupported_quantitative_ratio",
   "no_authorized_change", "unauthorized_variable", "unauthorized_change", "duplicate_controlled_change",
   "missing_authorization_refs", "authorized_leak_abstained"]);
+type UploadOperation = "metadata" | "sdk_load" | "root_construct" | "root_create" | "child_construct" | "child_create" | "end_update";
+const errorNames = new Set(["Error", "TypeError", "RangeError", "SyntaxError", "AbortError", "TimeoutError",
+  "APIError", "APIConnectionError", "APIConnectionTimeoutError", "AuthenticationError", "PermissionDeniedError",
+  "LangsmithError", "LangSmithNotFoundError", "LangSmithConflictError", "ConflictingEndpointsError"]);
+const errorCodes = new Set(["ECONNRESET", "ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "ETIMEDOUT", "EPIPE",
+  "UND_ERR_CONNECT_TIMEOUT", "UND_ERR_HEADERS_TIMEOUT", "UND_ERR_BODY_TIMEOUT", "UND_ERR_SOCKET",
+  "CERT_HAS_EXPIRED", "UNABLE_TO_VERIFY_LEAF_SIGNATURE", "UNABLE_TO_GET_ISSUER_CERT_LOCALLY",
+  "DEPTH_ZERO_SELF_SIGNED_CERT", "SELF_SIGNED_CERT_IN_CHAIN", "ERR_TLS_CERT_ALTNAME_INVALID",
+  "ERR_CONFLICTING_ENDPOINTS", "MODULE_NOT_FOUND", "ERR_MODULE_NOT_FOUND", "ABORT_ERR",
+  "unauthorized", "forbidden", "invalid_api_key", "invalid_token", "insufficient_scope",
+  "org_scoped_key_requires_workspace", "workspace_required", "tenant_id_required", "permission_denied"]);
+
+// Never serialize exceptions: SDK messages can contain complete server bodies.
+// Only fixed vocabularies and HTTP-status integers may reach diagnostics.
+function uploadError(error: unknown): Metadata {
+  const read = (value: unknown, key: string): unknown => {
+    try { return value && typeof value === "object" ? (value as Record<string, unknown>)[key] : undefined; }
+    catch { return undefined; }
+  };
+  const name = read(error, "name"), cause = read(error, "cause");
+  const safeName = typeof name === "string" && errorNames.has(name) ? name : "unknown";
+  const statuses = [read(error, "status"), read(error, "statusCode"), read(read(error, "response"), "status"), read(cause, "status")];
+  const status = statuses.find((value): value is number => typeof value === "number" && Number.isInteger(value) && value >= 100 && value <= 599);
+  const codes = [read(error, "code"), read(cause, "code")];
+  const code = codes.find((value): value is string => typeof value === "string" && errorCodes.has(value));
+  const timeout = safeName === "TimeoutError" || safeName === "APIConnectionTimeoutError"
+    || code === "ETIMEDOUT" || !!code?.includes("TIMEOUT");
+  const aborted = safeName === "AbortError" || code === "ABORT_ERR";
+  const network = safeName === "APIConnectionError" || !!code && /^(E(CONN|NOTFOUND|AI_|PIPE)|UND_ERR_|CERT_|UNABLE_|DEPTH_|SELF_SIGNED_|ERR_TLS_)/.test(code);
+  const category = status !== undefined ? "http_error" : timeout ? "timeout" : aborted ? "aborted" : network ? "network_error" : "unknown";
+  return { error_name: safeName, category, ...(status !== undefined ? { http_status: status, before_http_response: false } : {}),
+    ...(code ? { error_code: code } : {}), ...(status === undefined ? { before_http_response:
+      !!code && /^(ENOTFOUND|EAI_AGAIN|ECONNREFUSED|UND_ERR_CONNECT_TIMEOUT|CERT_|UNABLE_|DEPTH_|SELF_SIGNED_|ERR_TLS_)/.test(code) ? true : "unknown" } : {}),
+    ...(timeout ? { timeout_category: safeName === "TimeoutError" ? "abort_signal_timeout" : "transport_timeout" } : {}) };
+}
 
 // No source notes, prompts, headers, provider bodies or numeric business values
 // enter the SDK. Only this allowlisted, bounded outcome summary is uploaded.
@@ -57,8 +92,8 @@ async function outcome(response: Response | undefined): Promise<Metadata> {
 export function createObservability(env: Environment, dependencies: Dependencies = defaultDependencies) {
   const storage = new AsyncLocalStorage<Active>();
   let announced = false;
-  const diagnostic = (reason: string) => {
-    try { if (env.NODE_ENV === "development") console.warn("[What's Left?] LangSmith tracing", JSON.stringify({ reason })); } catch { /* Logging is optional. */ }
+  const diagnostic = (reason: string, detail?: () => Metadata) => {
+    try { if (env.NODE_ENV === "development") console.warn("[What's Left?] LangSmith tracing", JSON.stringify({ reason, ...detail?.() })); } catch { /* Logging is optional. */ }
   };
   function tracingEnabled() {
     const enabled = env.LANGSMITH_TRACING === "true" && !!env.LANGSMITH_API_KEY?.trim();
@@ -105,8 +140,12 @@ export function createObservability(env: Environment, dependencies: Dependencies
       outputs: {}, error: status === "complete" ? undefined : `analysis_${status}`,
       extra: { metadata: { outcome: status, latency_ms: Math.max(0, end - context.started) } } });
   }
-  async function schedule(task: () => Promise<void>) {
-    try { await dependencies.schedule(async () => { try { await task(); } catch { diagnostic("upload_failed"); } }); }
+  async function schedule(task: (operation: (value: UploadOperation, stage?: Stage) => void) => Promise<void>, stage?: Stage | "analysis_completion") {
+    let operation: UploadOperation = "metadata", failingStage = stage;
+    try { await dependencies.schedule(async () => {
+      try { await task((value, childStage) => { operation = value; failingStage = childStage ?? stage; }); }
+      catch (error) { diagnostic("upload_failed", () => ({ ...uploadError(error), operation, ...(failingStage ? { stage: failingStage } : {}) })); }
+    }); }
     catch { diagnostic("schedule_failed"); }
   }
   function traceStage<T>(stage: Stage, operation: () => T): T {
@@ -139,19 +178,30 @@ export function createObservability(env: Environment, dependencies: Dependencies
           response?.headers.set(TRACE_HEADER, encode(active.context));
           const copy = response?.clone();
           // Registration and upload are best effort; neither gates the business response.
-          void schedule(async () => {
+          void schedule(async setOperation => {
             const metadata = await outcome(copy);
-            const { client, Tree } = await sdk(), root = rootFor(Tree, client, active.context);
-            if (fresh) await post(client, root, { stage: "analysis" });
+            setOperation("sdk_load");
+            const { client, Tree } = await sdk();
+            setOperation("root_construct");
+            const root = rootFor(Tree, client, active.context);
+            if (fresh) { setOperation("root_create"); await post(client, root, { stage: "analysis" }); }
+            setOperation("child_construct");
             const routeSpan = root.createChild({ name: stage, start_time: event.started, inputs: {} });
             for (const child of active.events.slice(1)) {
+              setOperation("child_construct", child.stage);
               const tree = routeSpan.createChild({ name: child.stage, start_time: child.started, inputs: {} });
+              setOperation("child_create", child.stage);
               await post(client, tree, { stage: child.stage, outcome: child.success ? "accepted" : "rejected",
                 validation_result: child.success ? "passed" : "rejected", latency_ms: Math.max(0, child.ended - child.started) }, child.ended);
             }
+            setOperation("child_create");
             await post(client, routeSpan, { ...metadata, stage, ...(model ? { model } : {}), latency_ms: event.ended - event.started }, event.ended);
-            if (standalone || !event.success || stage === "decision-agent") await finish(client, root, active.context, event.success ? "complete" : "failed", event.ended);
-          });
+            // Correlated analyses are finalized only by completeTrace().
+            if (standalone) {
+              setOperation("end_update");
+              await finish(client, root, active.context, event.success ? "complete" : "failed", event.ended);
+            }
+          }, stage);
         } catch { diagnostic("observation_failed"); }
       }
     };
@@ -160,7 +210,11 @@ export function createObservability(env: Environment, dependencies: Dependencies
     if (!tracingEnabled()) return;
     const context = decode(token); if (!context) return;
     const ended = Date.now();
-    await schedule(async () => { const { client, Tree } = await sdk(); await finish(client, rootFor(Tree, client, context), context, status, ended); });
+    await schedule(async setOperation => {
+      setOperation("sdk_load"); const { client, Tree } = await sdk();
+      setOperation("root_construct"); const root = rootFor(Tree, client, context);
+      setOperation("end_update"); await finish(client, root, context, status, ended);
+    }, "analysis_completion");
   }
   return { tracingEnabled, observeRoute, traceStage, completeTrace };
 }

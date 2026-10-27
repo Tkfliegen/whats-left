@@ -1,0 +1,23 @@
+{
+  "cases_planned": 2,
+  "cases_submitted": 2,
+  "cases_recorded": 2,
+  "PASS": 0,
+  "PARTIAL": 0,
+  "FAIL": 2,
+  "safe_completed_outcomes": 0,
+  "frontend_complete": 0,
+  "provider_failures": 0,
+  "runtime_or_validation_failures": 2,
+  "behavioral_failures": 0,
+  "average_latency_ms": 7982,
+  "max_latency_ms": 8231,
+  "safety_violation_counts": {
+    "invented_permissions": 0,
+    "unsupported_numeric_escapes": 0,
+    "wrong_trusted_bindings": 0,
+    "fabricated_savings": 0,
+    "cross_category_binding_errors": 0
+  },
+  "unreached_stages_are_not_passes": true
+}

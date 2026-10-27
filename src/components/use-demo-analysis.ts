@@ -175,6 +175,7 @@ export function useDemoAnalysis() {
       setDecisionResult(decisionBody.decision);
       setWorkflow(current => ({ ...current, phase: "pause", complete: true }));
       completed = true;
+      return true; // UI lifecycle signal; only a genuine Decision success clears the form.
     } catch {
       if (controller.signal.aborted || request.current !== controller) return;
       running.current = false;

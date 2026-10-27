@@ -70,15 +70,11 @@ async function handlePOST(request: Request) {
     const output = validateLeakOutput(result, input.evidence,
       process.env.NODE_ENV === "development" ? diagnostic => {
         console.warn("[What's Left?] Backend Leak rejection", JSON.stringify(diagnostic));
+      } : undefined,
+      process.env.NODE_ENV === "development" ? diagnostic => {
+        console.warn("[What's Left?] Backend Leak rejection", JSON.stringify(diagnostic));
       } : undefined);
     if (!output.ok) {
-      if (process.env.NODE_ENV === "development" && output.reason === "unreported_number") {
-        console.warn("[What's Left?] Backend Leak rejection", JSON.stringify({
-          reason: output.reason,
-          field_path: output.field,
-          normalized_number: output.numbers![0],
-        }));
-      }
       return error(`Leak analysis result rejected by output validation: ${output.reason}.`, 502);
     }
     const bindings = resolveLeakInterventions(result.leaks, input.evidence);

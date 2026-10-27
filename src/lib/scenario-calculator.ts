@@ -34,6 +34,11 @@ export function isSimulationRequest(value: unknown): value is SimulationRequest 
   const ids = request.input_facts.map(fact => fact.id);
   if (new Set(ids).size !== ids.length || request.input_facts.some(fact =>
     (!/^input_[0-9]+$/.test(fact.id) && !request.evidence.provenance?.items.some(item => item.id === fact.id && item.source === fact.source && item.text === fact.fact)) || !fact.source.trim() || !fact.fact.trim())) return false;
+  // New producer-backed Evidence permits only its revalidated calculation views,
+  // never caller/model-created input_N scalars. Legacy Evidence stays readable.
+  if (request.evidence.provenance?.calculation_facts !== undefined && request.input_facts.some(fact =>
+    fact.source.startsWith("calculation_inputs.") && !request.evidence.provenance!.items.some(item =>
+      item.id === fact.id && item.source === fact.source && item.text === fact.fact))) return false;
   // Facts explicitly marked calculation_inputs are structured, never prose. Reject malformed data.
   for (const fact of request.input_facts.filter(fact => fact.source.startsWith("calculation_inputs."))) {
     try {

@@ -1,0 +1,2682 @@
+{
+  "calls": [
+    {
+      "url": "/api/analyze/evidence",
+      "body": {
+        "input": "Business name: Final Validation 05\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nIngredient purchases for the waste-tracked category last month were USD 12500.\nMeasured ingredient waste for that category last month was 9%.\nThe internal ingredient waste target for that category is 5%.\nAs owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.\nNo staffing or delivery changes are approved."
+      },
+      "started": 1793088085308,
+      "status": 200,
+      "response": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": []
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Ingredient purchases (waste-tracked category)",
+                "amount": 12500,
+                "reported_category": "ingredients",
+                "source_text": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+              }
+            ]
+          },
+          "facts": [
+            "Measured ingredient waste for that category last month was 9%.",
+            "The internal ingredient waste target for that category is 5%.",
+            "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.",
+            "No staffing or delivery changes are approved."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Revenue total for last month",
+            "Revenue items for last month",
+            "Total operating costs for last month",
+            "Cost items other than ingredient purchases for waste-tracked category"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Final Validation 05\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nIngredient purchases for the waste-tracked category last month were USD 12500.\nMeasured ingredient waste for that category last month was 9%.\nThe internal ingredient waste target for that category is 5%.\nAs owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.\nNo staffing or delivery changes are approved.",
+            "items": [
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_04",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Ingredient purchases (waste-tracked category)\",\"amount\":12500,\"reported_category\":\"ingredients\",\"source_text\":\"Ingredient purchases for the waste-tracked category last month were USD 12500.\"}"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_05",
+                "source": "evidence.facts[0]",
+                "text": "Measured ingredient waste for that category last month was 9%."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_06",
+                "source": "evidence.facts[1]",
+                "text": "The internal ingredient waste target for that category is 5%."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_07",
+                "source": "evidence.facts[2]",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_08",
+                "source": "evidence.facts[3]",
+                "text": "No staffing or delivery changes are approved."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 05"
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_05",
+                "source": "source_input[4]",
+                "text": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_06",
+                "source": "source_input[5]",
+                "text": "Measured ingredient waste for that category last month was 9%."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_07",
+                "source": "source_input[6]",
+                "text": "The internal ingredient waste target for that category is 5%."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_08",
+                "source": "source_input[7]",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_09",
+                "source": "source_input[8]",
+                "text": "No staffing or delivery changes are approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_01",
+                "text": "Business name: Final Validation 05",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_01"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_02"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_03"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_04"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_05",
+                "text": "Ingredient purchases for the waste-tracked category last month were USD 12500.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_05"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_06",
+                "text": "Measured ingredient waste for that category last month was 9%.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_06"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_07",
+                "text": "The internal ingredient waste target for that category is 5%.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_07"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_08",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_08"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_09",
+                "text": "No staffing or delivery changes are approved.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_09"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_10",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_03",
+                  "src_d74260bf84c76f5bfef2ac6616937c87_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": [
+              {
+                "intervention": "waste_rate_target",
+                "scope": "ingredient_waste",
+                "operation": "absolute_target",
+                "from": 9,
+                "value": 5,
+                "unit": "percent",
+                "permission": "explicit",
+                "permission_source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_08"
+                ],
+                "constraint": "none",
+                "constraint_source_refs": [],
+                "supporting_facts": [
+                  {
+                    "role": "current_waste_rate",
+                    "value": 9,
+                    "unit": "percent",
+                    "period": "month",
+                    "currency": null,
+                    "source_refs": [
+                      "src_d74260bf84c76f5bfef2ac6616937c87_06"
+                    ]
+                  },
+                  {
+                    "role": "target_waste_rate",
+                    "value": 5,
+                    "unit": "percent",
+                    "period": "month",
+                    "currency": null,
+                    "source_refs": [
+                      "src_d74260bf84c76f5bfef2ac6616937c87_07"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "finished": 1793088087655
+    },
+    {
+      "url": "/api/analyze/leaks",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": []
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Ingredient purchases (waste-tracked category)",
+                "amount": 12500,
+                "reported_category": "ingredients",
+                "source_text": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+              }
+            ]
+          },
+          "facts": [
+            "Measured ingredient waste for that category last month was 9%.",
+            "The internal ingredient waste target for that category is 5%.",
+            "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.",
+            "No staffing or delivery changes are approved."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Revenue total for last month",
+            "Revenue items for last month",
+            "Total operating costs for last month",
+            "Cost items other than ingredient purchases for waste-tracked category"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Final Validation 05\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nIngredient purchases for the waste-tracked category last month were USD 12500.\nMeasured ingredient waste for that category last month was 9%.\nThe internal ingredient waste target for that category is 5%.\nAs owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.\nNo staffing or delivery changes are approved.",
+            "items": [
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_04",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Ingredient purchases (waste-tracked category)\",\"amount\":12500,\"reported_category\":\"ingredients\",\"source_text\":\"Ingredient purchases for the waste-tracked category last month were USD 12500.\"}"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_05",
+                "source": "evidence.facts[0]",
+                "text": "Measured ingredient waste for that category last month was 9%."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_06",
+                "source": "evidence.facts[1]",
+                "text": "The internal ingredient waste target for that category is 5%."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_07",
+                "source": "evidence.facts[2]",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_08",
+                "source": "evidence.facts[3]",
+                "text": "No staffing or delivery changes are approved."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 05"
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_05",
+                "source": "source_input[4]",
+                "text": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_06",
+                "source": "source_input[5]",
+                "text": "Measured ingredient waste for that category last month was 9%."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_07",
+                "source": "source_input[6]",
+                "text": "The internal ingredient waste target for that category is 5%."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_08",
+                "source": "source_input[7]",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_09",
+                "source": "source_input[8]",
+                "text": "No staffing or delivery changes are approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_01",
+                "text": "Business name: Final Validation 05",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_01"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_02"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_03"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_04"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_05",
+                "text": "Ingredient purchases for the waste-tracked category last month were USD 12500.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_05"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_06",
+                "text": "Measured ingredient waste for that category last month was 9%.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_06"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_07",
+                "text": "The internal ingredient waste target for that category is 5%.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_07"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_08",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_08"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_09",
+                "text": "No staffing or delivery changes are approved.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_09"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_10",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_03",
+                  "src_d74260bf84c76f5bfef2ac6616937c87_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": [
+              {
+                "intervention": "waste_rate_target",
+                "scope": "ingredient_waste",
+                "operation": "absolute_target",
+                "from": 9,
+                "value": 5,
+                "unit": "percent",
+                "permission": "explicit",
+                "permission_source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_08"
+                ],
+                "constraint": "none",
+                "constraint_source_refs": [],
+                "supporting_facts": [
+                  {
+                    "role": "current_waste_rate",
+                    "value": 9,
+                    "unit": "percent",
+                    "period": "month",
+                    "currency": null,
+                    "source_refs": [
+                      "src_d74260bf84c76f5bfef2ac6616937c87_06"
+                    ]
+                  },
+                  {
+                    "role": "target_waste_rate",
+                    "value": 5,
+                    "unit": "percent",
+                    "period": "month",
+                    "currency": null,
+                    "source_refs": [
+                      "src_d74260bf84c76f5bfef2ac6616937c87_07"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "operational_context": [
+          "Business performance for last month.",
+          "Currency: USD.",
+          "Ingredient purchases for the waste-tracked category last month were USD 12500.",
+          "Measured ingredient waste for that category last month was 9%.",
+          "The internal ingredient waste target for that category is 5%.",
+          "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.",
+          "No staffing or delivery changes are approved."
+        ]
+      },
+      "started": 1793088088807,
+      "status": 200,
+      "response": {
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_d74260bf84c76f5bfef2ac6616937c87_05",
+                "fact_d74260bf84c76f5bfef2ac6616937c87_06",
+                "fact_d74260bf84c76f5bfef2ac6616937c87_07",
+                "fact_d74260bf84c76f5bfef2ac6616937c87_08"
+              ],
+              "title": "Ingredient waste above internal target for waste-tracked category",
+              "category": "waste",
+              "evidence": [
+                "Ingredient purchases for the waste-tracked category last month were USD 12500.",
+                "Measured ingredient waste for that category last month was 9%.",
+                "The internal ingredient waste target for that category is 5%.",
+                "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              ],
+              "interpretation": "The waste-tracked ingredient category incurred USD 12,500 in purchases last month with measured waste at 9%, exceeding the internal 5% target. Owner authorization exists for a controlled trial to reduce waste to the target level.",
+              "confidence": "high",
+              "intervention_ref": "waste_rate_target"
+            }
+          ],
+          "insufficient_evidence": [
+            {
+              "topic": "Overall profitability and revenue adequacy",
+              "reason": "Total revenue and complete cost structure for last month are not provided, preventing assessment of overall profit leaks beyond the identified waste issue."
+            },
+            {
+              "topic": "Labor efficiency",
+              "reason": "No staffing levels, labor costs, or productivity metrics are supplied for any period."
+            },
+            {
+              "topic": "Delivery unit economics",
+              "reason": "No delivery revenue, platform fees, packaging costs, or order-level economics are provided."
+            },
+            {
+              "topic": "Ingredient cost efficiency beyond waste",
+              "reason": "Only waste-tracked category purchases and waste rate are known; no unit cost benchmarks, price variance data, or non-waste ingredient costs are supplied."
+            }
+          ]
+        }
+      },
+      "finished": 1793088091052
+    },
+    {
+      "url": "/api/analyze/scenarios",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": []
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Ingredient purchases (waste-tracked category)",
+                "amount": 12500,
+                "reported_category": "ingredients",
+                "source_text": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+              }
+            ]
+          },
+          "facts": [
+            "Measured ingredient waste for that category last month was 9%.",
+            "The internal ingredient waste target for that category is 5%.",
+            "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.",
+            "No staffing or delivery changes are approved."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Revenue total for last month",
+            "Revenue items for last month",
+            "Total operating costs for last month",
+            "Cost items other than ingredient purchases for waste-tracked category"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Final Validation 05\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nIngredient purchases for the waste-tracked category last month were USD 12500.\nMeasured ingredient waste for that category last month was 9%.\nThe internal ingredient waste target for that category is 5%.\nAs owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.\nNo staffing or delivery changes are approved.",
+            "items": [
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_04",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Ingredient purchases (waste-tracked category)\",\"amount\":12500,\"reported_category\":\"ingredients\",\"source_text\":\"Ingredient purchases for the waste-tracked category last month were USD 12500.\"}"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_05",
+                "source": "evidence.facts[0]",
+                "text": "Measured ingredient waste for that category last month was 9%."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_06",
+                "source": "evidence.facts[1]",
+                "text": "The internal ingredient waste target for that category is 5%."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_07",
+                "source": "evidence.facts[2]",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_08",
+                "source": "evidence.facts[3]",
+                "text": "No staffing or delivery changes are approved."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 05"
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_05",
+                "source": "source_input[4]",
+                "text": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_06",
+                "source": "source_input[5]",
+                "text": "Measured ingredient waste for that category last month was 9%."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_07",
+                "source": "source_input[6]",
+                "text": "The internal ingredient waste target for that category is 5%."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_08",
+                "source": "source_input[7]",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_09",
+                "source": "source_input[8]",
+                "text": "No staffing or delivery changes are approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_01",
+                "text": "Business name: Final Validation 05",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_01"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_02"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_03"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_04"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_05",
+                "text": "Ingredient purchases for the waste-tracked category last month were USD 12500.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_05"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_06",
+                "text": "Measured ingredient waste for that category last month was 9%.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_06"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_07",
+                "text": "The internal ingredient waste target for that category is 5%.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_07"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_08",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_08"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_09",
+                "text": "No staffing or delivery changes are approved.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_09"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_10",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_03",
+                  "src_d74260bf84c76f5bfef2ac6616937c87_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": [
+              {
+                "intervention": "waste_rate_target",
+                "scope": "ingredient_waste",
+                "operation": "absolute_target",
+                "from": 9,
+                "value": 5,
+                "unit": "percent",
+                "permission": "explicit",
+                "permission_source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_08"
+                ],
+                "constraint": "none",
+                "constraint_source_refs": [],
+                "supporting_facts": [
+                  {
+                    "role": "current_waste_rate",
+                    "value": 9,
+                    "unit": "percent",
+                    "period": "month",
+                    "currency": null,
+                    "source_refs": [
+                      "src_d74260bf84c76f5bfef2ac6616937c87_06"
+                    ]
+                  },
+                  {
+                    "role": "target_waste_rate",
+                    "value": 5,
+                    "unit": "percent",
+                    "period": "month",
+                    "currency": null,
+                    "source_refs": [
+                      "src_d74260bf84c76f5bfef2ac6616937c87_07"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_d74260bf84c76f5bfef2ac6616937c87_05",
+                "fact_d74260bf84c76f5bfef2ac6616937c87_06",
+                "fact_d74260bf84c76f5bfef2ac6616937c87_07",
+                "fact_d74260bf84c76f5bfef2ac6616937c87_08"
+              ],
+              "title": "Ingredient waste above internal target for waste-tracked category",
+              "category": "waste",
+              "evidence": [
+                "Ingredient purchases for the waste-tracked category last month were USD 12500.",
+                "Measured ingredient waste for that category last month was 9%.",
+                "The internal ingredient waste target for that category is 5%.",
+                "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              ],
+              "interpretation": "The waste-tracked ingredient category incurred USD 12,500 in purchases last month with measured waste at 9%, exceeding the internal 5% target. Owner authorization exists for a controlled trial to reduce waste to the target level.",
+              "confidence": "high",
+              "intervention_ref": "waste_rate_target"
+            }
+          ],
+          "insufficient_evidence": [
+            {
+              "topic": "Overall profitability and revenue adequacy",
+              "reason": "Total revenue and complete cost structure for last month are not provided, preventing assessment of overall profit leaks beyond the identified waste issue."
+            },
+            {
+              "topic": "Labor efficiency",
+              "reason": "No staffing levels, labor costs, or productivity metrics are supplied for any period."
+            },
+            {
+              "topic": "Delivery unit economics",
+              "reason": "No delivery revenue, platform fees, packaging costs, or order-level economics are provided."
+            },
+            {
+              "topic": "Ingredient cost efficiency beyond waste",
+              "reason": "Only waste-tracked category purchases and waste rate are known; no unit cost benchmarks, price variance data, or non-waste ingredient costs are supplied."
+            }
+          ]
+        },
+        "operational_context": [
+          "Business performance for last month.",
+          "Currency: USD.",
+          "Ingredient purchases for the waste-tracked category last month were USD 12500.",
+          "Measured ingredient waste for that category last month was 9%.",
+          "The internal ingredient waste target for that category is 5%.",
+          "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.",
+          "No staffing or delivery changes are approved."
+        ]
+      },
+      "started": 1793088092205,
+      "status": 200,
+      "response": {
+        "scenarios": {
+          "scenarios": [
+            {
+              "title": "Ingredient waste above internal target for waste-tracked category",
+              "target_leak": "Ingredient waste above internal target for waste-tracked category",
+              "controlled_changes": [
+                {
+                  "variable": "Ingredient waste rate",
+                  "change_type": "absolute_target",
+                  "from": 9,
+                  "value": 5,
+                  "unit": "percent"
+                }
+              ],
+              "available_input_refs": [
+                "src_d74260bf84c76f5bfef2ac6616937c87_06",
+                "src_d74260bf84c76f5bfef2ac6616937c87_07",
+                "src_d74260bf84c76f5bfef2ac6616937c87_08"
+              ],
+              "missing_calculation_inputs": [],
+              "confidence": "high"
+            }
+          ],
+          "not_simulation_ready": []
+        },
+        "input_facts": [
+          {
+            "id": "input_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "input_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "input_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "input_04",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Ingredient purchases (waste-tracked category)\",\"amount\":12500,\"reported_category\":\"ingredients\",\"source_text\":\"Ingredient purchases for the waste-tracked category last month were USD 12500.\"}"
+          },
+          {
+            "id": "input_05",
+            "source": "evidence.facts[0]",
+            "fact": "Measured ingredient waste for that category last month was 9%."
+          },
+          {
+            "id": "input_06",
+            "source": "evidence.facts[1]",
+            "fact": "The internal ingredient waste target for that category is 5%."
+          },
+          {
+            "id": "input_07",
+            "source": "evidence.facts[2]",
+            "fact": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+          },
+          {
+            "id": "input_08",
+            "source": "evidence.facts[3]",
+            "fact": "No staffing or delivery changes are approved."
+          },
+          {
+            "id": "input_09",
+            "source": "operational_context[0]",
+            "fact": "Business performance for last month."
+          },
+          {
+            "id": "input_10",
+            "source": "operational_context[1]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "input_11",
+            "source": "operational_context[2]",
+            "fact": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+          },
+          {
+            "id": "input_12",
+            "source": "operational_context[3]",
+            "fact": "Measured ingredient waste for that category last month was 9%."
+          },
+          {
+            "id": "input_13",
+            "source": "operational_context[4]",
+            "fact": "The internal ingredient waste target for that category is 5%."
+          },
+          {
+            "id": "input_14",
+            "source": "operational_context[5]",
+            "fact": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+          },
+          {
+            "id": "input_15",
+            "source": "operational_context[6]",
+            "fact": "No staffing or delivery changes are approved."
+          },
+          {
+            "id": "input_16",
+            "source": "leaks.leaks[0].evidence[0]",
+            "fact": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+          },
+          {
+            "id": "input_17",
+            "source": "leaks.leaks[0].evidence[1]",
+            "fact": "Measured ingredient waste for that category last month was 9%."
+          },
+          {
+            "id": "input_18",
+            "source": "leaks.leaks[0].evidence[2]",
+            "fact": "The internal ingredient waste target for that category is 5%."
+          },
+          {
+            "id": "input_19",
+            "source": "leaks.leaks[0].evidence[3]",
+            "fact": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_04",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Ingredient purchases (waste-tracked category)\",\"amount\":12500,\"reported_category\":\"ingredients\",\"source_text\":\"Ingredient purchases for the waste-tracked category last month were USD 12500.\"}"
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_05",
+            "source": "evidence.facts[0]",
+            "fact": "Measured ingredient waste for that category last month was 9%."
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_06",
+            "source": "evidence.facts[1]",
+            "fact": "The internal ingredient waste target for that category is 5%."
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_07",
+            "source": "evidence.facts[2]",
+            "fact": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_08",
+            "source": "evidence.facts[3]",
+            "fact": "No staffing or delivery changes are approved."
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_01",
+            "source": "source_input[0]",
+            "fact": "Business name: Final Validation 05"
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_02",
+            "source": "source_input[1]",
+            "fact": "Selected business type: Café"
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_03",
+            "source": "source_input[2]",
+            "fact": "Business description / notes: Business performance for last month."
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_04",
+            "source": "source_input[3]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_05",
+            "source": "source_input[4]",
+            "fact": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_06",
+            "source": "source_input[5]",
+            "fact": "Measured ingredient waste for that category last month was 9%."
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_07",
+            "source": "source_input[6]",
+            "fact": "The internal ingredient waste target for that category is 5%."
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_08",
+            "source": "source_input[7]",
+            "fact": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_09",
+            "source": "source_input[8]",
+            "fact": "No staffing or delivery changes are approved."
+          }
+        ]
+      },
+      "finished": 1793088093492
+    },
+    {
+      "url": "/api/analyze/simulate",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": []
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Ingredient purchases (waste-tracked category)",
+                "amount": 12500,
+                "reported_category": "ingredients",
+                "source_text": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+              }
+            ]
+          },
+          "facts": [
+            "Measured ingredient waste for that category last month was 9%.",
+            "The internal ingredient waste target for that category is 5%.",
+            "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.",
+            "No staffing or delivery changes are approved."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Revenue total for last month",
+            "Revenue items for last month",
+            "Total operating costs for last month",
+            "Cost items other than ingredient purchases for waste-tracked category"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Final Validation 05\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nIngredient purchases for the waste-tracked category last month were USD 12500.\nMeasured ingredient waste for that category last month was 9%.\nThe internal ingredient waste target for that category is 5%.\nAs owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.\nNo staffing or delivery changes are approved.",
+            "items": [
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_04",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Ingredient purchases (waste-tracked category)\",\"amount\":12500,\"reported_category\":\"ingredients\",\"source_text\":\"Ingredient purchases for the waste-tracked category last month were USD 12500.\"}"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_05",
+                "source": "evidence.facts[0]",
+                "text": "Measured ingredient waste for that category last month was 9%."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_06",
+                "source": "evidence.facts[1]",
+                "text": "The internal ingredient waste target for that category is 5%."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_07",
+                "source": "evidence.facts[2]",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_08",
+                "source": "evidence.facts[3]",
+                "text": "No staffing or delivery changes are approved."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 05"
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_05",
+                "source": "source_input[4]",
+                "text": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_06",
+                "source": "source_input[5]",
+                "text": "Measured ingredient waste for that category last month was 9%."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_07",
+                "source": "source_input[6]",
+                "text": "The internal ingredient waste target for that category is 5%."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_08",
+                "source": "source_input[7]",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_09",
+                "source": "source_input[8]",
+                "text": "No staffing or delivery changes are approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_01",
+                "text": "Business name: Final Validation 05",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_01"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_02"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_03"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_04"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_05",
+                "text": "Ingredient purchases for the waste-tracked category last month were USD 12500.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_05"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_06",
+                "text": "Measured ingredient waste for that category last month was 9%.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_06"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_07",
+                "text": "The internal ingredient waste target for that category is 5%.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_07"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_08",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_08"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_09",
+                "text": "No staffing or delivery changes are approved.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_09"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_10",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_03",
+                  "src_d74260bf84c76f5bfef2ac6616937c87_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": [
+              {
+                "intervention": "waste_rate_target",
+                "scope": "ingredient_waste",
+                "operation": "absolute_target",
+                "from": 9,
+                "value": 5,
+                "unit": "percent",
+                "permission": "explicit",
+                "permission_source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_08"
+                ],
+                "constraint": "none",
+                "constraint_source_refs": [],
+                "supporting_facts": [
+                  {
+                    "role": "current_waste_rate",
+                    "value": 9,
+                    "unit": "percent",
+                    "period": "month",
+                    "currency": null,
+                    "source_refs": [
+                      "src_d74260bf84c76f5bfef2ac6616937c87_06"
+                    ]
+                  },
+                  {
+                    "role": "target_waste_rate",
+                    "value": 5,
+                    "unit": "percent",
+                    "period": "month",
+                    "currency": null,
+                    "source_refs": [
+                      "src_d74260bf84c76f5bfef2ac6616937c87_07"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "scenarios": {
+          "scenarios": [
+            {
+              "title": "Ingredient waste above internal target for waste-tracked category",
+              "target_leak": "Ingredient waste above internal target for waste-tracked category",
+              "controlled_changes": [
+                {
+                  "variable": "Ingredient waste rate",
+                  "change_type": "absolute_target",
+                  "from": 9,
+                  "value": 5,
+                  "unit": "percent"
+                }
+              ],
+              "available_input_refs": [
+                "src_d74260bf84c76f5bfef2ac6616937c87_06",
+                "src_d74260bf84c76f5bfef2ac6616937c87_07",
+                "src_d74260bf84c76f5bfef2ac6616937c87_08"
+              ],
+              "missing_calculation_inputs": [],
+              "confidence": "high"
+            }
+          ],
+          "not_simulation_ready": []
+        },
+        "input_facts": [
+          {
+            "id": "input_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "input_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "input_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "input_04",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Ingredient purchases (waste-tracked category)\",\"amount\":12500,\"reported_category\":\"ingredients\",\"source_text\":\"Ingredient purchases for the waste-tracked category last month were USD 12500.\"}"
+          },
+          {
+            "id": "input_05",
+            "source": "evidence.facts[0]",
+            "fact": "Measured ingredient waste for that category last month was 9%."
+          },
+          {
+            "id": "input_06",
+            "source": "evidence.facts[1]",
+            "fact": "The internal ingredient waste target for that category is 5%."
+          },
+          {
+            "id": "input_07",
+            "source": "evidence.facts[2]",
+            "fact": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+          },
+          {
+            "id": "input_08",
+            "source": "evidence.facts[3]",
+            "fact": "No staffing or delivery changes are approved."
+          },
+          {
+            "id": "input_09",
+            "source": "operational_context[0]",
+            "fact": "Business performance for last month."
+          },
+          {
+            "id": "input_10",
+            "source": "operational_context[1]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "input_11",
+            "source": "operational_context[2]",
+            "fact": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+          },
+          {
+            "id": "input_12",
+            "source": "operational_context[3]",
+            "fact": "Measured ingredient waste for that category last month was 9%."
+          },
+          {
+            "id": "input_13",
+            "source": "operational_context[4]",
+            "fact": "The internal ingredient waste target for that category is 5%."
+          },
+          {
+            "id": "input_14",
+            "source": "operational_context[5]",
+            "fact": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+          },
+          {
+            "id": "input_15",
+            "source": "operational_context[6]",
+            "fact": "No staffing or delivery changes are approved."
+          },
+          {
+            "id": "input_16",
+            "source": "leaks.leaks[0].evidence[0]",
+            "fact": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+          },
+          {
+            "id": "input_17",
+            "source": "leaks.leaks[0].evidence[1]",
+            "fact": "Measured ingredient waste for that category last month was 9%."
+          },
+          {
+            "id": "input_18",
+            "source": "leaks.leaks[0].evidence[2]",
+            "fact": "The internal ingredient waste target for that category is 5%."
+          },
+          {
+            "id": "input_19",
+            "source": "leaks.leaks[0].evidence[3]",
+            "fact": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_04",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Ingredient purchases (waste-tracked category)\",\"amount\":12500,\"reported_category\":\"ingredients\",\"source_text\":\"Ingredient purchases for the waste-tracked category last month were USD 12500.\"}"
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_05",
+            "source": "evidence.facts[0]",
+            "fact": "Measured ingredient waste for that category last month was 9%."
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_06",
+            "source": "evidence.facts[1]",
+            "fact": "The internal ingredient waste target for that category is 5%."
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_07",
+            "source": "evidence.facts[2]",
+            "fact": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+          },
+          {
+            "id": "ev_bfd148d7721eee80f3ba830a830058d1_08",
+            "source": "evidence.facts[3]",
+            "fact": "No staffing or delivery changes are approved."
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_01",
+            "source": "source_input[0]",
+            "fact": "Business name: Final Validation 05"
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_02",
+            "source": "source_input[1]",
+            "fact": "Selected business type: Café"
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_03",
+            "source": "source_input[2]",
+            "fact": "Business description / notes: Business performance for last month."
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_04",
+            "source": "source_input[3]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_05",
+            "source": "source_input[4]",
+            "fact": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_06",
+            "source": "source_input[5]",
+            "fact": "Measured ingredient waste for that category last month was 9%."
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_07",
+            "source": "source_input[6]",
+            "fact": "The internal ingredient waste target for that category is 5%."
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_08",
+            "source": "source_input[7]",
+            "fact": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+          },
+          {
+            "id": "src_d74260bf84c76f5bfef2ac6616937c87_09",
+            "source": "source_input[8]",
+            "fact": "No staffing or delivery changes are approved."
+          }
+        ]
+      },
+      "started": 1793088093493,
+      "status": 200,
+      "response": {
+        "results": [
+          {
+            "scenario_title": "Ingredient waste above internal target for waste-tracked category",
+            "target_leak": "Ingredient waste above internal target for waste-tracked category",
+            "controlled_changes": [
+              {
+                "variable": "Ingredient waste rate",
+                "change_type": "absolute_target",
+                "from": 9,
+                "value": 5,
+                "unit": "percent"
+              }
+            ],
+            "notes": [],
+            "status": "not_calculable_yet",
+            "calculation": null,
+            "missing_inputs": [
+              "Authoritative ingredient purchases for the affected period and currency; ingredient cost is not equivalent"
+            ]
+          }
+        ]
+      },
+      "finished": 1793088093571
+    },
+    {
+      "url": "/api/analyze/decision-gate",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": []
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Ingredient purchases (waste-tracked category)",
+                "amount": 12500,
+                "reported_category": "ingredients",
+                "source_text": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+              }
+            ]
+          },
+          "facts": [
+            "Measured ingredient waste for that category last month was 9%.",
+            "The internal ingredient waste target for that category is 5%.",
+            "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.",
+            "No staffing or delivery changes are approved."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Revenue total for last month",
+            "Revenue items for last month",
+            "Total operating costs for last month",
+            "Cost items other than ingredient purchases for waste-tracked category"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Final Validation 05\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nIngredient purchases for the waste-tracked category last month were USD 12500.\nMeasured ingredient waste for that category last month was 9%.\nThe internal ingredient waste target for that category is 5%.\nAs owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.\nNo staffing or delivery changes are approved.",
+            "items": [
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_04",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Ingredient purchases (waste-tracked category)\",\"amount\":12500,\"reported_category\":\"ingredients\",\"source_text\":\"Ingredient purchases for the waste-tracked category last month were USD 12500.\"}"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_05",
+                "source": "evidence.facts[0]",
+                "text": "Measured ingredient waste for that category last month was 9%."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_06",
+                "source": "evidence.facts[1]",
+                "text": "The internal ingredient waste target for that category is 5%."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_07",
+                "source": "evidence.facts[2]",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_08",
+                "source": "evidence.facts[3]",
+                "text": "No staffing or delivery changes are approved."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 05"
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_05",
+                "source": "source_input[4]",
+                "text": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_06",
+                "source": "source_input[5]",
+                "text": "Measured ingredient waste for that category last month was 9%."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_07",
+                "source": "source_input[6]",
+                "text": "The internal ingredient waste target for that category is 5%."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_08",
+                "source": "source_input[7]",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_09",
+                "source": "source_input[8]",
+                "text": "No staffing or delivery changes are approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_01",
+                "text": "Business name: Final Validation 05",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_01"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_02"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_03"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_04"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_05",
+                "text": "Ingredient purchases for the waste-tracked category last month were USD 12500.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_05"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_06",
+                "text": "Measured ingredient waste for that category last month was 9%.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_06"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_07",
+                "text": "The internal ingredient waste target for that category is 5%.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_07"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_08",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_08"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_09",
+                "text": "No staffing or delivery changes are approved.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_09"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_10",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_03",
+                  "src_d74260bf84c76f5bfef2ac6616937c87_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": [
+              {
+                "intervention": "waste_rate_target",
+                "scope": "ingredient_waste",
+                "operation": "absolute_target",
+                "from": 9,
+                "value": 5,
+                "unit": "percent",
+                "permission": "explicit",
+                "permission_source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_08"
+                ],
+                "constraint": "none",
+                "constraint_source_refs": [],
+                "supporting_facts": [
+                  {
+                    "role": "current_waste_rate",
+                    "value": 9,
+                    "unit": "percent",
+                    "period": "month",
+                    "currency": null,
+                    "source_refs": [
+                      "src_d74260bf84c76f5bfef2ac6616937c87_06"
+                    ]
+                  },
+                  {
+                    "role": "target_waste_rate",
+                    "value": 5,
+                    "unit": "percent",
+                    "period": "month",
+                    "currency": null,
+                    "source_refs": [
+                      "src_d74260bf84c76f5bfef2ac6616937c87_07"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "scenarios": {
+          "scenarios": [
+            {
+              "title": "Ingredient waste above internal target for waste-tracked category",
+              "target_leak": "Ingredient waste above internal target for waste-tracked category",
+              "controlled_changes": [
+                {
+                  "variable": "Ingredient waste rate",
+                  "change_type": "absolute_target",
+                  "from": 9,
+                  "value": 5,
+                  "unit": "percent"
+                }
+              ],
+              "available_input_refs": [
+                "src_d74260bf84c76f5bfef2ac6616937c87_06",
+                "src_d74260bf84c76f5bfef2ac6616937c87_07",
+                "src_d74260bf84c76f5bfef2ac6616937c87_08"
+              ],
+              "missing_calculation_inputs": [],
+              "confidence": "high"
+            }
+          ],
+          "not_simulation_ready": []
+        },
+        "simulation": {
+          "results": [
+            {
+              "scenario_title": "Ingredient waste above internal target for waste-tracked category",
+              "target_leak": "Ingredient waste above internal target for waste-tracked category",
+              "controlled_changes": [
+                {
+                  "variable": "Ingredient waste rate",
+                  "change_type": "absolute_target",
+                  "from": 9,
+                  "value": 5,
+                  "unit": "percent"
+                }
+              ],
+              "notes": [],
+              "status": "not_calculable_yet",
+              "calculation": null,
+              "missing_inputs": [
+                "Authoritative ingredient purchases for the affected period and currency; ingredient cost is not equivalent"
+              ]
+            }
+          ]
+        }
+      },
+      "started": 1793088094726,
+      "status": 200,
+      "response": {
+        "decision_gate": "needs_more_data",
+        "reason_codes": [
+          "no_calculable_scenarios"
+        ],
+        "comparison_gap_status": "not_applicable",
+        "candidates": [
+          {
+            "candidate_id": "candidate_01",
+            "scenario_title": "Ingredient waste above internal target for waste-tracked category",
+            "target_leak": "Ingredient waste above internal target for waste-tracked category",
+            "scenario_status": "not_calculable_yet",
+            "verified_impact": null,
+            "currency": null,
+            "period": null,
+            "impact_metric": null
+          }
+        ],
+        "top_candidate_id": null,
+        "missing_decision_inputs": [
+          "Authoritative ingredient purchases for the affected period and currency; ingredient cost is not equivalent"
+        ],
+        "policy_required_inputs": [],
+        "not_simulation_ready": []
+      },
+      "finished": 1793088094767
+    },
+    {
+      "url": "/api/analyze/decision",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": []
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Ingredient purchases (waste-tracked category)",
+                "amount": 12500,
+                "reported_category": "ingredients",
+                "source_text": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+              }
+            ]
+          },
+          "facts": [
+            "Measured ingredient waste for that category last month was 9%.",
+            "The internal ingredient waste target for that category is 5%.",
+            "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.",
+            "No staffing or delivery changes are approved."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Revenue total for last month",
+            "Revenue items for last month",
+            "Total operating costs for last month",
+            "Cost items other than ingredient purchases for waste-tracked category"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Final Validation 05\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nIngredient purchases for the waste-tracked category last month were USD 12500.\nMeasured ingredient waste for that category last month was 9%.\nThe internal ingredient waste target for that category is 5%.\nAs owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.\nNo staffing or delivery changes are approved.",
+            "items": [
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_04",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Ingredient purchases (waste-tracked category)\",\"amount\":12500,\"reported_category\":\"ingredients\",\"source_text\":\"Ingredient purchases for the waste-tracked category last month were USD 12500.\"}"
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_05",
+                "source": "evidence.facts[0]",
+                "text": "Measured ingredient waste for that category last month was 9%."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_06",
+                "source": "evidence.facts[1]",
+                "text": "The internal ingredient waste target for that category is 5%."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_07",
+                "source": "evidence.facts[2]",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              },
+              {
+                "id": "ev_bfd148d7721eee80f3ba830a830058d1_08",
+                "source": "evidence.facts[3]",
+                "text": "No staffing or delivery changes are approved."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 05"
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_05",
+                "source": "source_input[4]",
+                "text": "Ingredient purchases for the waste-tracked category last month were USD 12500."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_06",
+                "source": "source_input[5]",
+                "text": "Measured ingredient waste for that category last month was 9%."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_07",
+                "source": "source_input[6]",
+                "text": "The internal ingredient waste target for that category is 5%."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_08",
+                "source": "source_input[7]",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              },
+              {
+                "id": "src_d74260bf84c76f5bfef2ac6616937c87_09",
+                "source": "source_input[8]",
+                "text": "No staffing or delivery changes are approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_01",
+                "text": "Business name: Final Validation 05",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_01"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_02"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_03"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_04"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_05",
+                "text": "Ingredient purchases for the waste-tracked category last month were USD 12500.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_05"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_06",
+                "text": "Measured ingredient waste for that category last month was 9%.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_06"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_07",
+                "text": "The internal ingredient waste target for that category is 5%.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_07"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_08",
+                "text": "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_08"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_09",
+                "text": "No staffing or delivery changes are approved.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_09"
+                ]
+              },
+              {
+                "id": "fact_d74260bf84c76f5bfef2ac6616937c87_10",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_03",
+                  "src_d74260bf84c76f5bfef2ac6616937c87_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": [
+              {
+                "intervention": "waste_rate_target",
+                "scope": "ingredient_waste",
+                "operation": "absolute_target",
+                "from": 9,
+                "value": 5,
+                "unit": "percent",
+                "permission": "explicit",
+                "permission_source_refs": [
+                  "src_d74260bf84c76f5bfef2ac6616937c87_08"
+                ],
+                "constraint": "none",
+                "constraint_source_refs": [],
+                "supporting_facts": [
+                  {
+                    "role": "current_waste_rate",
+                    "value": 9,
+                    "unit": "percent",
+                    "period": "month",
+                    "currency": null,
+                    "source_refs": [
+                      "src_d74260bf84c76f5bfef2ac6616937c87_06"
+                    ]
+                  },
+                  {
+                    "role": "target_waste_rate",
+                    "value": 5,
+                    "unit": "percent",
+                    "period": "month",
+                    "currency": null,
+                    "source_refs": [
+                      "src_d74260bf84c76f5bfef2ac6616937c87_07"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_d74260bf84c76f5bfef2ac6616937c87_05",
+                "fact_d74260bf84c76f5bfef2ac6616937c87_06",
+                "fact_d74260bf84c76f5bfef2ac6616937c87_07",
+                "fact_d74260bf84c76f5bfef2ac6616937c87_08"
+              ],
+              "title": "Ingredient waste above internal target for waste-tracked category",
+              "category": "waste",
+              "evidence": [
+                "Ingredient purchases for the waste-tracked category last month were USD 12500.",
+                "Measured ingredient waste for that category last month was 9%.",
+                "The internal ingredient waste target for that category is 5%.",
+                "As owner, I authorize a controlled trial reducing ingredient waste from 9% to 5% for that same waste-tracked category."
+              ],
+              "interpretation": "The waste-tracked ingredient category incurred USD 12,500 in purchases last month with measured waste at 9%, exceeding the internal 5% target. Owner authorization exists for a controlled trial to reduce waste to the target level.",
+              "confidence": "high",
+              "intervention_ref": "waste_rate_target"
+            }
+          ],
+          "insufficient_evidence": [
+            {
+              "topic": "Overall profitability and revenue adequacy",
+              "reason": "Total revenue and complete cost structure for last month are not provided, preventing assessment of overall profit leaks beyond the identified waste issue."
+            },
+            {
+              "topic": "Labor efficiency",
+              "reason": "No staffing levels, labor costs, or productivity metrics are supplied for any period."
+            },
+            {
+              "topic": "Delivery unit economics",
+              "reason": "No delivery revenue, platform fees, packaging costs, or order-level economics are provided."
+            },
+            {
+              "topic": "Ingredient cost efficiency beyond waste",
+              "reason": "Only waste-tracked category purchases and waste rate are known; no unit cost benchmarks, price variance data, or non-waste ingredient costs are supplied."
+            }
+          ]
+        },
+        "scenarios": {
+          "scenarios": [
+            {
+              "title": "Ingredient waste above internal target for waste-tracked category",
+              "target_leak": "Ingredient waste above internal target for waste-tracked category",
+              "controlled_changes": [
+                {
+                  "variable": "Ingredient waste rate",
+                  "change_type": "absolute_target",
+                  "from": 9,
+                  "value": 5,
+                  "unit": "percent"
+                }
+              ],
+              "available_input_refs": [
+                "src_d74260bf84c76f5bfef2ac6616937c87_06",
+                "src_d74260bf84c76f5bfef2ac6616937c87_07",
+                "src_d74260bf84c76f5bfef2ac6616937c87_08"
+              ],
+              "missing_calculation_inputs": [],
+              "confidence": "high"
+            }
+          ],
+          "not_simulation_ready": []
+        },
+        "simulation": {
+          "results": [
+            {
+              "scenario_title": "Ingredient waste above internal target for waste-tracked category",
+              "target_leak": "Ingredient waste above internal target for waste-tracked category",
+              "controlled_changes": [
+                {
+                  "variable": "Ingredient waste rate",
+                  "change_type": "absolute_target",
+                  "from": 9,
+                  "value": 5,
+                  "unit": "percent"
+                }
+              ],
+              "notes": [],
+              "status": "not_calculable_yet",
+              "calculation": null,
+              "missing_inputs": [
+                "Authoritative ingredient purchases for the affected period and currency; ingredient cost is not equivalent"
+              ]
+            }
+          ]
+        },
+        "decision_gate": {
+          "decision_gate": "needs_more_data",
+          "reason_codes": [
+            "no_calculable_scenarios"
+          ],
+          "comparison_gap_status": "not_applicable",
+          "candidates": [
+            {
+              "candidate_id": "candidate_01",
+              "scenario_title": "Ingredient waste above internal target for waste-tracked category",
+              "target_leak": "Ingredient waste above internal target for waste-tracked category",
+              "scenario_status": "not_calculable_yet",
+              "verified_impact": null,
+              "currency": null,
+              "period": null,
+              "impact_metric": null
+            }
+          ],
+          "top_candidate_id": null,
+          "missing_decision_inputs": [
+            "Authoritative ingredient purchases for the affected period and currency; ingredient cost is not equivalent"
+          ],
+          "policy_required_inputs": [],
+          "not_simulation_ready": []
+        }
+      },
+      "started": 1793088094767,
+      "status": 200,
+      "response": {
+        "decision": {
+          "decision_status": "needs_more_data",
+          "recommendation": {
+            "type": "collect_data",
+            "candidate_id": null,
+            "title": "Collect required decision inputs",
+            "rationale": "More data is needed because no calculable scenarios exist."
+          },
+          "comparison": [
+            {
+              "candidate_id": "candidate_01",
+              "target_leak": "Ingredient waste above internal target for waste-tracked category",
+              "scenario_status": "not_calculable_yet",
+              "assessment": "Impact cannot yet be calculated due to missing inputs.",
+              "verified_impact": null,
+              "currency": null
+            }
+          ],
+          "priority_inputs": [
+            {
+              "source_type": "upstream_missing_input",
+              "key": "Authoritative ingredient purchases for the affected period and currency; ingredient cost is not equivalent",
+              "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+            }
+          ],
+          "confidence": "medium"
+        }
+      },
+      "finished": 1793088096244
+    }
+  ],
+  "started": 1793088085308,
+  "page_text": "Your profitability workspace\nEARLY PREVIEW\nA clearer picture of what’s left.\n\nTurn business evidence into verified, grounded decisions.\n\nAnalysis workspace\n\nFOUR SPECIALISTS. ONE CLEAR ANSWER.\n\nAgent Office\nAnalysis complete\n✧\n\nDecision Agent is reviewing the results.\n\nPreparing a grounded recommendation from the verified decision gate.\n\nBusiness Input\n01 / START HERE\nBusiness name\nBusiness type\nCafé\nBakery\nTea Shop\nRestaurant\nOther\nNotes (optional)\n↥\nDrop your business files here, or browse\nCSV, PDF, XLSX, images · Local selection only · Not analyzed\nRun Analysis Again\n↗\n\nAI analysis with deterministic validation and calculations · Files are not processed.\n\nBusiness Outlook\nBusiness analysis\nlast month · USD\n\nAnalysis complete\n\nYour analysis and decision are ready.\n\nRevenue\n\n—\n\nReported whole-business total\n\nOperating Costs\n\n—\n\nReported whole-business total\n\nWhat’s Left\n✧\n\n—\n\nNeeds reported revenue and operating costs\n\nMargin\n\n—\n\nNeeds reported revenue and operating costs\n\nWhere the money goes\n● Reported totals\n▪ What’s Left: deterministic baseline, not Scenario impact\n—\n\nRevenue\n\n—\n\nOperating Costs\n\n1 profit leak found\nNEEDS ATTENTION\nIngredient waste above internal target for waste-tracked category\n\nhigh confidence\n\nThe waste-tracked ingredient category incurred USD 12,500 in purchases last month with measured waste at 9%, exceeding the internal 5% target. Owner authorization exists for a controlled trial to reduce waste to the target level.\n\nWASTE\n\nNeeds more data (4)\nScenarios to test\nIngredient waste above internal target for waste-tracked category\n\nIngredient waste above internal target for waste-tracked category\n\nIngredient waste rate9% → 5%\n\nhigh confidence\n\nScenario defined · Impact needs more data\n\nAuthoritative ingredient purchases for the affected period and currency; ingredient cost is not equivalent\nDecision\nNeeds more data\nMore data needed before a confident decision\n\nCollect required decision inputs\n\nWhy\n\nMore data is needed because no calculable scenarios exist.\n\nPriority inputs\n\nMissing data\n\nAuthoritative ingredient purchases for the affected period and currency; ingredient cost is not equivalent\n\nNeeded to produce a verified deterministic impact or establish the supplied decision prerequisite.\n\nScenario comparison\nIngredient waste above internal target for waste-tracked category\n\nScenario defined · Impact needs more data\n\nImpact cannot yet be calculated due to missing inputs.\n\nmedium confidence in this conclusion\n\nWhat’s Left? · A little clarity goes a long way.\nAI analysis with deterministic validation, scenario calculations, and bounded decision support.",
+  "complete": true,
+  "error": null,
+  "id": "F05",
+  "total_latency_ms": 11224,
+  "timeline": [
+    {
+      "at": 1793088085812,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088086315,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088086819,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088087323,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1793088087828,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1793088088331,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1793088088840,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1793088089348,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1793088089852,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1793088090358,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1793088090870,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1793088091379,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1793088091892,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1793088092398,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ]
+    },
+    {
+      "at": 1793088092902,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ]
+    },
+    {
+      "at": 1793088093470,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ]
+    },
+    {
+      "at": 1793088093979,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1793088094573,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1793088095343,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ]
+    },
+    {
+      "at": 1793088095871,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ]
+    },
+    {
+      "at": 1793088096379,
+      "done": true,
+      "complete": true,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision",
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "server_diagnostics": [
+    {
+      "label": "Evidence business total grounding",
+      "diagnostic": {
+        "reason": "business_total_grounding",
+        "emitted_record_count": 0,
+        "fields": [
+          {
+            "field": "revenue.total",
+            "emitted_support_count": 0,
+            "validated_support_count": 0,
+            "original_total": null,
+            "trusted_total": null,
+            "reasons": [
+              "missing_support"
+            ]
+          },
+          {
+            "field": "costs.total",
+            "emitted_support_count": 0,
+            "validated_support_count": 0,
+            "original_total": null,
+            "trusted_total": null,
+            "reasons": [
+              "missing_support"
+            ]
+          }
+        ],
+        "records": []
+      }
+    },
+    {
+      "label": "Calculation fact grounding",
+      "diagnostic": {
+        "stage": "evidence_grounding",
+        "concept": "baseline_headcount",
+        "candidate_count": 0,
+        "accepted": false,
+        "rejection_reason": "missing_candidate",
+        "candidates": []
+      }
+    },
+    {
+      "label": "Calculation fact grounding",
+      "diagnostic": {
+        "stage": "evidence_grounding",
+        "concept": "labor_cost_per_worker",
+        "candidate_count": 0,
+        "accepted": false,
+        "rejection_reason": "missing_candidate",
+        "candidates": []
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "scenario_input",
+        "concept": "baseline_headcount",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "scenario_input",
+        "concept": "labor_cost_per_worker",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "simulate_input",
+        "concept": "baseline_headcount",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "simulate_input",
+        "concept": "labor_cost_per_worker",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    }
+  ],
+  "console_diagnostics": [],
+  "exceptions": [],
+  "input_sha256": "fa864910bb0df90dbbf833ce9450b5584801f42edb685a8069bdb43efa838dde"
+}

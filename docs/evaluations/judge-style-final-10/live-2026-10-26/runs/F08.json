@@ -1,0 +1,2599 @@
+{
+  "calls": [
+    {
+      "url": "/api/analyze/evidence",
+      "body": {
+        "input": "Business name: Final Validation 08\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nThe ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\nThe till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\nThese sales reports refer to the same services and remain unreconciled; neither is authoritative.\nStaffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\nManagement has approved no staffing trial or reduction; schedule constraints are unresolved."
+      },
+      "started": 1792973930076,
+      "status": 200,
+      "response": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — ledger",
+                "amount": 1750,
+                "source_text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — till export",
+                "amount": 3100,
+                "source_text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Staffing cost for Tuesday evening services (6 PM–10 PM)",
+                "amount": 3400,
+                "reported_category": "staffing",
+                "source_text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              }
+            ]
+          },
+          "facts": [
+            "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+            "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+            "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+            "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+            "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Whole-business revenue total for last month",
+            "Whole-business operating cost total for last month",
+            "Tuesday evening per-worker labor cost for last month",
+            "Ingredient waste baseline rate",
+            "Ingredient waste target rate",
+            "Explicit permission to test reducing ingredient waste from 9% toward 5%"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Final Validation 08\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nThe ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\nThe till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\nThese sales reports refer to the same services and remain unreconciled; neither is authoritative.\nStaffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\nManagement has approved no staffing trial or reduction; schedule constraints are unresolved.",
+            "items": [
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — ledger\",\"amount\":1750,\"source_text\":\"The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_05",
+                "source": "evidence.revenue.items[1]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — till export\",\"amount\":3100,\"source_text\":\"The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Staffing cost for Tuesday evening services (6 PM–10 PM)\",\"amount\":3400,\"reported_category\":\"staffing\",\"source_text\":\"Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_07",
+                "source": "evidence.facts[0]",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_08",
+                "source": "evidence.facts[1]",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_09",
+                "source": "evidence.facts[2]",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_10",
+                "source": "evidence.facts[3]",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_11",
+                "source": "evidence.facts[4]",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 08"
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "source": "source_input[4]",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "source": "source_input[5]",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "source": "source_input[6]",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "source": "source_input[7]",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_09",
+                "source": "source_input[8]",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_01",
+                "text": "Business name: Final Validation 08",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_01"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_02"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_03"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_04"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_05"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_06"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_07"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_08"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_09",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_09"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_10",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        }
+      },
+      "finished": 1792973932927
+    },
+    {
+      "url": "/api/analyze/leaks",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — ledger",
+                "amount": 1750,
+                "source_text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — till export",
+                "amount": 3100,
+                "source_text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Staffing cost for Tuesday evening services (6 PM–10 PM)",
+                "amount": 3400,
+                "reported_category": "staffing",
+                "source_text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              }
+            ]
+          },
+          "facts": [
+            "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+            "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+            "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+            "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+            "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Whole-business revenue total for last month",
+            "Whole-business operating cost total for last month",
+            "Tuesday evening per-worker labor cost for last month",
+            "Ingredient waste baseline rate",
+            "Ingredient waste target rate",
+            "Explicit permission to test reducing ingredient waste from 9% toward 5%"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Final Validation 08\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nThe ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\nThe till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\nThese sales reports refer to the same services and remain unreconciled; neither is authoritative.\nStaffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\nManagement has approved no staffing trial or reduction; schedule constraints are unresolved.",
+            "items": [
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — ledger\",\"amount\":1750,\"source_text\":\"The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_05",
+                "source": "evidence.revenue.items[1]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — till export\",\"amount\":3100,\"source_text\":\"The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Staffing cost for Tuesday evening services (6 PM–10 PM)\",\"amount\":3400,\"reported_category\":\"staffing\",\"source_text\":\"Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_07",
+                "source": "evidence.facts[0]",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_08",
+                "source": "evidence.facts[1]",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_09",
+                "source": "evidence.facts[2]",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_10",
+                "source": "evidence.facts[3]",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_11",
+                "source": "evidence.facts[4]",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 08"
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "source": "source_input[4]",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "source": "source_input[5]",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "source": "source_input[6]",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "source": "source_input[7]",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_09",
+                "source": "source_input[8]",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_01",
+                "text": "Business name: Final Validation 08",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_01"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_02"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_03"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_04"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_05"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_06"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_07"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_08"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_09",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_09"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_10",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "operational_context": [
+          "Business performance for last month.",
+          "Currency: USD.",
+          "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+          "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+          "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+          "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+          "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+        ]
+      },
+      "started": 1792973934080,
+      "status": 200,
+      "response": {
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_09"
+              ],
+              "title": "Tuesday evening staffing cost exceeds both reported sales figures",
+              "category": "labor",
+              "evidence": [
+                "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+                "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+                "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+                "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+                "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              ],
+              "interpretation": "Tuesday evening staffing cost of USD 3400 exceeds both the ledger sales figure of USD 1750 and the till export sales figure of USD 3100 for the same 6 PM–10 PM period last month. The two sales reports are unreconciled and neither is authoritative, so true revenue for the period is uncertain. With 4 staff scheduled and no approved staffing trial or reduction, the cost structure for this shift cannot currently be adjusted.",
+              "confidence": "high",
+              "intervention_ref": null
+            }
+          ],
+          "insufficient_evidence": [
+            {
+              "topic": "Ingredient waste",
+              "reason": "No ingredient waste baseline rate, target rate, or explicit permission to test waste reduction is provided in the evidence."
+            },
+            {
+              "topic": "Delivery unit economics",
+              "reason": "No delivery orders, platform fees, packaging costs, discounts, or food costs are reported in the evidence."
+            },
+            {
+              "topic": "Whole-business profitability",
+              "reason": "Whole-business revenue total and operating cost total for last month are missing."
+            }
+          ]
+        }
+      },
+      "finished": 1792973936599
+    },
+    {
+      "url": "/api/analyze/scenarios",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — ledger",
+                "amount": 1750,
+                "source_text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — till export",
+                "amount": 3100,
+                "source_text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Staffing cost for Tuesday evening services (6 PM–10 PM)",
+                "amount": 3400,
+                "reported_category": "staffing",
+                "source_text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              }
+            ]
+          },
+          "facts": [
+            "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+            "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+            "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+            "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+            "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Whole-business revenue total for last month",
+            "Whole-business operating cost total for last month",
+            "Tuesday evening per-worker labor cost for last month",
+            "Ingredient waste baseline rate",
+            "Ingredient waste target rate",
+            "Explicit permission to test reducing ingredient waste from 9% toward 5%"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Final Validation 08\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nThe ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\nThe till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\nThese sales reports refer to the same services and remain unreconciled; neither is authoritative.\nStaffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\nManagement has approved no staffing trial or reduction; schedule constraints are unresolved.",
+            "items": [
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — ledger\",\"amount\":1750,\"source_text\":\"The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_05",
+                "source": "evidence.revenue.items[1]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — till export\",\"amount\":3100,\"source_text\":\"The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Staffing cost for Tuesday evening services (6 PM–10 PM)\",\"amount\":3400,\"reported_category\":\"staffing\",\"source_text\":\"Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_07",
+                "source": "evidence.facts[0]",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_08",
+                "source": "evidence.facts[1]",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_09",
+                "source": "evidence.facts[2]",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_10",
+                "source": "evidence.facts[3]",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_11",
+                "source": "evidence.facts[4]",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 08"
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "source": "source_input[4]",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "source": "source_input[5]",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "source": "source_input[6]",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "source": "source_input[7]",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_09",
+                "source": "source_input[8]",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_01",
+                "text": "Business name: Final Validation 08",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_01"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_02"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_03"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_04"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_05"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_06"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_07"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_08"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_09",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_09"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_10",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_09"
+              ],
+              "title": "Tuesday evening staffing cost exceeds both reported sales figures",
+              "category": "labor",
+              "evidence": [
+                "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+                "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+                "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+                "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+                "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              ],
+              "interpretation": "Tuesday evening staffing cost of USD 3400 exceeds both the ledger sales figure of USD 1750 and the till export sales figure of USD 3100 for the same 6 PM–10 PM period last month. The two sales reports are unreconciled and neither is authoritative, so true revenue for the period is uncertain. With 4 staff scheduled and no approved staffing trial or reduction, the cost structure for this shift cannot currently be adjusted.",
+              "confidence": "high",
+              "intervention_ref": null
+            }
+          ],
+          "insufficient_evidence": [
+            {
+              "topic": "Ingredient waste",
+              "reason": "No ingredient waste baseline rate, target rate, or explicit permission to test waste reduction is provided in the evidence."
+            },
+            {
+              "topic": "Delivery unit economics",
+              "reason": "No delivery orders, platform fees, packaging costs, discounts, or food costs are reported in the evidence."
+            },
+            {
+              "topic": "Whole-business profitability",
+              "reason": "Whole-business revenue total and operating cost total for last month are missing."
+            }
+          ]
+        },
+        "operational_context": [
+          "Business performance for last month.",
+          "Currency: USD.",
+          "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+          "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+          "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+          "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+          "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+        ]
+      },
+      "started": 1792973937751,
+      "status": 200,
+      "response": {
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Tuesday evening staffing cost exceeds both reported sales figures",
+              "reason": "No eligible authorized change is available for this finding.",
+              "missing_decision_input_categories": [
+                "An eligible authorized change"
+              ]
+            }
+          ]
+        },
+        "input_facts": [
+          {
+            "id": "input_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "input_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "input_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "input_04",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — ledger\",\"amount\":1750,\"source_text\":\"The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\"}"
+          },
+          {
+            "id": "input_05",
+            "source": "evidence.revenue.items[1]",
+            "fact": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — till export\",\"amount\":3100,\"source_text\":\"The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\"}"
+          },
+          {
+            "id": "input_06",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Staffing cost for Tuesday evening services (6 PM–10 PM)\",\"amount\":3400,\"reported_category\":\"staffing\",\"source_text\":\"Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\"}"
+          },
+          {
+            "id": "input_07",
+            "source": "evidence.facts[0]",
+            "fact": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+          },
+          {
+            "id": "input_08",
+            "source": "evidence.facts[1]",
+            "fact": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+          },
+          {
+            "id": "input_09",
+            "source": "evidence.facts[2]",
+            "fact": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+          },
+          {
+            "id": "input_10",
+            "source": "evidence.facts[3]",
+            "fact": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+          },
+          {
+            "id": "input_11",
+            "source": "evidence.facts[4]",
+            "fact": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          },
+          {
+            "id": "input_12",
+            "source": "operational_context[0]",
+            "fact": "Business performance for last month."
+          },
+          {
+            "id": "input_13",
+            "source": "operational_context[1]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "input_14",
+            "source": "operational_context[2]",
+            "fact": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+          },
+          {
+            "id": "input_15",
+            "source": "operational_context[3]",
+            "fact": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+          },
+          {
+            "id": "input_16",
+            "source": "operational_context[4]",
+            "fact": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+          },
+          {
+            "id": "input_17",
+            "source": "operational_context[5]",
+            "fact": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+          },
+          {
+            "id": "input_18",
+            "source": "operational_context[6]",
+            "fact": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          },
+          {
+            "id": "input_19",
+            "source": "leaks.leaks[0].evidence[0]",
+            "fact": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+          },
+          {
+            "id": "input_20",
+            "source": "leaks.leaks[0].evidence[1]",
+            "fact": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+          },
+          {
+            "id": "input_21",
+            "source": "leaks.leaks[0].evidence[2]",
+            "fact": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+          },
+          {
+            "id": "input_22",
+            "source": "leaks.leaks[0].evidence[3]",
+            "fact": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+          },
+          {
+            "id": "input_23",
+            "source": "leaks.leaks[0].evidence[4]",
+            "fact": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_04",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — ledger\",\"amount\":1750,\"source_text\":\"The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\"}"
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_05",
+            "source": "evidence.revenue.items[1]",
+            "fact": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — till export\",\"amount\":3100,\"source_text\":\"The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\"}"
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_06",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Staffing cost for Tuesday evening services (6 PM–10 PM)\",\"amount\":3400,\"reported_category\":\"staffing\",\"source_text\":\"Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\"}"
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_07",
+            "source": "evidence.facts[0]",
+            "fact": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_08",
+            "source": "evidence.facts[1]",
+            "fact": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_09",
+            "source": "evidence.facts[2]",
+            "fact": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_10",
+            "source": "evidence.facts[3]",
+            "fact": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_11",
+            "source": "evidence.facts[4]",
+            "fact": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_01",
+            "source": "source_input[0]",
+            "fact": "Business name: Final Validation 08"
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_02",
+            "source": "source_input[1]",
+            "fact": "Selected business type: Café"
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+            "source": "source_input[2]",
+            "fact": "Business description / notes: Business performance for last month."
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_04",
+            "source": "source_input[3]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_05",
+            "source": "source_input[4]",
+            "fact": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_06",
+            "source": "source_input[5]",
+            "fact": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_07",
+            "source": "source_input[6]",
+            "fact": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_08",
+            "source": "source_input[7]",
+            "fact": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_09",
+            "source": "source_input[8]",
+            "fact": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          }
+        ]
+      },
+      "finished": 1792973938435
+    },
+    {
+      "url": "/api/analyze/simulate",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — ledger",
+                "amount": 1750,
+                "source_text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — till export",
+                "amount": 3100,
+                "source_text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Staffing cost for Tuesday evening services (6 PM–10 PM)",
+                "amount": 3400,
+                "reported_category": "staffing",
+                "source_text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              }
+            ]
+          },
+          "facts": [
+            "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+            "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+            "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+            "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+            "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Whole-business revenue total for last month",
+            "Whole-business operating cost total for last month",
+            "Tuesday evening per-worker labor cost for last month",
+            "Ingredient waste baseline rate",
+            "Ingredient waste target rate",
+            "Explicit permission to test reducing ingredient waste from 9% toward 5%"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Final Validation 08\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nThe ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\nThe till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\nThese sales reports refer to the same services and remain unreconciled; neither is authoritative.\nStaffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\nManagement has approved no staffing trial or reduction; schedule constraints are unresolved.",
+            "items": [
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — ledger\",\"amount\":1750,\"source_text\":\"The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_05",
+                "source": "evidence.revenue.items[1]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — till export\",\"amount\":3100,\"source_text\":\"The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Staffing cost for Tuesday evening services (6 PM–10 PM)\",\"amount\":3400,\"reported_category\":\"staffing\",\"source_text\":\"Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_07",
+                "source": "evidence.facts[0]",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_08",
+                "source": "evidence.facts[1]",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_09",
+                "source": "evidence.facts[2]",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_10",
+                "source": "evidence.facts[3]",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_11",
+                "source": "evidence.facts[4]",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 08"
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "source": "source_input[4]",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "source": "source_input[5]",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "source": "source_input[6]",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "source": "source_input[7]",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_09",
+                "source": "source_input[8]",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_01",
+                "text": "Business name: Final Validation 08",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_01"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_02"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_03"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_04"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_05"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_06"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_07"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_08"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_09",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_09"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_10",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Tuesday evening staffing cost exceeds both reported sales figures",
+              "reason": "No eligible authorized change is available for this finding.",
+              "missing_decision_input_categories": [
+                "An eligible authorized change"
+              ]
+            }
+          ]
+        },
+        "input_facts": [
+          {
+            "id": "input_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "input_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "input_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "input_04",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — ledger\",\"amount\":1750,\"source_text\":\"The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\"}"
+          },
+          {
+            "id": "input_05",
+            "source": "evidence.revenue.items[1]",
+            "fact": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — till export\",\"amount\":3100,\"source_text\":\"The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\"}"
+          },
+          {
+            "id": "input_06",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Staffing cost for Tuesday evening services (6 PM–10 PM)\",\"amount\":3400,\"reported_category\":\"staffing\",\"source_text\":\"Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\"}"
+          },
+          {
+            "id": "input_07",
+            "source": "evidence.facts[0]",
+            "fact": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+          },
+          {
+            "id": "input_08",
+            "source": "evidence.facts[1]",
+            "fact": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+          },
+          {
+            "id": "input_09",
+            "source": "evidence.facts[2]",
+            "fact": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+          },
+          {
+            "id": "input_10",
+            "source": "evidence.facts[3]",
+            "fact": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+          },
+          {
+            "id": "input_11",
+            "source": "evidence.facts[4]",
+            "fact": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          },
+          {
+            "id": "input_12",
+            "source": "operational_context[0]",
+            "fact": "Business performance for last month."
+          },
+          {
+            "id": "input_13",
+            "source": "operational_context[1]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "input_14",
+            "source": "operational_context[2]",
+            "fact": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+          },
+          {
+            "id": "input_15",
+            "source": "operational_context[3]",
+            "fact": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+          },
+          {
+            "id": "input_16",
+            "source": "operational_context[4]",
+            "fact": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+          },
+          {
+            "id": "input_17",
+            "source": "operational_context[5]",
+            "fact": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+          },
+          {
+            "id": "input_18",
+            "source": "operational_context[6]",
+            "fact": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          },
+          {
+            "id": "input_19",
+            "source": "leaks.leaks[0].evidence[0]",
+            "fact": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+          },
+          {
+            "id": "input_20",
+            "source": "leaks.leaks[0].evidence[1]",
+            "fact": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+          },
+          {
+            "id": "input_21",
+            "source": "leaks.leaks[0].evidence[2]",
+            "fact": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+          },
+          {
+            "id": "input_22",
+            "source": "leaks.leaks[0].evidence[3]",
+            "fact": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+          },
+          {
+            "id": "input_23",
+            "source": "leaks.leaks[0].evidence[4]",
+            "fact": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_04",
+            "source": "evidence.revenue.items[0]",
+            "fact": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — ledger\",\"amount\":1750,\"source_text\":\"The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\"}"
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_05",
+            "source": "evidence.revenue.items[1]",
+            "fact": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — till export\",\"amount\":3100,\"source_text\":\"The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\"}"
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_06",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"Staffing cost for Tuesday evening services (6 PM–10 PM)\",\"amount\":3400,\"reported_category\":\"staffing\",\"source_text\":\"Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\"}"
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_07",
+            "source": "evidence.facts[0]",
+            "fact": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_08",
+            "source": "evidence.facts[1]",
+            "fact": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_09",
+            "source": "evidence.facts[2]",
+            "fact": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_10",
+            "source": "evidence.facts[3]",
+            "fact": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+          },
+          {
+            "id": "ev_338378b777f02881aa52a636fb4ec61f_11",
+            "source": "evidence.facts[4]",
+            "fact": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_01",
+            "source": "source_input[0]",
+            "fact": "Business name: Final Validation 08"
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_02",
+            "source": "source_input[1]",
+            "fact": "Selected business type: Café"
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+            "source": "source_input[2]",
+            "fact": "Business description / notes: Business performance for last month."
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_04",
+            "source": "source_input[3]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_05",
+            "source": "source_input[4]",
+            "fact": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_06",
+            "source": "source_input[5]",
+            "fact": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_07",
+            "source": "source_input[6]",
+            "fact": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_08",
+            "source": "source_input[7]",
+            "fact": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+          },
+          {
+            "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_09",
+            "source": "source_input[8]",
+            "fact": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          }
+        ]
+      },
+      "started": 1792973938436,
+      "status": 200,
+      "response": {
+        "results": []
+      },
+      "finished": 1792973938459
+    },
+    {
+      "url": "/api/analyze/decision-gate",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — ledger",
+                "amount": 1750,
+                "source_text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — till export",
+                "amount": 3100,
+                "source_text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Staffing cost for Tuesday evening services (6 PM–10 PM)",
+                "amount": 3400,
+                "reported_category": "staffing",
+                "source_text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              }
+            ]
+          },
+          "facts": [
+            "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+            "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+            "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+            "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+            "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Whole-business revenue total for last month",
+            "Whole-business operating cost total for last month",
+            "Tuesday evening per-worker labor cost for last month",
+            "Ingredient waste baseline rate",
+            "Ingredient waste target rate",
+            "Explicit permission to test reducing ingredient waste from 9% toward 5%"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Final Validation 08\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nThe ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\nThe till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\nThese sales reports refer to the same services and remain unreconciled; neither is authoritative.\nStaffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\nManagement has approved no staffing trial or reduction; schedule constraints are unresolved.",
+            "items": [
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — ledger\",\"amount\":1750,\"source_text\":\"The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_05",
+                "source": "evidence.revenue.items[1]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — till export\",\"amount\":3100,\"source_text\":\"The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Staffing cost for Tuesday evening services (6 PM–10 PM)\",\"amount\":3400,\"reported_category\":\"staffing\",\"source_text\":\"Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_07",
+                "source": "evidence.facts[0]",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_08",
+                "source": "evidence.facts[1]",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_09",
+                "source": "evidence.facts[2]",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_10",
+                "source": "evidence.facts[3]",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_11",
+                "source": "evidence.facts[4]",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 08"
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "source": "source_input[4]",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "source": "source_input[5]",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "source": "source_input[6]",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "source": "source_input[7]",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_09",
+                "source": "source_input[8]",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_01",
+                "text": "Business name: Final Validation 08",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_01"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_02"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_03"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_04"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_05"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_06"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_07"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_08"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_09",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_09"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_10",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Tuesday evening staffing cost exceeds both reported sales figures",
+              "reason": "No eligible authorized change is available for this finding.",
+              "missing_decision_input_categories": [
+                "An eligible authorized change"
+              ]
+            }
+          ]
+        },
+        "simulation": {
+          "results": []
+        }
+      },
+      "started": 1792973939612,
+      "status": 200,
+      "response": {
+        "decision_gate": "no_actionable_scenario",
+        "reason_codes": [
+          "no_authorized_scenarios"
+        ],
+        "comparison_gap_status": "not_applicable",
+        "candidates": [],
+        "top_candidate_id": null,
+        "missing_decision_inputs": [
+          "An eligible authorized change"
+        ],
+        "policy_required_inputs": [],
+        "not_simulation_ready": [
+          {
+            "target_leak": "Tuesday evening staffing cost exceeds both reported sales figures",
+            "reason": "No eligible authorized change is available for this finding.",
+            "missing_decision_input_categories": [
+              "An eligible authorized change"
+            ]
+          }
+        ]
+      },
+      "finished": 1792973939644
+    },
+    {
+      "url": "/api/analyze/decision",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": null,
+            "items": [
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — ledger",
+                "amount": 1750,
+                "source_text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "name": "Tuesday evening sales (6 PM–10 PM) — till export",
+                "amount": 3100,
+                "source_text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              }
+            ]
+          },
+          "costs": {
+            "total": null,
+            "items": [
+              {
+                "name": "Staffing cost for Tuesday evening services (6 PM–10 PM)",
+                "amount": 3400,
+                "reported_category": "staffing",
+                "source_text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              }
+            ]
+          },
+          "facts": [
+            "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+            "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+            "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+            "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+            "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+          ],
+          "assumptions": [],
+          "missing_information": [
+            "Whole-business revenue total for last month",
+            "Whole-business operating cost total for last month",
+            "Tuesday evening per-worker labor cost for last month",
+            "Ingredient waste baseline rate",
+            "Ingredient waste target rate",
+            "Explicit permission to test reducing ingredient waste from 9% toward 5%"
+          ],
+          "confidence": "medium",
+          "provenance": {
+            "source_input": "Business name: Final Validation 08\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nThe ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\nThe till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\nThese sales reports refer to the same services and remain unreconciled; neither is authoritative.\nStaffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\nManagement has approved no staffing trial or reduction; schedule constraints are unresolved.",
+            "items": [
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_04",
+                "source": "evidence.revenue.items[0]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — ledger\",\"amount\":1750,\"source_text\":\"The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_05",
+                "source": "evidence.revenue.items[1]",
+                "text": "{\"name\":\"Tuesday evening sales (6 PM–10 PM) — till export\",\"amount\":3100,\"source_text\":\"The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"Staffing cost for Tuesday evening services (6 PM–10 PM)\",\"amount\":3400,\"reported_category\":\"staffing\",\"source_text\":\"Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.\"}"
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_07",
+                "source": "evidence.facts[0]",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_08",
+                "source": "evidence.facts[1]",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_09",
+                "source": "evidence.facts[2]",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_10",
+                "source": "evidence.facts[3]",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              },
+              {
+                "id": "ev_338378b777f02881aa52a636fb4ec61f_11",
+                "source": "evidence.facts[4]",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 08"
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "source": "source_input[4]",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "source": "source_input[5]",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "source": "source_input[6]",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "source": "source_input[7]",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled."
+              },
+              {
+                "id": "src_ddee78bb7e4e55cb40cd34a371812bfd_09",
+                "source": "source_input[8]",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_01",
+                "text": "Business name: Final Validation 08",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_01"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_02"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_03"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_04"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "text": "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_05"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "text": "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_06"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "text": "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_07"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "text": "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_08"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_09",
+                "text": "Management has approved no staffing trial or reduction; schedule constraints are unresolved.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_09"
+                ]
+              },
+              {
+                "id": "fact_ddee78bb7e4e55cb40cd34a371812bfd_10",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_03",
+                  "src_ddee78bb7e4e55cb40cd34a371812bfd_04"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "leaks": {
+          "leaks": [
+            {
+              "evidence_refs": [
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_05",
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_06",
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_07",
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_08",
+                "fact_ddee78bb7e4e55cb40cd34a371812bfd_09"
+              ],
+              "title": "Tuesday evening staffing cost exceeds both reported sales figures",
+              "category": "labor",
+              "evidence": [
+                "The ledger reports Tuesday evening sales from 6 PM to 10 PM last month as USD 1750.",
+                "The till export reports Tuesday evening sales from 6 PM to 10 PM last month as USD 3100.",
+                "These sales reports refer to the same services and remain unreconciled; neither is authoritative.",
+                "Staffing cost for those Tuesday evening services last month was USD 3400, with 4 staff members scheduled.",
+                "Management has approved no staffing trial or reduction; schedule constraints are unresolved."
+              ],
+              "interpretation": "Tuesday evening staffing cost of USD 3400 exceeds both the ledger sales figure of USD 1750 and the till export sales figure of USD 3100 for the same 6 PM–10 PM period last month. The two sales reports are unreconciled and neither is authoritative, so true revenue for the period is uncertain. With 4 staff scheduled and no approved staffing trial or reduction, the cost structure for this shift cannot currently be adjusted.",
+              "confidence": "high",
+              "intervention_ref": null
+            }
+          ],
+          "insufficient_evidence": [
+            {
+              "topic": "Ingredient waste",
+              "reason": "No ingredient waste baseline rate, target rate, or explicit permission to test waste reduction is provided in the evidence."
+            },
+            {
+              "topic": "Delivery unit economics",
+              "reason": "No delivery orders, platform fees, packaging costs, discounts, or food costs are reported in the evidence."
+            },
+            {
+              "topic": "Whole-business profitability",
+              "reason": "Whole-business revenue total and operating cost total for last month are missing."
+            }
+          ]
+        },
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Tuesday evening staffing cost exceeds both reported sales figures",
+              "reason": "No eligible authorized change is available for this finding.",
+              "missing_decision_input_categories": [
+                "An eligible authorized change"
+              ]
+            }
+          ]
+        },
+        "simulation": {
+          "results": []
+        },
+        "decision_gate": {
+          "decision_gate": "no_actionable_scenario",
+          "reason_codes": [
+            "no_authorized_scenarios"
+          ],
+          "comparison_gap_status": "not_applicable",
+          "candidates": [],
+          "top_candidate_id": null,
+          "missing_decision_inputs": [
+            "An eligible authorized change"
+          ],
+          "policy_required_inputs": [],
+          "not_simulation_ready": [
+            {
+              "target_leak": "Tuesday evening staffing cost exceeds both reported sales figures",
+              "reason": "No eligible authorized change is available for this finding.",
+              "missing_decision_input_categories": [
+                "An eligible authorized change"
+              ]
+            }
+          ]
+        }
+      },
+      "started": 1792973939644,
+      "status": 200,
+      "response": {
+        "decision": {
+          "decision_status": "needs_more_data",
+          "recommendation": {
+            "type": "collect_data",
+            "candidate_id": null,
+            "title": "Collect required decision inputs",
+            "rationale": "The decision gate indicates no actionable scenario due to lack of authorized changes."
+          },
+          "comparison": [
+            {
+              "candidate_id": null,
+              "target_leak": "Tuesday evening staffing cost exceeds both reported sales figures",
+              "scenario_status": "not_simulation_ready",
+              "assessment": "No simulation possible due to missing authorized change.",
+              "verified_impact": null,
+              "currency": null
+            }
+          ],
+          "priority_inputs": [
+            {
+              "source_type": "upstream_missing_input",
+              "key": "An eligible authorized change",
+              "why_it_matters": "Needed to produce a verified deterministic impact or establish the supplied decision prerequisite."
+            }
+          ],
+          "confidence": "medium"
+        }
+      },
+      "finished": 1792973941111
+    }
+  ],
+  "started": 1792973930076,
+  "page_text": "Your profitability workspace\nEARLY PREVIEW\nA clearer picture of what’s left.\n\nTurn business evidence into verified, grounded decisions.\n\nAnalysis workspace\n\nFOUR SPECIALISTS. ONE CLEAR ANSWER.\n\nAgent Office\nAnalysis complete\n✧\n\nDecision Agent is reviewing the results.\n\nPreparing a grounded recommendation from the verified decision gate.\n\nBusiness Input\n01 / START HERE\nBusiness name\nBusiness type\nCafé\nBakery\nTea Shop\nRestaurant\nOther\nNotes (optional)\n↥\nDrop your business files here, or browse\nCSV, PDF, XLSX, images · Local selection only · Not analyzed\nRun Analysis Again\n↗\n\nAI analysis with deterministic validation and calculations · Files are not processed.\n\nBusiness Outlook\nBusiness analysis\nlast month · USD\n\nAnalysis complete\n\nYour analysis and decision are ready.\n\nRevenue\n\n—\n\nReported whole-business total\n\nOperating Costs\n\n—\n\nReported whole-business total\n\nWhat’s Left\n✧\n\n—\n\nNeeds reported revenue and operating costs\n\nMargin\n\n—\n\nNeeds reported revenue and operating costs\n\nWhere the money goes\n● Reported totals\n▪ What’s Left: deterministic baseline, not Scenario impact\n—\n\nRevenue\n\n—\n\nOperating Costs\n\n1 profit leak found\nNEEDS ATTENTION\nTuesday evening staffing cost exceeds both reported sales figures\n\nhigh confidence\n\nTuesday evening staffing cost of USD 3400 exceeds both the ledger sales figure of USD 1750 and the till export sales figure of USD 3100 for the same 6 PM–10 PM period last month. The two sales reports are unreconciled and neither is authoritative, so true revenue for the period is uncertain. With 4 staff scheduled and no approved staffing trial or reduction, the cost structure for this shift cannot currently be adjusted.\n\nLABOR\n\nNeeds more data (3)\nScenarios to test\n\nNo supported testable changes were identified.\n\nNeeds a controllable decision input (1)\nDecision\nNeeds more data\nMore data needed before a confident decision\n\nCollect required decision inputs\n\nWhy\n\nThe decision gate indicates no actionable scenario due to lack of authorized changes.\n\nPriority inputs\n\nMissing data\n\nAn eligible authorized change\n\nNeeded to produce a verified deterministic impact or establish the supplied decision prerequisite.\n\nScenario comparison\nTuesday evening staffing cost exceeds both reported sales figures\n\nNeeds a controllable decision input\n\nNo simulation possible due to missing authorized change.\n\nmedium confidence in this conclusion\n\nWhat’s Left? · A little clarity goes a long way.\nAI analysis with deterministic validation, scenario calculations, and bounded decision support.",
+  "complete": false,
+  "error": null,
+  "id": "F08",
+  "total_latency_ms": 11302,
+  "timeline": [
+    {
+      "at": 1792973930580,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973931083,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973931588,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973932092,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973932595,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973933099,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973933606,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973934113,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973934619,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973935127,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973935633,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973936138,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973936642,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973937147,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973937653,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973938159,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ]
+    },
+    {
+      "at": 1792973938669,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973939178,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973939684,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ]
+    },
+    {
+      "at": 1792973940199,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ]
+    },
+    {
+      "at": 1792973940714,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ]
+    },
+    {
+      "at": 1792973941223,
+      "done": true,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision",
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "server_diagnostics": [
+    {
+      "label": "Evidence business total grounding",
+      "diagnostic": {
+        "reason": "business_total_grounding",
+        "emitted_record_count": 0,
+        "fields": [
+          {
+            "field": "revenue.total",
+            "emitted_support_count": 0,
+            "validated_support_count": 0,
+            "original_total": null,
+            "trusted_total": null,
+            "reasons": [
+              "missing_support"
+            ]
+          },
+          {
+            "field": "costs.total",
+            "emitted_support_count": 0,
+            "validated_support_count": 0,
+            "original_total": null,
+            "trusted_total": null,
+            "reasons": [
+              "missing_support"
+            ]
+          }
+        ],
+        "records": []
+      }
+    },
+    {
+      "label": "Calculation fact grounding",
+      "diagnostic": {
+        "stage": "evidence_grounding",
+        "concept": "baseline_headcount",
+        "candidate_count": 0,
+        "accepted": false,
+        "rejection_reason": "missing_candidate",
+        "candidates": []
+      }
+    },
+    {
+      "label": "Calculation fact grounding",
+      "diagnostic": {
+        "stage": "evidence_grounding",
+        "concept": "labor_cost_per_worker",
+        "candidate_count": 0,
+        "accepted": false,
+        "rejection_reason": "missing_candidate",
+        "candidates": []
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "scenario_input",
+        "concept": "baseline_headcount",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "scenario_input",
+        "concept": "labor_cost_per_worker",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "simulate_input",
+        "concept": "baseline_headcount",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "simulate_input",
+        "concept": "labor_cost_per_worker",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    }
+  ],
+  "console_diagnostics": [],
+  "exceptions": [],
+  "input_sha256": "23974e014e667f180621032642b7e921ae18317324eed5646278d20f01b8c515"
+}

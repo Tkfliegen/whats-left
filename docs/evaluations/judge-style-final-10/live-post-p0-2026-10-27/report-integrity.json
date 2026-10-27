@@ -1,0 +1,19 @@
+{
+  "production_and_historical_hashes_verified_unchanged": true,
+  "approved_manifest_unchanged": true,
+  "frozen_F01_unchanged": true,
+  "raw_artifacts_unchanged": true,
+  "raw_sha256": {
+    "docs/evaluations/judge-style-final-10/live-post-p0-2026-10-27/runs/F01.json": "ea5c48a8095c646c886faaab6fd1b71757bf8a737c22fd134622dc1dbffd8be8",
+    "docs/evaluations/judge-style-final-10/live-post-p0-2026-10-27/runs/F02.json": "395bf5a6fe5a844080afda11ce946a847452c6256cbdcb518e6196f31b5d13a8",
+    "docs/evaluations/judge-style-final-10/live-post-p0-2026-10-27/runs/F03.json": "cdaa703cb3ff2781a9a8a11f220c48be643dbcbe0a53f852102bf732a9a524c1",
+    "docs/evaluations/judge-style-final-10/live-post-p0-2026-10-27/runs/F04.json": "32f0255f4e436a75a852c50ea2ecd8fc2011f2c8cf18c0064323a1a71ed9424e",
+    "docs/evaluations/judge-style-final-10/live-post-p0-2026-10-27/runs/F05.json": "5e3816ddb60657773e257f1fe81f179fb5d9dd8d740e2485d7364a1ebf80805a",
+    "docs/evaluations/judge-style-final-10/live-post-p0-2026-10-27/runs/F06.json": "ec1dbd338b546be71c2bd299db6c306fa7f6ce1c3f8903e7b706093fcd1e1dc4",
+    "docs/evaluations/judge-style-final-10/live-post-p0-2026-10-27/runs/F07.json": "1007ba7d7d64c57585cb08cdfb3abe7b5f4efb253e92449e685ccaa833e37fa3",
+    "docs/evaluations/judge-style-final-10/live-post-p0-2026-10-27/runs/F08.json": "2f7750906973d76162ee5149d5a9a478bc62d5903c058cd7cfbb7ca7eba9ed3a",
+    "docs/evaluations/judge-style-final-10/live-post-p0-2026-10-27/runs/F09.json": "55d045f629706e2feda631370cff66aa82ef874103ec2f5f857e6decd3574daf",
+    "docs/evaluations/judge-style-final-10/live-post-p0-2026-10-27/runs/F10.json": "ece646861031fcf8447f7d68b60e435dd5051eb1e752e8b16bddb1d7545f9491"
+  },
+  "provider_calls_during_reporting": 0
+}

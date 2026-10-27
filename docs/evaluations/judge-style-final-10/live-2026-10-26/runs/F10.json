@@ -1,0 +1,2707 @@
+{
+  "calls": [
+    {
+      "url": "/api/analyze/evidence",
+      "body": {
+        "input": "Business name: Final Validation 10\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nTotal revenue last month was USD 60000.\nTotal operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\nMeasured ingredient waste last month was 4%, matching the internal target of 4%.\nAverage delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.\nNo unprofitable orders or staffing mismatch have been reported. No intervention is approved."
+      },
+      "started": 1792973955080,
+      "status": 200,
+      "response": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": 60000,
+            "items": []
+          },
+          "costs": {
+            "total": 54000,
+            "items": [
+              {
+                "name": "labor",
+                "amount": 17000,
+                "reported_category": "labor",
+                "source_text": "labor USD 17000"
+              },
+              {
+                "name": "ingredients",
+                "amount": 12000,
+                "reported_category": "ingredients",
+                "source_text": "ingredients USD 12000"
+              },
+              {
+                "name": "rent and utilities",
+                "amount": 10000,
+                "reported_category": "rent and utilities",
+                "source_text": "rent and utilities USD 10000"
+              },
+              {
+                "name": "delivery fees",
+                "amount": 3000,
+                "reported_category": "delivery fees",
+                "source_text": "delivery fees USD 3000"
+              },
+              {
+                "name": "other costs",
+                "amount": 12000,
+                "reported_category": "other costs",
+                "source_text": "other costs USD 12000"
+              }
+            ]
+          },
+          "facts": [
+            "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+            "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+            "No unprofitable orders or staffing mismatch have been reported.",
+            "No intervention is approved."
+          ],
+          "assumptions": [],
+          "missing_information": [],
+          "confidence": "high",
+          "provenance": {
+            "source_input": "Business name: Final Validation 10\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nTotal revenue last month was USD 60000.\nTotal operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\nMeasured ingredient waste last month was 4%, matching the internal target of 4%.\nAverage delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.\nNo unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+            "items": [
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_04",
+                "source": "evidence.revenue.total",
+                "text": "60000"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_05",
+                "source": "evidence.costs.total",
+                "text": "54000"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"labor\",\"amount\":17000,\"reported_category\":\"labor\",\"source_text\":\"labor USD 17000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_07",
+                "source": "evidence.costs.items[1]",
+                "text": "{\"name\":\"ingredients\",\"amount\":12000,\"reported_category\":\"ingredients\",\"source_text\":\"ingredients USD 12000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_08",
+                "source": "evidence.costs.items[2]",
+                "text": "{\"name\":\"rent and utilities\",\"amount\":10000,\"reported_category\":\"rent and utilities\",\"source_text\":\"rent and utilities USD 10000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_09",
+                "source": "evidence.costs.items[3]",
+                "text": "{\"name\":\"delivery fees\",\"amount\":3000,\"reported_category\":\"delivery fees\",\"source_text\":\"delivery fees USD 3000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_10",
+                "source": "evidence.costs.items[4]",
+                "text": "{\"name\":\"other costs\",\"amount\":12000,\"reported_category\":\"other costs\",\"source_text\":\"other costs USD 12000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_11",
+                "source": "evidence.facts[0]",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_12",
+                "source": "evidence.facts[1]",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_13",
+                "source": "evidence.facts[2]",
+                "text": "No unprofitable orders or staffing mismatch have been reported."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_14",
+                "source": "evidence.facts[3]",
+                "text": "No intervention is approved."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 10"
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_05",
+                "source": "source_input[4]",
+                "text": "Total revenue last month was USD 60000."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_06",
+                "source": "source_input[5]",
+                "text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_07",
+                "source": "source_input[6]",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_08",
+                "source": "source_input[7]",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_09",
+                "source": "source_input[8]",
+                "text": "No unprofitable orders or staffing mismatch have been reported."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_10",
+                "source": "source_input[9]",
+                "text": "No intervention is approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_01",
+                "text": "Business name: Final Validation 10",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_01"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_02"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_03"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_04"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_05",
+                "text": "Total revenue last month was USD 60000.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_05"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_06",
+                "text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_06"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_07",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_07"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_08",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_08"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_09",
+                "text": "No unprofitable orders or staffing mismatch have been reported.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_09"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_10",
+                "text": "No intervention is approved.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_10"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_11",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_03",
+                  "src_a424815897ace71614762ab63b937b97_04"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_12",
+                "text": "No unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_09",
+                  "src_a424815897ace71614762ab63b937b97_10"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        }
+      },
+      "finished": 1792973957260
+    },
+    {
+      "url": "/api/analyze/leaks",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": 60000,
+            "items": []
+          },
+          "costs": {
+            "total": 54000,
+            "items": [
+              {
+                "name": "labor",
+                "amount": 17000,
+                "reported_category": "labor",
+                "source_text": "labor USD 17000"
+              },
+              {
+                "name": "ingredients",
+                "amount": 12000,
+                "reported_category": "ingredients",
+                "source_text": "ingredients USD 12000"
+              },
+              {
+                "name": "rent and utilities",
+                "amount": 10000,
+                "reported_category": "rent and utilities",
+                "source_text": "rent and utilities USD 10000"
+              },
+              {
+                "name": "delivery fees",
+                "amount": 3000,
+                "reported_category": "delivery fees",
+                "source_text": "delivery fees USD 3000"
+              },
+              {
+                "name": "other costs",
+                "amount": 12000,
+                "reported_category": "other costs",
+                "source_text": "other costs USD 12000"
+              }
+            ]
+          },
+          "facts": [
+            "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+            "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+            "No unprofitable orders or staffing mismatch have been reported.",
+            "No intervention is approved."
+          ],
+          "assumptions": [],
+          "missing_information": [],
+          "confidence": "high",
+          "provenance": {
+            "source_input": "Business name: Final Validation 10\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nTotal revenue last month was USD 60000.\nTotal operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\nMeasured ingredient waste last month was 4%, matching the internal target of 4%.\nAverage delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.\nNo unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+            "items": [
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_04",
+                "source": "evidence.revenue.total",
+                "text": "60000"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_05",
+                "source": "evidence.costs.total",
+                "text": "54000"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"labor\",\"amount\":17000,\"reported_category\":\"labor\",\"source_text\":\"labor USD 17000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_07",
+                "source": "evidence.costs.items[1]",
+                "text": "{\"name\":\"ingredients\",\"amount\":12000,\"reported_category\":\"ingredients\",\"source_text\":\"ingredients USD 12000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_08",
+                "source": "evidence.costs.items[2]",
+                "text": "{\"name\":\"rent and utilities\",\"amount\":10000,\"reported_category\":\"rent and utilities\",\"source_text\":\"rent and utilities USD 10000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_09",
+                "source": "evidence.costs.items[3]",
+                "text": "{\"name\":\"delivery fees\",\"amount\":3000,\"reported_category\":\"delivery fees\",\"source_text\":\"delivery fees USD 3000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_10",
+                "source": "evidence.costs.items[4]",
+                "text": "{\"name\":\"other costs\",\"amount\":12000,\"reported_category\":\"other costs\",\"source_text\":\"other costs USD 12000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_11",
+                "source": "evidence.facts[0]",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_12",
+                "source": "evidence.facts[1]",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_13",
+                "source": "evidence.facts[2]",
+                "text": "No unprofitable orders or staffing mismatch have been reported."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_14",
+                "source": "evidence.facts[3]",
+                "text": "No intervention is approved."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 10"
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_05",
+                "source": "source_input[4]",
+                "text": "Total revenue last month was USD 60000."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_06",
+                "source": "source_input[5]",
+                "text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_07",
+                "source": "source_input[6]",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_08",
+                "source": "source_input[7]",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_09",
+                "source": "source_input[8]",
+                "text": "No unprofitable orders or staffing mismatch have been reported."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_10",
+                "source": "source_input[9]",
+                "text": "No intervention is approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_01",
+                "text": "Business name: Final Validation 10",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_01"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_02"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_03"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_04"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_05",
+                "text": "Total revenue last month was USD 60000.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_05"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_06",
+                "text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_06"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_07",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_07"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_08",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_08"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_09",
+                "text": "No unprofitable orders or staffing mismatch have been reported.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_09"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_10",
+                "text": "No intervention is approved.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_10"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_11",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_03",
+                  "src_a424815897ace71614762ab63b937b97_04"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_12",
+                "text": "No unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_09",
+                  "src_a424815897ace71614762ab63b937b97_10"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "operational_context": [
+          "Business performance for last month.",
+          "Currency: USD.",
+          "Total revenue last month was USD 60000.",
+          "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.",
+          "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+          "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+          "No unprofitable orders or staffing mismatch have been reported.",
+          "No intervention is approved."
+        ]
+      },
+      "started": 1792973958412,
+      "status": 200,
+      "response": {
+        "leaks": {
+          "leaks": [],
+          "insufficient_evidence": [
+            {
+              "topic": "Labor cost level",
+              "reason": "Labor is the largest cost category at USD 17,000, but no benchmark, target, or staffing mismatch evidence is provided to assess whether this represents inefficiency."
+            },
+            {
+              "topic": "Rent and utilities cost level",
+              "reason": "Rent and utilities cost USD 10,000, but no market comparison or lease terms are provided to assess whether this is above market."
+            },
+            {
+              "topic": "Other costs composition",
+              "reason": "Other costs total USD 12,000 with no breakdown or benchmark provided to identify any specific inefficiency."
+            },
+            {
+              "topic": "Delivery unit economics per order",
+              "reason": "Average delivery revenue per order is USD 26 and combined average delivery costs per order are USD 22, leaving a positive average margin of USD 4. The evidence explicitly states no unprofitable orders have been reported, so no delivery unit economics leak is established."
+            }
+          ]
+        }
+      },
+      "finished": 1792973959860
+    },
+    {
+      "url": "/api/analyze/scenarios",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": 60000,
+            "items": []
+          },
+          "costs": {
+            "total": 54000,
+            "items": [
+              {
+                "name": "labor",
+                "amount": 17000,
+                "reported_category": "labor",
+                "source_text": "labor USD 17000"
+              },
+              {
+                "name": "ingredients",
+                "amount": 12000,
+                "reported_category": "ingredients",
+                "source_text": "ingredients USD 12000"
+              },
+              {
+                "name": "rent and utilities",
+                "amount": 10000,
+                "reported_category": "rent and utilities",
+                "source_text": "rent and utilities USD 10000"
+              },
+              {
+                "name": "delivery fees",
+                "amount": 3000,
+                "reported_category": "delivery fees",
+                "source_text": "delivery fees USD 3000"
+              },
+              {
+                "name": "other costs",
+                "amount": 12000,
+                "reported_category": "other costs",
+                "source_text": "other costs USD 12000"
+              }
+            ]
+          },
+          "facts": [
+            "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+            "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+            "No unprofitable orders or staffing mismatch have been reported.",
+            "No intervention is approved."
+          ],
+          "assumptions": [],
+          "missing_information": [],
+          "confidence": "high",
+          "provenance": {
+            "source_input": "Business name: Final Validation 10\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nTotal revenue last month was USD 60000.\nTotal operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\nMeasured ingredient waste last month was 4%, matching the internal target of 4%.\nAverage delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.\nNo unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+            "items": [
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_04",
+                "source": "evidence.revenue.total",
+                "text": "60000"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_05",
+                "source": "evidence.costs.total",
+                "text": "54000"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"labor\",\"amount\":17000,\"reported_category\":\"labor\",\"source_text\":\"labor USD 17000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_07",
+                "source": "evidence.costs.items[1]",
+                "text": "{\"name\":\"ingredients\",\"amount\":12000,\"reported_category\":\"ingredients\",\"source_text\":\"ingredients USD 12000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_08",
+                "source": "evidence.costs.items[2]",
+                "text": "{\"name\":\"rent and utilities\",\"amount\":10000,\"reported_category\":\"rent and utilities\",\"source_text\":\"rent and utilities USD 10000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_09",
+                "source": "evidence.costs.items[3]",
+                "text": "{\"name\":\"delivery fees\",\"amount\":3000,\"reported_category\":\"delivery fees\",\"source_text\":\"delivery fees USD 3000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_10",
+                "source": "evidence.costs.items[4]",
+                "text": "{\"name\":\"other costs\",\"amount\":12000,\"reported_category\":\"other costs\",\"source_text\":\"other costs USD 12000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_11",
+                "source": "evidence.facts[0]",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_12",
+                "source": "evidence.facts[1]",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_13",
+                "source": "evidence.facts[2]",
+                "text": "No unprofitable orders or staffing mismatch have been reported."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_14",
+                "source": "evidence.facts[3]",
+                "text": "No intervention is approved."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 10"
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_05",
+                "source": "source_input[4]",
+                "text": "Total revenue last month was USD 60000."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_06",
+                "source": "source_input[5]",
+                "text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_07",
+                "source": "source_input[6]",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_08",
+                "source": "source_input[7]",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_09",
+                "source": "source_input[8]",
+                "text": "No unprofitable orders or staffing mismatch have been reported."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_10",
+                "source": "source_input[9]",
+                "text": "No intervention is approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_01",
+                "text": "Business name: Final Validation 10",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_01"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_02"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_03"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_04"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_05",
+                "text": "Total revenue last month was USD 60000.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_05"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_06",
+                "text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_06"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_07",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_07"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_08",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_08"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_09",
+                "text": "No unprofitable orders or staffing mismatch have been reported.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_09"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_10",
+                "text": "No intervention is approved.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_10"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_11",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_03",
+                  "src_a424815897ace71614762ab63b937b97_04"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_12",
+                "text": "No unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_09",
+                  "src_a424815897ace71614762ab63b937b97_10"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "leaks": {
+          "leaks": [],
+          "insufficient_evidence": [
+            {
+              "topic": "Labor cost level",
+              "reason": "Labor is the largest cost category at USD 17,000, but no benchmark, target, or staffing mismatch evidence is provided to assess whether this represents inefficiency."
+            },
+            {
+              "topic": "Rent and utilities cost level",
+              "reason": "Rent and utilities cost USD 10,000, but no market comparison or lease terms are provided to assess whether this is above market."
+            },
+            {
+              "topic": "Other costs composition",
+              "reason": "Other costs total USD 12,000 with no breakdown or benchmark provided to identify any specific inefficiency."
+            },
+            {
+              "topic": "Delivery unit economics per order",
+              "reason": "Average delivery revenue per order is USD 26 and combined average delivery costs per order are USD 22, leaving a positive average margin of USD 4. The evidence explicitly states no unprofitable orders have been reported, so no delivery unit economics leak is established."
+            }
+          ]
+        },
+        "operational_context": [
+          "Business performance for last month.",
+          "Currency: USD.",
+          "Total revenue last month was USD 60000.",
+          "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.",
+          "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+          "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+          "No unprofitable orders or staffing mismatch have been reported.",
+          "No intervention is approved."
+        ]
+      },
+      "started": 1792973961012,
+      "status": 200,
+      "response": {
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": []
+        },
+        "input_facts": [
+          {
+            "id": "input_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "input_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "input_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "input_04",
+            "source": "evidence.revenue.total",
+            "fact": "60000"
+          },
+          {
+            "id": "input_05",
+            "source": "evidence.costs.total",
+            "fact": "54000"
+          },
+          {
+            "id": "input_06",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"labor\",\"amount\":17000,\"reported_category\":\"labor\",\"source_text\":\"labor USD 17000\"}"
+          },
+          {
+            "id": "input_07",
+            "source": "evidence.costs.items[1]",
+            "fact": "{\"name\":\"ingredients\",\"amount\":12000,\"reported_category\":\"ingredients\",\"source_text\":\"ingredients USD 12000\"}"
+          },
+          {
+            "id": "input_08",
+            "source": "evidence.costs.items[2]",
+            "fact": "{\"name\":\"rent and utilities\",\"amount\":10000,\"reported_category\":\"rent and utilities\",\"source_text\":\"rent and utilities USD 10000\"}"
+          },
+          {
+            "id": "input_09",
+            "source": "evidence.costs.items[3]",
+            "fact": "{\"name\":\"delivery fees\",\"amount\":3000,\"reported_category\":\"delivery fees\",\"source_text\":\"delivery fees USD 3000\"}"
+          },
+          {
+            "id": "input_10",
+            "source": "evidence.costs.items[4]",
+            "fact": "{\"name\":\"other costs\",\"amount\":12000,\"reported_category\":\"other costs\",\"source_text\":\"other costs USD 12000\"}"
+          },
+          {
+            "id": "input_11",
+            "source": "evidence.facts[0]",
+            "fact": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+          },
+          {
+            "id": "input_12",
+            "source": "evidence.facts[1]",
+            "fact": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+          },
+          {
+            "id": "input_13",
+            "source": "evidence.facts[2]",
+            "fact": "No unprofitable orders or staffing mismatch have been reported."
+          },
+          {
+            "id": "input_14",
+            "source": "evidence.facts[3]",
+            "fact": "No intervention is approved."
+          },
+          {
+            "id": "input_15",
+            "source": "operational_context[0]",
+            "fact": "Business performance for last month."
+          },
+          {
+            "id": "input_16",
+            "source": "operational_context[1]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "input_17",
+            "source": "operational_context[2]",
+            "fact": "Total revenue last month was USD 60000."
+          },
+          {
+            "id": "input_18",
+            "source": "operational_context[3]",
+            "fact": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+          },
+          {
+            "id": "input_19",
+            "source": "operational_context[4]",
+            "fact": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+          },
+          {
+            "id": "input_20",
+            "source": "operational_context[5]",
+            "fact": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+          },
+          {
+            "id": "input_21",
+            "source": "operational_context[6]",
+            "fact": "No unprofitable orders or staffing mismatch have been reported."
+          },
+          {
+            "id": "input_22",
+            "source": "operational_context[7]",
+            "fact": "No intervention is approved."
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_04",
+            "source": "evidence.revenue.total",
+            "fact": "60000"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_05",
+            "source": "evidence.costs.total",
+            "fact": "54000"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_06",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"labor\",\"amount\":17000,\"reported_category\":\"labor\",\"source_text\":\"labor USD 17000\"}"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_07",
+            "source": "evidence.costs.items[1]",
+            "fact": "{\"name\":\"ingredients\",\"amount\":12000,\"reported_category\":\"ingredients\",\"source_text\":\"ingredients USD 12000\"}"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_08",
+            "source": "evidence.costs.items[2]",
+            "fact": "{\"name\":\"rent and utilities\",\"amount\":10000,\"reported_category\":\"rent and utilities\",\"source_text\":\"rent and utilities USD 10000\"}"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_09",
+            "source": "evidence.costs.items[3]",
+            "fact": "{\"name\":\"delivery fees\",\"amount\":3000,\"reported_category\":\"delivery fees\",\"source_text\":\"delivery fees USD 3000\"}"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_10",
+            "source": "evidence.costs.items[4]",
+            "fact": "{\"name\":\"other costs\",\"amount\":12000,\"reported_category\":\"other costs\",\"source_text\":\"other costs USD 12000\"}"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_11",
+            "source": "evidence.facts[0]",
+            "fact": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_12",
+            "source": "evidence.facts[1]",
+            "fact": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_13",
+            "source": "evidence.facts[2]",
+            "fact": "No unprofitable orders or staffing mismatch have been reported."
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_14",
+            "source": "evidence.facts[3]",
+            "fact": "No intervention is approved."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_01",
+            "source": "source_input[0]",
+            "fact": "Business name: Final Validation 10"
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_02",
+            "source": "source_input[1]",
+            "fact": "Selected business type: Café"
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_03",
+            "source": "source_input[2]",
+            "fact": "Business description / notes: Business performance for last month."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_04",
+            "source": "source_input[3]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_05",
+            "source": "source_input[4]",
+            "fact": "Total revenue last month was USD 60000."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_06",
+            "source": "source_input[5]",
+            "fact": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_07",
+            "source": "source_input[6]",
+            "fact": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_08",
+            "source": "source_input[7]",
+            "fact": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_09",
+            "source": "source_input[8]",
+            "fact": "No unprofitable orders or staffing mismatch have been reported."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_10",
+            "source": "source_input[9]",
+            "fact": "No intervention is approved."
+          }
+        ]
+      },
+      "finished": 1792973961516
+    },
+    {
+      "url": "/api/analyze/simulate",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": 60000,
+            "items": []
+          },
+          "costs": {
+            "total": 54000,
+            "items": [
+              {
+                "name": "labor",
+                "amount": 17000,
+                "reported_category": "labor",
+                "source_text": "labor USD 17000"
+              },
+              {
+                "name": "ingredients",
+                "amount": 12000,
+                "reported_category": "ingredients",
+                "source_text": "ingredients USD 12000"
+              },
+              {
+                "name": "rent and utilities",
+                "amount": 10000,
+                "reported_category": "rent and utilities",
+                "source_text": "rent and utilities USD 10000"
+              },
+              {
+                "name": "delivery fees",
+                "amount": 3000,
+                "reported_category": "delivery fees",
+                "source_text": "delivery fees USD 3000"
+              },
+              {
+                "name": "other costs",
+                "amount": 12000,
+                "reported_category": "other costs",
+                "source_text": "other costs USD 12000"
+              }
+            ]
+          },
+          "facts": [
+            "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+            "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+            "No unprofitable orders or staffing mismatch have been reported.",
+            "No intervention is approved."
+          ],
+          "assumptions": [],
+          "missing_information": [],
+          "confidence": "high",
+          "provenance": {
+            "source_input": "Business name: Final Validation 10\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nTotal revenue last month was USD 60000.\nTotal operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\nMeasured ingredient waste last month was 4%, matching the internal target of 4%.\nAverage delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.\nNo unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+            "items": [
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_04",
+                "source": "evidence.revenue.total",
+                "text": "60000"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_05",
+                "source": "evidence.costs.total",
+                "text": "54000"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"labor\",\"amount\":17000,\"reported_category\":\"labor\",\"source_text\":\"labor USD 17000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_07",
+                "source": "evidence.costs.items[1]",
+                "text": "{\"name\":\"ingredients\",\"amount\":12000,\"reported_category\":\"ingredients\",\"source_text\":\"ingredients USD 12000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_08",
+                "source": "evidence.costs.items[2]",
+                "text": "{\"name\":\"rent and utilities\",\"amount\":10000,\"reported_category\":\"rent and utilities\",\"source_text\":\"rent and utilities USD 10000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_09",
+                "source": "evidence.costs.items[3]",
+                "text": "{\"name\":\"delivery fees\",\"amount\":3000,\"reported_category\":\"delivery fees\",\"source_text\":\"delivery fees USD 3000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_10",
+                "source": "evidence.costs.items[4]",
+                "text": "{\"name\":\"other costs\",\"amount\":12000,\"reported_category\":\"other costs\",\"source_text\":\"other costs USD 12000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_11",
+                "source": "evidence.facts[0]",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_12",
+                "source": "evidence.facts[1]",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_13",
+                "source": "evidence.facts[2]",
+                "text": "No unprofitable orders or staffing mismatch have been reported."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_14",
+                "source": "evidence.facts[3]",
+                "text": "No intervention is approved."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 10"
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_05",
+                "source": "source_input[4]",
+                "text": "Total revenue last month was USD 60000."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_06",
+                "source": "source_input[5]",
+                "text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_07",
+                "source": "source_input[6]",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_08",
+                "source": "source_input[7]",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_09",
+                "source": "source_input[8]",
+                "text": "No unprofitable orders or staffing mismatch have been reported."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_10",
+                "source": "source_input[9]",
+                "text": "No intervention is approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_01",
+                "text": "Business name: Final Validation 10",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_01"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_02"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_03"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_04"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_05",
+                "text": "Total revenue last month was USD 60000.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_05"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_06",
+                "text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_06"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_07",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_07"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_08",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_08"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_09",
+                "text": "No unprofitable orders or staffing mismatch have been reported.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_09"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_10",
+                "text": "No intervention is approved.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_10"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_11",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_03",
+                  "src_a424815897ace71614762ab63b937b97_04"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_12",
+                "text": "No unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_09",
+                  "src_a424815897ace71614762ab63b937b97_10"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": []
+        },
+        "input_facts": [
+          {
+            "id": "input_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "input_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "input_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "input_04",
+            "source": "evidence.revenue.total",
+            "fact": "60000"
+          },
+          {
+            "id": "input_05",
+            "source": "evidence.costs.total",
+            "fact": "54000"
+          },
+          {
+            "id": "input_06",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"labor\",\"amount\":17000,\"reported_category\":\"labor\",\"source_text\":\"labor USD 17000\"}"
+          },
+          {
+            "id": "input_07",
+            "source": "evidence.costs.items[1]",
+            "fact": "{\"name\":\"ingredients\",\"amount\":12000,\"reported_category\":\"ingredients\",\"source_text\":\"ingredients USD 12000\"}"
+          },
+          {
+            "id": "input_08",
+            "source": "evidence.costs.items[2]",
+            "fact": "{\"name\":\"rent and utilities\",\"amount\":10000,\"reported_category\":\"rent and utilities\",\"source_text\":\"rent and utilities USD 10000\"}"
+          },
+          {
+            "id": "input_09",
+            "source": "evidence.costs.items[3]",
+            "fact": "{\"name\":\"delivery fees\",\"amount\":3000,\"reported_category\":\"delivery fees\",\"source_text\":\"delivery fees USD 3000\"}"
+          },
+          {
+            "id": "input_10",
+            "source": "evidence.costs.items[4]",
+            "fact": "{\"name\":\"other costs\",\"amount\":12000,\"reported_category\":\"other costs\",\"source_text\":\"other costs USD 12000\"}"
+          },
+          {
+            "id": "input_11",
+            "source": "evidence.facts[0]",
+            "fact": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+          },
+          {
+            "id": "input_12",
+            "source": "evidence.facts[1]",
+            "fact": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+          },
+          {
+            "id": "input_13",
+            "source": "evidence.facts[2]",
+            "fact": "No unprofitable orders or staffing mismatch have been reported."
+          },
+          {
+            "id": "input_14",
+            "source": "evidence.facts[3]",
+            "fact": "No intervention is approved."
+          },
+          {
+            "id": "input_15",
+            "source": "operational_context[0]",
+            "fact": "Business performance for last month."
+          },
+          {
+            "id": "input_16",
+            "source": "operational_context[1]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "input_17",
+            "source": "operational_context[2]",
+            "fact": "Total revenue last month was USD 60000."
+          },
+          {
+            "id": "input_18",
+            "source": "operational_context[3]",
+            "fact": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+          },
+          {
+            "id": "input_19",
+            "source": "operational_context[4]",
+            "fact": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+          },
+          {
+            "id": "input_20",
+            "source": "operational_context[5]",
+            "fact": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+          },
+          {
+            "id": "input_21",
+            "source": "operational_context[6]",
+            "fact": "No unprofitable orders or staffing mismatch have been reported."
+          },
+          {
+            "id": "input_22",
+            "source": "operational_context[7]",
+            "fact": "No intervention is approved."
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_01",
+            "source": "evidence.business_type",
+            "fact": "Café"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_02",
+            "source": "evidence.period",
+            "fact": "last month"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_03",
+            "source": "evidence.currency",
+            "fact": "USD"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_04",
+            "source": "evidence.revenue.total",
+            "fact": "60000"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_05",
+            "source": "evidence.costs.total",
+            "fact": "54000"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_06",
+            "source": "evidence.costs.items[0]",
+            "fact": "{\"name\":\"labor\",\"amount\":17000,\"reported_category\":\"labor\",\"source_text\":\"labor USD 17000\"}"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_07",
+            "source": "evidence.costs.items[1]",
+            "fact": "{\"name\":\"ingredients\",\"amount\":12000,\"reported_category\":\"ingredients\",\"source_text\":\"ingredients USD 12000\"}"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_08",
+            "source": "evidence.costs.items[2]",
+            "fact": "{\"name\":\"rent and utilities\",\"amount\":10000,\"reported_category\":\"rent and utilities\",\"source_text\":\"rent and utilities USD 10000\"}"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_09",
+            "source": "evidence.costs.items[3]",
+            "fact": "{\"name\":\"delivery fees\",\"amount\":3000,\"reported_category\":\"delivery fees\",\"source_text\":\"delivery fees USD 3000\"}"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_10",
+            "source": "evidence.costs.items[4]",
+            "fact": "{\"name\":\"other costs\",\"amount\":12000,\"reported_category\":\"other costs\",\"source_text\":\"other costs USD 12000\"}"
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_11",
+            "source": "evidence.facts[0]",
+            "fact": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_12",
+            "source": "evidence.facts[1]",
+            "fact": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_13",
+            "source": "evidence.facts[2]",
+            "fact": "No unprofitable orders or staffing mismatch have been reported."
+          },
+          {
+            "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_14",
+            "source": "evidence.facts[3]",
+            "fact": "No intervention is approved."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_01",
+            "source": "source_input[0]",
+            "fact": "Business name: Final Validation 10"
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_02",
+            "source": "source_input[1]",
+            "fact": "Selected business type: Café"
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_03",
+            "source": "source_input[2]",
+            "fact": "Business description / notes: Business performance for last month."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_04",
+            "source": "source_input[3]",
+            "fact": "Currency: USD."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_05",
+            "source": "source_input[4]",
+            "fact": "Total revenue last month was USD 60000."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_06",
+            "source": "source_input[5]",
+            "fact": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_07",
+            "source": "source_input[6]",
+            "fact": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_08",
+            "source": "source_input[7]",
+            "fact": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_09",
+            "source": "source_input[8]",
+            "fact": "No unprofitable orders or staffing mismatch have been reported."
+          },
+          {
+            "id": "src_a424815897ace71614762ab63b937b97_10",
+            "source": "source_input[9]",
+            "fact": "No intervention is approved."
+          }
+        ]
+      },
+      "started": 1792973961517,
+      "status": 200,
+      "response": {
+        "results": []
+      },
+      "finished": 1792973961539
+    },
+    {
+      "url": "/api/analyze/decision-gate",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": 60000,
+            "items": []
+          },
+          "costs": {
+            "total": 54000,
+            "items": [
+              {
+                "name": "labor",
+                "amount": 17000,
+                "reported_category": "labor",
+                "source_text": "labor USD 17000"
+              },
+              {
+                "name": "ingredients",
+                "amount": 12000,
+                "reported_category": "ingredients",
+                "source_text": "ingredients USD 12000"
+              },
+              {
+                "name": "rent and utilities",
+                "amount": 10000,
+                "reported_category": "rent and utilities",
+                "source_text": "rent and utilities USD 10000"
+              },
+              {
+                "name": "delivery fees",
+                "amount": 3000,
+                "reported_category": "delivery fees",
+                "source_text": "delivery fees USD 3000"
+              },
+              {
+                "name": "other costs",
+                "amount": 12000,
+                "reported_category": "other costs",
+                "source_text": "other costs USD 12000"
+              }
+            ]
+          },
+          "facts": [
+            "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+            "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+            "No unprofitable orders or staffing mismatch have been reported.",
+            "No intervention is approved."
+          ],
+          "assumptions": [],
+          "missing_information": [],
+          "confidence": "high",
+          "provenance": {
+            "source_input": "Business name: Final Validation 10\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nTotal revenue last month was USD 60000.\nTotal operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\nMeasured ingredient waste last month was 4%, matching the internal target of 4%.\nAverage delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.\nNo unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+            "items": [
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_04",
+                "source": "evidence.revenue.total",
+                "text": "60000"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_05",
+                "source": "evidence.costs.total",
+                "text": "54000"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"labor\",\"amount\":17000,\"reported_category\":\"labor\",\"source_text\":\"labor USD 17000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_07",
+                "source": "evidence.costs.items[1]",
+                "text": "{\"name\":\"ingredients\",\"amount\":12000,\"reported_category\":\"ingredients\",\"source_text\":\"ingredients USD 12000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_08",
+                "source": "evidence.costs.items[2]",
+                "text": "{\"name\":\"rent and utilities\",\"amount\":10000,\"reported_category\":\"rent and utilities\",\"source_text\":\"rent and utilities USD 10000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_09",
+                "source": "evidence.costs.items[3]",
+                "text": "{\"name\":\"delivery fees\",\"amount\":3000,\"reported_category\":\"delivery fees\",\"source_text\":\"delivery fees USD 3000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_10",
+                "source": "evidence.costs.items[4]",
+                "text": "{\"name\":\"other costs\",\"amount\":12000,\"reported_category\":\"other costs\",\"source_text\":\"other costs USD 12000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_11",
+                "source": "evidence.facts[0]",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_12",
+                "source": "evidence.facts[1]",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_13",
+                "source": "evidence.facts[2]",
+                "text": "No unprofitable orders or staffing mismatch have been reported."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_14",
+                "source": "evidence.facts[3]",
+                "text": "No intervention is approved."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 10"
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_05",
+                "source": "source_input[4]",
+                "text": "Total revenue last month was USD 60000."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_06",
+                "source": "source_input[5]",
+                "text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_07",
+                "source": "source_input[6]",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_08",
+                "source": "source_input[7]",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_09",
+                "source": "source_input[8]",
+                "text": "No unprofitable orders or staffing mismatch have been reported."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_10",
+                "source": "source_input[9]",
+                "text": "No intervention is approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_01",
+                "text": "Business name: Final Validation 10",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_01"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_02"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_03"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_04"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_05",
+                "text": "Total revenue last month was USD 60000.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_05"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_06",
+                "text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_06"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_07",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_07"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_08",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_08"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_09",
+                "text": "No unprofitable orders or staffing mismatch have been reported.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_09"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_10",
+                "text": "No intervention is approved.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_10"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_11",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_03",
+                  "src_a424815897ace71614762ab63b937b97_04"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_12",
+                "text": "No unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_09",
+                  "src_a424815897ace71614762ab63b937b97_10"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": []
+        },
+        "simulation": {
+          "results": []
+        }
+      },
+      "started": 1792973962691,
+      "status": 200,
+      "response": {
+        "decision_gate": "no_actionable_scenario",
+        "reason_codes": [
+          "no_authorized_scenarios"
+        ],
+        "comparison_gap_status": "not_applicable",
+        "candidates": [],
+        "top_candidate_id": null,
+        "missing_decision_inputs": [],
+        "policy_required_inputs": [],
+        "not_simulation_ready": []
+      },
+      "finished": 1792973962717
+    },
+    {
+      "url": "/api/analyze/decision",
+      "body": {
+        "evidence": {
+          "business_type": "Café",
+          "period": "last month",
+          "currency": "USD",
+          "revenue": {
+            "total": 60000,
+            "items": []
+          },
+          "costs": {
+            "total": 54000,
+            "items": [
+              {
+                "name": "labor",
+                "amount": 17000,
+                "reported_category": "labor",
+                "source_text": "labor USD 17000"
+              },
+              {
+                "name": "ingredients",
+                "amount": 12000,
+                "reported_category": "ingredients",
+                "source_text": "ingredients USD 12000"
+              },
+              {
+                "name": "rent and utilities",
+                "amount": 10000,
+                "reported_category": "rent and utilities",
+                "source_text": "rent and utilities USD 10000"
+              },
+              {
+                "name": "delivery fees",
+                "amount": 3000,
+                "reported_category": "delivery fees",
+                "source_text": "delivery fees USD 3000"
+              },
+              {
+                "name": "other costs",
+                "amount": 12000,
+                "reported_category": "other costs",
+                "source_text": "other costs USD 12000"
+              }
+            ]
+          },
+          "facts": [
+            "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+            "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+            "No unprofitable orders or staffing mismatch have been reported.",
+            "No intervention is approved."
+          ],
+          "assumptions": [],
+          "missing_information": [],
+          "confidence": "high",
+          "provenance": {
+            "source_input": "Business name: Final Validation 10\nSelected business type: Café\nBusiness description / notes: Business performance for last month. Currency: USD.\nTotal revenue last month was USD 60000.\nTotal operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.\nMeasured ingredient waste last month was 4%, matching the internal target of 4%.\nAverage delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.\nNo unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+            "items": [
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_01",
+                "source": "evidence.business_type",
+                "text": "Café"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_02",
+                "source": "evidence.period",
+                "text": "last month"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_03",
+                "source": "evidence.currency",
+                "text": "USD"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_04",
+                "source": "evidence.revenue.total",
+                "text": "60000"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_05",
+                "source": "evidence.costs.total",
+                "text": "54000"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_06",
+                "source": "evidence.costs.items[0]",
+                "text": "{\"name\":\"labor\",\"amount\":17000,\"reported_category\":\"labor\",\"source_text\":\"labor USD 17000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_07",
+                "source": "evidence.costs.items[1]",
+                "text": "{\"name\":\"ingredients\",\"amount\":12000,\"reported_category\":\"ingredients\",\"source_text\":\"ingredients USD 12000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_08",
+                "source": "evidence.costs.items[2]",
+                "text": "{\"name\":\"rent and utilities\",\"amount\":10000,\"reported_category\":\"rent and utilities\",\"source_text\":\"rent and utilities USD 10000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_09",
+                "source": "evidence.costs.items[3]",
+                "text": "{\"name\":\"delivery fees\",\"amount\":3000,\"reported_category\":\"delivery fees\",\"source_text\":\"delivery fees USD 3000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_10",
+                "source": "evidence.costs.items[4]",
+                "text": "{\"name\":\"other costs\",\"amount\":12000,\"reported_category\":\"other costs\",\"source_text\":\"other costs USD 12000\"}"
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_11",
+                "source": "evidence.facts[0]",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_12",
+                "source": "evidence.facts[1]",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_13",
+                "source": "evidence.facts[2]",
+                "text": "No unprofitable orders or staffing mismatch have been reported."
+              },
+              {
+                "id": "ev_fe72c5a49522a4f4d0e53cd5d8c20cef_14",
+                "source": "evidence.facts[3]",
+                "text": "No intervention is approved."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_01",
+                "source": "source_input[0]",
+                "text": "Business name: Final Validation 10"
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_02",
+                "source": "source_input[1]",
+                "text": "Selected business type: Café"
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_03",
+                "source": "source_input[2]",
+                "text": "Business description / notes: Business performance for last month."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_04",
+                "source": "source_input[3]",
+                "text": "Currency: USD."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_05",
+                "source": "source_input[4]",
+                "text": "Total revenue last month was USD 60000."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_06",
+                "source": "source_input[5]",
+                "text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_07",
+                "source": "source_input[6]",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_08",
+                "source": "source_input[7]",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_09",
+                "source": "source_input[8]",
+                "text": "No unprofitable orders or staffing mismatch have been reported."
+              },
+              {
+                "id": "src_a424815897ace71614762ab63b937b97_10",
+                "source": "source_input[9]",
+                "text": "No intervention is approved."
+              }
+            ],
+            "citable_facts": [
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_01",
+                "text": "Business name: Final Validation 10",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_01"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_02",
+                "text": "Selected business type: Café",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_02"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_03",
+                "text": "Business description / notes: Business performance for last month.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_03"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_04",
+                "text": "Currency: USD.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_04"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_05",
+                "text": "Total revenue last month was USD 60000.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_05"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_06",
+                "text": "Total operating costs last month were USD 54000: labor USD 17000; ingredients USD 12000; rent and utilities USD 10000; delivery fees USD 3000; other costs USD 12000.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_06"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_07",
+                "text": "Measured ingredient waste last month was 4%, matching the internal target of 4%.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_07"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_08",
+                "text": "Average delivery revenue per order last month was USD 26; combined average delivery costs per order were USD 22.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_08"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_09",
+                "text": "No unprofitable orders or staffing mismatch have been reported.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_09"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_10",
+                "text": "No intervention is approved.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_10"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_11",
+                "text": "Business description / notes: Business performance for last month. Currency: USD.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_03",
+                  "src_a424815897ace71614762ab63b937b97_04"
+                ]
+              },
+              {
+                "id": "fact_a424815897ace71614762ab63b937b97_12",
+                "text": "No unprofitable orders or staffing mismatch have been reported. No intervention is approved.",
+                "source_refs": [
+                  "src_a424815897ace71614762ab63b937b97_09",
+                  "src_a424815897ace71614762ab63b937b97_10"
+                ]
+              }
+            ],
+            "calculation_facts": [],
+            "authorization_records": []
+          }
+        },
+        "leaks": {
+          "leaks": [],
+          "insufficient_evidence": [
+            {
+              "topic": "Labor cost level",
+              "reason": "Labor is the largest cost category at USD 17,000, but no benchmark, target, or staffing mismatch evidence is provided to assess whether this represents inefficiency."
+            },
+            {
+              "topic": "Rent and utilities cost level",
+              "reason": "Rent and utilities cost USD 10,000, but no market comparison or lease terms are provided to assess whether this is above market."
+            },
+            {
+              "topic": "Other costs composition",
+              "reason": "Other costs total USD 12,000 with no breakdown or benchmark provided to identify any specific inefficiency."
+            },
+            {
+              "topic": "Delivery unit economics per order",
+              "reason": "Average delivery revenue per order is USD 26 and combined average delivery costs per order are USD 22, leaving a positive average margin of USD 4. The evidence explicitly states no unprofitable orders have been reported, so no delivery unit economics leak is established."
+            }
+          ]
+        },
+        "scenarios": {
+          "scenarios": [],
+          "not_simulation_ready": []
+        },
+        "simulation": {
+          "results": []
+        },
+        "decision_gate": {
+          "decision_gate": "no_actionable_scenario",
+          "reason_codes": [
+            "no_authorized_scenarios"
+          ],
+          "comparison_gap_status": "not_applicable",
+          "candidates": [],
+          "top_candidate_id": null,
+          "missing_decision_inputs": [],
+          "policy_required_inputs": [],
+          "not_simulation_ready": []
+        }
+      },
+      "started": 1792973962718,
+      "status": 200,
+      "response": {
+        "decision": {
+          "decision_status": "needs_more_data",
+          "recommendation": {
+            "type": "collect_data",
+            "candidate_id": null,
+            "title": "Collect required decision inputs",
+            "rationale": "No authorized scenarios were provided for evaluation."
+          },
+          "comparison": [],
+          "priority_inputs": [],
+          "confidence": "low"
+        }
+      },
+      "finished": 1792973963858
+    }
+  ],
+  "started": 1792973955080,
+  "page_text": "Your profitability workspace\nEARLY PREVIEW\nA clearer picture of what’s left.\n\nTurn business evidence into verified, grounded decisions.\n\nAnalysis workspace\n\nFOUR SPECIALISTS. ONE CLEAR ANSWER.\n\nAgent Office\nAnalysis complete\n✧\n\nAnalysis complete.\n\nYour evidence, scenarios and decision are ready.\n\nMore data needed before a confident decision\n\nBusiness Input\n01 / START HERE\nBusiness name\nBusiness type\nCafé\nBakery\nTea Shop\nRestaurant\nOther\nNotes (optional)\n↥\nDrop your business files here, or browse\nCSV, PDF, XLSX, images · Local selection only · Not analyzed\nRun Analysis Again\n↗\n\nAI analysis with deterministic validation and calculations · Files are not processed.\n\nBusiness Outlook\nBusiness analysis\nlast month · USD\n\nAnalysis complete\n\nYour analysis and decision are ready.\n\nRevenue\n\nUSD 60,000\n\nReported whole-business total\n\nOperating Costs\n\nUSD 54,000\n\nReported whole-business total\n\nWhat’s Left\n✧\n\nUSD 6,000\n\nDeterministic baseline · Revenue − operating costs\n\nMargin\n\n10%\n\nDeterministic baseline · What’s Left ÷ revenue\n\nWhere the money goes\n● Reported totals\n▪ What’s Left: deterministic baseline, not Scenario impact\nUSD 60,000\n\nRevenue\n\n−USD 54,000\n\nOperating Costs\n\nUSD 6,000\n\nWhat’s Left\n\nNo confirmed profit leaks\n\nNo supported leaks were identified from the supplied evidence.\n\nNeeds more data (4)\nScenarios to test\n\nNo supported testable changes were identified.\n\nDecision\nNeeds more data\nMore data needed before a confident decision\n\nCollect required decision inputs\n\nWhy\n\nNo authorized scenarios were provided for evaluation.\n\nScenario comparison\n\nlow confidence in this conclusion\n\nWhat’s Left? · A little clarity goes a long way.\nAI analysis with deterministic validation, scenario calculations, and bounded decision support.",
+  "complete": false,
+  "error": null,
+  "id": "F10",
+  "total_latency_ms": 9300,
+  "timeline": [
+    {
+      "at": 1792973955587,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973956091,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973956595,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973957098,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence"
+        }
+      ]
+    },
+    {
+      "at": 1792973957604,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973958108,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973958614,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973959120,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973959628,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks"
+        }
+      ]
+    },
+    {
+      "at": 1792973960135,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973960646,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973961151,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios"
+        }
+      ]
+    },
+    {
+      "at": 1792973961658,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973962167,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973962680,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "at": 1792973963191,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ]
+    },
+    {
+      "at": 1792973963708,
+      "done": false,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision"
+        }
+      ]
+    },
+    {
+      "at": 1792973964227,
+      "done": true,
+      "complete": false,
+      "calls": [
+        {
+          "url": "/api/analyze/evidence",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/leaks",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/scenarios",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/simulate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision-gate",
+          "status": 200
+        },
+        {
+          "url": "/api/analyze/decision",
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "server_diagnostics": [
+    {
+      "label": "Evidence business total grounding",
+      "diagnostic": {
+        "reason": "business_total_grounding",
+        "emitted_record_count": 2,
+        "fields": [
+          {
+            "field": "revenue.total",
+            "emitted_support_count": 1,
+            "validated_support_count": 1,
+            "original_total": 60000,
+            "trusted_total": 60000,
+            "reasons": []
+          },
+          {
+            "field": "costs.total",
+            "emitted_support_count": 1,
+            "validated_support_count": 1,
+            "original_total": 54000,
+            "trusted_total": 54000,
+            "reasons": []
+          }
+        ],
+        "records": [
+          {
+            "field": "revenue.total",
+            "scope": "whole_business",
+            "value": 60000,
+            "period_matches": true,
+            "currency_matches": true,
+            "source_refs": [
+              "src_a424815897ace71614762ab63b937b97_05"
+            ]
+          },
+          {
+            "field": "costs.total",
+            "scope": "whole_business",
+            "value": 54000,
+            "period_matches": true,
+            "currency_matches": true,
+            "source_refs": [
+              "src_a424815897ace71614762ab63b937b97_06"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "label": "Calculation fact grounding",
+      "diagnostic": {
+        "stage": "evidence_grounding",
+        "concept": "baseline_headcount",
+        "candidate_count": 0,
+        "accepted": false,
+        "rejection_reason": "missing_candidate",
+        "candidates": []
+      }
+    },
+    {
+      "label": "Calculation fact grounding",
+      "diagnostic": {
+        "stage": "evidence_grounding",
+        "concept": "labor_cost_per_worker",
+        "candidate_count": 0,
+        "accepted": false,
+        "rejection_reason": "missing_candidate",
+        "candidates": []
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "scenario_input",
+        "concept": "baseline_headcount",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "scenario_input",
+        "concept": "labor_cost_per_worker",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "simulate_input",
+        "concept": "baseline_headcount",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    },
+    {
+      "label": "Calculation fact handoff",
+      "diagnostic": {
+        "stage": "simulate_input",
+        "concept": "labor_cost_per_worker",
+        "calculation_input_emitted": false,
+        "record_count": 0
+      }
+    }
+  ],
+  "console_diagnostics": [],
+  "exceptions": [],
+  "input_sha256": "b4a1b89f6ab027085f74205771054df2f3c05d894b52ada2d370a926153b25a0"
+}

@@ -31,8 +31,19 @@ export type AuthorizationAtom = SourceBound & (
   | (WasteScope & { kind: "waste_reduction_permission"; from: 9; value: 5; unit: "percent"; permission: "explicit" })
 );
 
+export type CalculationAnchor = { source_ref: string; quote: string };
+export type LaborCalculationSupport = {
+  concept: "baseline_headcount" | "labor_cost_per_worker";
+  scope: "tuesday_evening";
+  period: string;
+  support: { value: CalculationAnchor; unit: CalculationAnchor; scope: CalculationAnchor;
+    period: CalculationAnchor; currency: CalculationAnchor | null };
+};
+export type TrustedLaborCalculationFact = LaborCalculationSupport & {
+  value: number; unit: "persons" | "currency_per_person"; currency: string | null;
+};
 export type EvidenceProvenance = { source_input: string; items: EvidenceSource[]; citable_facts: CitableFact[];
-  authorization_records?: AuthorizationRecord[] };
+  authorization_records?: AuthorizationRecord[]; calculation_facts?: TrustedLaborCalculationFact[] };
 
 export type Evidence = {
   provenance?: EvidenceProvenance;
