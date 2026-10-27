@@ -48,54 +48,38 @@ button, select { cursor: pointer; }
 .analyze-button:hover { filter: brightness(1.06); box-shadow: 0 0 14px color-mix(in srgb, var(--accent-primary) 18%, transparent); }
 .analyze-button:active { filter: brightness(.97); }
 
-/* Three-stage decorative background; all artwork stays at its natural ratio. */
+/* A → B… → C; absolute artwork never determines content height. */
 body { position: relative; isolation: isolate; }
 .page-background {
   --background-image-height: calc(100vw * 941 / 1672);
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-rows: var(--background-top-height, var(--background-image-height)) var(--background-transition-height, calc(var(--background-image-height) * .65)) minmax(0, 1fr);
-  overflow: clip;
-  pointer-events: none;
-  z-index: -1;
+  --background-feather: 60px;
+  position: absolute; inset: 0; overflow: clip; pointer-events: none; z-index: -1;
 }
 .page-background > div {
-  min-height: 0;
-  background-size: 100% auto;
-  background-position: center top;
-  background-repeat: no-repeat;
+  position: absolute; inset-inline: 0;
+  background-size: 100% auto; background-position: center top; background-repeat: no-repeat;
 }
-/* bk10: top / hero, full composition with no cover zoom. */
-.page-background > div:nth-child(1) {
+.page-background > div:first-child {
+  top: 0; height: var(--background-image-height);
   background-image: url("../../pic/whatleft-bk10.png");
 }
-/* bk11: overlap the upper artwork; keep the lower grid boundary unchanged. */
-.page-background > div:nth-child(2) {
+.page-background > div:nth-child(2), .page-background > .background-middle {
+  top: calc(var(--background-image-height) * .7); height: var(--background-image-height);
   background-image: url("../../pic/whatleft-bk11.png");
-  margin-top: -120px;
-  background-position: center -96px;
-  /* A short alpha feather reveals bk10 beneath; no tint or dark overlay. */
-  mask-image: linear-gradient(to bottom, transparent, #000 40px);
+  background-position: center max(-96px, calc(var(--background-image-height) * -.15));
+  mask-image: linear-gradient(to bottom, transparent, #000 var(--background-feather));
 }
-/* bk13: overlap bk11; soften only the leading edge without a color wash. */
-.page-background > div:nth-child(3) {
+.page-background > div:last-child {
+  top: calc(var(--background-image-height) * 1.3); bottom: 0;
   background-image: url("../../pic/whatleft-bk13.png");
-  position: relative;
-  margin-top: -150px;
-  background-position: center -72px;
-  mask-image: linear-gradient(to bottom, transparent, #000 60px);
+  background-position: center max(-72px, calc(var(--background-image-height) * -.12));
+  mask-image: linear-gradient(to bottom, transparent, #000 var(--background-feather));
 }
-
-/* Fade only the artwork's final 120px; continue with the matching footer base. */
-.page-background > div:nth-child(3)::after {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  top: max(0px, min(calc(100% - 120px), calc(var(--background-image-height) - 72px - 120px)));
-  bottom: 0;
+/* Preserve the original closing artwork's fade into its matching footer base. */
+.page-background > div:last-child::after {
+  content: ""; position: absolute; inset-inline: 0;
+  top: max(0px, calc(var(--background-image-height) - 72px - 120px)); bottom: 0;
   background: linear-gradient(to bottom, transparent, var(--bg-page) 120px);
-  pointer-events: none;
 }
 
 /* BEGIN reversible indigo glass experiment. */
@@ -111,7 +95,15 @@ body { position: relative; isolation: isolate; }
   --text-primary: #F7FAFF;
   --text-secondary: #C8D7EA;
   --text-muted: #8FA4BF;
-  --accent-glacial: #70B8FF;
+  --snow-blue: #63C9F2;
+  --snow-blue-hover: #4FBCE9;
+  --snow-blue-pressed: #3DAFDE;
+  --snow-blue-fill: rgba(99, 201, 242, .12);
+  --snow-blue-border: rgba(99, 201, 242, .42);
+  --snow-blue-glow: rgba(99, 201, 242, .28);
+  --chart-revenue: #528FAE;
+  --chart-costs: #326989;
+  --accent-glacial: var(--snow-blue);
   --accent-result-current: var(--accent-glacial);
 }
 .panel,
@@ -134,3 +126,64 @@ h1, h2, h3, h4,
   font-weight: 600;
 }
 /* END reversible indigo glass experiment. */
+
+/* Snow-blue presentation layer; values, geometry and interaction logic stay unchanged. */
+.waterfall > div > div > div { background-color: var(--chart-costs); }
+.waterfall > div:first-child > div > div { background-color: var(--chart-revenue); }
+.waterfall > div > div > div[class*="accent-result-current"] { background-color: var(--snow-blue); }
+
+[aria-labelledby="input-title"] {
+  --accent-primary: var(--snow-blue);
+  --border-active: var(--snow-blue-border);
+}
+[aria-labelledby="input-title"] .analyze-button {
+  background: var(--snow-blue);
+  color: var(--cta-text);
+}
+[aria-labelledby="input-title"] .analyze-button:not(:disabled):hover {
+  background: var(--snow-blue-hover);
+  filter: none;
+  box-shadow: 0 0 14px var(--snow-blue-glow);
+}
+[aria-labelledby="input-title"] .analyze-button:not(:disabled):active {
+  background: var(--snow-blue-pressed);
+  filter: none;
+}
+[aria-labelledby="input-title"] .analyze-button:disabled {
+  filter: none;
+  box-shadow: none;
+  opacity: .65;
+}
+[aria-labelledby="input-title"] .upload-zone:not([aria-disabled="true"]):hover,
+[aria-labelledby="input-title"] .upload-zone:focus-within {
+  border-color: var(--snow-blue);
+  background-color: var(--snow-blue-fill);
+  box-shadow: 0 0 12px var(--snow-blue-glow);
+}
+[aria-labelledby="input-title"] .field-label input:focus,
+[aria-labelledby="input-title"] .field-label select:focus,
+[aria-labelledby="input-title"] .field-label textarea:focus {
+  border-color: var(--snow-blue);
+  box-shadow: 0 0 0 2px var(--snow-blue-border);
+}
+
+/* Hero-only reading zone. Its lower fade ends before the workspace panels. */
+.hero-brand-header { position: relative; z-index: 1; }
+.hero-intro { position: relative; isolation: isolate; }
+.hero-intro h1 { color: #F7FAFF; }
+.hero-supporting-copy { color: #C8D8E8; }
+.hero-intro::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  top: -14rem;
+  bottom: -1.75rem;
+  inset-inline: -1.25rem;
+  background: linear-gradient(90deg,
+    transparent, rgba(7, 16, 31, .50) 32px,
+    rgba(7, 16, 31, .40) 28%, rgba(7, 16, 31, .18) 52%, transparent 82%);
+  mask-image: linear-gradient(to bottom, transparent, #000 32px, #000 calc(100% - 48px), transparent);
+}
+@media (min-width: 640px) { .hero-intro::before { inset-inline: -2.25rem; } }
+@media (min-width: 1024px) { .hero-intro::before { inset-inline: -3rem; } }

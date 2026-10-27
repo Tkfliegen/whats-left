@@ -1,4 +1,6 @@
 import test from 'node:test';
+import {imageModules} from './helpers/leak-category-icons.mjs';
+const sectionIcon=imageModules()('src/components/section-icon.tsx');
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
@@ -26,7 +28,7 @@ const compile=source=>ts.transpileModule(source,{compilerOptions:{module:ts.Modu
 const display={exports:{}};vm.runInNewContext(compile(readFileSync('src/lib/decision-display.ts','utf8')),display);
 const scenarioDisplay={exports:{}};vm.runInNewContext(compile(readFileSync('src/lib/scenario-display.ts','utf8')),scenarioDisplay);
 const source=readFileSync('src/components/decision-panel.tsx','utf8');
-const component={exports:{},require:s=>s==='react/jsx-runtime'?jsxRuntime:s==='@/lib/scenario-display'?scenarioDisplay.exports:display.exports};vm.runInNewContext(compile(source),component);
+const component={exports:{},require:s=>s==='react/jsx-runtime'?jsxRuntime:s==='./section-icon'?sectionIcon:s==='@/lib/scenario-display'?scenarioDisplay.exports:display.exports};vm.runInNewContext(compile(source),component);
 const render=(result,failed=false)=>renderToStaticMarkup(React.createElement(component.exports.DecisionPanel,{result,failed}));
 
 test('Simulation -> Gate -> Decision sequencing stores exact provenance; workstation stays active and duplicate clicks are blocked',async()=>{
@@ -123,6 +125,6 @@ test('actionable hierarchy shows recommendation then verified context then confi
   const html=render(decisionFor(fixtures.clear_winner));assert.ok(html.indexOf('Recommended next move')<html.indexOf('Scenario comparison'));assert.ok(html.indexOf('Scenario comparison')<html.indexOf('confidence in this conclusion'));
   const dashboard=readFileSync('src/components/dashboard.tsx','utf8');
   assert.doesNotMatch(dashboard,/value: "\$4,200"|value: "4\.2%"|september-pos\.csv|staff-rota\.xlsx|Demo workspace/);
-  assert.match(dashboard,/AI interprets business evidence\. Code verifies scenarios and calculates impact\. AI recommends within verified boundaries\./);
+  assert.match(dashboard,/Turn business evidence into verified, grounded decisions\./);
   assert.match(readFileSync('src/components/business-input-panel.tsx','utf8'),/Retry full analysis/);assert.match(dashboard,/bounded decision support/);
 });

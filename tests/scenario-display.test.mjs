@@ -1,4 +1,6 @@
 import test from 'node:test';
+import {imageModules} from './helpers/leak-category-icons.mjs';
+const sectionIcon=imageModules()('src/components/section-icon.tsx');
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
@@ -9,7 +11,7 @@ import {renderToStaticMarkup} from 'react-dom/server';
 const compile=source=>ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText;
 const helper={exports:{}};vm.runInNewContext(compile(readFileSync(new URL('../src/lib/scenario-display.ts',import.meta.url),'utf8')),helper);
 const {controlledChangeLabel,isScenarioResponse,isSimulationResponse,simulationFor}=helper.exports;
-const component={exports:{},require:s=>s==='react/jsx-runtime'?jsxRuntime:helper.exports};
+const component={exports:{},require:s=>s==='react/jsx-runtime'?jsxRuntime:s==='./section-icon'?sectionIcon:helper.exports};
 const source=readFileSync(new URL('../src/components/scenario-panel.tsx',import.meta.url),'utf8');vm.runInNewContext(compile(source),component);
 const fixture=JSON.parse(readFileSync(new URL('./fixtures/simulation-cornhead.json',import.meta.url),'utf8'));
 const scenario=fixture.scenarios;

@@ -1,4 +1,6 @@
 import test from 'node:test';
+import {loadLeakIcons} from './helpers/leak-category-icons.mjs';
+const iconComponent=loadLeakIcons().component;
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
@@ -15,6 +17,7 @@ const dashboard={exports:{},require:specifier=>{
   if(specifier==='react/jsx-runtime')return jsxRuntime;
   if(specifier==='framer-motion')return {useReducedMotion:()=>false,motion:{article:({className,children})=>React.createElement('article',{className},children)}};
   if(specifier==='@/lib/leak-display')return display.exports;
+  if(specifier==='./leak-category-icon')return iconComponent;
   return {};
 }};
 const source=readFileSync(new URL('../src/components/dashboard.tsx',import.meta.url),'utf8').replace('function ProfitLeaks(', 'export function ProfitLeaks(');
@@ -56,4 +59,17 @@ test('unprovided derived metrics and monetary figures are rejected rather than r
   for(const interpretation of ['Waste is 80% above target.','Waste is 4 percentage points above target.','There is a $4,200 surplus.','The impact is $1,180.']) {
     assert.equal(usesReportedNumbers({...result,leaks:[{...finding,interpretation}]},input),false);
   }
+});
+
+test('all seven Leak cards render category artwork without changing finding text',()=>{
+ const categories=['labor','ingredients','delivery','waste','operations','pricing','other'];
+ const result={leaks:categories.map(category=>({...finding,category,title:`Supported ${category} finding`})),insufficient_evidence:[]};
+ const html=renderToStaticMarkup(React.createElement(ProfitLeaks,{visible:true,result}));
+ assert.equal((html.match(/<article/g)||[]).length,7);assert.equal((html.match(/<img/g)||[]).length,7);
+ for(const category of categories){assert.ok(html.includes(`Supported ${category} finding`));assert.ok(html.includes(category.toUpperCase()));}
+ assert.doesNotMatch(html,/◷|↗|◈/);
+});
+test('an unresolved display category uses other artwork without rewriting its label',()=>{
+ const html=renderToStaticMarkup(React.createElement(ProfitLeaks,{visible:true,result:{leaks:[{...finding,category:'future_category'}],insufficient_evidence:[]}}));
+ assert.match(html,/what is left-07.png/);assert.match(html,/FUTURE_CATEGORY/);
 });

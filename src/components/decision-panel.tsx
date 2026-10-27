@@ -1,5 +1,6 @@
 "use client";
 
+import { SectionIcon } from "./section-icon";
 import type { DecisionResult } from "@/types/decision";
 import { decisionInputLabel } from "@/lib/decision-display";
 import { scenarioMoney } from "@/lib/scenario-display";
@@ -8,7 +9,7 @@ export function DecisionPanel({ result, failed = false }: { result: DecisionResu
   const actionable = result?.decision_status === "actionable" && result.recommendation.type === "business_action";
   return <section className="panel mt-7 min-w-0 p-5 sm:p-6 [overflow-wrap:anywhere]" aria-labelledby="decision-title">
     <div className="flex flex-wrap items-center justify-between gap-3">
-      <h3 id="decision-title" className="text-base font-medium">Decision</h3>
+      <div className="flex min-w-0 items-center gap-3"><SectionIcon section="decision" /><h3 id="decision-title" className="text-base font-medium">Decision</h3></div>
       {result && <span className="badge">{actionable ? "Actionable" : "Needs more data"}</span>}
     </div>
     {!result ? <p className="mt-3 text-xs text-[var(--text-secondary)]">{failed ? "Decision unavailable. Your earlier results are preserved. Please try again." : "Checking decision policy and preparing a grounded recommendation…"}</p> : <>

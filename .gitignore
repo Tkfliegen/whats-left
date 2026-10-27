@@ -46,6 +46,18 @@ next-env.d.ts
 !/pic/whatleft-bk11.png
 !/pic/whatleft-bk13.png
 
+# Finalized Leak category artwork, imported directly by the frontend.
+!/pic/what is left icon-01.png
+!/pic/what is left icon-02.png
+!/pic/what is left-03.png
+!/pic/what is left-04.png
+!/pic/what is left-05.png
+!/pic/what is left-06.png
+!/pic/what is left-07.png
+!/pic/what is left-section-scenario.png
+!/pic/what is left-section-decision.png
+!/pic/what is left-hero.png
+
 # Generated verification captures and historical scratch files stay local.
 # Keep reports and the exact synthetic snapshots required by offline regressions.
 /docs/*.json

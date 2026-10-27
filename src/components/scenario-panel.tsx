@@ -1,5 +1,6 @@
 "use client";
 
+import { SectionIcon } from "./section-icon";
 import type { ScenarioResult } from "@/types/scenarios";
 import type { SimulationResponse } from "@/types/scenario-calculator";
 import { controlledChangeLabel, scenarioMoney, simulationFor } from "@/lib/scenario-display";
@@ -8,7 +9,7 @@ export function ScenarioPanel({ result, simulation, failed = false }: {
   result: ScenarioResult | null; simulation: SimulationResponse | null; failed?: boolean;
 }) {
   return <section className="panel min-w-0 flex flex-col [overflow-wrap:anywhere] border-[var(--border-default)] p-6" aria-labelledby="scenario-title">
-    <div className="flex justify-between"><h3 id="scenario-title" className="text-base font-medium">Scenarios to test</h3><span className="text-[var(--agent-scenario)]" aria-hidden="true">✧</span></div>
+    <div className="flex items-center gap-3"><SectionIcon section="scenario" /><h3 id="scenario-title" className="text-base font-medium">Scenarios to test</h3></div>
     {!result && <p className="mt-2 text-xs text-[var(--text-secondary)]">{failed ? "Scenario results unavailable. Please try again." : "Defining supported changes…"}</p>}
     {result && <>
       <div className="mt-4 space-y-3">{result.scenarios.map((scenario, index) => {
