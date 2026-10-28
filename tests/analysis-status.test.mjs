@@ -169,3 +169,25 @@ test('UI never infers testing approval from absent metadata or from arbitrary fl
   assert.doesNotMatch(html,/staffing change is approved for testing/);
  }
 });
+
+test('schedule guidance follows accepted missing prerequisites rather than earlier Golden expectations',()=>{
+ for(const scheduleMissing of [true,false]){
+  const guidance={...missingCost,missing_requirements:missingCost.missing_requirements.filter(key=>scheduleMissing||key!=='unchanged_schedule')};
+  const before=JSON.stringify(guidance);
+  const notice=status.analysisNotice({...complete,evidence:reportedCost,guidance});
+  assert.deepEqual(Array.from(notice.items),[status.requirementLabels.tuesday_evening_sales,...(scheduleMissing?[status.requirementLabels.unchanged_schedule]:[])]);
+  assert.equal(JSON.stringify(guidance),before);
+ }
+});
+
+test('non-ready comparison uses supporting-input copy when testing permission exists without creating impact',()=>{
+ const result={...rejectedDecision,comparison:[{candidate_id:null,target_leak:'Tuesday evening staffing',scenario_status:'not_simulation_ready',verified_impact:null,currency:null,assessment:'Not simulation ready due to lack of eligible authorized change.'}]};
+ const before=JSON.stringify(result);
+ const notice=status.analysisNotice({...complete,evidence:reportedCost,guidance:missingCost});
+ const html=renderToStaticMarkup(React.createElement(decisionComponent.exports.DecisionPanel,{result,notice}));
+ assert.match(html,/Not simulation ready because required supporting inputs are still missing\./);
+ assert.doesNotMatch(html,/lack of eligible authorized change|Needs a controllable decision input|Verified impact|Recommended candidate|\$/);
+ assert.equal(JSON.stringify(result),before);
+ const withoutPermission=renderToStaticMarkup(React.createElement(decisionComponent.exports.DecisionPanel,{result}));
+ assert.match(withoutPermission,/Not simulation ready due to lack of eligible authorized change/);
+});

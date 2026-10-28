@@ -45,9 +45,11 @@ export function DecisionPanel({ result, failed = false, notice }: { result: Deci
         {result.comparison.map((row, index) => <article key={row.candidate_id ?? `non-ready-${index}`} className="min-w-0 rounded-xl border border-[var(--border-default)] p-4">
           <h4 className="text-sm font-medium">{row.target_leak}</h4>
           {actionable && row.candidate_id !== null && row.candidate_id === result.recommendation.candidate_id && <p className="mt-2 text-xs text-[var(--accent-primary)]">Recommended candidate</p>}
-          <p className="mt-3 text-xs text-[var(--text-secondary)]">{row.scenario_status === "calculable" ? "Verified impact" : row.scenario_status === "not_calculable_yet" ? "Scenario defined · Impact needs more data" : "Needs a controllable decision input"}</p>
+          <p className="mt-3 text-xs text-[var(--text-secondary)]">{row.scenario_status === "calculable" ? "Verified impact" : row.scenario_status === "not_calculable_yet" ? "Scenario defined · Impact needs more data" : approvedTestNeedsSupport ? "Required supporting inputs are incomplete" : "Needs a controllable decision input"}</p>
           {row.scenario_status === "calculable" && row.verified_impact !== null && <p className="mt-1 text-xl tabular-nums text-[var(--accent-result-best)]">{row.currency ? scenarioMoney(row.verified_impact, row.currency) : row.verified_impact}</p>}
-          <p className="mt-2 text-xs leading-relaxed text-[var(--text-secondary)]">{row.assessment}</p>
+          <p className="mt-2 text-xs leading-relaxed text-[var(--text-secondary)]">{approvedTestNeedsSupport && row.scenario_status === "not_simulation_ready"
+            ? "Not simulation ready because required supporting inputs are still missing."
+            : row.assessment}</p>
         </article>)}
       </div>
 
