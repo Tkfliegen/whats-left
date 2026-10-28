@@ -1,5 +1,6 @@
 "use client";
 
+import type { AnalysisNotice } from "@/lib/analysis-status";
 import { useState, type ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useDemoAnalysis, type AnalysisStage } from "./use-demo-analysis";
@@ -72,7 +73,7 @@ function ResultReveal({ visible, waiting, children }: { visible: boolean; waitin
   </div>;
 }
 
-function BusinessOutlook({ stage, runId, evidence, leakResult, scenarioResult, simulationResult, decisionResult, analysisError, source }: { source: string; stage: AnalysisStage; runId: number; evidence: Evidence | null; leakResult: LeakResult | null; scenarioResult: ScenarioResponse | null; simulationResult: SimulationResponse | null; decisionResult: DecisionResult | null; analysisError: string }) {
+function BusinessOutlook({ stage, runId, evidence, leakResult, scenarioResult, simulationResult, decisionResult, analysisError, source, notice }: { notice?: AnalysisNotice | null; source: string; stage: AnalysisStage; runId: number; evidence: Evidence | null; leakResult: LeakResult | null; scenarioResult: ScenarioResponse | null; simulationResult: SimulationResponse | null; decisionResult: DecisionResult | null; analysisError: string }) {
   const scenario = ["scenario", "decision", "complete"].includes(stage);
   const labels: Record<AnalysisStage, string> = {
     idle: "Ready to analyze", evidence: "Analyzing your business… · Reconstructing the operating picture…",
@@ -93,7 +94,7 @@ function BusinessOutlook({ stage, runId, evidence, leakResult, scenarioResult, s
         <ProfitLeaks visible={true} result={leakResult} />
         {scenario && <ScenarioPanel result={scenarioResult?.scenarios ?? null} simulation={simulationResult} failed={!!analysisError} />}
       </div>}
-      {["decision", "complete"].includes(stage) && <DecisionPanel result={decisionResult} failed={!!analysisError} />}
+      {["decision", "complete"].includes(stage) && <DecisionPanel result={decisionResult} failed={!!analysisError} notice={notice} />}
     </div>
   </section>;
 }
@@ -102,5 +103,5 @@ export function Dashboard() {
   const [source, setSource] = useState("");
   const { workflow, stage, startAnalysis, evidenceResult, leakResult, scenarioResult, simulationResult, decisionGateResult, decisionResult, analysisError, analysisStatus, isRunning } = useDemoAnalysis();
   useBackgroundRegions(stage, workflow.runId);
-  return <><Header /><main className="mx-auto w-full max-w-[1440px] px-5 py-9 sm:px-9 lg:px-12"><div className="hero-intro mb-7 flex flex-wrap items-end justify-between gap-4"><div><h1 className="text-3xl font-medium tracking-tight sm:text-4xl">A clearer picture of what’s left.</h1><p className="hero-supporting-copy mt-3 text-sm">Turn business evidence into verified, grounded decisions.</p></div><span className="badge"><span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-primary)]" />Analysis workspace</span></div><div className="grid gap-5 lg:grid-cols-[1.4fr_1fr]"><AgentOffice key={workflow.runId} workflow={workflow} stage={stage} evidence={evidenceResult} leakResult={leakResult} scenarioResult={scenarioResult} simulationResult={simulationResult} decisionGateResult={decisionGateResult} decisionResult={decisionResult} analysisError={analysisError} notice={analysisStatus} /><BusinessInputPanel onSource={setSource} complete={stage === "complete"} onAnalyze={startAnalysis} isRunning={isRunning} analysisError={analysisError} retryable={analysisStatus?.category === "temporary_failure"} failureHeading={analysisStatus?.heading} /></div><BusinessOutlook source={source} stage={stage} runId={workflow.runId} evidence={evidenceResult} leakResult={leakResult} scenarioResult={scenarioResult} simulationResult={simulationResult} decisionResult={decisionResult} analysisError={analysisError} /><footer className="flex flex-wrap justify-between gap-3 border-t border-[var(--border-default)] py-6 text-xs text-[var(--text-muted)]"><span>What’s Left? · A little clarity goes a long way.</span><span>AI analysis with deterministic validation, scenario calculations, and bounded decision support.</span></footer></main></>;
+  return <><Header /><main className="mx-auto w-full max-w-[1440px] px-5 py-9 sm:px-9 lg:px-12"><div className="hero-intro mb-7 flex flex-wrap items-end justify-between gap-4"><div><h1 className="text-3xl font-medium tracking-tight sm:text-4xl">A clearer picture of what’s left.</h1><p className="hero-supporting-copy mt-3 text-sm">Turn business evidence into verified, grounded decisions.</p></div><span className="badge"><span className="h-1.5 w-1.5 rounded-full bg-[var(--accent-primary)]" />Analysis workspace</span></div><div className="grid gap-5 lg:grid-cols-[1.4fr_1fr]"><AgentOffice key={workflow.runId} workflow={workflow} stage={stage} evidence={evidenceResult} leakResult={leakResult} scenarioResult={scenarioResult} simulationResult={simulationResult} decisionGateResult={decisionGateResult} decisionResult={decisionResult} analysisError={analysisError} notice={analysisStatus} /><BusinessInputPanel onSource={setSource} complete={stage === "complete"} onAnalyze={startAnalysis} isRunning={isRunning} analysisError={analysisError} retryable={analysisStatus?.category === "temporary_failure"} failureHeading={analysisStatus?.heading} /></div><BusinessOutlook source={source} stage={stage} runId={workflow.runId} evidence={evidenceResult} leakResult={leakResult} scenarioResult={scenarioResult} simulationResult={simulationResult} decisionResult={decisionResult} analysisError={analysisError} notice={analysisStatus} /><footer className="flex flex-wrap justify-between gap-3 border-t border-[var(--border-default)] py-6 text-xs text-[var(--text-muted)]"><span>What’s Left? · A little clarity goes a long way.</span><span>AI analysis with deterministic validation, scenario calculations, and bounded decision support.</span></footer></main></>;
 }

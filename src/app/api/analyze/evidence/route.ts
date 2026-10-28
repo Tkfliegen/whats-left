@@ -163,6 +163,7 @@ async function handlePOST(request: Request) {
     }
     let atomFailure: AtomFailure | undefined;
     const missingRequirements = new Set<MissingRequirement>();
+    let staffingTestPermissionPresent = false;
     const authorization_records = assembleAuthorizationRecords(authorization_atoms, sources, normalized.currency,
       process.env.NODE_ENV === "development" || process.env.NODE_ENV === "production" ? diagnostic => {
         try {
@@ -185,6 +186,8 @@ async function handlePOST(request: Request) {
         // Ambiguous/conflicting support is not reported as missing information.
         if (diagnostic.intervention !== "headcount_reduction" || diagnostic.ambiguous_atom_kinds.length
           || diagnostic.conflicting_atom_kinds.length) return;
+        // Display the validated permission separately from a complete authorization.
+        staffingTestPermissionPresent = diagnostic.atom_counts.headcount_reduction_permission === 1;
         const requirements: Partial<Record<string, MissingRequirement>> = { scoped_sales: "tuesday_evening_sales",
           scoped_staffing_cost: "tuesday_evening_staffing_cost", headcount_reduction_permission: "staffing_test_permission",
           schedule_constraint: "unchanged_schedule" };
@@ -214,7 +217,8 @@ async function handlePOST(request: Request) {
     const calculation_facts = calculation_support === undefined ? undefined : groundedCalculationFacts;
     const filtered = { ...canonical, missing_information: filterMissingInformation(canonical.missing_information, sources) };
     return json({ evidence: { ...filtered, provenance: { ...createEvidenceProvenance(filtered, body.input.trim(), calculation_facts), authorization_records } },
-      ...(missingRequirements.size ? { guidance: { missing_requirements: [...missingRequirements] } } : {}) });
+      ...(missingRequirements.size ? { guidance: { missing_requirements: [...missingRequirements],
+        ...(staffingTestPermissionPresent ? { staffing_test_permission_present: true } : {}) } } : {}) });
   } catch (failure) {
     if (providerPhase !== "output") {
       const name = failure && typeof failure === "object" && "name" in failure ? failure.name : undefined;

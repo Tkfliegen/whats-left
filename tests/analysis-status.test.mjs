@@ -93,9 +93,8 @@ test('exact Golden Labor input completes all real route validators with mocked m
   let result;
   if(name==='evidence'){
    const sources=JSON.parse(request.messages[2].content).authorization_sources,ref=i=>sources[i].id;
-   result={business_type:null,period:'monthly',currency:'USD',revenue:{total:100000,items:[]},costs:{total:95800,items:[]},facts:[],assumptions:[],missing_information:[],confidence:'high',
-    authorization_atoms:[{kind:'scoped_staffing_cost',scope:'tuesday_evening_6pm_10pm',period:'month',amount:2500,currency:'USD',source_refs:[ref(3)]},
-     {kind:'headcount_reduction_permission',scope:'tuesday_evening_6pm_10pm',operation:'delta',value:-1,unit:'persons',permission:'explicit',source_refs:[ref(5)]}],
+   result={business_type:null,period:'monthly',currency:'USD',revenue:{total:100000,items:[]},costs:{total:95800,items:[{name:'Tuesday evening staffing',amount:2500,reported_category:null,source_text:'The total Tuesday evening staffing cost is USD 2,500.'}]},facts:[],assumptions:[],missing_information:[],confidence:'high',
+    authorization_atoms:[{kind:'headcount_reduction_permission',scope:'tuesday_evening_6pm_10pm',operation:'delta',value:-1,unit:'persons',permission:'explicit',source_refs:[ref(5)]}],
     business_total_support:[{field:'revenue.total',value:100000,scope:'whole_business',period:'monthly',currency:'USD',source_refs:[ref(0)]},
      {field:'costs.total',value:95800,scope:'whole_business',period:'monthly',currency:'USD',source_refs:[ref(1)]}],calculation_support:[]};
   }else if(name==='leak_detective_v1')result={leaks:[],insufficient_evidence:[{topic:'Tuesday evening staffing',reason:'Tuesday evening sales were not supplied.'}]};
@@ -110,6 +109,63 @@ test('exact Golden Labor input completes all real route validators with mocked m
  await h.settle();assert.equal(h.value.workflow.complete,true,h.value.analysisError);await run;h.render();
  assert.equal(h.value.analysisError,'');assert.deepEqual(JSON.parse(JSON.stringify(h.value.evidenceResult.provenance.authorization_records)),[]);
  assert.equal(h.value.analysisStatus.category,'more_data_needed');assert.equal(h.value.analysisStatus.items.length,2);
+ assert.equal(h.value.analysisStatus.staffing_test_approved,true);
+ assert.deepEqual(JSON.parse(JSON.stringify(h.value.scenarioResult.scenarios.scenarios)),[]);
+ assert.deepEqual(JSON.parse(JSON.stringify(h.value.simulationResult.results)),[]);
+ assert.deepEqual(JSON.parse(JSON.stringify(h.value.decisionGateResult.candidates)),[]);
  const html=render(h.value.analysisStatus);assert.match(html,/Tuesday evening sales or revenue/);assert.match(html,/staffing schedule will remain unchanged/);
  assert.deepEqual(models,['evidence','leak_detective_v1','scenario_agent_v1','decision_agent_v1']);h.unmount();
+});
+
+const staffingSource='The total Tuesday evening staffing cost is USD 2,500.';
+const reportedCost={costs:{items:[{name:'Tuesday evening staffing',amount:2500,source_text:staffingSource}]},provenance:{items:[{id:'src_private',source:'source_input[0]',text:staffingSource}]}};
+const missingCost={missing_requirements:['tuesday_evening_sales','tuesday_evening_staffing_cost','unchanged_schedule'],staffing_test_permission_present:true};
+test('reported staffing cost suppresses only its missing-data label; raw missing-atom state is unchanged',()=>{
+ const snapshot=JSON.stringify({reportedCost,missingCost});
+ const notice=status.analysisNotice({...complete,evidence:reportedCost,guidance:missingCost});
+ assert.deepEqual(Array.from(notice.items),[status.requirementLabels.tuesday_evening_sales,status.requirementLabels.unchanged_schedule]);
+ assert.equal(notice.staffing_test_approved,true);assert.equal(JSON.stringify({reportedCost,missingCost}),snapshot);
+});
+for(const [label,edit] of [
+ ['wrong day',e=>{e.provenance.items[0].text=staffingSource.replace('Tuesday','Friday');e.costs.items[0].source_text=e.provenance.items[0].text;}],
+ ['invented source quote',e=>{e.costs.items[0].source_text='PRIVATE invented paraphrase';}],
+ ['unsupported amount',e=>{e.costs.items[0].amount=3120;}],
+ ['headcount instead of cost',e=>{e.provenance.items[0].text='Tuesday evening staffing has 4 workers.';e.costs.items[0]={amount:4,source_text:e.provenance.items[0].text};}],
+ ['per-worker cost instead of staffing cost',e=>{e.provenance.items[0].text='Tuesday evening labor cost is USD 625 per worker.';e.costs.items[0]={amount:625,source_text:e.provenance.items[0].text};}],
+])test(`cost display suppression requires existing literal support: ${label}`,()=>{
+ const evidence=structuredClone(reportedCost);edit(evidence);
+ const notice=status.analysisNotice({...complete,evidence,guidance:missingCost});
+ assert.ok(notice.items.includes(status.requirementLabels.tuesday_evening_staffing_cost));
+});
+test('display cost detection does not hardcode a business amount',()=>{
+ const evidence=structuredClone(reportedCost),text=staffingSource.replace('2,500','3,120');
+ evidence.costs.items[0]={amount:3120,source_text:text};evidence.provenance.items[0].text=text;
+ assert.equal(status.analysisNotice({...complete,evidence,guidance:missingCost}).items.includes(status.requirementLabels.tuesday_evening_staffing_cost),false);
+});
+const decisionComponent={exports:{}};
+vm.runInNewContext(ts.transpileModule(fs.readFileSync('src/components/decision-panel.tsx','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText,{exports:decisionComponent.exports,require:name=>{
+ if(name==='react/jsx-runtime')return jsx;
+ if(name==='./section-icon')return {SectionIcon:()=>null};
+ if(name==='@/lib/decision-display')return load('src/lib/decision-display.ts');
+ if(name==='@/lib/scenario-display')return load('src/lib/scenario-display.ts');
+ throw Error('Unexpected UI dependency');
+}});
+const rejectedDecision={decision_status:'needs_more_data',recommendation:{type:'collect_data',candidate_id:null,title:'Collect required decision inputs',rationale:'The decision gate indicates no actionable scenario due to lack of authorized changes.'},priority_inputs:[{source_type:'upstream_missing_input',key:'An eligible authorized change',why_it_matters:'An authorized change is missing.'}],comparison:[],confidence:'low'};
+test('Decision copy separates explicit test permission from incomplete authorization without changing results',()=>{
+ const notice=status.analysisNotice({...complete,evidence:reportedCost,guidance:missingCost});
+ const before=JSON.stringify(rejectedDecision);
+ const html=renderToStaticMarkup(React.createElement(decisionComponent.exports.DecisionPanel,{result:rejectedDecision,notice}));
+ assert.match(html,/The proposed staffing change is approved for testing, but more supporting evidence is required before it can be evaluated safely/);
+ assert.match(html,/Supporting inputs for the approved staffing test/);
+ assert.doesNotMatch(html,/lack of authorized changes|An eligible authorized change|An authorized change is missing|Recommended candidate|\$/);
+ assert.equal(JSON.stringify(rejectedDecision),before);
+});
+test('UI never infers testing approval from absent metadata or from arbitrary flags',()=>{
+ for(const flag of [undefined,false,'true','PRIVATE']){
+  const parsed=status.readEvidenceGuidance({...missingCost,staffing_test_permission_present:flag});
+  const notice=status.analysisNotice({...complete,evidence:reportedCost,guidance:parsed});
+  assert.equal(notice.staffing_test_approved,undefined);
+  const html=renderToStaticMarkup(React.createElement(decisionComponent.exports.DecisionPanel,{result:rejectedDecision,notice}));
+  assert.doesNotMatch(html,/staffing change is approved for testing/);
+ }
 });

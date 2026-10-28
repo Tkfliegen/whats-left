@@ -69,7 +69,7 @@ test('exact no-sales input: real producer request explicitly forbids monthly-rev
 test('omitted sales and schedule atoms succeed, preserve independent facts and business totals, and assemble no Labor grant', async () => {
   const h = harness(), result = await h.invoke('evidence', {input});
   assert.equal(result.status, 200);
-  assert.deepEqual(result.body.guidance, {missing_requirements: ['tuesday_evening_sales', 'unchanged_schedule']});
+  assert.deepEqual(result.body.guidance, {missing_requirements: ['tuesday_evening_sales', 'unchanged_schedule'], staffing_test_permission_present: true});
   const actual = result.body.evidence;
   assert.equal(actual.revenue.total, 100000);
   assert.equal(actual.costs.total, 95800);
@@ -130,4 +130,24 @@ for (const mode of ['empty', 'duplicate']) test(`malformed emitted scoped_sales 
   assert.deepEqual(rejections, [{reason: 'invalid_source_refs', atom_index: 0, failing_field: 'source_refs'}]);
   assert.equal(JSON.stringify(emitted.authorization_atoms), before);
   assert.equal(calls, 1);
+});
+
+test('missing extracted staffing-cost atom does not erase the reported cost or fabricate authorization',async()=>{
+ const h=harness(output=>{output.authorization_atoms=output.authorization_atoms.filter(atom=>atom.kind!=='scoped_staffing_cost');});
+ const result=await h.invoke('evidence',{input});assert.equal(result.status,200);
+ assert.deepEqual(result.body.guidance,{missing_requirements:['tuesday_evening_sales','tuesday_evening_staffing_cost','unchanged_schedule'],staffing_test_permission_present:true});
+ assert.deepEqual(result.body.evidence.costs.items,evidence.costs.items);
+ assert.deepEqual(result.body.evidence.provenance.authorization_records,[]);
+ const {analysisNotice}=h.modules('src/lib/analysis-status.ts');
+ const notice=analysisNotice({complete:true,evidence:result.body.evidence,guidance:result.body.guidance,gate:{decision_gate:'no_actionable_scenario',reason_codes:['no_authorized_scenarios'],policy_required_inputs:[]},decision:{decision_status:'needs_more_data'}});
+ assert.equal(notice.items.length,2);assert.ok(notice.items.some(item=>item.startsWith('Tuesday evening sales')));
+ assert.ok(notice.items.some(item=>item.includes('schedule will remain unchanged')));assert.equal(notice.items.some(item=>item.includes('staffing cost')),false);
+ assert.equal(notice.staffing_test_approved,true);
+});
+test('display metadata never asserts approval when the permission atom is absent',async()=>{
+ const h=harness(output=>{output.authorization_atoms=output.authorization_atoms.filter(atom=>atom.kind!=='headcount_reduction_permission');});
+ const result=await h.invoke('evidence',{input});assert.equal(result.status,200);
+ assert.equal(result.body.guidance.staffing_test_permission_present,undefined);
+ assert.ok(result.body.guidance.missing_requirements.includes('staffing_test_permission'));
+ assert.deepEqual(result.body.evidence.provenance.authorization_records,[]);
 });

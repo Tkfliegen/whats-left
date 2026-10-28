@@ -195,6 +195,6 @@ export function useDemoAnalysis() {
     }
   };
   const isRunning = workflow.started && !workflow.complete && workflow.phase !== "idle";
-  const analysisStatus = analysisNotice({ failure: analysisFailure, complete: workflow.complete, guidance: evidenceGuidance, gate: decisionGateResult, decision: decisionResult });
+  const analysisStatus = analysisNotice({ failure: analysisFailure, complete: workflow.complete, guidance: evidenceGuidance, gate: decisionGateResult, decision: decisionResult, evidence: evidenceResult });
   return { analysisStatus, workflow, stage, startAnalysis, evidenceResult, leakResult, scenarioResult, simulationResult, decisionGateResult, decisionResult, analysisError, isRunning };
 }
