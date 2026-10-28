@@ -66,9 +66,9 @@ async function route(env,invalid){
  vm.runInNewContext(code,{exports,Response,AbortSignal,process:{env:{NODE_ENV:env,NEBIUS_API_KEY:'SECRET_TEST_KEY'}},console:{warn:(...args)=>diagnostics.push(args)},require:s=>load(path.resolve('src/app/api/analyze/evidence',s+'.ts')),fetch:async()=>{calls++;return Response.json({choices:[{finish_reason:'stop',message:{content:JSON.stringify(output)}}]});}});
  const response=await exports.POST(new Request('http://localhost',{method:'POST',body:JSON.stringify({input:evidence.provenance.source_input})}));assert.equal(calls,1);return {status:response.status,body:await response.json(),diagnostics};
 }
-test('route logs only allowlisted failure detail in development; HTTP body remains unchanged in every environment',async()=>{
+test('route retains development detail and adds production classification with unchanged HTTP body',async()=>{
  for(const env of ['development','production',undefined]){const result=await route(env,true);assert.equal(result.status,502);assert.deepEqual(result.body,{error:'Evidence authorization atoms have invalid source support.'});
-  if(env==='development'){assert.equal(result.diagnostics.length,1);assert.equal(result.diagnostics[0][0],"[What's Left?] Evidence authorization atom rejection");assert.deepEqual(JSON.parse(result.diagnostics[0][1]),{reason:'numeric_anchor_source_missing',atom_index:0,failing_field:'amount'});assert.doesNotMatch(JSON.stringify(result.diagnostics),/1901|Cornhead|SECRET|choices|source_input/);}else assert.deepEqual(result.diagnostics,[]);
+  if(env==='development'){assert.equal(result.diagnostics.length,1);assert.equal(result.diagnostics[0][0],"[What's Left?] Evidence authorization atom rejection");assert.deepEqual(JSON.parse(result.diagnostics[0][1]),{reason:'numeric_anchor_source_missing',atom_index:0,failing_field:'amount'});assert.doesNotMatch(JSON.stringify(result.diagnostics),/1901|Cornhead|SECRET|choices|source_input/);}else if(env==='production')assert.deepEqual(result.diagnostics,[["[What's Left?] Evidence failure",JSON.stringify({classification:'evidence_authorization_atom_invalid'})]]);else assert.deepEqual(result.diagnostics,[]);
  }
 });
 test('valid route results emit no diagnostic in development or production',async()=>{

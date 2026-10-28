@@ -22,11 +22,32 @@ const json = (body: unknown, status = 200) => Response.json(body, {
 const error = (message: string, status: number) => json({ error: message }, status);
 
 type ProviderFailure = "provider_timeout" | "provider_http_error" | "provider_network_error"
-  | "provider_empty_response" | "provider_invalid_json" | "provider_schema_invalid" | "provider_response_invalid";
-const providerDiagnostic = (reason: ProviderFailure, detail: { status?: number; configured_timeout_ms?: number; elapsed_ms?: number } = {}) => {
-  if (process.env.NODE_ENV === "development") {
-    console.warn("[What's Left?] Evidence provider rejection", JSON.stringify({ reason, ...detail }));
-  }
+  | "provider_empty_response" | "provider_invalid_json" | "provider_schema_invalid" | "provider_response_invalid"
+  | "currency_conflict" | "authorization_atom_invalid" | "authorization_record_invalid" | "unhandled_exception";
+const providerDiagnostic = (reason: ProviderFailure, detail: { status?: number; configured_timeout_ms?: number; elapsed_ms?: number } = {},
+  failure?: unknown, phase?: "request" | "response_json" | "output") => {
+  // Fixed classifications only. Never serialize exceptions, messages or causes.
+  try {
+    if (process.env.NODE_ENV === "production") {
+      const classifications: Record<ProviderFailure, string> = {
+        provider_http_error: "evidence_provider_non_2xx", provider_timeout: "evidence_provider_timeout",
+        provider_network_error: "evidence_provider_network_error", provider_empty_response: phase === "output" ? "evidence_invalid_json" : "evidence_invalid_response",
+        provider_invalid_json: "evidence_invalid_json", provider_schema_invalid: "evidence_schema_invalid",
+        provider_response_invalid: "evidence_invalid_response", currency_conflict: "evidence_currency_conflict",
+        authorization_atom_invalid: "evidence_authorization_atom_invalid",
+        authorization_record_invalid: "evidence_authorization_record_invalid", unhandled_exception: "evidence_unhandled_exception",
+      };
+      let error_name = "unknown";
+      try {
+        const name = failure && typeof failure === "object" && "name" in failure ? failure.name : undefined;
+        if (typeof name === "string" && ["Error", "TypeError", "RangeError", "SyntaxError", "AbortError", "TimeoutError"].includes(name)) error_name = name;
+      } catch { /* Exception properties are not trusted. */ }
+      console.warn("[What's Left?] Evidence failure", JSON.stringify({ classification: classifications[reason], ...detail,
+        ...(phase ? { phase, error_name } : {}) }));
+    } else if (process.env.NODE_ENV === "development" && reason.startsWith("provider_")) {
+      console.warn("[What's Left?] Evidence provider rejection", JSON.stringify({ reason, ...detail }));
+    }
+  } catch { /* Diagnostics must never change the route response. */ }
 };
 
 async function handlePOST(request: Request) {
@@ -93,8 +114,8 @@ async function handlePOST(request: Request) {
     let evidence: unknown;
     try {
       evidence = JSON.parse(content);
-    } catch {
-      providerDiagnostic(content.trim() === "" ? "provider_empty_response" : "provider_invalid_json");
+    } catch (failure) {
+      providerDiagnostic(content.trim() === "" ? "provider_empty_response" : "provider_invalid_json", {}, failure, "output");
       return error("Evidence provider returned invalid JSON.", 502);
     }
     // Total support is extraction-only and optional locally: absent or malformed
@@ -107,7 +128,10 @@ async function handlePOST(request: Request) {
     }
     const { authorization_atoms, ...validated } = baseOutput as Evidence & { authorization_atoms: unknown };
     const normalized = normalizeEvidenceCurrency(validated.currency, body.input);
-    if (!normalized.ok) return error("Evidence currency conflicts with the explicit source currency or is unsupported.", 502);
+    if (!normalized.ok) {
+      providerDiagnostic("currency_conflict");
+      return error("Evidence currency conflicts with the explicit source currency or is unsupported.", 502);
+    }
     const authorization_records = assembleAuthorizationRecords(authorization_atoms, sources, normalized.currency,
       process.env.NODE_ENV === "development" ? diagnostic => {
         console.warn("[What's Left?] Evidence authorization atom rejection", JSON.stringify(diagnostic));
@@ -115,11 +139,17 @@ async function handlePOST(request: Request) {
       process.env.NODE_ENV === "development" ? diagnostic => {
         console.warn("[What's Left?] Evidence authorization assembly", JSON.stringify(diagnostic));
       } : undefined);
-    if (!authorization_records) return error("Evidence authorization atoms have invalid source support.", 502);
+    if (!authorization_records) {
+      providerDiagnostic("authorization_atom_invalid");
+      return error("Evidence authorization atoms have invalid source support.", 502);
+    }
     if (!validateAuthorizationRecords(authorization_records, sources, normalized.currency,
       process.env.NODE_ENV === "development" ? diagnostic => {
         console.warn("[What's Left?] Evidence authorization rejection", JSON.stringify(diagnostic));
-      } : undefined)) return error("Evidence authorization records have invalid source support.", 502);
+      } : undefined)) {
+      providerDiagnostic("authorization_record_invalid");
+      return error("Evidence authorization records have invalid source support.", 502);
+    }
     const grounded = groundBusinessTotals({ ...validated, currency: normalized.currency }, business_total_support, sources);
     if (process.env.NODE_ENV === "development" && business_total_support !== undefined) {
       console.warn("[What's Left?] Evidence business total grounding", JSON.stringify(grounded.diagnostic));
@@ -135,12 +165,14 @@ async function handlePOST(request: Request) {
       const name = failure && typeof failure === "object" && "name" in failure ? failure.name : undefined;
       if (providerSignal?.aborted || name === "TimeoutError" || name === "AbortError") {
         providerDiagnostic("provider_timeout", { configured_timeout_ms: UPSTREAM_TIMEOUT_MS,
-          elapsed_ms: Math.max(0, Date.now() - providerStarted) });
+          elapsed_ms: Math.max(0, Date.now() - providerStarted) }, failure, providerPhase);
       } else if (providerPhase === "response_json" && name === "SyntaxError") {
-        providerDiagnostic("provider_invalid_json");
+        providerDiagnostic("provider_invalid_json", {}, failure, providerPhase);
       } else {
-        providerDiagnostic(providerPhase === "request" || name === "TypeError" ? "provider_network_error" : "provider_response_invalid");
+        providerDiagnostic(providerPhase === "request" || name === "TypeError" ? "provider_network_error" : "provider_response_invalid", {}, failure, providerPhase);
       }
+    } else {
+      providerDiagnostic("unhandled_exception", {}, failure, providerPhase);
     }
     // Do not return/log upstream bodies, exception details, headers, or business input.
     return error("Evidence provider is unavailable or returned an invalid response.", 502);

@@ -13,11 +13,11 @@ base.revenue={...base.revenue,total:null};base.costs={...base.costs,total:null};
 const output={...base,authorization_atoms:[]};
 const envelope=content=>Response.json({choices:[{finish_reason:'stop',message:{content}}]});
 const generic={error:'Evidence provider is unavailable or returned an invalid response.'};
-async function run(fetcher,{env='development',aborted=false,input='PRIVATE business/source prose. Currency: USD.'}={}){
+async function run(fetcher,{env='development',aborted=false,input='PRIVATE business/source prose. Currency: USD.',overrides={},loggerThrows=false}={}){
  const logs=[],dependencies=productionModules(),exports={};let calls=0;let ticks=0;
  const code=ts.transpileModule(fs.readFileSync('src/app/api/analyze/evidence/route.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
  const abort={timeout:ms=>{assert.equal(ms,60000);if(!aborted)return AbortSignal.timeout(ms);const controller=new AbortController();controller.abort(new DOMException('PRIVATE timeout cause','TimeoutError'));return controller.signal;}};
- vm.runInNewContext(code,{exports,Response,AbortSignal:abort,Date:{now:()=>ticks++===0?1000:61037},process:{env:{NODE_ENV:env,NEBIUS_API_KEY:'SECRET_API_KEY'}},console:{warn:(...args)=>logs.push(args)},require:s=>dependencies(path.resolve('src/app/api/analyze/evidence',s+'.ts')),fetch:async(url,options)=>{calls++;assert.equal(url,'https://api.tokenfactory.nebius.com/v1/chat/completions');const payload=JSON.parse(options.body);assert.equal(payload.model,'nvidia/Nemotron-3-Ultra-550b-a55b');assert.equal(payload.temperature,.2);assert.equal(payload.max_tokens,4000);assert.equal(options.cache,'no-store');return fetcher(url,options);}});
+ vm.runInNewContext(code,{exports,Response,AbortSignal:abort,Date:{now:()=>ticks++===0?1000:61037},process:{env:{NODE_ENV:env,NEBIUS_API_KEY:'SECRET_API_KEY'}},console:{warn:(...args)=>{if(loggerThrows)throw Error('PRIVATE logger failure');logs.push(args);}},require:s=>({...dependencies(path.resolve('src/app/api/analyze/evidence',s+'.ts')),...overrides[s]}),fetch:async(url,options)=>{calls++;assert.equal(url,'https://api.tokenfactory.nebius.com/v1/chat/completions');const payload=JSON.parse(options.body);assert.equal(payload.model,'nvidia/Nemotron-3-Ultra-550b-a55b');assert.equal(payload.temperature,.2);assert.equal(payload.max_tokens,4000);assert.equal(options.cache,'no-store');return fetcher(url,options);}});
  const response=await exports.POST(new Request('http://localhost',{method:'POST',body:JSON.stringify({input})}));
  assert.equal(calls,1);return {status:response.status,body:await response.json(),logs};
 }
@@ -50,9 +50,9 @@ test('response body read timeout and stream failure retain boundary classificati
  const timeout=await run(async()=>({ok:true,json:async()=>{throw new DOMException('PRIVATE','TimeoutError');}}));assert.equal(diagnostic(timeout).reason,'provider_timeout');assert.deepEqual(timeout.body,generic);
  const network=await run(async()=>({ok:true,json:async()=>{throw new TypeError('PRIVATE socket');}}));assert.equal(diagnostic(network).reason,'provider_network_error');assert.deepEqual(network.body,generic);
 });
-test('production errors remain generic with no diagnostic or client leakage',async()=>{
+test('production errors retain generic client responses and emit a safe failure classification',async()=>{
  for(const fetcher of [async()=>{throw new DOMException('PRIVATE SECRET_API_KEY','TimeoutError');},async()=>new Response('PRIVATE upstream',{status:429}),async()=>new Response('PRIVATE malformed')]){
-  const dev=await run(fetcher),prod=await run(fetcher,{env:'production'});assert.equal(prod.status,502);assert.deepEqual(prod.body,dev.body);assert.deepEqual(prod.logs,[]);assert.doesNotMatch(JSON.stringify(prod.body),/PRIVATE|SECRET_API_KEY|configured_timeout|elapsed_ms|provider_timeout/);
+  const dev=await run(fetcher),prod=await run(fetcher,{env:'production'});assert.equal(prod.status,502);assert.deepEqual(prod.body,dev.body);assert.equal(prod.logs.length,1);assert.equal(prod.logs[0][0],"[What's Left?] Evidence failure");assert.doesNotMatch(JSON.stringify(prod.logs),/PRIVATE|SECRET_API_KEY/);assert.doesNotMatch(JSON.stringify(prod.body),/PRIVATE|SECRET_API_KEY|configured_timeout|elapsed_ms|provider_timeout/);
  }
 });
 test('diagnostics contain only allowlisted category/status/duration fields, never prose, prompts, secrets or payloads',async()=>{
@@ -68,4 +68,44 @@ test('atomic source-support failures remain separate from provider failures',asy
  invalid.authorization_atoms[0].amount=1901;
  const result=await run(async()=>envelope(JSON.stringify(invalid)),{input:e.provenance.source_input});
  assert.equal(result.status,502);assert.deepEqual(result.body,{error:'Evidence authorization atoms have invalid source support.'});assert.equal(result.logs.length,1);assert.equal(result.logs[0][0],"[What's Left?] Evidence authorization atom rejection");assert.equal(JSON.parse(result.logs[0][1]).reason,'numeric_anchor_source_missing');
+});
+
+const productionDiagnostic=result=>{assert.equal(result.logs.length,1);assert.equal(result.logs[0][0],"[What's Left?] Evidence failure");return JSON.parse(result.logs[0][1]);};
+for(const [label,fetcher,classification] of [
+ ['non-2xx',async()=>new Response('PRIVATE body',{status:429}),'evidence_provider_non_2xx'],
+ ['invalid response',async()=>Response.json({choices:[]}),'evidence_invalid_response'],
+ ['invalid envelope JSON',async()=>new Response('PRIVATE malformed'),'evidence_invalid_json'],
+ ['invalid completion JSON',async()=>envelope('PRIVATE malformed'),'evidence_invalid_json'],
+ ['empty completion JSON',async()=>envelope(''),'evidence_invalid_json'],
+ ['invalid schema',async()=>envelope('{"PRIVATE":"SECRET_API_KEY"}'),'evidence_schema_invalid'],
+ ['currency conflict',async()=>envelope(JSON.stringify({...output,currency:'EUR'})),'evidence_currency_conflict'],
+ ['invalid authorization atoms',async()=>envelope(JSON.stringify({...output,authorization_atoms:[{kind:'schedule_constraint',intervention:'headcount_reduction',scope:'tuesday_evening_6pm_10pm',constraint:'rest_schedule_unchanged',source_refs:[]}]})),'evidence_authorization_atom_invalid'],
+ ['timeout',async()=>{throw new DOMException('PRIVATE SECRET_API_KEY','TimeoutError');},'evidence_provider_timeout'],
+ ['network',async()=>{throw new TypeError('PRIVATE SECRET_API_KEY');},'evidence_provider_network_error'],
+])test(`production ${label} identifies the failure without changing its response`,async()=>{
+ const dev=await run(fetcher),prod=await run(fetcher,{env:'production'});
+ assert.equal(prod.status,502);assert.deepEqual(prod.body,dev.body);
+ assert.equal(productionDiagnostic(prod).classification,classification);
+ assert.doesNotMatch(JSON.stringify(prod.logs),/PRIVATE|SECRET_API_KEY|Bearer|stack|message|source prose/);
+});
+test('production authorization record rejection has its own classification',async()=>{
+ const result=await run(async()=>envelope(JSON.stringify(output)),{env:'production',overrides:{'./authorization-records':{validateAuthorizationRecords:()=>false}}});
+ assert.equal(result.status,502);assert.deepEqual(result.body,{error:'Evidence authorization records have invalid source support.'});
+ assert.deepEqual(productionDiagnostic(result),{classification:'evidence_authorization_record_invalid'});
+});
+for(const name of ['Error','PRIVATE SECRET_API_KEY'])test(`post-provider exceptions expose only allowlisted names: ${name==='Error'?'known':'unknown'}`,async()=>{
+ const failure=new Error('PRIVATE payload SECRET_API_KEY');failure.name=name;
+ const result=await run(async()=>envelope(JSON.stringify(output)),{env:'production',overrides:{'./business-totals':{groundBusinessTotals:()=>{throw failure;}}}});
+ assert.equal(result.status,502);assert.deepEqual(result.body,generic);
+ assert.deepEqual(productionDiagnostic(result),{classification:'evidence_unhandled_exception',phase:'output',error_name:name==='Error'?'Error':'unknown'});
+ assert.doesNotMatch(JSON.stringify(result.logs),/PRIVATE|SECRET_API_KEY|stack|message/);
+});
+test('production diagnostic failure cannot alter the existing 502 response',async()=>{
+ const result=await run(async()=>new Response('PRIVATE body',{status:429}),{env:'production',loggerThrows:true});
+ assert.equal(result.status,502);assert.deepEqual(result.body,{error:'Evidence provider request failed.'});
+});
+test('production success remains identical and logs no diagnostic',async()=>{
+ const dev=await run(async()=>envelope(JSON.stringify(output)));
+ const prod=await run(async()=>envelope(JSON.stringify(output)),{env:'production'});
+ assert.equal(prod.status,200);assert.deepEqual(prod.body,dev.body);assert.deepEqual(prod.logs,[]);
 });
