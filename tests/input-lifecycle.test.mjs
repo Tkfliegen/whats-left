@@ -75,3 +75,14 @@ test('source snapshot freezes the copied file list and input text',()=>{
  const source=snapshotSource(draft);draft.notes='Second';files.push(new File(['y'],'two.pdf'));
  assert.equal(source.notes,'First');assert.equal(source.files.length,1);assert.ok(Object.isFrozen(source));assert.ok(Object.isFrozen(source.files));assert.match(sourceSummary(source),/Note \+ one.pdf/);
 });
+
+test('verification guidance submits corrected inputs instead of forcing the failed snapshot',async()=>{
+ const h=harness(),calls=[];
+ const props={complete:false,isRunning:false,analysisError:'',retryable:false,onSource(){},onAnalyze:async(...args)=>{calls.push(args);return false;}};
+ h.render(props);h.controls.notes.value='Original details';await h.submit();
+ h.controls.notes.value='Original details plus clarified Tuesday sales and schedule';
+ h.render({...props,analysisError:'Evidence failed',failureHeading:'Some information could not be verified'});
+ assert.match(h.find('button',n=>n.props.className?.includes('analyze-button')).props.children.join(''),/Update details and analyze/);
+ await h.submit();assert.equal(calls.length,2);assert.equal(calls[1][1],'Original details plus clarified Tuesday sales and schedule');
+ assert.equal(h.controls.notes.value,'Original details plus clarified Tuesday sales and schedule');assert.equal(h.navigations.length,0);
+});

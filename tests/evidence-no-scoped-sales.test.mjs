@@ -1,21 +1,10 @@
+import {readFileSync} from 'node:fs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {productionModules} from './helpers/provenance.mjs';
 
 // Exact reported demo input, distinct from the frozen complete F01 benchmark.
-const input = `Monthly revenue is USD 100,000.
-
-Total monthly operating costs are USD 95,800.
-
-Tuesday evening staffing has 4 workers.
-
-The total Tuesday evening staffing cost is USD 2,500.
-
-This means the labor cost is USD 625 per worker.
-
-Management has approved testing a reduction of 1 worker on Tuesday evening.
-
-Please analyze where margin may be leaking and what actionable change can be tested.`;
+const input = readFileSync('tests/fixtures/golden-labor-no-scoped-sales.txt', 'utf8');
 const plain = value => JSON.parse(JSON.stringify(value));
 const evidence = {
   business_type: null, period: 'monthly', currency: 'USD',
@@ -80,6 +69,7 @@ test('exact no-sales input: real producer request explicitly forbids monthly-rev
 test('omitted sales and schedule atoms succeed, preserve independent facts and business totals, and assemble no Labor grant', async () => {
   const h = harness(), result = await h.invoke('evidence', {input});
   assert.equal(result.status, 200);
+  assert.deepEqual(result.body.guidance, {missing_requirements: ['tuesday_evening_sales', 'unchanged_schedule']});
   const actual = result.body.evidence;
   assert.equal(actual.revenue.total, 100000);
   assert.equal(actual.costs.total, 95800);

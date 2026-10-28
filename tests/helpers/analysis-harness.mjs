@@ -14,8 +14,9 @@ export function harness(fetcher, { nodeEnv = "test" } = {}) {
   const display={exports:{}};vm.runInNewContext(compile('../src/lib/leak-display.ts'),display);
   const scenarioDisplay={exports:{}};vm.runInNewContext(compile('../src/lib/scenario-display.ts'),scenarioDisplay);
   const decisionDisplay={exports:{}};vm.runInNewContext(compile('../src/lib/decision-display.ts'),decisionDisplay);
+  const status={exports:{}};vm.runInNewContext(compile('../src/lib/analysis-status.ts'),status);
   const tracing={exports:{}};vm.runInNewContext(compile('../src/lib/observability/client.ts'),{...tracing,fetch:fetcher});
-  const sandbox={exports:{},require:specifier=>specifier==='react'?react:specifier==='@/lib/observability/client'?tracing.exports:specifier==='@/lib/scenario-display'?scenarioDisplay.exports:specifier==='@/lib/decision-display'?decisionDisplay.exports:display.exports,fetch:fetcher,AbortController,AbortSignal,
+  const sandbox={exports:{},require:specifier=>specifier==='react'?react:specifier==='@/lib/analysis-status'?status.exports:specifier==='@/lib/observability/client'?tracing.exports:specifier==='@/lib/scenario-display'?scenarioDisplay.exports:specifier==='@/lib/decision-display'?decisionDisplay.exports:display.exports,fetch:fetcher,AbortController,AbortSignal,
     process:{env:{NODE_ENV:nodeEnv}},console:{warn:(...args)=>warnings.push(args)},
     window:{setTimeout(fn,delay){const id=++nextTimer;timers.set(id,{fn,delay});return id;},clearTimeout(id){timers.delete(id);}}};
   vm.runInNewContext(compile('../src/components/use-demo-analysis.ts'),sandbox);

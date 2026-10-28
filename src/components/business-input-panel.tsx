@@ -6,9 +6,9 @@ import { snapshotSource, sourceSummary, type AnalysisSource } from "@/lib/analys
 type Props = {
   onAnalyze: (input: string, notes: string) => Promise<boolean | undefined>;
   onSource: (summary: string) => void;
-  complete: boolean; isRunning: boolean; analysisError: string;
+  complete: boolean; isRunning: boolean; analysisError: string; retryable?: boolean; failureHeading?: string;
 };
-export function BusinessInputPanel({ onAnalyze, onSource, complete, isRunning, analysisError }: Props) {
+export function BusinessInputPanel({ onAnalyze, onSource, complete, isRunning, analysisError, retryable = true, failureHeading }: Props) {
   const [files, setFiles] = useState<File[]>([]);
   const [error, setError] = useState("");
   const [pending, setPending] = useState(false);
@@ -30,13 +30,13 @@ export function BusinessInputPanel({ onAnalyze, onSource, complete, isRunning, a
       if (disabled || locked.current) return;
       const form = event.currentTarget;
       const data = new FormData(form);
-      const source = analysisError && failed.current ? failed.current : snapshotSource({
+      const source = analysisError && retryable && failed.current ? failed.current : snapshotSource({
         businessName: String(data.get("businessName") ?? ""), businessType: String(data.get("businessType") ?? ""),
         notes: String(data.get("notes") ?? ""), files,
       });
       setActiveSummary(sourceSummary(source));
       // Retry the exact failed snapshot, even if the editable draft changed.
-      if (analysisError && failed.current) {
+      if (analysisError && retryable && failed.current) {
         (form.elements.namedItem("businessName") as HTMLInputElement).value = source.businessName;
         (form.elements.namedItem("businessType") as HTMLSelectElement).value = source.businessType;
         (form.elements.namedItem("notes") as HTMLTextAreaElement).value = source.notes;
@@ -60,10 +60,10 @@ export function BusinessInputPanel({ onAnalyze, onSource, complete, isRunning, a
         <label className="upload-zone" aria-disabled={disabled} onDragOver={event => event.preventDefault()} onDrop={event => { event.preventDefault(); addFiles(event.dataTransfer.files); }}><span className="text-xl text-[var(--accent-primary)]" aria-hidden="true">↥</span><span className="text-xs text-[var(--text-secondary)]">Drop your business files here, or <span className="text-[var(--accent-primary)]">browse</span></span><span className="text-[10px] text-[var(--text-muted)]">CSV, PDF, XLSX, images · Local selection only · Not analyzed</span><input ref={fileInput} className="sr-only" aria-label="Choose business files" type="file" multiple accept=".csv,.pdf,.xlsx,.png,.jpg,.jpeg,.webp,.gif" onChange={event => addFiles(event.target.files)} /></label>
         <ul className="space-y-2" aria-label="Selected files">{files.map(file => <li key={file.name} className="flex items-center gap-2 text-xs"><span className="min-w-0 flex-1 truncate text-[var(--text-secondary)]">{file.name}</span><button type="button" aria-label={`Remove ${file.name}`} onClick={() => { setFiles(current => current.filter(item => item !== file)); if (fileInput.current) fileInput.current.value = ""; }} className="px-2 text-[var(--text-muted)]">×</button></li>)}</ul>
       </fieldset>
-      {(error || analysisError) && <p role="alert" className="text-xs text-[var(--text-secondary)]">{analysisError || error}</p>}
-      {analysisError && <p className="text-xs text-[var(--text-muted)]">Retry uses the retained inputs from the failed run.</p>}
+      {(error || analysisError) && <p role="alert" className="text-xs text-[var(--text-secondary)]">{analysisError ? failureHeading ?? "Analysis could not be completed" : error}</p>}
+      {analysisError && <p className="text-xs text-[var(--text-muted)]">{retryable ? "Retry uses the retained inputs from the failed run." : "Your inputs are preserved. Edit the details that need clarification before running again."}</p>}
       {disabled && activeSummary && <p role="status" className="text-xs text-[var(--text-secondary)]">Analyzing: {activeSummary}</p>}
-      <button type="button" onClick={event => event.currentTarget.form?.requestSubmit()} disabled={disabled} aria-busy={disabled} className="flex w-full items-center justify-center gap-3 rounded-lg analyze-button px-4 py-3 text-sm font-semibold transition">{disabled ? "Analysis in progress…" : analysisError ? "Retry full analysis" : complete ? "Run Analysis Again" : "Analyze My Business"}<span aria-hidden="true">↗</span></button>
+      <button type="button" onClick={event => event.currentTarget.form?.requestSubmit()} disabled={disabled} aria-busy={disabled} className="flex w-full items-center justify-center gap-3 rounded-lg analyze-button px-4 py-3 text-sm font-semibold transition">{disabled ? "Analysis in progress…" : analysisError ? retryable ? "Retry full analysis" : "Update details and analyze" : complete ? "Run Analysis Again" : "Analyze My Business"}<span aria-hidden="true">↗</span></button>
       <p className="text-center text-[10px] text-[var(--text-muted)]">AI analysis with deterministic validation and calculations · Files are not processed.</p>
     </form>
   </section>;

@@ -1,0 +1,13 @@
+Monthly revenue is USD 100,000.
+
+Total monthly operating costs are USD 95,800.
+
+Tuesday evening staffing has 4 workers.
+
+The total Tuesday evening staffing cost is USD 2,500.
+
+This means the labor cost is USD 625 per worker.
+
+Management has approved testing a reduction of 1 worker on Tuesday evening.
+
+Please analyze where margin may be leaking and what actionable change can be tested.

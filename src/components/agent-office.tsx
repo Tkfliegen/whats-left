@@ -1,5 +1,6 @@
 "use client";
 
+import { analysisNotice, type AnalysisNotice } from "@/lib/analysis-status";
 import type { DecisionGateResponse } from "@/types/decision-gate";
 import type { DecisionResult } from "@/types/decision";
 import type { ScenarioResponse } from "@/types/scenarios";
@@ -82,11 +83,12 @@ function HandoffDocument({ from, reducedMotion }: { from: number; reducedMotion:
   );
 }
 
-export function AgentOffice({ workflow, stage, evidence, leakResult, scenarioResult, simulationResult, decisionGateResult, decisionResult, analysisError }: { workflow: Workflow; stage: AnalysisStage; evidence: Evidence | null; leakResult: LeakResult | null; scenarioResult: ScenarioResponse | null; simulationResult: SimulationResponse | null; decisionGateResult: DecisionGateResponse | null; decisionResult: DecisionResult | null; analysisError: string }) {
+export function AgentOffice({ workflow, stage, evidence, leakResult, scenarioResult, simulationResult, decisionGateResult, decisionResult, analysisError, notice }: { notice?: AnalysisNotice | null; workflow: Workflow; stage: AnalysisStage; evidence: Evidence | null; leakResult: LeakResult | null; scenarioResult: ScenarioResponse | null; simulationResult: SimulationResponse | null; decisionGateResult: DecisionGateResponse | null; decisionResult: DecisionResult | null; analysisError: string }) {
   const reducedMotion = useReducedMotion() ?? false;
   const { index: active, phase } = workflow;
+  const displayNotice = notice ?? (analysisError ? analysisNotice({ failure: "unclassified_failure", complete: false }) : null);
   const status = analysisError
-    ? { ...statusContent[stage], title: "Analysis stopped.", subtitle: analysisError, result: undefined }
+    ? { ...statusContent[stage], title: "Analysis stopped.", subtitle: "Review the status guidance before continuing.", result: undefined }
     : stage === "evidence"
     ? { ...statusContent.evidence, result: evidence ? evidenceSummary(evidence) : undefined }
     : stage === "leaks"
@@ -106,7 +108,7 @@ export function AgentOffice({ workflow, stage, evidence, leakResult, scenarioRes
           <p className="eyebrow mb-2">FOUR SPECIALISTS. ONE CLEAR ANSWER.</p>
           <h2 id="office-title" className="text-lg font-medium">Agent Office</h2>
         </div>
-        <span className="badge"><span className="h-1.5 w-1.5 rounded-full bg-[var(--agent-leak)]" />{phase === "idle" ? workflow.started ? "Analysis stopped" : "Ready to analyze" : phase === "pause" ? "Analysis complete" : phase === "handoff" ? "Task complete · Handoff" : "Team at work"}</span>
+        <span className="badge"><span className="h-1.5 w-1.5 rounded-full bg-[var(--agent-leak)]" />{analysisError ? "Analysis stopped" : phase === "idle" ? workflow.started ? "Analysis stopped" : "Ready to analyze" : phase === "pause" ? "Analysis complete" : phase === "handoff" ? "Task complete · Handoff" : "Team at work"}</span>
       </div>
 
       <div className="mx-4 mt-6 flex flex-1 items-center sm:mx-6">
@@ -175,10 +177,12 @@ export function AgentOffice({ workflow, stage, evidence, leakResult, scenarioRes
               exit={{ opacity: 0, y: reducedMotion ? 0 : -4 }}
               transition={{ duration: 0.3 }}
             >
-              <p className="text-[var(--text-primary)]">{status.title}</p>
-              <p>{status.subtitle}</p>
+              <p className="text-[var(--text-primary)]">{displayNotice?.heading ?? status.title}</p>
+              <p>{displayNotice?.explanation ?? status.subtitle}</p>
+              {!!displayNotice?.items.length && <ul className="mt-2 list-disc space-y-1 pl-4">{displayNotice.items.map(item => <li key={item}>{item}</li>)}</ul>}
+              {displayNotice && <p className="mt-2 font-medium">{displayNotice.next}</p>}
               <div className="mt-1.5 min-h-[1.125rem]">
-                {status.result && (
+                {!displayNotice && status.result && (
                   <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

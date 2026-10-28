@@ -8,6 +8,7 @@ import { createEvidenceOutputSchema, evidenceSystemPrompt, matchesSchema } from 
 import { createEvidenceProvenance } from "./provenance";
 import { normalizeEvidenceCurrency } from "./currency";
 import type { Evidence } from "@/types/evidence";
+import type { MissingRequirement } from "@/lib/analysis-status";
 
 export const runtime = "nodejs";
 
@@ -161,6 +162,7 @@ async function handlePOST(request: Request) {
       return error("Evidence currency conflicts with the explicit source currency or is unsupported.", 502);
     }
     let atomFailure: AtomFailure | undefined;
+    const missingRequirements = new Set<MissingRequirement>();
     const authorization_records = assembleAuthorizationRecords(authorization_atoms, sources, normalized.currency,
       process.env.NODE_ENV === "development" || process.env.NODE_ENV === "production" ? diagnostic => {
         try {
@@ -177,9 +179,20 @@ async function handlePOST(request: Request) {
           }
         } catch { /* Diagnostics must never affect authorization validation. */ }
       } : undefined,
-      process.env.NODE_ENV === "development" ? diagnostic => {
-        console.warn("[What's Left?] Evidence authorization assembly", JSON.stringify(diagnostic));
-      } : undefined);
+      diagnostic => {
+        if (process.env.NODE_ENV === "development") console.warn("[What's Left?] Evidence authorization assembly", JSON.stringify(diagnostic));
+        // Presentation only: use the assembler's existing missing-kind result.
+        // Ambiguous/conflicting support is not reported as missing information.
+        if (diagnostic.intervention !== "headcount_reduction" || diagnostic.ambiguous_atom_kinds.length
+          || diagnostic.conflicting_atom_kinds.length) return;
+        const requirements: Partial<Record<string, MissingRequirement>> = { scoped_sales: "tuesday_evening_sales",
+          scoped_staffing_cost: "tuesday_evening_staffing_cost", headcount_reduction_permission: "staffing_test_permission",
+          schedule_constraint: "unchanged_schedule" };
+        for (const kind of diagnostic.missing_required_atom_kinds) {
+          const requirement = requirements[kind];
+          if (requirement) missingRequirements.add(requirement);
+        }
+      });
     if (!authorization_records) {
       providerDiagnostic("authorization_atom_invalid", atomFailure);
       return error("Evidence authorization atoms have invalid source support.", 502);
@@ -200,7 +213,8 @@ async function handlePOST(request: Request) {
       process.env.NODE_ENV === "development" ? logCalculationDiagnostic : undefined);
     const calculation_facts = calculation_support === undefined ? undefined : groundedCalculationFacts;
     const filtered = { ...canonical, missing_information: filterMissingInformation(canonical.missing_information, sources) };
-    return json({ evidence: { ...filtered, provenance: { ...createEvidenceProvenance(filtered, body.input.trim(), calculation_facts), authorization_records } } });
+    return json({ evidence: { ...filtered, provenance: { ...createEvidenceProvenance(filtered, body.input.trim(), calculation_facts), authorization_records } },
+      ...(missingRequirements.size ? { guidance: { missing_requirements: [...missingRequirements] } } : {}) });
   } catch (failure) {
     if (providerPhase !== "output") {
       const name = failure && typeof failure === "object" && "name" in failure ? failure.name : undefined;
