@@ -26,8 +26,17 @@ type ProviderFailure = "provider_timeout" | "provider_http_error" | "provider_ne
   | "currency_conflict" | "authorization_atom_invalid" | "authorization_record_invalid" | "unhandled_exception";
 type AtomFailure = { atom_index: number; atom_kind: string;
   rejection_reason: "invalid_source_refs" | "numeric_anchor_source_missing" | "currency_mismatch" };
+type InvalidResponseDiagnostic = {
+  invalid_response_subtype: "missing_choice" | "missing_message" | "refusal_present"
+    | "non_stop_finish_reason" | "non_string_content" | "envelope_read_exception";
+  phase: "completion_guard" | "response_json";
+  content_type: "missing" | "null" | "string" | "array" | "object" | "number" | "boolean";
+  finish_reason_category: "stop" | "length" | "tool_calls" | "function_call" | "content_filter" | "other";
+  refusal_present: boolean;
+  tool_calls_present: boolean;
+};
 const providerDiagnostic = (reason: ProviderFailure, detail: { status?: number; configured_timeout_ms?: number; elapsed_ms?: number } & Partial<AtomFailure> = {},
-  failure?: unknown, phase?: "request" | "response_json" | "output") => {
+  failure?: unknown, phase?: "request" | "response_json" | "output", invalidResponse?: () => Partial<InvalidResponseDiagnostic>) => {
   // Fixed classifications only. Never serialize exceptions, messages or causes.
   try {
     if (process.env.NODE_ENV === "production") {
@@ -44,7 +53,7 @@ const providerDiagnostic = (reason: ProviderFailure, detail: { status?: number; 
         const name = failure && typeof failure === "object" && "name" in failure ? failure.name : undefined;
         if (typeof name === "string" && ["Error", "TypeError", "RangeError", "SyntaxError", "AbortError", "TimeoutError"].includes(name)) error_name = name;
       } catch { /* Exception properties are not trusted. */ }
-      console.warn("[What's Left?] Evidence failure", JSON.stringify({ classification: classifications[reason], ...detail,
+      console.warn("[What's Left?] Evidence failure", JSON.stringify({ classification: classifications[reason], ...detail, ...invalidResponse?.(),
         ...(phase ? { phase, error_name } : {}) }));
     } else if (process.env.NODE_ENV === "development" && reason.startsWith("provider_")) {
       console.warn("[What's Left?] Evidence provider rejection", JSON.stringify({ reason, ...detail }));
@@ -110,7 +119,24 @@ async function handlePOST(request: Request) {
     const choice = completion?.choices?.[0];
     const content = choice?.message?.content;
     if (choice?.finish_reason !== "stop" || choice?.message?.refusal || typeof content !== "string") {
-      providerDiagnostic(choice == null ? "provider_empty_response" : "provider_response_invalid");
+      providerDiagnostic(choice == null ? "provider_empty_response" : "provider_response_invalid", {}, undefined, undefined, () => {
+        const message = choice?.message, finish = choice?.finish_reason;
+        const refusal_present = Boolean(message?.refusal);
+        // Diagnostic precedence only; the acceptance predicate above is unchanged.
+        // missing choice > missing message > refusal > non-stop finish > non-string content.
+        return {
+          invalid_response_subtype: choice == null ? "missing_choice" : message == null ? "missing_message"
+            : refusal_present ? "refusal_present" : finish !== "stop" ? "non_stop_finish_reason" : "non_string_content",
+          phase: "completion_guard",
+          content_type: content === undefined ? "missing" : content === null ? "null" : Array.isArray(content) ? "array"
+            : typeof content === "string" ? "string" : typeof content === "number" ? "number"
+              : typeof content === "boolean" ? "boolean" : typeof content === "object" ? "object" : "missing",
+          finish_reason_category: finish === "stop" ? "stop" : finish === "length" ? "length"
+            : finish === "tool_calls" ? "tool_calls" : finish === "function_call" ? "function_call"
+              : finish === "content_filter" ? "content_filter" : "other",
+          refusal_present, tool_calls_present: message?.tool_calls != null,
+        };
+      });
       return error("Evidence provider returned an invalid response.", 502);
     }
     let evidence: unknown;
@@ -184,7 +210,9 @@ async function handlePOST(request: Request) {
       } else if (providerPhase === "response_json" && name === "SyntaxError") {
         providerDiagnostic("provider_invalid_json", {}, failure, providerPhase);
       } else {
-        providerDiagnostic(providerPhase === "request" || name === "TypeError" ? "provider_network_error" : "provider_response_invalid", {}, failure, providerPhase);
+        const reason = providerPhase === "request" || name === "TypeError" ? "provider_network_error" : "provider_response_invalid";
+        providerDiagnostic(reason, {}, failure, providerPhase, reason === "provider_response_invalid"
+          ? () => ({ invalid_response_subtype: "envelope_read_exception" }) : undefined);
       }
     } else {
       providerDiagnostic("unhandled_exception", {}, failure, providerPhase);

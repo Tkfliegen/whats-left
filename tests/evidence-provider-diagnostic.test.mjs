@@ -151,3 +151,80 @@ test('valid authorization atoms have identical acceptance with and without rejec
  assert.equal(validateAuthorizationAtoms(atoms,e.provenance.items,e.currency,d=>rejections.push(d)),true);
  assert.deepEqual(rejections,[]);assert.equal(JSON.stringify(atoms),before);
 });
+
+const invalidResponseBody={error:'Evidence provider returned an invalid response.'};
+const responseShape=(subtype,contentType='missing',finish='other',refusal=false,tools=false)=>({
+ classification:'evidence_invalid_response',invalid_response_subtype:subtype,phase:'completion_guard',
+ content_type:contentType,finish_reason_category:finish,refusal_present:refusal,tool_calls_present:tools,
+});
+const choiceEnvelope=(message,finish_reason='stop')=>({choices:[{finish_reason,message}]});
+const shapeCases=[
+ ['null envelope',null,responseShape('missing_choice')],
+ ['missing choices',{},responseShape('missing_choice')],
+ ['null choices',{choices:null},responseShape('missing_choice')],
+ ['empty choices',{choices:[]},responseShape('missing_choice')],
+ ['null first choice',{choices:[null]},responseShape('missing_choice')],
+ ['missing message',{choices:[{finish_reason:'stop'}]},responseShape('missing_message','missing','stop')],
+ ['null message',choiceEnvelope(null),responseShape('missing_message','missing','stop')],
+ ['missing content',choiceEnvelope({}),responseShape('non_string_content','missing','stop')],
+ ['null content',choiceEnvelope({content:null}),responseShape('non_string_content','null','stop')],
+ ['array content',choiceEnvelope({content:['PRIVATE output SECRET_API_KEY']}),responseShape('non_string_content','array','stop')],
+ ['object content',choiceEnvelope({content:{private:'PRIVATE output SECRET_API_KEY'}}),responseShape('non_string_content','object','stop')],
+ ['numeric content',choiceEnvelope({content:95800}),responseShape('non_string_content','number','stop')],
+ ['boolean content',choiceEnvelope({content:false}),responseShape('non_string_content','boolean','stop')],
+ ['missing finish reason',{choices:[{message:{content:'PRIVATE output SECRET_API_KEY'}}]},responseShape('non_stop_finish_reason','string')],
+ ['unknown finish reason',choiceEnvelope({content:'PRIVATE output SECRET_API_KEY'},'PRIVATE finish SECRET_API_KEY'),responseShape('non_stop_finish_reason','string')],
+ ['object finish reason',choiceEnvelope({content:'PRIVATE output SECRET_API_KEY'},{private:'SECRET_API_KEY'}),responseShape('non_stop_finish_reason','string')],
+ ['refusal present',choiceEnvelope({content:'PRIVATE output',refusal:'PRIVATE refusal SECRET_API_KEY'}),responseShape('refusal_present','string','stop',true)],
+ ['tool calls without content',choiceEnvelope({tool_calls:[{id:'PRIVATE SECRET_API_KEY',function:{arguments:'PRIVATE source'}}]}),responseShape('non_string_content','missing','stop',false,true)],
+ ['null tool calls',choiceEnvelope({content:null,tool_calls:null}),responseShape('non_string_content','null','stop')],
+ ['empty tool-call list is structurally present',choiceEnvelope({content:null,tool_calls:[]}),responseShape('non_string_content','null','stop',false,true)],
+ ['empty string with non-stop finish',choiceEnvelope({content:''},'length'),responseShape('non_stop_finish_reason','string','length')],
+ ['missing message precedes non-stop finish',choiceEnvelope(null,'length'),responseShape('missing_message','missing','length')],
+ ['refusal precedes finish and content failures',choiceEnvelope({content:null,refusal:'PRIVATE SECRET_API_KEY',tool_calls:[]},'length'),responseShape('refusal_present','null','length',true,true)],
+ ['non-stop finish precedes non-string content',choiceEnvelope({content:null},'length'),responseShape('non_stop_finish_reason','null','length')],
+ ...['length','tool_calls','function_call','content_filter'].map(finish=>[
+  `allowlisted finish ${finish}`,choiceEnvelope({content:'PRIVATE output SECRET_API_KEY'},finish),responseShape('non_stop_finish_reason','string',finish),
+ ]),
+];
+for(const [label,value,expected] of shapeCases)test(`invalid-response diagnostic: ${label}`,async()=>{
+ const fetcher=async()=>Response.json(value);
+ const dev=await run(fetcher),prod=await run(fetcher,{env:'production'}),throwing=await run(fetcher,{env:'production',loggerThrows:true});
+ for(const result of [dev,prod,throwing]){assert.equal(result.status,502);assert.deepEqual(result.body,invalidResponseBody);}
+ assert.deepEqual(productionDiagnostic(prod),expected);
+ assert.doesNotMatch(JSON.stringify(prod.logs),/PRIVATE|SECRET_API_KEY|95800|arguments|source prose|Bearer/);
+});
+for(const content of ['', ' \n '])test(`empty/whitespace string stays invalid JSON, not missing content: ${JSON.stringify(content)}`,async()=>{
+ const fetcher=async()=>envelope(content);
+ const prod=await run(fetcher,{env:'production'}),throwing=await run(fetcher,{env:'production',loggerThrows:true});
+ for(const result of [prod,throwing]){assert.equal(result.status,502);assert.deepEqual(result.body,{error:'Evidence provider returned invalid JSON.'});}
+ const d=productionDiagnostic(prod);assert.equal(d.classification,'evidence_invalid_json');assert.equal(d.phase,'output');
+ assert.equal(d.invalid_response_subtype,undefined);
+});
+for(const name of ['Error','RangeError','PRIVATE SECRET_API_KEY'])test(`secondary envelope exception: ${name==='PRIVATE SECRET_API_KEY'?'unknown name':name}`,async()=>{
+ const failure=new Error('PRIVATE response body SECRET_API_KEY');failure.name=name;
+ const fetcher=async()=>({ok:true,json:async()=>{throw failure;}});
+ const dev=await run(fetcher),prod=await run(fetcher,{env:'production'}),throwing=await run(fetcher,{env:'production',loggerThrows:true});
+ for(const result of [dev,prod,throwing]){assert.equal(result.status,502);assert.deepEqual(result.body,generic);}
+ assert.deepEqual(productionDiagnostic(prod),{classification:'evidence_invalid_response',invalid_response_subtype:'envelope_read_exception',phase:'response_json',error_name:name==='PRIVATE SECRET_API_KEY'?'unknown':name});
+ assert.doesNotMatch(JSON.stringify(prod.logs),/PRIVATE|SECRET_API_KEY|message|stack|response body/);
+});
+test('envelope syntax/network/timeout exceptions retain their existing classifications',async()=>{
+ for(const [name,classification] of [['SyntaxError','evidence_invalid_json'],['TypeError','evidence_provider_network_error'],['TimeoutError','evidence_provider_timeout'],['AbortError','evidence_provider_timeout']]){
+  const fetcher=async()=>({ok:true,json:async()=>{const e=new Error('PRIVATE SECRET_API_KEY');e.name=name;throw e;}});
+  const result=await run(fetcher,{env:'production'}),d=productionDiagnostic(result);
+  assert.equal(result.status,502);assert.deepEqual(result.body,generic);assert.equal(d.classification,classification);
+  assert.equal(d.invalid_response_subtype,undefined);
+ }
+});
+test('diagnostic adds no response normalization or stricter acceptance checks',async()=>{
+ const content=JSON.stringify(output);
+ const baseline=await run(async()=>envelope(content),{env:'production'});
+ for(const value of [
+  choiceEnvelope({content,refusal:'',tool_calls:[{id:'PRIVATE SECRET_API_KEY'}]}),
+  {choices:{0:{finish_reason:'stop',message:{content}}}},
+ ]){
+  const result=await run(async()=>Response.json(value),{env:'production'});
+  assert.equal(result.status,200);assert.deepEqual(result.body,baseline.body);assert.deepEqual(result.logs,[]);
+ }
+});
