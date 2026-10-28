@@ -24,7 +24,9 @@ const error = (message: string, status: number) => json({ error: message }, stat
 type ProviderFailure = "provider_timeout" | "provider_http_error" | "provider_network_error"
   | "provider_empty_response" | "provider_invalid_json" | "provider_schema_invalid" | "provider_response_invalid"
   | "currency_conflict" | "authorization_atom_invalid" | "authorization_record_invalid" | "unhandled_exception";
-const providerDiagnostic = (reason: ProviderFailure, detail: { status?: number; configured_timeout_ms?: number; elapsed_ms?: number } = {},
+type AtomFailure = { atom_index: number; atom_kind: string;
+  rejection_reason: "invalid_source_refs" | "numeric_anchor_source_missing" | "currency_mismatch" };
+const providerDiagnostic = (reason: ProviderFailure, detail: { status?: number; configured_timeout_ms?: number; elapsed_ms?: number } & Partial<AtomFailure> = {},
   failure?: unknown, phase?: "request" | "response_json" | "output") => {
   // Fixed classifications only. Never serialize exceptions, messages or causes.
   try {
@@ -132,15 +134,28 @@ async function handlePOST(request: Request) {
       providerDiagnostic("currency_conflict");
       return error("Evidence currency conflicts with the explicit source currency or is unsupported.", 502);
     }
+    let atomFailure: AtomFailure | undefined;
     const authorization_records = assembleAuthorizationRecords(authorization_atoms, sources, normalized.currency,
-      process.env.NODE_ENV === "development" ? diagnostic => {
-        console.warn("[What's Left?] Evidence authorization atom rejection", JSON.stringify(diagnostic));
+      process.env.NODE_ENV === "development" || process.env.NODE_ENV === "production" ? diagnostic => {
+        try {
+          if (process.env.NODE_ENV === "development") {
+            console.warn("[What's Left?] Evidence authorization atom rejection", JSON.stringify(diagnostic));
+          } else if ((diagnostic.reason === "invalid_source_refs" || diagnostic.reason === "numeric_anchor_source_missing"
+            || diagnostic.reason === "currency_mismatch") && Number.isSafeInteger(diagnostic.atom_index)
+            && diagnostic.atom_index! >= 0 && Array.isArray(authorization_atoms)) {
+            const kind = authorization_atoms[diagnostic.atom_index!]?.kind;
+            if (typeof kind === "string" && ["scoped_sales", "scoped_staffing_cost", "headcount_reduction_permission",
+              "schedule_constraint", "current_waste_rate", "waste_target_rate", "waste_reduction_permission"].includes(kind)) {
+              atomFailure = { atom_index: diagnostic.atom_index!, atom_kind: kind, rejection_reason: diagnostic.reason };
+            }
+          }
+        } catch { /* Diagnostics must never affect authorization validation. */ }
       } : undefined,
       process.env.NODE_ENV === "development" ? diagnostic => {
         console.warn("[What's Left?] Evidence authorization assembly", JSON.stringify(diagnostic));
       } : undefined);
     if (!authorization_records) {
-      providerDiagnostic("authorization_atom_invalid");
+      providerDiagnostic("authorization_atom_invalid", atomFailure);
       return error("Evidence authorization atoms have invalid source support.", 502);
     }
     if (!validateAuthorizationRecords(authorization_records, sources, normalized.currency,

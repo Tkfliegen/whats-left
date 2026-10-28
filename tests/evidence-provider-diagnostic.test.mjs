@@ -64,7 +64,7 @@ test('successful Evidence response and provenance are unchanged and produce no d
  const result=await run(async()=>envelope(JSON.stringify(output)));assert.equal(result.status,200);assert.deepEqual(result.logs,[]);const {provenance,...actual}=result.body.evidence;assert.deepEqual(actual,base);assert.deepEqual(provenance.authorization_records,[]);assert.equal(provenance.source_input,'PRIVATE business/source prose. Currency: USD.');
 });
 test('atomic source-support failures remain separate from provider failures',async()=>{
- const invalid={...output,authorization_atoms:atomsFromRecords(e.provenance.authorization_records)};
+ const invalid={...output,authorization_atoms:atomsFromRecords(structuredClone(e.provenance.authorization_records))};
  invalid.authorization_atoms[0].amount=1901;
  const result=await run(async()=>envelope(JSON.stringify(invalid)),{input:e.provenance.source_input});
  assert.equal(result.status,502);assert.deepEqual(result.body,{error:'Evidence authorization atoms have invalid source support.'});assert.equal(result.logs.length,1);assert.equal(result.logs[0][0],"[What's Left?] Evidence authorization atom rejection");assert.equal(JSON.parse(result.logs[0][1]).reason,'numeric_anchor_source_missing');
@@ -108,4 +108,46 @@ test('production success remains identical and logs no diagnostic',async()=>{
  const dev=await run(async()=>envelope(JSON.stringify(output)));
  const prod=await run(async()=>envelope(JSON.stringify(output)),{env:'production'});
  assert.equal(prod.status,200);assert.deepEqual(prod.body,dev.body);assert.deepEqual(prod.logs,[]);
+});
+
+for(const [label,mutate,reason] of [
+ ['empty refs',atoms=>{atoms[0].source_refs=[];},'invalid_source_refs'],
+ ['duplicate refs',atoms=>{atoms[0].source_refs.push(atoms[0].source_refs[0]);},'invalid_source_refs'],
+ ['missing numeric anchor',atoms=>{atoms[0].amount=1901;},'numeric_anchor_source_missing'],
+ ['currency mismatch',atoms=>{atoms[0].currency='EUR';},'currency_mismatch'],
+])test(`production atom detail: ${label}; validation and response unchanged`,async()=>{
+ const atoms=atomsFromRecords(structuredClone(e.provenance.authorization_records));mutate(atoms);
+ const before=JSON.stringify(atoms);
+ const {validateAuthorizationAtoms}=productionModules()('src/app/api/analyze/evidence/authorization-atoms.ts');
+ const rejections=[];
+ assert.equal(validateAuthorizationAtoms(atoms,e.provenance.items,e.currency),false);
+ assert.equal(validateAuthorizationAtoms(atoms,e.provenance.items,e.currency,d=>rejections.push(d)),false);
+ assert.equal(rejections.length,1);assert.equal(rejections[0].reason,reason);
+ const result=await run(async()=>envelope(JSON.stringify({...output,authorization_atoms:atoms})),{env:'production',input:e.provenance.source_input});
+ assert.equal(result.status,502);assert.deepEqual(result.body,{error:'Evidence authorization atoms have invalid source support.'});
+ assert.deepEqual(productionDiagnostic(result),{classification:'evidence_authorization_atom_invalid',atom_index:0,atom_kind:'scoped_sales',rejection_reason:reason});
+ assert.equal(JSON.stringify(atoms),before);
+ assert.doesNotMatch(JSON.stringify(result.logs),/PRIVATE|SECRET|source_text|source_input|quote|amount|1901|1900|Cornhead|Bearer|USD|EUR/);
+ const throwing=await run(async()=>envelope(JSON.stringify({...output,authorization_atoms:atoms})),{env:'production',input:e.provenance.source_input,loggerThrows:true});
+ assert.equal(throwing.status,result.status);assert.deepEqual(throwing.body,result.body);
+});
+test('atom detail reports the actual later permission index and allowlisted kind',async()=>{
+ const atoms=atomsFromRecords(structuredClone(e.provenance.authorization_records));
+ const index=atoms.findIndex(a=>a.kind==='headcount_reduction_permission');assert.ok(index>0);
+ atoms[index].source_refs=[];
+ const result=await run(async()=>envelope(JSON.stringify({...output,authorization_atoms:atoms})),{env:'production',input:e.provenance.source_input});
+ assert.deepEqual(productionDiagnostic(result),{classification:'evidence_authorization_atom_invalid',atom_index:index,atom_kind:'headcount_reduction_permission',rejection_reason:'invalid_source_refs'});
+});
+test('unrecognized diagnostic reasons and indices cannot leak callback data',async()=>{
+ for(const detail of [{reason:'PRIVATE SECRET_API_KEY',atom_index:0},{reason:'invalid_source_refs',atom_index:'PRIVATE SECRET_API_KEY'},{reason:'atom_schema_invalid',atom_index:0}]){
+  const result=await run(async()=>envelope(JSON.stringify(output)),{env:'production',overrides:{'./authorization-atoms':{assembleAuthorizationRecords:(_atoms,_sources,_currency,onReject)=>{onReject(detail);return null;}}}});
+  assert.equal(result.status,502);assert.deepEqual(productionDiagnostic(result),{classification:'evidence_authorization_atom_invalid'});
+ }
+});
+test('valid authorization atoms have identical acceptance with and without rejection callbacks',()=>{
+ const {validateAuthorizationAtoms}=productionModules()('src/app/api/analyze/evidence/authorization-atoms.ts');
+ const atoms=atomsFromRecords(structuredClone(e.provenance.authorization_records)),before=JSON.stringify(atoms),rejections=[];
+ assert.equal(validateAuthorizationAtoms(atoms,e.provenance.items,e.currency),true);
+ assert.equal(validateAuthorizationAtoms(atoms,e.provenance.items,e.currency,d=>rejections.push(d)),true);
+ assert.deepEqual(rejections,[]);assert.equal(JSON.stringify(atoms),before);
 });
