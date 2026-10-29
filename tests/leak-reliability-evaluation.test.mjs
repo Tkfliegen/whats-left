@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {productionModules} from './helpers/provenance.mjs';
 import {analyzeResult,numericTokens,runOne} from '../scripts/evaluation/leak-reliability/evaluate.mjs';
 const evidence=JSON.parse(fs.readFileSync('tests/fixtures/leak-case-a-failed.json')).evidence;
 const fact=n=>evidence.provenance.citable_facts.find(f=>f.id.endsWith('_'+String(n).padStart(2,'0'))).id;
@@ -19,8 +20,11 @@ test('a derived Waste four-point gap has a different meaning but the same missin
 test('time range, fact-ID digits and array indices do not fabricate a numeric token 4',()=>{
  assert.deepEqual(numericTokens('6 PM to 10 PM'),['6','10']);const r=result();r.leaks[1].evidence=['Tuesday sales were USD 1,900.'];assert.equal(analyzeResult(r,evidence).validation.ok,true);
 });
-test('isolated real handler returns the unchanged failure and makes exactly one provider call',async()=>{
- let calls=0;const r=result();r.leaks.forEach(f=>delete f.intervention_ref);const row=await runOne({evidence,operational_context:[]},1,'TEST_KEY',async(url,options)=>{calls++;assert.equal(url,'https://api.tokenfactory.nebius.com/v1/chat/completions');const payload=JSON.parse(options.body);assert.equal(payload.model,'nvidia/Nemotron-3-Ultra-550b-a55b');assert.equal(payload.temperature,.2);assert.equal(payload.max_tokens,4000);assert.equal(payload.chat_template_kwargs.enable_thinking,false);return Response.json({choices:[{finish_reason:'stop',message:{content:JSON.stringify(r)}}]});});assert.equal(calls,1);assert.equal(row.provider_http_status,200);assert.equal(row.route_http_status,502);assert.equal(row.analysis.validation.reason,'unreported_number');assert.doesNotMatch(JSON.stringify(row),/TEST_KEY|Bearer|choices/);
+test('isolated real handler returns the unchanged failure after bounded correction and fallback',async()=>{
+ let calls=0;const r=result();r.leaks.forEach(f=>delete f.intervention_ref);
+ const modules=productionModules(async(url,options)=>{calls++;assert.equal(url,'https://api.tokenfactory.nebius.com/v1/chat/completions');const payload=JSON.parse(options.body);assert.equal(payload.model,calls===3?'nvidia/nemotron-3-super-120b-a12b':'nvidia/Nemotron-3-Ultra-550b-a55b');assert.equal(payload.temperature,.2);assert.equal(payload.max_tokens,calls===3?8000:4000);assert.equal(payload.chat_template_kwargs.enable_thinking,calls===3);return Response.json({choices:[{finish_reason:'stop',message:{content:JSON.stringify(r)}}]});});
+ const response=await modules('src/app/api/analyze/leaks/route.ts').POST(new Request('http://localhost',{method:'POST',body:JSON.stringify({evidence,operational_context:[]})}));
+ const body=await response.json();assert.equal(calls,3);assert.equal(response.status,502);assert.equal(analyzeResult(r,evidence).validation.reason,'unreported_number');assert.doesNotMatch(JSON.stringify(body),/TEST_KEY|Bearer|choices/);
 });
 test('a scheduled provider timeout is recorded without retry or downstream calls',async()=>{
  let calls=0;const row=await runOne({evidence,operational_context:[]},1,'TEST_KEY',async()=>{calls++;throw new DOMException('PRIVATE failure','TimeoutError');});assert.equal(calls,1);assert.equal(row.provider_failure,'provider_timeout');assert.equal(row.route_http_status,502);assert.equal(row.analysis,null);assert.doesNotMatch(JSON.stringify(row),/PRIVATE|TEST_KEY/);

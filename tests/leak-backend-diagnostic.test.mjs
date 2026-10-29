@@ -19,14 +19,15 @@ async function run(result,env){
   fetch:async()=>{calls++;return Response.json({choices:[{finish_reason:'stop',message:{content:JSON.stringify(result)}}]});}});
  const before=JSON.stringify(result);
  const response=await exports.POST(new Request('http://localhost',{method:'POST',body:JSON.stringify({evidence,operational_context:[]})}));
- assert.equal(calls,1);assert.equal(JSON.stringify(result),before);
+ const validation=validate(result,evidence);
+ assert.equal(calls,!validation.ok&&['unreported_number','unreported_numeric_unit','unverified_comparison'].includes(validation.reason)?2:1);assert.equal(JSON.stringify(result),before);
  return {status:response.status,body:await response.json(),logs};
 }
 const generic={error:'Leak analysis result rejected by output validation: unreported_number.'};
 test('development records only exact first failing path and normalized numeric token, without prose or secrets',async()=>{
  const result=valid();result.leaks[0].evidence.push('PRIVATE business prose claims USD 1,234.500.');
  const response=await run(result,'development');assert.equal(response.status,502);assert.deepEqual(response.body,generic);
- assert.equal(response.logs.length,1);assert.equal(response.logs[0][0],"[What's Left?] Backend Leak rejection");
+ assert.equal(response.logs.length,2);assert.deepEqual(response.logs[1],response.logs[0]);assert.equal(response.logs[0][0],"[What's Left?] Backend Leak rejection");
  assert.deepEqual(JSON.parse(response.logs[0][1]),{reason:'unreported_number',field_path:'leaks[0].evidence[1]',normalized_number:'1234.5',rejection_branch:'scalar_not_in_selected_support',number_in_global_support:false,number_in_selected_support:false,selected_citation_count:1,matching_support_count:0,global_matching_support_count:0,numeric_expression_type:'scalar',support_scope:'finding_citations'});
  assert.doesNotMatch(JSON.stringify(response.logs),/PRIVATE|business prose|SECRET_TEST_KEY|choices|evidence_refs/);
 });
@@ -35,7 +36,7 @@ test('multiple claims preserve validator ordering: first field, then first numer
  const validation=validate(result,evidence);assert.equal(validation.field,'leaks[0].title');assert.deepEqual(Array.from(validation.numbers),['33.4','88']);
  const response=await run(result,'development');const diagnostic=JSON.parse(response.logs[0][1]);assert.equal(diagnostic.reason,'unreported_number');assert.equal(diagnostic.field_path,validation.field);assert.equal(diagnostic.normalized_number,validation.numbers[0]);assert.equal(diagnostic.rejection_branch,'scalar_not_in_selected_support');assert.equal(response.status,502);
 });
-test('production and unset environments keep existing generic response and emit no diagnostic',async()=>{
+test('production and unset environments keep existing generic response and emit no numeric diagnostic',async()=>{
  const result=valid();result.leaks[0].interpretation='PRIVATE 33.4';
  for(const env of ['production',undefined]){const response=await run(result,env);assert.equal(response.status,502);assert.deepEqual(response.body,generic);assert.deepEqual(response.logs,[]);}
 });

@@ -125,7 +125,6 @@ export function requiredAuthorizationSources(record: AuthorizationRecord): strin
   const roles = record.intervention === "headcount_reduction" ? ["sales", "staffing_cost"] : ["current_waste_rate", "target_waste_rate"];
   const support = roles.map(role => record.supporting_facts.find(f => f.role === role));
   if (support.some(f => !f)) return null;
-  if (record.intervention === "headcount_reduction" && support[1]!.value <= support[0]!.value) return null;
   if (record.intervention === "waste_rate_target" && (support[0]!.value !== record.from || support[1]!.value !== record.value)) return null;
   return [...new Set([...support.flatMap(f => f!.source_refs), ...record.permission_source_refs, ...record.constraint_source_refs])];
 }

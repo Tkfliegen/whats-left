@@ -3,6 +3,7 @@ import type { LeakResult } from "@/types/leaks";
 import { resolveEvidenceRefs } from "../evidence/provenance";
 import { normalizeEvidenceCurrency } from "../evidence/currency";
 import { requiredAuthorizationSources } from "../evidence/authorization-records";
+import { verifyLaborComparisons } from "./comparisons";
 
 // Use source identities from already validated Evidence, never recover citations
 // from generated prose. These groups guide generation; omissions reject output.
@@ -43,10 +44,10 @@ function monetaryExpressions(text: string, originalSource: string) {
       ? null : `${unit}:${signed}` };
   };
   return [
-    ...[...text.matchAll(prefix)].map(m => claim(m[2], m[5], m[1] + m[3], m[4], m[6],
-      text[m.index! + m[0].length] === "%")),
-    ...[...text.matchAll(suffix)].map(m => claim(m[5], m[3], m[1],
-      m[2] && !m[4] && text[m.index! + m[0].length] === ")" ? "" : m[2], m[4], text[m.index! + m[0].length] === "%")),
+    ...[...text.matchAll(prefix)].map(m => ({ ...claim(m[2], m[5], m[1] + m[3], m[4], m[6],
+      text[m.index! + m[0].length] === "%"), end: m.index! + m[0].length })),
+    ...[...text.matchAll(suffix)].map(m => ({ ...claim(m[5], m[3], m[1],
+      m[2] && !m[4] && text[m.index! + m[0].length] === ")" ? "" : m[2], m[4], text[m.index! + m[0].length] === "%"), end: m.index! + m[0].length })),
   ];
 }
 
@@ -77,7 +78,7 @@ function quantitativeRatios(text: string) {
 
 export type LeakOutputValidation = { ok: true } | {
   ok: false;
-  reason: "unreported_number" | "unreported_numeric_unit" | "incomplete_citation_support" | "invalid_evidence_refs" | "invalid_intervention_ref";
+  reason: "unreported_number" | "unreported_numeric_unit" | "incomplete_citation_support" | "invalid_evidence_refs" | "invalid_intervention_ref" | "unverified_comparison";
   field: string;
   numbers?: string[];
   missing_fact_ids?: string[];
@@ -153,6 +154,9 @@ export function validateLeakOutput(result: LeakResult, evidence: Evidence,
   if (!references.ok) return references;
   const catalog = new Map(evidence.provenance!.citable_facts.map(fact => [fact.id, fact]));
   // Pass B: existing prose checks, after every finding passes reference checks.
+  const moneyKeys = (source: string) => monetaryExpressions(source, evidence.provenance!.source_input).map(claim =>
+    /^\s*(?:per|each)\s+(?!month\b|affected monthly period\b|affected reporting period\b)\S+/i.test(source.slice(claim.end)) ? null : claim.key);
+  const comparisons: Array<{ text: string; field: string; refs: string[]; labor: boolean }> = [];
   const check = (text: string, field: string, source: string,
     selected?: Array<{ text: string }>): LeakOutputValidation => {
     const diagnose = (value: string, branch: LeakNumericDiagnostic["rejection_branch"]) => {
@@ -206,6 +210,7 @@ export function validateLeakOutput(result: LeakResult, evidence: Evidence,
     ]) {
       const validation = check(text, field, source, cited);
       if (!validation.ok) return validation;
+      comparisons.push({ text, field, refs: leak.evidence_refs, labor: leak.category === "labor" });
     }
   }
   // Insufficient-evidence entries have no per-entry refs in the existing
@@ -215,6 +220,13 @@ export function validateLeakOutput(result: LeakResult, evidence: Evidence,
     for (const field of ["topic", "reason"] as const) {
       const validation = check(item[field], `insufficient_evidence[${index}].${field}`, source);
       if (!validation.ok) return validation;
+      comparisons.push({ text: item[field], field: `insufficient_evidence[${index}].${field}`, refs: [...catalog.keys()], labor: false });
+    }
+  }
+  // Preserve all existing numeric failure precedence before the new boundary.
+  for (const claim of comparisons) {
+    if (!verifyLaborComparisons(claim.text, evidence, claim.refs, claim.labor, moneyKeys)) {
+      return { ok: false, reason: "unverified_comparison", field: claim.field };
     }
   }
   return { ok: true };

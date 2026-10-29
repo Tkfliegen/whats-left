@@ -87,8 +87,11 @@ export function AgentOffice({ workflow, stage, evidence, leakResult, scenarioRes
   const reducedMotion = useReducedMotion() ?? false;
   const { index: active, phase } = workflow;
   const displayNotice = notice ?? (analysisError ? analysisNotice({ failure: "unclassified_failure", complete: false }) : null);
+  const abstained = !analysisError && stage === "leaks" && phase === "idle" && leakResult?.leaks.length === 0;
   const status = analysisError
     ? { ...statusContent[stage], title: "Analysis stopped.", subtitle: "Review the status guidance before continuing.", result: undefined }
+    : abstained
+    ? { ...statusContent.leaks, title: "Leak review complete.", subtitle: "No profit leak was confirmed from the supplied evidence.", result: "More evidence needed" }
     : stage === "evidence"
     ? { ...statusContent.evidence, result: evidence ? evidenceSummary(evidence) : undefined }
     : stage === "leaks"
@@ -108,7 +111,7 @@ export function AgentOffice({ workflow, stage, evidence, leakResult, scenarioRes
           <p className="eyebrow mb-2">FOUR SPECIALISTS. ONE CLEAR ANSWER.</p>
           <h2 id="office-title" className="text-lg font-medium">Agent Office</h2>
         </div>
-        <span className="badge"><span className="h-1.5 w-1.5 rounded-full bg-[var(--agent-leak)]" />{analysisError ? "Analysis stopped" : phase === "idle" ? workflow.started ? "Analysis stopped" : "Ready to analyze" : phase === "pause" ? "Analysis complete" : phase === "handoff" ? "Task complete · Handoff" : "Team at work"}</span>
+        <span className="badge"><span className="h-1.5 w-1.5 rounded-full bg-[var(--agent-leak)]" />{abstained ? "More evidence needed" : analysisError ? "Analysis stopped" : phase === "idle" ? workflow.started ? "Analysis stopped" : "Ready to analyze" : phase === "pause" ? "Analysis complete" : phase === "handoff" ? "Task complete · Handoff" : "Team at work"}</span>
       </div>
 
       <div className="mx-4 mt-6 flex flex-1 items-center sm:mx-6">

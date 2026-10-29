@@ -86,5 +86,5 @@ test('route rejects the saved J09 output without invoking binding or altering pr
  const modules=productionModules(async()=>{calls++;return Response.json({choices:[{finish_reason:'stop',message:{content:JSON.stringify(result)}}]});});
  const response=await modules('src/app/api/analyze/leaks/route.ts').POST(new Request('http://localhost',{method:'POST',body:JSON.stringify(request)}));
  assert.equal(response.status,502);assert.deepEqual(await response.json(),{error:'Leak analysis result rejected by output validation: unreported_number.'});
- assert.equal(calls,1);assert.equal(JSON.stringify(result),before);
+ assert.equal(calls,3);assert.equal(JSON.stringify(result),before);
 });

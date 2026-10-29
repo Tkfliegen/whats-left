@@ -16,8 +16,15 @@ export function createCalculationSupportSchema(sourceIds?: string[]): Schema {
 
 const scalar = /^-?\d+(?:,\d{3})*(?:\.\d+)?$/;
 const tokens = (text: string): string[] => text.match(/-?\d+(?:,\d{3})*(?:\.\d+)?/g) ?? [];
-const periodKey = (text: string) => text.trim().toLowerCase().replace(/_/g, " ").replace(/\s+/g, " ");
 const monthlyPeriod = /^(?:(?:last|this|current|previous) month|month|monthly|(?:january|february|march|april|may|june|july|august|september|october|november|december)(?: \d{4})?|\d{4}-\d{2})$/;
+// Generic monthly frequency aliases only. Relative/dated periods retain their
+// identity: "monthly" never establishes "last month" or a particular month.
+export function periodKey(text: string): string | null {
+  const key = text.trim().toLowerCase().replace(/_/g, " ").replace(/\s+/g, " ");
+  if (/^(?:month|monthly|per month|each month|monthly reporting period|affected monthly(?: reporting)? period)$/.test(key)) return "month";
+  if (monthlyPeriod.test(key) || /^(?:(?:(?:last|this|current|previous) )?(?:day|week|quarter|year)|daily|weekly|quarterly|yearly|annual|annually|\d{4}-\d{2}-\d{2})$/.test(key)) return key;
+  return null;
+}
 const weekdayScope = /\bTuesday evenings?\b/i;
 const otherDay = /\b(Monday|Wednesday|Thursday|Friday|Saturday|Sunday)\b/i;
 const perWorker = /\b(?:per[ -]+(?:worker|person|staff member)|each (?:worker|person|staff member))\b/i;
@@ -103,10 +110,10 @@ export function groundCalculationFacts(value: unknown, sources: EvidenceSource[]
       report(candidates.length === 0 ? "missing_candidate" : candidates.length > 1 ? "duplicate_candidates" : "schema_invalid"); continue;
     }
     const record = candidates[0] as LaborCalculationSupport, s = record.support;
-    if (!evidence.period?.trim() || record.period !== evidence.period
+    if (!evidence.period?.trim() || !periodKey(record.period) || periodKey(record.period) !== periodKey(evidence.period)
       || ![s.value, s.unit, s.scope, s.period, ...(s.currency ? [s.currency] : [])].every(literal)) {
       const anchor = [s.value, s.unit, s.scope, s.period, ...(s.currency ? [s.currency] : [])].find(a => !literal(a));
-      report(!evidence.period?.trim() ? "missing_evidence_period" : record.period !== evidence.period ? "period_mismatch"
+      report(!evidence.period?.trim() ? "missing_evidence_period" : !periodKey(record.period) || periodKey(record.period) !== periodKey(evidence.period) ? "period_mismatch"
         : anchor && !catalog.get(anchor.source_ref) ? "unknown_source_ref"
         : anchor && !anchor.quote.trim() ? "empty_anchor"
         : anchor && !catalog.get(anchor.source_ref)!.includes(anchor.quote) ? "anchor_not_literal" : "quote_boundary_mismatch"); continue;
@@ -133,10 +140,10 @@ export function groundCalculationFacts(value: unknown, sources: EvidenceSource[]
     if (unitTokens.length !== 1 || unitTokens[0] !== s.value.quote) { report("unit_quantity_mismatch"); continue; }
     // An exact reporting-period anchor may be separate only when this quantity
     // explicitly refers to that affected reporting period.
-    if (periodKey(s.period.quote) !== periodKey(record.period)
+    if (!periodKey(s.period.quote) || periodKey(s.period.quote) !== periodKey(record.period)
       || (s.period.source_ref !== s.value.source_ref
-        && !/\baffected (?:monthly|reporting) period\b/i.test(s.scope.quote))) { report(periodKey(s.period.quote) !== periodKey(record.period) ? "period_anchor_mismatch" : "period_relationship_missing"); continue; }
-    if (/\baffected monthly period\b/i.test(s.scope.quote) && !monthlyPeriod.test(periodKey(record.period))) { report("monthly_period_mismatch"); continue; }
+        && !/\baffected (?:monthly(?: reporting)?|reporting) period\b/i.test(s.scope.quote))) { report(!periodKey(s.period.quote) || periodKey(s.period.quote) !== periodKey(record.period) ? "period_anchor_mismatch" : "period_relationship_missing"); continue; }
+    if (/\baffected monthly(?: reporting)? period\b/i.test(s.scope.quote) && !monthlyPeriod.test(periodKey(record.period)!)) { report("monthly_period_mismatch"); continue; }
     if (conflictingClaims(concept, [...catalog.values()], number)) { report("conflicting_source_values"); continue; }
     if (concept === "baseline_headcount") {
       if (!Number.isSafeInteger(number) || s.currency !== null
@@ -145,7 +152,7 @@ export function groundCalculationFacts(value: unknown, sources: EvidenceSource[]
         report(!Number.isSafeInteger(number) ? "headcount_not_integer" : s.currency !== null ? "unexpected_headcount_currency"
           : !/\b(?:baseline|current)\b/i.test(s.scope.quote) || !/\bheadcount\b/i.test(s.scope.quote) ? "headcount_concept_missing" : "headcount_unit_missing"); continue;
       }
-      result.push({ ...record, value: number, unit: "persons", currency: null });
+      result.push({ ...record, period: evidence.period, value: number, unit: "persons", currency: null });
     } else {
       let unit = s.unit;
       // Bind only within the accepted literal scope, after all shared grounding.
@@ -177,7 +184,7 @@ export function groundCalculationFacts(value: unknown, sources: EvidenceSource[]
           : s.currency.quote !== evidence.currency ? "currency_mismatch" : !/^[A-Z]{3}$/.test(s.currency.quote) ? "currency_invalid"
           : !unit.quote.includes(s.currency.quote) ? "currency_not_in_unit_anchor" : !perWorker.test(unit.quote) ? "per_worker_unit_missing" : "labor_concept_missing"); continue;
       }
-      result.push({ ...record, support: { ...s, unit }, value: number, unit: "currency_per_person", currency: s.currency.quote });
+      result.push({ ...record, period: evidence.period, support: { ...s, unit }, value: number, unit: "currency_per_person", currency: s.currency.quote });
     }
     report(null);
   }

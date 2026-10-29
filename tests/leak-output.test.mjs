@@ -85,12 +85,12 @@ test('combined citable views resolve complete support without requiring duplicat
 test('insufficient-evidence text may use only catalog-reported numbers, without creating a derived-metric system',()=>{
  const result=valid();result.insufficient_evidence[0].reason='Estimated revenue gap is $600.';assert.equal(validateLeakOutput(result,evidence).reason,'unreported_number');
 });
-for(const [name,result,status]of [['valid',valid(),200],['derived',(()=>{const r=valid();r.leaks[0].interpretation='Labor was 33.4% of revenue.';return r;})(),502],['incomplete',(()=>{const r=valid();r.leaks[0].evidence_refs=r.leaks[0].evidence_refs.filter(id=>id!==fact(12));r.leaks[0].evidence=['Owner permits reducing staffing by 1 person.'];return r;})(),502]])test(`production Leak route ${name}: one call, no retries or repairs`,async()=>{
+for(const [name,result,status]of [['valid',valid(),200],['derived',(()=>{const r=valid();r.leaks[0].interpretation='Labor was 33.4% of revenue.';return r;})(),502],['incomplete',(()=>{const r=valid();r.leaks[0].evidence_refs=r.leaks[0].evidence_refs.filter(id=>id!==fact(12));r.leaks[0].evidence=['Owner permits reducing staffing by 1 person.'];return r;})(),502]])test(`production Leak route ${name}: bounded generation, no repairs`,async()=>{
  let calls=0;const before=JSON.stringify(result);const modules=productionModules(async(_url,options)=>{calls++;const payload=JSON.parse(options.body),input=JSON.parse(payload.messages[1].content);
   assert.deepEqual(input.citation_requirements,[{fact_ids:[fact(12),fact(14),fact(16)]}]);assert.equal(Object.keys(payload.response_format.json_schema.schema.properties.leaks.items.properties)[0],'evidence_refs');assert.match(payload.messages[0].content,/Select evidence_refs FIRST/);
-  assert.equal(payload.model,'nvidia/Nemotron-3-Ultra-550b-a55b');assert.equal(payload.max_tokens,4000);return Response.json({choices:[{finish_reason:'stop',message:{content:JSON.stringify(result)}}]});
+  assert.equal(payload.model,calls===3?'nvidia/nemotron-3-super-120b-a12b':'nvidia/Nemotron-3-Ultra-550b-a55b');assert.equal(payload.max_tokens,calls===3?8000:4000);return Response.json({choices:[{finish_reason:'stop',message:{content:JSON.stringify(result)}}]});
  });
  const response=await modules('src/app/api/analyze/leaks/route.ts').POST(new Request('http://localhost',{method:'POST',body:JSON.stringify({evidence,operational_context:[]})}));
- assert.equal(response.status,status);assert.equal(calls,1);assert.equal(JSON.stringify(result),before);
+ assert.equal(response.status,status);assert.equal(calls,name==='derived'?3:1);assert.equal(JSON.stringify(result),before);
  const body=await response.json();if(status===200)assert.deepEqual(body,{leaks:{...result,leaks:result.leaks.map((f,index)=>({...f,intervention_ref:index===0?'headcount_reduction':null}))}});else {assert.deepEqual(Object.keys(body),['error']);assert.match(body.error,/output validation/);assert.doesNotMatch(body.error,/33\.4|PRIVATE|src_/);}
 });

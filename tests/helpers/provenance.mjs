@@ -4,13 +4,14 @@ import path from 'node:path';
 import vm from 'node:vm';
 import ts from 'typescript';
 const nativeRequire=createRequire(import.meta.url);
-export function productionModules(fetcher=()=>{throw Error('Unexpected provider call');}) {
+export function productionModules(fetcher=()=>{throw Error('Unexpected provider call');}, options={}) {
   const cache=new Map();
   function load(filename) {
     filename=path.resolve(filename);if(cache.has(filename))return cache.get(filename);
     const exports={};cache.set(filename,exports);
     const code=ts.transpileModule(readFileSync(filename,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
     vm.runInNewContext(code,{exports,structuredClone,Response,AbortSignal,process:{env:{NEBIUS_API_KEY:'test-key'}},fetch:fetcher,
+      ...(options.console?{console:options.console}:{}),
       require:s=>s.startsWith('node:')?nativeRequire(s):load(s.startsWith('@/')?path.resolve('src',s.slice(2)+'.ts'):path.resolve(path.dirname(filename),s+'.ts'))});
     return exports;
   }return load;

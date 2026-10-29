@@ -127,6 +127,12 @@ export function useDemoAnalysis() {
       }
       if (controller.signal.aborted || request.current !== controller) return;
       setLeakResult(findings);
+      if (findings.leaks.length === 0) {
+        running.current = false;
+        setWorkflow(current => ({ ...current, index: 1, phase: "idle", complete: false }));
+        completed = true; // Successful Leak abstention, not a failed verification.
+        return false; // Preserve editable inputs; no Decision was generated.
+      }
       setWorkflow(current => ({ ...current, phase: "handoff" }));
       await handoff();
       if (controller.signal.aborted || request.current !== controller) return;
@@ -195,6 +201,6 @@ export function useDemoAnalysis() {
     }
   };
   const isRunning = workflow.started && !workflow.complete && workflow.phase !== "idle";
-  const analysisStatus = analysisNotice({ failure: analysisFailure, complete: workflow.complete, guidance: evidenceGuidance, gate: decisionGateResult, decision: decisionResult, evidence: evidenceResult });
+  const analysisStatus = analysisNotice({ failure: analysisFailure, complete: workflow.complete, noConfirmedLeaks: leakResult?.leaks.length === 0, guidance: evidenceGuidance, gate: decisionGateResult, decision: decisionResult, evidence: evidenceResult });
   return { analysisStatus, workflow, stage, startAnalysis, evidenceResult, leakResult, scenarioResult, simulationResult, decisionGateResult, decisionResult, analysisError, isRunning };
 }

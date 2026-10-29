@@ -86,7 +86,7 @@ test('unknown server text and unknown guidance are never rendered or treated as 
  assert.equal(status.analysisNotice({complete:false}),null);
 });
 
-test('exact Golden Labor input completes all real route validators with mocked models and displays actual missing requirements',async()=>{
+test('exact Golden Labor input safely abstains after Leak and preserves actual missing guidance',async()=>{
  const input=fs.readFileSync('tests/fixtures/golden-labor-no-scoped-sales.txt','utf8'),models=[];
  const modules=productionModules(async(_url,options)=>{
   const request=JSON.parse(options.body),name=request.response_format.json_schema.name;models.push(name);
@@ -106,15 +106,15 @@ test('exact Golden Labor input completes all real route validators with mocked m
  const h=harness((url,options)=>modules('src/app'+url+'/route.ts').POST(new Request('http://localhost'+url,options)));
  h.render();const run=h.value.startAnalysis(input,input);
  for(let i=0;i<8;i++){await h.settle();if(h.timers.size)h.tick();if(h.value.workflow.complete||h.value.analysisError)break;}
- await h.settle();assert.equal(h.value.workflow.complete,true,h.value.analysisError);await run;h.render();
+ await h.settle();assert.equal(h.value.workflow.complete,false,h.value.analysisError);assert.equal(await run,false);h.render();
  assert.equal(h.value.analysisError,'');assert.deepEqual(JSON.parse(JSON.stringify(h.value.evidenceResult.provenance.authorization_records)),[]);
  assert.equal(h.value.analysisStatus.category,'more_data_needed');assert.equal(h.value.analysisStatus.items.length,2);
  assert.equal(h.value.analysisStatus.staffing_test_approved,true);
- assert.deepEqual(JSON.parse(JSON.stringify(h.value.scenarioResult.scenarios.scenarios)),[]);
- assert.deepEqual(JSON.parse(JSON.stringify(h.value.simulationResult.results)),[]);
- assert.deepEqual(JSON.parse(JSON.stringify(h.value.decisionGateResult.candidates)),[]);
+ assert.equal(h.value.scenarioResult,null);
+ assert.equal(h.value.simulationResult,null);
+ assert.equal(h.value.decisionGateResult,null);assert.equal(h.value.decisionResult,null);
  const html=render(h.value.analysisStatus);assert.match(html,/Tuesday evening sales or revenue/);assert.match(html,/staffing schedule will remain unchanged/);
- assert.deepEqual(models,['evidence','leak_detective_v1','scenario_agent_v1','decision_agent_v1']);h.unmount();
+ assert.deepEqual(models,['evidence','leak_detective_v1']);h.unmount();
 });
 
 const staffingSource='The total Tuesday evening staffing cost is USD 2,500.';

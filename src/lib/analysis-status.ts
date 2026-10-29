@@ -52,8 +52,9 @@ export async function failureFromResponse(response: Response): Promise<AnalysisF
   return "unclassified_failure";
 }
 
-export function analysisNotice({ failure, complete, guidance, gate, decision, evidence }: {
+export function analysisNotice({ failure, complete, noConfirmedLeaks, guidance, gate, decision, evidence }: {
   failure?: AnalysisFailure | null; complete: boolean; guidance?: EvidenceGuidance | null;
+  noConfirmedLeaks?: boolean;
   gate?: DecisionGateResponse | null; decision?: DecisionResult | null;
   evidence?: Evidence | null;
 }): AnalysisNotice | null {
@@ -72,8 +73,8 @@ export function analysisNotice({ failure, complete, guidance, gate, decision, ev
   if (failure) return { category: "unclassified_failure", heading: "Analysis couldn't be completed",
     explanation: "The analysis stopped before a result could be verified. Your inputs are preserved.", items: [],
     next: "Review your details. If they look correct, try again later." };
-  if (!complete || !decision) return null;
-  if (decision.decision_status === "actionable" && gate?.decision_gate === "action_allowed") return {
+  if (!noConfirmedLeaks && (!complete || !decision)) return null;
+  if (!noConfirmedLeaks && decision?.decision_status === "actionable" && gate?.decision_gate === "action_allowed") return {
     category: "complete_confident", heading: "Action recommendation ready",
     explanation: "The analysis completed with sufficient verified information to support a recommendation.", items: [], next: "Review the recommendation below." };
   const items: string[] = [];
@@ -87,6 +88,9 @@ export function analysisNotice({ failure, complete, guidance, gate, decision, ev
   }
   return { category: "more_data_needed", heading: "More data needed before a confident decision",
     ...(guidance?.staffing_test_permission_present === true ? { staffing_test_approved: true as const } : {}),
-    explanation: items.length ? "The analysis completed safely, but we still need:" : "The analysis completed safely, but the supplied information does not support a confident action recommendation.",
-    items: [...new Set(items)].slice(0, 4), next: items.length ? "Add these details and run the analysis again." : "Review the missing information in the results below before adding further details and running again." };
+    explanation: noConfirmedLeaks ? "The Leak review completed safely, but no profit leak was confirmed from the supplied evidence."
+      : items.length ? "The analysis completed safely, but we still need:" : "The analysis completed safely, but the supplied information does not support a confident action recommendation.",
+    items: [...new Set(items)].slice(0, 4), next: items.length ? "Add these details and run the analysis again." : noConfirmedLeaks
+      ? "Add evidence of a performance gap or avoidable loss, then run the analysis again."
+      : "Review the missing information in the results below before adding further details and running again." };
 }
