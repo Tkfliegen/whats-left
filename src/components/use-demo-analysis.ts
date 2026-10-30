@@ -127,6 +127,11 @@ export function useDemoAnalysis() {
       }
       if (controller.signal.aborted || request.current !== controller) return;
       setLeakResult(findings);
+      // Evidence guidance describes Labor prerequisites only. Do not carry it
+      // into the status of a current run that confirms only other leak types.
+      if (findings.leaks.length > 0 && !findings.leaks.some(finding => finding.category === "labor")) {
+        setEvidenceGuidance(null);
+      }
       if (findings.leaks.length === 0) {
         running.current = false;
         setWorkflow(current => ({ ...current, index: 1, phase: "idle", complete: false }));

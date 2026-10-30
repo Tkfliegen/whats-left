@@ -191,3 +191,51 @@ test('non-ready comparison uses supporting-input copy when testing permission ex
  const withoutPermission=renderToStaticMarkup(React.createElement(decisionComponent.exports.DecisionPanel,{result}));
  assert.match(withoutPermission,/Not simulation ready due to lack of eligible authorized change/);
 });
+
+test('Labor guidance is cleared at restart and cannot replace a completed Waste run status',async()=>{
+ const fixtures=JSON.parse(fs.readFileSync('tests/fixtures/decision.json','utf8'));
+ const waste=structuredClone(fixtures.cornhead),title=waste.leaks.leaks.find(item=>item.category==='waste').title;
+ waste.leaks={leaks:waste.leaks.leaks.filter(item=>item.category==='waste'),insufficient_evidence:[]};
+ waste.scenarios={scenarios:waste.scenarios.scenarios.filter(item=>item.target_leak===title),not_simulation_ready:[]};
+ waste.simulation.results=waste.simulation.results.filter(item=>item.target_leak===title);
+ waste.decision_gate.candidates=waste.decision_gate.candidates.filter(item=>item.target_leak===title);
+ waste.decision_gate.missing_decision_inputs=[...waste.simulation.results[0].missing_inputs];
+ waste.decision_gate.not_simulation_ready=[];
+ const wasteDecision={decision_status:'needs_more_data',recommendation:{type:'collect_data',candidate_id:null,title:'Collect authoritative ingredient purchases',rationale:'The Waste scenario needs an authoritative purchase baseline.'},comparison:[{candidate_id:waste.decision_gate.candidates[0].candidate_id,target_leak:title,scenario_status:'not_calculable_yet',assessment:'Authoritative ingredient purchases are missing.',verified_impact:null,currency:null}],priority_inputs:[{source_type:'upstream_missing_input',key:waste.decision_gate.missing_decision_inputs[0],why_it_matters:'Required for the Waste calculation.'}],confidence:'low'};
+ const guidance={missing_requirements:['tuesday_evening_sales','tuesday_evening_staffing_cost','staffing_test_permission']};
+ let runNumber=1,resolveEvidence;
+ const evidencePending=new Promise(resolve=>{resolveEvidence=resolve;});
+ const h=harness(async url=>{
+  if(url.endsWith('/evidence'))return runNumber===1?Response.json({evidence:waste.evidence,guidance}):evidencePending;
+  if(url.endsWith('/leaks'))return Response.json({leaks:runNumber===1?{leaks:[],insufficient_evidence:[]}:waste.leaks});
+  if(url.endsWith('/scenarios'))return Response.json({scenarios:waste.scenarios,input_facts:[]});
+  if(url.endsWith('/simulate'))return Response.json(waste.simulation);
+  if(url.endsWith('/decision-gate'))return Response.json(waste.decision_gate);
+  if(url.endsWith('/decision'))return Response.json({decision:wasteDecision});
+  throw Error('Unexpected endpoint');
+ });
+ const finish=async run=>{for(let i=0;i<8;i++){await h.settle();if(h.timers.size)h.tick();}await run;h.render();};
+ h.render();const first=h.value.startAnalysis('Labor input','Labor notes');await finish(first);
+ assert.match(render(h.value.analysisStatus),/Tuesday evening sales|staffing cost|management permission/);
+ const previousRunId=h.value.workflow.runId;
+ runNumber=2;const second=h.value.startAnalysis(JSON.stringify(waste),waste.evidence.provenance.source_input);h.render();
+ assert.equal(h.value.workflow.runId,previousRunId+1);
+ assert.equal(h.value.analysisStatus,null);assert.equal(h.value.evidenceResult,null);assert.equal(h.value.leakResult,null);
+ assert.equal(h.value.analysisError,'');
+ // The new response can itself carry Labor-only display metadata. It must not
+ // become the completed Waste notice, even though it belongs to this request.
+ resolveEvidence(Response.json({evidence:waste.evidence,guidance}));await finish(second);
+ assert.equal(h.value.workflow.complete,true,JSON.stringify({workflow:h.value.workflow,error:h.value.analysisError,leaks:h.value.leakResult,scenario:h.value.scenarioResult,decision:h.value.decisionResult}));
+ assert.equal(h.value.analysisStatus.category,'more_data_needed');
+ const html=render(h.value.analysisStatus);
+ assert.match(html,/More data needed before a confident decision/);
+ assert.doesNotMatch(html,/Tuesday|staffing|management permission/);
+ assert.equal(h.value.analysisStatus.staffing_test_approved,undefined);
+ assert.deepEqual(JSON.parse(JSON.stringify(h.value.leakResult)),waste.leaks);
+ assert.deepEqual(JSON.parse(JSON.stringify(h.value.scenarioResult.scenarios)),waste.scenarios);
+ assert.deepEqual(JSON.parse(JSON.stringify(h.value.simulationResult)),waste.simulation);
+ assert.deepEqual(JSON.parse(JSON.stringify(h.value.decisionGateResult)),waste.decision_gate);
+ assert.deepEqual(JSON.parse(JSON.stringify(h.value.decisionResult)),wasteDecision);
+ assert.match(h.value.decisionGateResult.missing_decision_inputs[0],/ingredient purchases/);
+ h.unmount();
+});
