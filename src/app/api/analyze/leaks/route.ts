@@ -11,7 +11,7 @@ export const runtime = "nodejs";
 
 const NEBIUS_BASE_URL = "https://api.tokenfactory.nebius.com/v1/";
 const NEBIUS_MODEL = "nvidia/Nemotron-3-Ultra-550b-a55b";
-const FALLBACK_MODEL = "nvidia/nemotron-3-super-120b-a12b";
+const FALLBACK_MODEL = "nvidia/Nemotron-3-Ultra-550b-a55b";
 const UPSTREAM_TIMEOUT_MS = 60_000;
 type RetryReason = "unreported_number" | "unreported_numeric_unit" | "unverified_comparison";
 const correctiveReasons = new Set<string>(["unreported_number", "unreported_numeric_unit", "unverified_comparison"]);

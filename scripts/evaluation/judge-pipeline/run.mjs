@@ -12,7 +12,7 @@ const sha=x=>crypto.createHash('sha256').update(x).digest('hex');
 const sources=Object.fromEntries(fs.readdirSync('src',{recursive:true}).filter(f=>fs.statSync('src/'+f).isFile()).map(f=>['src/'+f,sha(fs.readFileSync('src/'+f))]));
 const model=name=>fs.readFileSync(`src/app/api/analyze/${name}/route.ts`,'utf8').match(/(?:const NEBIUS_MODEL = |model: )"([^"]+)"/)[1];
 const models=Object.fromEntries(['evidence','leaks','scenarios','decision'].map(n=>[n,model(n)]));
-assert.deepEqual(models,{evidence:'nvidia/Nemotron-3-Ultra-550b-a55b',leaks:'nvidia/Nemotron-3-Ultra-550b-a55b',scenarios:'nvidia/Nemotron-3_5-Lightning',decision:'nvidia/nemotron-3-super-120b-a12b'});
+assert.deepEqual(models,{evidence:'nvidia/Nemotron-3-Ultra-550b-a55b',leaks:'nvidia/Nemotron-3-Ultra-550b-a55b',scenarios:'nvidia/Nemotron-3_5-Lightning',decision:'nvidia/Nemotron-3-Ultra-550b-a55b'});
 if(!resume){
 fs.mkdirSync(out+'/runs',{recursive:true});fs.writeFileSync(out+'/cases.json',JSON.stringify(cases,null,2));fs.writeFileSync(out+'/manifest.json',JSON.stringify({started:new Date().toISOString(),models,source_hashes:sources,cases_sha256:sha(JSON.stringify(cases)),planned_submissions:cases.length,maximum_provider_calls:cases.length*4,retries:false,repairs:false,fallbacks:false,method:'Sequential real browser form submissions through existing localhost app/production routes, one per fixed note, no response interception/replacement or agent mocks. Fetch wrapping records unchanged responses only; failures stop that application flow naturally. Independent cases continue. Source-bound expectations declared before submission; audit is offline and makes no network calls.'},null,2));
 }else{

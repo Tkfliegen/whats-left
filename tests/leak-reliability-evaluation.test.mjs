@@ -22,7 +22,7 @@ test('time range, fact-ID digits and array indices do not fabricate a numeric to
 });
 test('isolated real handler returns the unchanged failure after bounded correction and fallback',async()=>{
  let calls=0;const r=result();r.leaks.forEach(f=>delete f.intervention_ref);
- const modules=productionModules(async(url,options)=>{calls++;assert.equal(url,'https://api.tokenfactory.nebius.com/v1/chat/completions');const payload=JSON.parse(options.body);assert.equal(payload.model,calls===3?'nvidia/nemotron-3-super-120b-a12b':'nvidia/Nemotron-3-Ultra-550b-a55b');assert.equal(payload.temperature,.2);assert.equal(payload.max_tokens,calls===3?8000:4000);assert.equal(payload.chat_template_kwargs.enable_thinking,calls===3);return Response.json({choices:[{finish_reason:'stop',message:{content:JSON.stringify(r)}}]});});
+ const modules=productionModules(async(url,options)=>{calls++;assert.equal(url,'https://api.tokenfactory.nebius.com/v1/chat/completions');const payload=JSON.parse(options.body);assert.equal(payload.model,'nvidia/Nemotron-3-Ultra-550b-a55b');assert.equal(payload.temperature,.2);assert.equal(payload.max_tokens,calls===3?8000:4000);assert.equal(payload.chat_template_kwargs.enable_thinking,calls===3);return Response.json({choices:[{finish_reason:'stop',message:{content:JSON.stringify(r)}}]});});
  const response=await modules('src/app/api/analyze/leaks/route.ts').POST(new Request('http://localhost',{method:'POST',body:JSON.stringify({evidence,operational_context:[]})}));
  const body=await response.json();assert.equal(calls,3);assert.equal(response.status,502);assert.equal(analyzeResult(r,evidence).validation.reason,'unreported_number');assert.doesNotMatch(JSON.stringify(body),/TEST_KEY|Bearer|choices/);
 });

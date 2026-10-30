@@ -20,7 +20,7 @@ verified_impact and currency. Priorities include source_type, key and
 why_it_matters. Confidence is low/medium/high.
 
 Nebius: `https://api.tokenfactory.nebius.com/v1/chat/completions`;
-`nvidia/nemotron-3-super-120b-a12b`; temperature 0.2; max_tokens 2000;
+`nvidia/Nemotron-3-Ultra-550b-a55b`; temperature 0.2; max_tokens 2000;
 `chat_template_kwargs: { enable_thinking: false }`; strict json_schema named
 `decision_agent_v1`; native server fetch with 60-second timeout and no-store.
 Only server-side NEBIUS_API_KEY is used. There are no automatic retries.

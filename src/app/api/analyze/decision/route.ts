@@ -18,7 +18,7 @@ async function handlePOST(request: Request) {
       method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
       cache: "no-store", signal: AbortSignal.timeout(60_000),
       body: JSON.stringify({
-        model: "nvidia/nemotron-3-super-120b-a12b", temperature: 0.2, max_tokens: 2000,
+        model: "nvidia/Nemotron-3-Ultra-550b-a55b", temperature: 0.2, max_tokens: 2000,
         chat_template_kwargs: { enable_thinking: false },
         response_format: { type: "json_schema", json_schema: { name: "decision_agent_v1", strict: true, schema: decisionSchema } },
         messages: [{ role: "system", content: `${decisionSystemPrompt}\nRequired JSON schema:\n${JSON.stringify(decisionSchema)}` },
@@ -44,4 +44,4 @@ async function handlePOST(request: Request) {
   }
 }
 
-export const POST = observeRoute("decision-agent", "nvidia/nemotron-3-super-120b-a12b", handlePOST);
+export const POST = observeRoute("decision-agent", "nvidia/Nemotron-3-Ultra-550b-a55b", handlePOST);

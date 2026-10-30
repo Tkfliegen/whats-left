@@ -21,9 +21,9 @@ The application calls NVIDIA Nemotron models through **Nebius Token Factory**, u
 | --- | --- | --- |
 | Evidence | `nvidia/Nemotron-3-Ultra-550b-a55b` | [Evidence route](src/app/api/analyze/evidence/route.ts) |
 | Leak primary and corrective retry | `nvidia/Nemotron-3-Ultra-550b-a55b` | [Leak route](src/app/api/analyze/leaks/route.ts) |
-| Leak bounded final fallback | `nvidia/nemotron-3-super-120b-a12b` | Same Leak route |
+| Leak bounded final fallback | `nvidia/Nemotron-3-Ultra-550b-a55b` | Same Leak route |
 | Scenario | `nvidia/Nemotron-3_5-Lightning` | [Scenario route](src/app/api/analyze/scenarios/route.ts) |
-| Decision | `nvidia/nemotron-3-super-120b-a12b` | [Decision route](src/app/api/analyze/decision/route.ts) |
+| Decision | `nvidia/Nemotron-3-Ultra-550b-a55b` | [Decision route](src/app/api/analyze/decision/route.ts) |
 
 Leak generation permits one corrective retry and one final fallback only for eligible quantitative-output failures, with the same fail-closed validation. It does not retry infrastructure or authorization failures through that flow.
 

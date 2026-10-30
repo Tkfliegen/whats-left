@@ -48,7 +48,7 @@ test('valid first output requires exactly one generation and no corrective feedb
 test('two eligible rejections switch once to the configured fallback and accept its validated output',async()=>{
  const s=setup(),r=await run([s.invalid,s.invalid,s.valid],s);
  assert.equal(r.calls.length,3);assert.equal(r.response.status,200);
- assert.deepEqual(r.calls.map(c=>c.payload.model),['nvidia/Nemotron-3-Ultra-550b-a55b','nvidia/Nemotron-3-Ultra-550b-a55b','nvidia/nemotron-3-super-120b-a12b']);
+ assert.deepEqual(r.calls.map(c=>c.payload.model),['nvidia/Nemotron-3-Ultra-550b-a55b','nvidia/Nemotron-3-Ultra-550b-a55b','nvidia/Nemotron-3-Ultra-550b-a55b']);
  const [first,,last]=r.calls.map(c=>c.payload);
  assert.deepEqual(last.messages.slice(0,2),first.messages);assert.deepEqual(last.response_format,first.response_format);
  assert.equal(last.chat_template_kwargs.enable_thinking,true);assert.equal(last.max_tokens,8000);

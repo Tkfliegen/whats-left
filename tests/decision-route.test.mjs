@@ -99,7 +99,7 @@ test('data-required Gate with no grounded source is rejected; no-action empty-so
 test('endpoint uses Super, strict production schema, thinking disabled, timeout and safe response envelope',async()=>{
   const input=fixture('close_call');let calls=0;const {POST}=load(async(url,options)=>{
     calls++;assert.equal(url,'https://api.tokenfactory.nebius.com/v1/chat/completions');assert.equal(options.headers.Authorization,'Bearer test-key');assert.equal(options.cache,'no-store');assert.ok(options.signal instanceof AbortSignal);
-    const body=JSON.parse(options.body);assert.equal(body.model,'nvidia/nemotron-3-super-120b-a12b');assert.equal(body.temperature,.2);assert.equal(body.max_tokens,2000);assert.equal(body.chat_template_kwargs.enable_thinking,false);assert.equal(body.response_format.type,'json_schema');assert.equal(body.response_format.json_schema.strict,true);assert.equal(body.response_format.json_schema.name,'decision_agent_v1');
+    const body=JSON.parse(options.body);assert.equal(body.model,'nvidia/Nemotron-3-Ultra-550b-a55b');assert.equal(body.temperature,.2);assert.equal(body.max_tokens,2000);assert.equal(body.chat_template_kwargs.enable_thinking,false);assert.equal(body.response_format.type,'json_schema');assert.equal(body.response_format.json_schema.strict,true);assert.equal(body.response_format.json_schema.name,'decision_agent_v1');
     const projected=JSON.parse(body.messages[1].content);assert.equal(projected.decision_gate,'needs_more_data');assert.equal(projected.comparison_gap_status,'below_threshold');assert.equal('revenue' in projected,false);assert.deepEqual(projected.priority_input_options.map(p=>p.key),['implementation_cost','operational_constraints']);
     return completion(validResult(input));
   });
